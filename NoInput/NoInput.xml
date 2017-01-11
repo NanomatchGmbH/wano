@@ -1,0 +1,12 @@
+<WaNoTemplate>
+   <WaNoRoot name="NoInput">
+      <WaNoString name="hello_world">Hello World</WaNoString>
+   </WaNoRoot>
+   <WaNoExecCommand>date; touch a.mol2; touch b.mol2</WaNoExecCommand>
+   <WaNoInputFiles>
+   </WaNoInputFiles>
+   <WaNoOutputFiles>
+    <WaNoOutputFile>*.mol2</WaNoOutputFile>
+    <WaNoOutputFile>stdout</WaNoOutputFile>
+   </WaNoOutputFiles>
+</WaNoTemplate>
