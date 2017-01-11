@@ -1,0 +1,6 @@
+. $MMM_REPO/config
+export PYTHONPATH=$DEPOSITPATH:$PYTHONPATH
+nwchem nwchem.in > nwchem.out
+python analyse.py
+python report.py
+nanoReporter.py --type=pdf --input=report.zip 

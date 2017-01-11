@@ -1,0 +1,27 @@
+start WaNoNWChem
+title "WaNoNWChem single point calculation"
+
+charge 0
+
+geometry units angstroms noautoz nocenter noautosym
+load format xyz molecule.xyz
+end
+
+basis
+   * library {{ wano["Simulation parameters"]["Basis-set"] }}
+end
+
+property
+{% if wano["Analysis"]["Partial charges"]["Mulliken charges"] %}mulliken{% endif %}
+dipole
+quadrupole
+end
+
+dft
+ XC {{ wano["Simulation parameters"]["Functional"] }}
+end
+
+{% if wano["Geometry optimization"]["enabled"] %}task dft optimize{% endif %}
+task dft property
+
+{% if wano["Analysis"]["Partial charges"]["ESP fit"] %}task esp{% endif %}
