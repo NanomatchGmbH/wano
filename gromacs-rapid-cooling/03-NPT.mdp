@@ -1,0 +1,59 @@
+; RUN CONTROL PARAMETERS
+integrator	= md
+; timestep in ps
+dt		= {{ wano["Numerical parameters"]["Timestep [ps]"] }}
+; total number steps
+nsteps		= {{ wano["Simulation parameters"]["Equilibration time at initial temperature [ns]"] * 1000 / wano["Numerical parameters"]["Timestep [ps]"] }}
+
+; OUTPUT CONTROL OPTIONS
+; Output frequency for coords (x), velocities (v) and forces (f)
+nstxout		= {{ wano["Numerical parameters"]["Output frequency for coords, velocities etc [ps]"] / wano["Numerical parameters"]["Timestep [ps]"] }}
+nstvout		= {{ wano["Numerical parameters"]["Output frequency for coords, velocities etc [ps]"] / wano["Numerical parameters"]["Timestep [ps]"] }}
+;nstfout		= 0
+; Output frequency for energies to log file and energy file
+nstlog		= {{ wano["Numerical parameters"]["Output frequency for energies [ps]"] / wano["Numerical parameters"]["Timestep [ps]"] }}
+nstcalcenergy	= -1
+nstenergy	= {{ wano["Numerical parameters"]["Output frequency for energies [ps]"] / wano["Numerical parameters"]["Timestep [ps]"] }}
+
+; NEIGHBORSEARCHING PARAMETERS
+; cut-off scheme (Verlet: particle based cut-offs, group: using charge groups)
+;cutoff-scheme	= Verlet
+
+; Periodic boundary conditions: xyz, no, xy
+pbc		= xyz
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+; Method for doing electrostatics
+coulombtype	= PME
+; Method for doing Van der Waals
+vdw-type	= Cut-off
+; Apply long range dispersion corrections for Energy and Pressure
+DispCorr	= EnerPres
+
+; OPTIONS FOR WEAK COUPLING ALGORITHMS
+; Temperature coupling
+tcoupl          = nose-hoover
+;nsttcouple     = 1
+nh-chain-length = 1     ; for md integrator
+; Groups to couple separately
+tc-grps		= System
+; Time constant (ps) and reference temperature (K)
+tau-t		= {{ 200 * wano["Numerical parameters"]["Timestep [ps]"] }}
+ref-t		= {{ wano["Simulation parameters"]["Initial Temperature [K]"] }}
+; Pressure coupling
+Pcoupl		= Parrinello-Rahman
+Pcoupltype	= isotropic
+;nstpcouple	= -1
+; Time constant (ps), compressibility (1/bar) and reference P (bar)
+tau-p		= {{ 2000 * wano["Numerical parameters"]["Timestep [ps]"] }}
+compressibility	= 5e-5
+ref-p		= {{ wano["Simulation parameters"]["Pressure [bar]"] }}
+
+; OPTIONS FOR BONDS
+;constraints	= all-bonds
+
+; Local Variables:
+; mode: lisp
+; End:
+
+; vim: syntax=lisp

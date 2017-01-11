@@ -1,0 +1,42 @@
+<WaNoTemplate>
+  <WaNoRoot name="Rapid Cooling (GROMACS)">
+    <WaNoDictBox name="Initial configuration">
+      <WaNoFile logical_filename="init.gro" name="GRO file">???</WaNoFile>
+    </WaNoDictBox>
+    <WaNoDictBox name="Topology">
+      <WaNoFile logical_filename="molecule.itp" name="ITP file">???</WaNoFile>
+      <WaNoFile logical_filename="topol.top" name="TOP file">???</WaNoFile>
+    </WaNoDictBox>
+    <WaNoDictBox name="Simulation parameters">
+      <WaNoFloat name="Initial Temperature [K]">700.0</WaNoFloat>
+      <WaNoFloat name="Equilibration time at initial temperature [ns]">1.0</WaNoFloat>
+      <WaNoFloat name="Cooling rate [K/ns]">100.0</WaNoFloat>
+      <WaNoFloat name="Final Temperature [K]">300.0</WaNoFloat>
+      <WaNoFloat name="Equilibration time at final temperature [ns]">2.0</WaNoFloat>
+      <WaNoFloat name="Pressure [bar]">1.0</WaNoFloat>
+    </WaNoDictBox>
+    <WaNoDictBox name="Numerical parameters">
+      <WaNoFloat name="Timestep [ps]">0.001</WaNoFloat>
+      <WaNoFloat name="Output frequency for coords, velocities etc [ps]">5</WaNoFloat>
+      <WaNoFloat name="Output frequency for energies [ps]">2</WaNoFloat>
+      <WaNoInt name="Random seed">12345</WaNoInt>
+    </WaNoDictBox>
+  </WaNoRoot>
+  <WaNoExecCommand>sh ./run-gromacs.sh</WaNoExecCommand>
+  <WaNoInputFiles>
+    <WaNoInputFile logical_filename="01-minimization.mdp">01-minimization.mdp</WaNoInputFile>
+    <WaNoInputFile logical_filename="02-NVT.mdp">02-NVT.mdp</WaNoInputFile>
+    <WaNoInputFile logical_filename="03-NPT.mdp">03-NPT.mdp</WaNoInputFile>
+    <WaNoInputFile logical_filename="04-cooling.mdp">04-cooling.mdp</WaNoInputFile>
+    <WaNoInputFile logical_filename="05-NPT.mdp">05-NPT.mdp</WaNoInputFile>
+    <WaNoInputFile logical_filename="run-gromacs.sh">run-gromacs.sh</WaNoInputFile>
+  </WaNoInputFiles>
+  <WaNoOutputFiles>
+    <WaNoOutputFile>01-minimization.gro</WaNoOutputFile>
+    <WaNoOutputFile>02-NVT.gro</WaNoOutputFile>
+    <WaNoOutputFile>03-NPT.gro</WaNoOutputFile>
+    <WaNoOutputFile>04-cooling.gro</WaNoOutputFile>
+    <WaNoOutputFile>05-NPT.gro</WaNoOutputFile>
+    <WaNoOutputFile>AVERAGED_DATA.txt</WaNoOutputFile>
+  </WaNoOutputFiles>
+</WaNoTemplate>
