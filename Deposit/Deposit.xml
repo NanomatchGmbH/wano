@@ -13,7 +13,7 @@
   </WaNoDictBox>
   <WaNoDictBox name="Simulation Parameters">
     <WaNoInt name="Number of Molecules">10</WaNoInt>
-    <WaNoFloat name="Initial Temperature [K]">40.0</WaNoFloat>
+    <WaNoFloat name="Initial Temperature [K]">4000.0</WaNoFloat>
     <WaNoFloat name="Final Temperature [K]">330.0</WaNoFloat>
     <WaNoFloat name="SA Acc Temp">5.0</WaNoFloat>
     <WaNoInt name="Number of Steps">30000</WaNoInt>
