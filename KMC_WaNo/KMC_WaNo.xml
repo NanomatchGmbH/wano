@@ -8,10 +8,10 @@
 
 		<WaNoDictBox name="Input files">
 			<WaNoBool name="Load pair file">True</WaNoBool>
-			<WaNoFile name="Pair file">pair_energies.dat</WaNoFile>
-			<WaNoFile name="Morphology file">geometry.dat</WaNoFile>
-			<WaNoFile name="Energetics file">energetics.dat</WaNoFile>
-			<WaNoFile name="Neighbour file">neighbours.dat</WaNoFile>
+			<WaNoFile logical_filename="pair_energies.dat" name="Pair file">pair_energies.dat</WaNoFile>
+			<WaNoFile logical_filename="geometry.dat" name="Morphology file">geometry.dat</WaNoFile>
+			<WaNoFile logical_filename="energetics.dat" name="Energetics file">energetics.dat</WaNoFile>
+			<WaNoFile logical_filename="neighbours.dat" name="Neighbour file">neighbours.dat</WaNoFile>
 		</WaNoDictBox>
 
 		<WaNoDictBox name="Parameters">
@@ -62,7 +62,7 @@
 			<WaNoInt name="Seed holes">5</WaNoInt>
 			<WaNoBool name="Load files">False</WaNoBool>
 			<WaNoBool name="Save files">True</WaNoBool>
-			<WaNoString name="Save path">Path for saved states</WaNoString>
+                        <!-- <WaNoString name="Save path">Path for saved states</WaNoString> -->
 		</WaNoDictBox>
 	</WaNoRoot>
 	<WaNoExecCommand>
