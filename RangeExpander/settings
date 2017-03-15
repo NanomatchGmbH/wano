@@ -1,0 +1,8 @@
+calcname: Output
+morphology: real
+create_morphology: {{wano["TABS"]["Morphology"]["Expand morphology"]}}
+small_morphology: {{wano["TABS"]["Morphology"]["Morphology ((x,y,z)[A], 3 columns)"]}}
+morphology_file: {{wano["TABS"]["Morphology"]["Morphology ((x,y,z)[A], 3 columns)"]}}
+sites_tot: {{wano["TABS"]["Morphology"]["Number of Molecules"]}}
+ti_model: {%if  wano["TABS"]["Transfer integrals"]["Expand transfer integrals"] == True  %}QPatch {% else %}exp_decay {%  endif  %}
+ti_file: {{wano["TABS"]["Transfer integrals"]["J distribution (r[A],J[eV], 2 columns)"]}}
