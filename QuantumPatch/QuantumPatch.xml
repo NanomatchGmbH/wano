@@ -49,5 +49,10 @@
 
  <WaNoOutputFiles>
     <WaNoOutputFile>output.zip</WaNoOutputFile>
+    <WaNoOutputFile>data_for_kmc/COM.dat</WaNoOutputFile>
+    <WaNoOutputFile>data_for_kmc/lumo_J.dat</WaNoOutputFile>
+    <WaNoOutputFile>data_for_kmc/homo_J.dat</WaNoOutputFile>
+    <WaNoOutputFile>data_for_kmc/lumo_dE.dat</WaNoOutputFile>
+    <WaNoOutputFile>data_for_kmc/homo_dE.dat</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
