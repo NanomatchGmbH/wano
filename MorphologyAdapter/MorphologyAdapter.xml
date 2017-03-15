@@ -1,0 +1,20 @@
+<WaNoTemplate>
+    <WaNoRoot name="KIT_to_UBAH">
+	<WaNoFile name="Input file" logical_filename="input_topology">Input KIT topology</WaNoFile>
+    </WaNoRoot>
+    <WaNoExecCommand>      
+	source $EXTMOS/UBAH/config ; python KIT_topology.py input_topology .
+    </WaNoExecCommand>
+    <WaNoInputFiles>
+	    <WaNoInputFile logical_filename="KIT_topology.py">KIT_topology.py</WaNoInputFile>
+    </WaNoInputFiles>   
+    <WaNoOutputFiles>
+     <WaNoOutputFile>geometry.dat</WaNoOutputFile>
+	<WaNoOutputFile>pair_energies.dat</WaNoOutputFile>
+	<WaNoOutputFile>energetics.dat</WaNoOutputFile>
+	<WaNoOutputFile>neighbours.dat</WaNoOutputFile>
+    </WaNoOutputFiles>
+</WaNoTemplate>
+
+
+
