@@ -1,0 +1,46 @@
+<WaNoTemplate>
+ <WaNoRoot name="FIESTA_NWChem">
+ 
+  <WaNoFile logical_filename="molecule.xyz" name="Molecule">Put .xyz file here</WaNoFile> 
+  
+  <WaNoDictBox name="Basis">
+
+    <WaNoChoice name="DFT Basis-set">
+    <Entry id="0" chosen="True">6-311g*</Entry>
+    <Entry id="1">cc-pvtz</Entry>  
+    <Entry id="2">aug-cc-pvtz</Entry>
+    <Entry id="3">d-aug-cc-pvtz</Entry>
+    </WaNoChoice>
+   
+  </WaNoDictBox>
+  
+  <WaNoChoice name="Functional">
+    <Entry id="0" chosen="True" >pbe0</Entry>
+    <Entry id="1">m06-2x</Entry>
+  </WaNoChoice> 
+    
+  <WaNoDictBox name="Partial charges Analysis">
+      <WaNoBool name="Mulliken charges">false</WaNoBool>
+      <WaNoBool name="ESP fit">false</WaNoBool>    
+  </WaNoDictBox>   
+
+ </WaNoRoot>
+
+ <WaNoExecCommand>bash ./exec.script
+ </WaNoExecCommand>
+
+ <WaNoInputFiles>
+   <WaNoInputFile logical_filename="exec.script">exec_template.dat</WaNoInputFile>
+   <WaNoInputFile logical_filename="nwchem.in">NWChem_template.dat</WaNoInputFile>
+ </WaNoInputFiles>
+
+ <WaNoOutputFiles>
+    <WaNoOutputFile>nwchem.in</WaNoOutputFile>
+    <WaNoOutputFile>nwchem.out</WaNoOutputFile>
+    <WaNoOutputFile>WaNo_FIESTA_NW.movecs</WaNoOutputFile>
+    <WaNoOutputFile>molecule.xyz</WaNoOutputFile>
+    <WaNoOutputFile>*.ion</WaNoOutputFile>
+    <WaNoOutputFile>Vxc.mat</WaNoOutputFile>
+ </WaNoOutputFiles>
+
+</WaNoTemplate>

@@ -1,0 +1,1 @@
+NWCHEM2FIESTA nwchem.in nwchem.out WaNo_FIESTA_NW.movecs > log_n2f

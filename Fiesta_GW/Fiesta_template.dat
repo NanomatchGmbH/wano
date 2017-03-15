@@ -1,0 +1,11 @@
+xyzfile              molecule.xyz
+
+GW
+  iter_GW              {{ wano["GW"]["Number of iterations"] }}
+  noccp_GW             {{ wano["GW"]["Number of bands to correct"]["Occupied bands"] }}
+  nunoccp_GW           {{ wano["GW"]["Number of bands to correct"]["Unoccupied bands"] }}
+  ngrid_GW             {{ wano["GW"]["Energy Grid"]["Number of Grid point"] }}
+  dEgrid_GW            {{ wano["GW"]["Energy Grid"]["Step of Grid (eV)"] }} eV
+  Delta_HOMO_guess_GW  {{ wano["GW"]["Energy Grid"]["Initial guess change in HOMO/LUMO"]["Delta HOMO (eV)"] }} eV
+  Delta_LUMO_guess_GW  {{ wano["GW"]["Energy Grid"]["Initial guess change in HOMO/LUMO"]["Delta LUMO (eV)"] }} eV
+End

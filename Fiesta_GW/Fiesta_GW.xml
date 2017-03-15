@@ -1,0 +1,47 @@
+<WaNoTemplate>
+ <WaNoRoot name="FIESTA_GW">
+
+  <WaNoDictBox name="Parallelization Parameters"> 
+    <WaNoInt name="Number of columns">1</WaNoInt>  
+    <WaNoInt name="Number of rows">1</WaNoInt>    
+    <WaNoInt name="Number of slices">16</WaNoInt>  
+  </WaNoDictBox>
+  
+  
+    <WaNoDictBox name="GW">
+      <WaNoInt name="Number of iterations">3</WaNoInt>
+    
+      <WaNoDictBox name="Number of bands to correct">
+        <WaNoInt name="Occupied bands">1</WaNoInt>
+        <WaNoInt name="Unoccupied bands">1</WaNoInt>
+      </WaNoDictBox>
+    
+      <WaNoDictBox name="Energy Grid">
+        <WaNoInt name="Number of Grid point">8</WaNoInt>
+        <WaNoFloat name="Step of Grid (eV)">0.5</WaNoFloat>
+        <WaNoDictBox name="Initial guess change in HOMO/LUMO">
+          <WaNoFloat name="Delta HOMO (eV)">0.0</WaNoFloat>
+          <WaNoFloat name="Delta LUMO (eV)">0.0</WaNoFloat>
+        </WaNoDictBox>
+      </WaNoDictBox>
+    
+    </WaNoDictBox>
+
+ </WaNoRoot>
+
+ <WaNoExecCommand>bash ./exec.script
+ </WaNoExecCommand>
+
+ <WaNoInputFiles>
+   <WaNoInputFile logical_filename="exec.script">exec_template.dat</WaNoInputFile>
+   <WaNoInputFile logical_filename="Fiesta.in">Fiesta_template.dat</WaNoInputFile>   
+ </WaNoInputFiles>
+
+ <WaNoOutputFiles>
+    <WaNoOutputFile>log_gw</WaNoOutputFile>
+    <WaNoOutputFile>*.mat</WaNoOutputFile>
+    <WaNoOutputFile>*.dat</WaNoOutputFile>
+    <WaNoOutputFile>*.ion</WaNoOutputFile>
+ </WaNoOutputFiles>
+
+</WaNoTemplate>

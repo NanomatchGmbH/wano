@@ -1,0 +1,11 @@
+
+../../1.mescal_examples/cluster.pdb
+
+F4X  ../../1.mescal_examples/f4q_min.mei
+
+PCX  ../../1.mescal_examples/ptc_plu.mei
+
+PTC  ../../1.mescal_examples/ptc_neu.mei
+
+
+
