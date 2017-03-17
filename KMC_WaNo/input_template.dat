@@ -28,7 +28,7 @@ measure_time = {{ wano["Measurement settings"]["Measuring interval"] }}
 measure_MSD = {{ wano["Measurement settings"]["Measure MSD"] }}
 MSD_components = {{ wano["Measurement settings"]["Measure components of MSD"] }}
 
-[device/size]
+[device_size]
 lx = {{wano["Device size"]["Lx [nm]"] }}e-9
 ly = {{wano["Device size"]["Lx [nm]"] }}e-9
 lz = {{wano["Device size"]["Lx [nm]"] }}e-9
@@ -46,8 +46,8 @@ Voltage_P = {{ wano["Applied bias settings"]["V p-type"] }}
 [morphology]
 N_hopping_sites = {{ wano["Parameters"]["Number of sites"] }}
 geometry_file = {{ wano["Input files"]["Morphology file"] }}
-neighbour_file = {{ wano["Input files"]["Energetics file"] }}
-energetics_file = {{ wano["Input files"]["Neighbour file"] }}
+neighbour_file = {{ wano["Input files"]["Neighbour file"] }}
+energetics_file = {{ wano["Input files"]["Energetics file"] }}
 
 [parameters]
 temperature = {{ wano["Parameters"]["Temperature [K]"] }}
