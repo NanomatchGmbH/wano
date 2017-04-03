@@ -14,7 +14,7 @@ inject_electrons = {{ wano["Injection settings"]["Inject electrons"] }}
 inject_holes = {{ wano["Injection settings"]["Inject holes"] }}
 seed_particles = {{ wano["Save/Load settings"]["Seed particles"] }}
 seed_electrons = {{ wano["Save/Load settings"]["Seed electrons"] }}
-seed_holes = {{ wano["Save/Load settings"]["Seed_holes"] }}
+seed_holes = {{ wano["Save/Load settings"]["Seed holes"] }}
 
 [save/load]
 load_config = {{ wano["Save/Load settings"]["Load files"] }}
