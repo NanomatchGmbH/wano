@@ -2,8 +2,6 @@
 
 source $EXTMOS/KIT/config
 
-export PATH=
-
 $SHREDDERBIN/AnaMobyExe.py temperature={{ wano["Temperature [K]"] | float }}\
                            lambda_lumo={{ wano["Lambda LUMO [eV]"] | float }}\
                            lambda_homo={{ wano["Lambda HOMO [eV]"] | float }}\
