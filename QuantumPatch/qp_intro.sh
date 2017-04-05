@@ -26,12 +26,12 @@ export DFT_MEMORY="{{ wano["Hardware Parameters"]["DFT Memory [MB]"] | int }}"
 
 export CALCULATE_JS="{{ wano["DFT Settings"]["Calculate Js"] }}"
 
-if [ "$CALCULATE_JS" == "True" ]
-then
-    export CALCULATE_JS="on"
-else
-    export CALCULATE_JS="off"
-fi
+#if [ "$CALCULATE_JS" == "True" ]
+#then
+#    export CALCULATE_JS="on"
+#else
+#    export CALCULATE_JS="off"
+#fi
 
 source $EXTMOS/KIT/config
 
