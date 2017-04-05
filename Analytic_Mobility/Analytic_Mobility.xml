@@ -1,0 +1,16 @@
+<WaNoTemplate>
+ <WaNoRoot name="Analytic Mobility">
+  <WaNoFloat name="Temperature [K]">300</WaNoFloat>
+  <WaNoFloat name="Lambda HOMO [eV]">0.3</WaNoFloat>
+  <WaNoFloat name="Lambda LUMO [eV]">0.3</WaNoFloat>
+  <WaNoFile logical_filename="homo.edge" name="HOMO Edge File">homo.edge</WaNoFile>
+  <WaNoFile logical_filename="lumo.edge" name="LUMO Edge File">lumo.edge</WaNoFile>
+ </WaNoRoot>
+ <WaNoExecCommand>bash ./analytic_intro.sh</WaNoExecCommand>
+ <WaNoInputFiles>
+   <WaNoInputFile logical_filename="analytic_intro.sh">analytic_intro.sh</WaNoInputFile>
+ </WaNoInputFiles>
+ <WaNoOutputFiles>
+     <!-- <WaNoOutputFile>report.zip</WaNoOutputFile> -->
+ </WaNoOutputFiles>
+</WaNoTemplate>
