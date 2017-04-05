@@ -2,10 +2,10 @@
 load_pair_file = {{ wano["Input files"]["Load pair file"] }}
 {% if wano["Input files"]["Load pair file"]==True %}pair_file = {{ wano["Input files"]["Pair file"] }} {% else %}pair_file = NULL {% endif %}
 run_for_steps = {% if wano["Parameters"]["Simulation length measurement"]=="Measure by steps" %}True{% else %}False{% endif %}
-equilibration_steps = {{ wano["Parameters"]["Simulation length"] }}
+equilibration_steps = {{ wano["Parameters"]["Equilibration length"] }}
 KMC_steps = {{ wano["Parameters"]["Simulation length"] }}
 run_for_time = {% if wano["Parameters"]["Simulation length measurement"]=="Measure by simulation time" %}True{% else %}False{% endif %}
-equilibration_time = {{ wano["Parameters"]["Simulation length"] }}
+equilibration_time = {{ wano["Parameters"]["Equilibration length"] }}
 KMC_time = {{ wano["Parameters"]["Simulation length"] }}
 single_particle = false
 FRM = {{ wano["Simulation method"]["Use FRM method"] }}
