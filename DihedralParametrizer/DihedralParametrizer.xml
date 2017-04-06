@@ -32,7 +32,7 @@
    <WaNoInputFile logical_filename="dhparam_intro.sh">dhparam_intro.sh</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
-    <WaNoOutputFile>molecule_dh.pdf</WaNoOutputFile>
+    <WaNoOutputFile>molecule_dh.pdb</WaNoOutputFile>
     <WaNoOutputFile>molecule_dh.spf</WaNoOutputFile>
     <WaNoOutputFile>*.png</WaNoOutputFile>    
  </WaNoOutputFiles>
