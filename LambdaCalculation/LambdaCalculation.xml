@@ -30,6 +30,7 @@
    <WaNoInputFile logical_filename="lambda_intro.sh">lambda_intro.sh</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
-    <WaNoOutputFile>stdout</WaNoOutputFile>
+    <WaNoOutputFile>02output/lambda_energies_mol_0_lumo.dat</WaNoOutputFile>
+    <WaNoOutputFile>02output/lambda_energies_mol_0_homo.dat</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>

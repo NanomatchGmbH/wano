@@ -1,8 +1,8 @@
 <WaNoTemplate>
  <WaNoRoot name="Analytic Mobility">
   <WaNoFloat name="Temperature [K]">300</WaNoFloat>
-  <WaNoFloat name="Lambda HOMO [eV]">0.3</WaNoFloat>
-  <WaNoFloat name="Lambda LUMO [eV]">0.3</WaNoFloat>
+  <WaNoFile logical_filename="lambda.lumo" name="Lambda LUMO Energy File">lambda_energies_mol_0_lumo.dat</WaNoFile>
+  <WaNoFile logical_filename="lambda.homo" name="Lambda HOMO Energy File">lambda_energies_mol_0_homo.dat</WaNoFile>
   <WaNoFile logical_filename="homo.edge" name="HOMO Edge File">homo.edge</WaNoFile>
   <WaNoFile logical_filename="lumo.edge" name="LUMO Edge File">lumo.edge</WaNoFile>
  </WaNoRoot>
