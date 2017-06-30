@@ -22,6 +22,10 @@
   </WaNoDictBox>
   </WaNoGroup>
  <WaNoGroup name="Molecules">
+  <WaNoBool name="Restart from existing morphology">False</WaNoBool>
+  <WaNoFile logical_filename="restartfile.zip" 
+            visibility_condition="%s == True" visibility_var_path="TABS.Molecules.Restart from existing morphology" 
+            name="Restartfile">restartfile.zip</WaNoFile>
   <WaNoMultipleOf name="Molecules">
     <Element id="0">
        <WaNoFile logical_filename="molecule_{{ path[3] }}.pdb" name="Molecule">Choose Molecule</WaNoFile>
@@ -38,5 +42,6 @@
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <WaNoOutputFile>structure.cml</WaNoOutputFile>
+    <WaNoOutputFile>restartfile.zip</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
