@@ -2,5 +2,24 @@
 
 source $EXTMOS/KIT/config
 
+export DO_RESTART="{{ wano["TABS"]["Simulation Parameters"]["Restart"]["enabled"] }}"
+if [ "$DO_RESTART" == "True" ]
+then
+    if [ -f restartfile.zip ]
+    then
+        echo "Found Checkpoint, extracting for restart."
+        unzip -q -o restartfile.zip
+        rm restartfile.zip
+    else
+        echo "Restart was enabled, but no checkpoint file was found. Not starting simulation."
+        exit 5
+    fi
+fi
+
 Deposit.py {% for element in wano["TABS"]["Molecules"]["Molecules"] %} molecule.{{ loop.index - 1 }}.pdb={{ element["Molecule"] }}  molecule.{{ loop.index - 1 }}.spf={{ element["Forcefield"] }} molecule.{{ loop.index - 1 }}.conc={{ element["Mixing Ratio"] }} {% endfor %}  simparams.Thi={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Initial Temperature [K]"] }}  simparams.Tlo={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Final Temperature [K]"] }} simparams.sa.Tacc={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["SA Acc Temp"] }} simparams.sa.cycles={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of SA cycles"] }} simparams.sa.steps={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of Steps"] }} simparams.Nmol={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of Molecules"] }} simparams.moves.dihedralmoves={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Dihedral Moves"] }}  Box.Lx={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["Lx"] }}  Box.Ly={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["Ly"] }}  Box.Lz={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["Lz"] }}  Box.pbc_cutoff={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["PBC"]["Cutoff"] }}  simparams.PBC={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["PBC"]["enabled"] }} machineparams.ncpu=${UC_PROCESSORS_PER_NODE}
+
 babel structure.cml structure.mol2
+
+zip restartfile.zip deposited_*.pdb.gz static_parameters.dpcf.gz static_parameters.dpcf_molinfo.dat.gz grid.vdw.gz grid.es.gz neighbourgrid.vdw.gz
+
+rm deposited_*.pdb.gz deposited_*.cml static_parameters.dpcf.gz grid.vdw.gz grid.es.gz neighbourgrid.vdw.gz
