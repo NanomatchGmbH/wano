@@ -2,7 +2,7 @@
 
 source $EXTMOS/KIT/config
 
-export DO_RESTART="{{ wano["TABS"]["Simulation Parameters"]["Restart"]["enabled"] }}"
+export DO_RESTART="{{ wano["TABS"]["Molecules"]["Restart from existing morphology"] }}"
 if [ "$DO_RESTART" == "True" ]
 then
     if [ -f restartfile.zip ]
