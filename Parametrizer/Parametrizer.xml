@@ -17,10 +17,6 @@
         <Entry id="0" chosen="True" >b-p</Entry>
         <Entry id="1">b3-lyp</Entry>
       </WaNoChoice>
-     <WaNoChoice name="Partial Charge Method">
-        <Entry id="0" chosen="True" >ESP</Entry>
-        <Entry id="1">Mulliken</Entry>
-      </WaNoChoice>
   </WaNoDictBox>
   <WaNoDictBox name="Partial Charge Settings">
       <WaNoChoice name="Basis">

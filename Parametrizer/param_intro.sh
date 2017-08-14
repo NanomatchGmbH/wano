@@ -38,6 +38,7 @@ then
     babel opt_${INPUTBASE}.xyz $SHREDDER_INPUT    
 fi
 
+export PARTIAL_CHARGE_METHOD="{{ wano["Partial Charge Settings"]["Partial Charge Method"] }}"
 export BASIS="{{ wano["Partial Charge Settings"]["Basis"] }}"
 export FUNCTIONAL="{{ wano["Partial Charge Settings"]["Functional"] }}"
 
