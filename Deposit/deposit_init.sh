@@ -2,6 +2,20 @@
 
 source $EXTMOS/KIT/config
 
+WORKING_DIR=`pwd`
+DATA_DIR=$WORKING_DIR
+
+if [ -d $SCRATCH ]
+then
+    WORKING_DIR=$SCRATCH/`whoami`/`uuidgen`
+    mkdir -p $WORKING_DIR
+    cp -r $DATA_DIR/* $WORKING_DIR/
+    cd $WORKING_DIR
+fi
+
+echo "Deposit running on node $(hostname) in directory $WORKING_DIR"
+cd $WORKING_DIR
+
 export DO_RESTART="{{ wano["TABS"]["Molecules"]["Restart from existing morphology"] }}"
 if [ "$DO_RESTART" == "True" ]
 then
@@ -23,3 +37,13 @@ babel structure.cml structure.mol2
 zip restartfile.zip deposited_*.pdb.gz static_parameters.dpcf.gz static_parameters.dpcf_molinfo.dat.gz grid.vdw.gz grid.es.gz neighbourgrid.vdw.gz
 
 rm deposited_*.pdb.gz deposited_*.cml static_parameters.dpcf.gz grid.vdw.gz grid.es.gz neighbourgrid.vdw.gz
+
+if [ -d $SCRATCH ]
+then
+if [ -d $WORKING_DIR ]
+then
+    cp -r $WORKING_DIR/* $DATA_DIR/
+    cd $DATA_DIR
+    rm -r $WORKING_DIR
+fi
+fi
