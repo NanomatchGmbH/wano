@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $EXTMOS/KIT/config
+source $NANOMATCH/config
 
 WORKING_DIR=`pwd`
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $EXTMOS/KIT/config
+source $NANOMATCH/config
 
 $SHREDDERBIN/AnaMobyExe.py temperature={{ wano["Temperature [K]"] | float }}\
                            lambda_lumo_file={{ wano["Lambda LUMO Energy File"] }}\
