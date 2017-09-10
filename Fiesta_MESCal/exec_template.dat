@@ -1,3 +1,0 @@
-grep -c ATOM sphere_mm.pdb > classical_atoms.dat
-mpirun Fiesta2m > log_f2m
-

@@ -1,1 +1,0 @@
-mpirun bse {{ wano["Parallelization Parameters"]["Number of columns"] }} {{ wano["Parallelization Parameters"]["Number of rows"] }} > log_bse
