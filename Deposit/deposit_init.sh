@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $NANOMATCH/config
+source $NANOMATCH/configs/deposit.config
 
 WORKING_DIR=`pwd`
 DATA_DIR=$WORKING_DIR

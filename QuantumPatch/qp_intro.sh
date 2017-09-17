@@ -33,6 +33,6 @@ export CALCULATE_JS="{{ wano["DFT Settings"]["Calculate Js"] }}"
 #    export CALCULATE_JS="off"
 #fi
 
-source $NANOMATCH/config
+source $NANOMATCH/configs/quantumpatch.config
 
 QuantumPatch.sh

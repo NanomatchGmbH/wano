@@ -1,17 +1,18 @@
 #!/bin/bash
 
-source $NANOMATCH/config
+source $NANOMATCH/configs/parameterizer.config
 
 WORKING_DIR=`pwd`
 
-export OMP_NUM_THREADS=$UC_PROCESSORS_PER_NODE
-
 if [ $OMP_NUM_THREADS -gt 1 ]
 then
+    if [ -d $TURBODIR ]
+    then
         #Turbomole config for multi cpu runs
         export PARA_ARCH=SMP
         export PARNODES=$OMP_NUM_THREADS
         export PATH=$TURBODIR/bin/`sysname`:$PATH
+    fi
 fi
 
 export MOLECULE="{{ wano["Molecule (Mol2)"] }}"
@@ -33,7 +34,6 @@ then
     python2 $SHREDDERBIN/exe_generate_settings.py
     echo "python2 $SHREDDERBIN/geometrical_optimization.py $SHREDDER_INPUT"
     python2 $SHREDDERBIN/geometrical_optimization.py $SHREDDER_INPUT
-    
     babel opt_${INPUTBASE}.xyz $MOLECULE
     babel opt_${INPUTBASE}.xyz $SHREDDER_INPUT    
 fi
