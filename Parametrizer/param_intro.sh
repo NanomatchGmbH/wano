@@ -49,4 +49,4 @@ Deposit.py -generate_spf_from_mol2 $MOLECULE $INPUTBASE.spf
 Deposit.py -render-tachyon $MOLECULE
 
 packReport.py $MOLECULE
-nanoReporter.py --input=report.zip --type=pdf
+nanoReporter.py --input=report.zip --type=odt

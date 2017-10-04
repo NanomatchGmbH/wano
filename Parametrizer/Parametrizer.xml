@@ -52,7 +52,7 @@
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <WaNoOutputFile>report.zip</WaNoOutputFile>
-    <WaNoOutputFile>report.pdf</WaNoOutputFile>
+    <WaNoOutputFile>report.odt</WaNoOutputFile>
     <WaNoOutputFile>molecule.spf</WaNoOutputFile>
     <WaNoOutputFile>molecule.pdb</WaNoOutputFile>
  </WaNoOutputFiles>
