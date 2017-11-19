@@ -1,34 +1,22 @@
-go atlas simflags= "-p 80 "
+{% raw %}
+#go atlas simflags= "-p 80 "
 title Simulation
-
-# Change the material thickness here
-
-{% for element in wano["TABS"]["Layer Setup"]["Layers"] -%}
-set mat_{{ loop.index }}_thick={{ element["Thickness"] }}
-{% if loop.index == 1 -%}set mat_{{ loop.index }}_begin=0{%- endif %}{% if loop.index > 1 -%}set mat_{{ loop.index }}_begin=$mat_{{ loop.index - 1 }}_begin + $mat_{{ loop.index - 1 }}_thick{% endif %}
-set mat_{{ loop.index }}_end=$mat_{{ loop.index }}_begin + $mat_{{ loop.index }}_thick
-{% endfor %} 
 
 mesh width=6.5e8
 x.mesh l= 0.0  spacing=5
 x.mesh l=10.0  spacing=5
 
-
 {% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
-y.mesh l=$mat_{{ loop.index }}_begin spacing={{ element["Spacing"] }}{% if loop.last %}
-y.mesh l=$mat_{{ loop.index }}_end spacing={{ element["Spacing"] }}{% endif %}
+y.mesh l={{ element["start"] }} spacing={{ element["Spacing"] }}{% if loop.last %}
+y.mesh l={{ element["end"] }} spacing={{ element["Spacing"] }}{% endif %}
 {% endfor -%} 
 
 {% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
-region num={{ loop.index }}   user.material={{ element["Custom Name"] }}_{{ loop.index }} y.min=$mat_{{ loop.index }}_begin  y.max=$mat_{{ loop.index }}_end
+region num={{ loop.index }}   user.material={{ element["Custom Name"] }}_{{ loop.index }} y.min={{ element["start"] }}  y.max={{ element["end"] }}
 {% endfor %} 
 
 elec   num=1   name=cathode material=Aluminum  top
 elec   num=2   name=anode   material=ITO bottom
-
-#interface s.s thermionic DANIELSSON
-#interface s.x charge=-1e13 y.min=-0.1 y.max=0.1
-#interface s.x charge=-1e10 x.min=10 x.max=10
 
 {% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
 {% if element["Doping"] == True %}
@@ -36,59 +24,15 @@ doping uniform region={{ loop.index }} conc={{ element["Doping Settings"]["Conce
 {% endif %}
 {%- endfor %} 
 
-#doping uniform region=3 conc=1e15 n.type
-#doping uniform region=3 conc=1e15 p.type
-# Set parameters for ITO
-#material material=ITO real.index=1.83
-
 # Set material parameters
-material  material=TPBi user.group=semiconductor \
-         eg300=2.58  ntc.gauss=1e20 ntv.gauss=1e20 \
-	  affinity=2.22 
-material  material=TPPhen user.group=semiconductor \
-         eg300=3.66  ntc.gauss=1e20 ntv.gauss=1e20 \
-	  affinity=2.47 
-material  material=TPBiIr user.group=semiconductor  \
-         eg300=2.58  permittivity=3.2  ntc.gauss=3e19 ntv.gauss=3e19 \
-	affinity=2.22 
-# align=0.75
-material  material=TCTA user.group=semiconductor  \
-         eg300=3.68  permittivity=3.2  ntc.gauss=3e19 ntv.gauss=3e19 \
-	affinity=1.9 
-# align=0.75
-material  material=NPD affinity=1.84 eg300=3.27
+{% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
+material  material={{ element["Custom Name"] }}_{{ loop.index }} user.group=semiconductor eg300={{ element["kmc"]["transport_gap"] }}  ntc.gauss={{ element["kmc"]["realspace_conductionDOS"] }} ntv.gauss={{ element["kmc"]["realspace_valenceDOS"] }} affinity={{ element["kmc"]["electron_affinity"] }} permittivity=3.2 sigc.gauss={{ element["kmc"]["sigma_ConductionBand"] }} sigv.gauss={{ element["kmc"]["sigma_ValenceBand"] }}
+{% endfor %}
 
-material material=F6TCNNQ user.group=semiconductor \
-         eg300=3.31  ntc.gauss=1e20 ntv.gauss=1e20 \
-	  affinity=1.7
+{% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
+mobility material={{ element["Custom Name"] }}_{{ loop.index }} mun={{ element["kmc"]["electron_mobility"] }} mup={{ element["kmc"]["hole_mobility"] }} vthn.pfmob=2.5e8 vthp.pfmob=2.5e8
+{% endfor %}
 
-
-#ntc.gauss=1e20 ntv.gauss=1e20
-#	  taun0=1e-9 taup0=1e-9
-
-# Defining mobility parameters for MEH-PPV
-#mobility material=ETL mun=3.8e-04 mup=3.8e-04 \
-  deltaen.pfmob=0.4 deltaep.pfmob=0.4 betan.pfmob=4e-4 betap.pfmob=4e-4 vthn.pfmob=5e9 vthp.pfmob=5e9
-# mun=0.5e-5 mup=0.5e-4
-#mobility material=NPD mun=5e-04 mup=5e-04 \
-  deltaen.pfmob=0.4 deltaep.pfmob=0.4 betan.pfmob=4e-4 betap.pfmob=4e-4  vthn.pfmob=5e9 vthp.pfmob=5e9
-
-mobility material=TPBi mun=3e-03 mup=3e-03 vthn.pfmob=2.5e8 vthp.pfmob=2.5e8
-# deltaen.pfmob=0 deltaep.pfmob=0 gammap.pfmob=5e-3 gamman.pfmob=5e-3
-# e0n.pfmob=2800 e0p.pfmob=2800
-mobility material=TPPhen mun=3e-03 mup=3e-03 vthn.pfmob=2.5e8 vthp.pfmob=2.5e8
-# deltaen.pfmob=0 deltaep.pfmob=0 gammap.pfmob=5e-3 gamman.pfmob=5e-3
-# e0n.pfmob=2800 e0p.pfmob=2800
-mobility material=TPBiIr mun=3e-03 mup=3e-03 vthn.pfmob=2.5e8 vthp.pfmob=2.5e8
-# deltaen.pfmob=0 deltaep.pfmob=0 gammap.pfmob=5e-3 gamman.pfmob=5e-3
-# e0n.pfmob=2800 e0p.pfmob=2800
-mobility material=TCTA mun=3e-03 mup=3e-03 vthn.pfmob=2.5e8 vthp.pfmob=2.5e8
-# deltaen.pfmob=0 deltaep.pfmob=0 gammap.pfmob=5e-3 gamman.pfmob=5e-3
-# e0n.pfmob=2800 e0p.pfmob=2800
-mobility material=NPD mun=5e-04 mup=5e-04 deltaen.pfmob=0 deltaep.pfmob=0 gammap.pfmob=1e-2 gamman.pfmob=1e-2 e0n.pfmob=3500 e0p.pfmob=3500 vthn.pfmob=1e8 vthp.pfmob=1e8
-mobility material=F6TCNNQ mun=3e-03 mup=3e-03 vthn.pfmob=2.5e8 vthp.pfmob=2.5e8
-# deltaen.pfmob=0 deltaep.pfmob=0 gammap.pfmob=5e-3 gamman.pfmob=5e-3
-# e0n.pfmob=2800 e0p.pfmob=2800
 # Calcium (Cathode)
 contact name=cathode workfunc=3.0  
 # thermionic 
@@ -117,4 +61,4 @@ solve vstep=0.05 vfinal=3 name=anode
 save outfile=a.str
 
 quit
-
+{% endraw %}

@@ -10,6 +10,7 @@
         <WaNoFile logical_filename="molecule_{{ path[3] }}.spf" name="Forcefield">Choose Forcefield</WaNoFile> -->
        <WaNoFloat name="Spacing">0.001</WaNoFloat>
        <WaNoFloat name="Thickness">0.01</WaNoFloat>
+       <WaNoFile logical_filename="kmc_input_{{ path[3] }}.dat" name="KMC Parameters">KMC.dat</WaNoFile>
        <WaNoBool name="Doping">False</WaNoBool>
        <WaNoBox name="Doping Settings" visibility_condition="%s == True" visibility_var_path="TABS.Layer Setup.Layers.{{ path[3] }}.Doping" >
         <WaNoFloat name="Concentration">0.01</WaNoFloat>
@@ -23,9 +24,10 @@
  </WaNoGroup>
  </WaNoTabs>
  </WaNoRoot>
- <WaNoExecCommand>echo "hello"</WaNoExecCommand>
+ <WaNoExecCommand>python ./readwano.py > atlas.input</WaNoExecCommand>
  <WaNoInputFiles>
    <WaNoInputFile logical_filename="input.in">input_template.in</WaNoInputFile>
+   <WaNoInputFile logical_filename="readwano.py">readwano.py</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <!-- <WaNoOutputFile>structure.cml</WaNoOutputFile>
