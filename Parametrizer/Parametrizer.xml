@@ -55,5 +55,6 @@
     <WaNoOutputFile>report.odt</WaNoOutputFile>
     <WaNoOutputFile>molecule.spf</WaNoOutputFile>
     <WaNoOutputFile>molecule.pdb</WaNoOutputFile>
+    <WaNoOutputFile>molecule.mol2</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
