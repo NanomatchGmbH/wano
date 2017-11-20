@@ -2,7 +2,7 @@ sigma_ConductionBand: 0.1  # SIGC.GAUSS  in eV
 sigma_ValenceBand: 0.1   # SIGV.GAUSS   in eV
 hole_mobility: 0.0001  # mup     in cm^2/Vs
 electron_mobility: 0.0001  # mun   in cm^2/Vs
-electron_affinity: 4.0 # affinity     in eV je nach Konvention könnte das auch negativ sein
+electron_affinity: 2.0 # affinity     in eV je nach Konvention könnte das auch negativ sein
 transport_gap: 3.0 # eg300  in  eV unterschied zwischen EA und IP.
 realspace_valenceDOS: 10e-21 # NTV.GAUSS    cm^3 homo zustaende pro kubikcentimeter
 realspace_conductionDOS: 10e-21 # NTC.GAUSS   cm^3 lumo zustaende pro kubikcentimeter

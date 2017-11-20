@@ -15,8 +15,8 @@ y.mesh l={{ element["end"] }} spacing={{ element["Spacing"] }}{% endif %}
 region num={{ loop.index }}   user.material={{ element["Custom Name"] }}_{{ loop.index }} y.min={{ element["start"] }}  y.max={{ element["end"] }}
 {% endfor %} 
 
-elec   num=1   name=cathode material=Aluminum  top
-elec   num=2   name=anode   material=ITO bottom
+elec   num=1   name=cathode material={{ wano["TABS"]["Layer Setup"]["Upper Electrode"]["Base material"] }} top
+elec   num=2   name=anode   material={{ wano["TABS"]["Layer Setup"]["Lower Electrode"]["Base material"] }} bottom
 
 {% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
 {% if element["Doping"] == True %}
@@ -26,7 +26,7 @@ doping uniform region={{ loop.index }} conc={{ element["Doping Settings"]["Conce
 
 # Set material parameters
 {% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
-material  material={{ element["Custom Name"] }}_{{ loop.index }} user.group=semiconductor eg300={{ element["kmc"]["transport_gap"] }}  ntc.gauss={{ element["kmc"]["realspace_conductionDOS"] }} ntv.gauss={{ element["kmc"]["realspace_valenceDOS"] }} affinity={{ element["kmc"]["electron_affinity"] }} permittivity=3.2 sigc.gauss={{ element["kmc"]["sigma_ConductionBand"] }} sigv.gauss={{ element["kmc"]["sigma_ValenceBand"] }}
+material  material={{ element["Custom Name"] }}_{{ loop.index }} user.group=semiconductor user.default=Silicon eg300={{ element["kmc"]["transport_gap"] }}  ntc.gauss={{ element["kmc"]["realspace_conductionDOS"] }} ntv.gauss={{ element["kmc"]["realspace_valenceDOS"] }} affinity={{ element["kmc"]["electron_affinity"] }} permittivity=3.2 sigc.gauss={{ element["kmc"]["sigma_ConductionBand"] }} sigv.gauss={{ element["kmc"]["sigma_ValenceBand"] }}
 {% endfor %}
 
 {% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
@@ -34,11 +34,11 @@ mobility material={{ element["Custom Name"] }}_{{ loop.index }} mun={{ element["
 {% endfor %}
 
 # Calcium (Cathode)
-contact name=cathode workfunc=3.0  
+contact name=cathode workfunc={{ wano["TABS"]["Layer Setup"]["Upper Electrode"]["Work Function"] }}
 # thermionic 
 
 # ITO (Anode)
-contact name=anode workfunc=4.6
+contact name=anode workfunc={{ wano["TABS"]["Layer Setup"]["Lower Electrode"]["Work Function"] }}
 #thermionic
 
 models pfmob print
