@@ -25,11 +25,11 @@ experiments: {{wano["TABS"]["operation"]["experiments"]}}
 image_charges: {%if  wano["TABS"]["general"]["connect_electrodes"] == True  %}1 {% else %}0{%  endif  %}
 coulomb_mesh: {%if  wano["TABS"]["general"]["connect_electrodes"] == True  %}True {% else %}False{%  endif  %}
 iv_fluctuation: {{wano["TABS"]["computational"]["IV fluctuation"]}}
-parallel: {{wano["TABS"]["computational"]["parallel"]}}
 reset_random_numbers: 600000
 write_xyz_morphology: True
 rates: {{wano["TABS"]["physics"]["rates"]}}
 exciton_transport_rates: {{wano["TABS"]["physics"]["exciton_settings"]["transport_rates"]}}
 do_analysis: {{wano["TABS"]["computational"]["do_analysis"]}}
-use_scratch: {{wano["TABS"]["computational"]["use_scratch"]}}
 max_iterations: {{wano["TABS"]["computational"]["max_iterations"]}}
+from_wano: True
+

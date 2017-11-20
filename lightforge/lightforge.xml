@@ -301,5 +301,6 @@
    <WaNoInputFile logical_filename="start_LF.sh">start_LF.sh</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
+    <WaNoOutputFile>DriftDiffusion-in.yml</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
