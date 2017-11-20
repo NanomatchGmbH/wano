@@ -1,0 +1,252 @@
+<WaNoTemplate>
+  <WaNoRoot name="lightforge">
+    <WaNoTabs name="TABS">
+      <WaNoGroup name="material stack">
+
+        <WaNoDictBox name="particle types">
+          <WaNoBool name="holes">True</WaNoBool>
+          <WaNoBool name="electrons">False</WaNoBool>
+          <WaNoBool name="excitons">False</WaNoBool>
+        </WaNoDictBox> 
+
+        <WaNoChoice name="stack layout">
+          <Entry id="0">slab</Entry>
+          <Entry id="1">manual</Entry>
+        </WaNoChoice>
+
+        <WaNoChoice name="electrode model">
+          <Entry id="0">off</Entry>
+          <Entry id="1">slab</Entry>
+        </WaNoChoice>
+
+        <WaNoDictBox name="PBC">
+          <WaNoBool name="x">True</WaNoBool>
+          <WaNoBool name="y">True</WaNoBool>
+          <WaNoBool visibility_condition="%s == off" visibility_var_path="TABS.material stack.electrode model" name="z">False</WaNoBool>
+        </WaNoDictBox> 
+
+        <WaNoMultipleOf name="layers">
+          <Element id="0">
+            <WaNoDictBox name="layer">
+
+              <WaNoDictBox name="dimensions">
+                <WaNoFloat name="Lx [nm]">100.0</WaNoFloat>
+                <WaNoFloat name="Ly [nm]">100.0</WaNoFloat>
+                <WaNoFloat name="Lz [nm]">20.0</WaNoFloat>
+              </WaNoDictBox>
+
+              <WaNoDictBox visibility_condition="%s == manual" visibility_var_path="TABS.material stack.stack layout" name="layer_center">
+                <WaNoFloat name="Lx [nm]">0.0</WaNoFloat>
+                <WaNoFloat name="Ly [nm]">0.0</WaNoFloat>
+                <WaNoFloat name="Lz [nm]">0.0</WaNoFloat>
+              </WaNoDictBox>
+
+              <WaNoChoice name="morphology source">
+                 <Entry id="0">file</Entry>
+                 <Entry id="1">cubic</Entry>
+                 <Entry id="2">deposit</Entry>
+              </WaNoChoice>
+              <WaNoFile visibility_condition="%s != cubic" visibility_var_path="TABS.material stack.PBC.x"  logical_filename="COM_{{ path[3] }}.dat" name="morphology file">Put file here</WaNoFile>
+
+              <WaNoChoice name="onsite energies source">
+                 <Entry id="0">files (1-3columns)</Entry>
+                 <Entry id="1">Gaussian</Entry>
+                 <Entry id="2">Correlated Gaussian</Entry>
+              </WaNoChoice>
+              <WaNoFile visibility_condition="%s == files" visibility_var_path="TABS.material stack.layers.layer.onsite energy source"  logical_filename="onsite_energies_{{ path[3] }}.dat" name="file">Put file here</WaNoFile>
+
+              <WaNoChoice name="reorganization energies source">
+                 <Entry id="0">files (1-3columns)</Entry>
+                 <Entry id="1">constant</Entry>
+                 <Entry id="2">Gaussian</Entry>
+              </WaNoChoice>
+              <WaNoFile visibility_condition="%s == files" visibility_var_path="TABS.material stack.layers.layer.reorganization energy source"  logical_filename="lambdas_{{ path[3] }}.dat" name="file">Put file here</WaNoFile>
+
+              <WaNoMultipleOf name="molecule species">
+                <Element id="0">
+                  <WaNoInt name="species id">0</WaNoInt>
+                  <WaNoFloat name="concentration">1.0</WaNoFloat>
+            
+                  <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.material stack.particle types.holes" name="ionization potential">
+                    <WaNoFloat visibility_condition="%s != file" visibility_var_path="TABS.material stack.layers.layer.onsite energy source" name="mean">-5.2</WaNoFloat>
+                    <WaNoFloat visibility_condition="%s != file" visibility_var_path="TABS.material stack.layers.layer.onsite energy source" name="disorder">0.1</WaNoFloat>
+                    
+                    <WaNoFloat visibility_condition="%s == Gaussian" visibility_var_path="TABS.material stack.layers.layer.reorganization energy source" name="mean">-5.2</WaNoFloat>
+                    <WaNoFloat visibility_condition="%s == Gaussian" visibility_var_path="TABS.material stack.layers.layer.reorganization energy source" name="disorder">0.1</WaNoFloat>
+                    <WaNoFloat visibility_condition="%s == constant" visibility_var_path="TABS.material stack.layers.layer.reorganization energy source" name="lambda">0.2</WaNoFloat>
+                  </WaNoDictBox>
+            
+                  <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.material stack.particle types.electrons" name="electron affinity">
+                    <WaNoFloat visibility_condition="%s != file" visibility_var_path="TABS.material stack.layers.layer.onsite energy source" name="mean">-5.2</WaNoFloat>
+                    <WaNoFloat visibility_condition="%s != file" visibility_var_path="TABS.material stack.layers.layer.onsite energy source" name="disorder">0.1</WaNoFloat>
+                    
+                    <WaNoFloat visibility_condition="%s == Gaussian" visibility_var_path="TABS.material stack.layers.layer.reorganization energy source" name="mean">-5.2</WaNoFloat>
+                    <WaNoFloat visibility_condition="%s == Gaussian" visibility_var_path="TABS.material stack.layers.layer.reorganization energy source" name="disorders">0.1</WaNoFloat>
+                    <WaNoFloat visibility_condition="%s == constant" visibility_var_path="TABS.material stack.layers.layer.reorganization energy source" name="lambda">0.2</WaNoFloat>
+                  </WaNoDictBox>  
+                  
+                  <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.material stack.particle types.excitons" name="Excitation energies">
+                    <WaNoFloat visibility_condition="%s != file" visibility_var_path="TABS.material stack.layers.layer.onsite energy source" name="mean">-5.2</WaNoFloat>
+                    <WaNoFloat visibility_condition="%s != file" visibility_var_path="TABS.material stack.layers.layer.onsite energy source" name="disorder">0.1</WaNoFloat>
+                    
+                    <WaNoFloat visibility_condition="%s == Gaussian" visibility_var_path="TABS.material stack.layers.layer.reorganization energy source" name="mean">-5.2</WaNoFloat>
+                    <WaNoFloat visibility_condition="%s == Gaussian" visibility_var_path="TABS.material stack.layers.layer.reorganization energy source" name="disorder">0.1</WaNoFloat>
+                    <WaNoFloat visibility_condition="%s == constant" visibility_var_path="TABS.material stack.layers.layer.reorganization energy source" name="lambda">0.2</WaNoFloat>
+                  </WaNoDictBox>
+
+                </Element>
+              </WaNoMultipleOf>
+
+            </WaNoDictBox>
+          </Element>
+        </WaNoMultipleOf>
+
+
+        <WaNoMultipleOf visibility_condition="%s == off" visibility_var_path="TABS.material stack.electrode model" name="electrodes">
+          <Element id="0">
+
+            <WaNoDictBox visibility_condition="%s == manual" visibility_var_path="TABS.material stack.stack layout" name="electrode_norm_vector">
+              <WaNoFloat name="x [nm]">0.0</WaNoFloat>
+              <WaNoFloat name="y [nm]">0.0</WaNoFloat>
+              <WaNoFloat name="z [nm]">-10.5</WaNoFloat>  
+            </WaNoDictBox>  
+
+            <WaNoDictBox visibility_condition="%s == manual" visibility_var_path="TABS.material stack.stack layout" name="electrode_dimensions">
+              <WaNoFloat name="dim1 [nm]">20.0</WaNoFloat>
+              <WaNoFloat name="dim2 [nm]">20.0</WaNoFloat>
+            </WaNoDictBox>  
+
+            <WaNoDictBox visibility_condition="%s == manual" visibility_var_path="TABS.material stack.stack layout" name="electrode_center">
+              <WaNoFloat name="x [nm]">0.0</WaNoFloat>
+              <WaNoFloat name="y [nm]">0.0</WaNoFloat>
+              <WaNoFloat name="z [nm]">-10.5</WaNoFloat>  
+            </WaNoDictBox>  
+
+            <WaNoFloat name="electrode_workfunction">4.5</WaNoFloat>
+
+            <WaNoChoice name="coupling model">
+              <Entry id="0">parametrized</Entry>
+              <Entry id="1">QM fit</Entry>
+            </WaNoChoice>
+
+            <WaNoFloat visibility_condition="%s == parametrized" visibility_var_path="TABS.material stack.electrodes.coupling model" name="electrode_wf_decay_length">0.3</WaNoFloat>
+            <WaNoFloat visibility_condition="%s == parametrized" visibility_var_path="TABS.material stack.electrodes.coupling model" name="electrode coupling">0.001</WaNoFloat>
+            <WaNoFile visibility_condition="%s == QM fit" visibility_var_path="TABS.material stack.electrodes.coupling model"  logical_filename="J_electrode__{{ path[3] }}.dat" name="file (2 columns: distance, coupling)">Put file here</WaNoFile>
+
+          </Element>
+        </WaNoMultipleOf>
+      </WaNoGroup>  
+
+
+
+
+      <WaNoGroup name="topology">
+
+        <WaNoInt name="max neighbours">26</WaNoInt>
+
+        <WaNoChoice name="transfer integral source">
+          <Entry id="0">file</Entry>
+          <Entry id="1">QM expansion</Entry>
+          <Entry id="2">Miller-Abrahams</Entry>
+        </WaNoChoice>
+
+        <WaNoMultipleOf name="pair input">
+          <Element id="0">
+            <WaNoInt name="molecule_type_id1">0</WaNoInt>
+            <WaNoInt name="molecule_type_id2">0</WaNoInt>
+
+            <WaNoDictBox name="pair_cutoff">
+              <WaNoFloat name="mean distance [nm]">2.5</WaNoFloat>
+              <WaNoFloat name="smearing [nm]">0.3</WaNoFloat>
+            </WaNoDictBox> 
+
+            <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.material stack.particle types.holes" name="hole transfer integrals">
+              <WaNoFloat visibility_condition="%s == Miller-Abrahams" visibility_var_path="TABS.topology.transfer integrals source" name="wf_decay_length">0.1</WaNoFloat>
+              <WaNoFloat visibility_condition="%s == Miller-Abrahams" visibility_var_path="TABS.topology.transfer integrals source" name="maximum_ti">0.003</WaNoFloat>
+              <WaNoFile visibility_condition="%s == QM expansion" visibility_var_path="TABS.topology.transfer integrals source"  logical_filename="J_holes_{{ path[3] }}.dat" name="ti_input_file">Put file here</WaNoFile>
+              <WaNoFile visibility_condition="%s == file" visibility_var_path="TABS.topology.transfer integrals source"  logical_filename="J_holes_{{ path[3] }}.dat" name="ti_file">Put file here</WaNoFile>
+            </WaNoDictBox>
+
+            <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.material stack.particle types.electrons" name="electron transfer integrals">
+              <WaNoFloat visibility_condition="%s == Miller-Abrahams" visibility_var_path="TABS.topology.transfer integrals source" name="wf_decay_length">0.1</WaNoFloat>
+              <WaNoFloat visibility_condition="%s == Miller-Abrahams" visibility_var_path="TABS.topology.transfer integrals source" name="maximum_ti">0.003</WaNoFloat>
+              <WaNoFile visibility_condition="%s == QM expansion" visibility_var_path="TABS.topology.transfer integrals source"  logical_filename="J_electrons_{{ path[3] }}.dat" name="ti_input_file">Put file here</WaNoFile>
+              <WaNoFile visibility_condition="%s == file" visibility_var_path="TABS.topology.transfer integrals source"  logical_filename="J_electrons_{{ path[3] }}.dat" name="ti_file">Put file here</WaNoFile>
+            </WaNoDictBox>
+
+            <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.material stack.particle types.excitons" name="Dexter transfer integrals">
+              <WaNoFloat visibility_condition="%s == Miller-Abrahams" visibility_var_path="TABS.topology.transfer integrals source" name="wf_decay_length">0.1</WaNoFloat>
+              <WaNoFloat visibility_condition="%s == Miller-Abrahams" visibility_var_path="TABS.topology.transfer integrals source" name="maximum_ti">0.003</WaNoFloat>
+              <WaNoFile visibility_condition="%s == QM expansion" visibility_var_path="TABS.topology.transfer integrals source"  logical_filename="Dexter1_{{ path[3] }}.dat" name="ti_input_file">Put file here</WaNoFile>
+              <WaNoFile visibility_condition="%s == file" visibility_var_path="TABS.topology.transfer integrals source"  logical_filename="Dexter1_{{ path[3] }}.dat" name="ti_file">Put file here</WaNoFile>
+              <WaNoString name="Foerster radius forwards">2.5</WaNoString>
+              <WaNoString name="Foerster radius backwards">0.5</WaNoString>
+
+            </WaNoDictBox>
+        
+
+          </Element>
+        </WaNoMultipleOf>
+      </WaNoGroup>
+
+
+
+
+
+
+
+      <WaNoGroup name="Operation">
+        <WaNoMultipleOf name="experiments">
+          <Element id="0">
+
+            <WaNoMultipleOf name="Temperature">
+              <Element id="0">
+                <WaNoFloat name="Temperature">300</WaNoFloat>
+              </Element>
+            </WaNoMultipleOf> 
+
+            <WaNoMultipleOf name="field_strength">
+              <Element id="0">
+                <WaNoFloat name="field_strength">0.01</WaNoFloat>
+              </Element>
+            </WaNoMultipleOf>
+
+            <WaNoMultipleOf name="field_direction">
+              <WaNoFloat name="x">0.0</WaNoFloat>
+              <WaNoFloat name="y">0.0</WaNoFloat>
+              <WaNoFloat name="z">1.0</WaNoFloat>
+            </WaNoMultipleOf> 
+
+            <WaNoMultipleOf name="initial_charges">
+              <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.material stack.particle types.holes" name="holes">0</WaNoInt>
+              <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.material stack.particle types.electrons" name="electrons">0</WaNoInt>
+            </WaNoMultipleOf> 
+
+          </Element>
+        </WaNoMultipleOf>
+      </WaNoGroup>
+
+
+
+      <WaNoGroup name="Computational">
+        <WaNoFloat name="IV fluctuation">0.2</WaNoFloat>
+        <WaNoFloat name="IV slope">0.05</WaNoFloat>
+        <WaNoInt name="simulations">1</WaNoInt>
+        <WaNoBool name="parallel">False</WaNoBool>    
+      </WaNoGroup>
+
+
+
+  </WaNoTabs>
+ </WaNoRoot>
+
+
+ <WaNoExecCommand>bash ./start_LF.sh</WaNoExecCommand>
+
+ <WaNoInputFiles>
+   <WaNoInputFile logical_filename="settings">settings</WaNoInputFile>
+   <WaNoInputFile logical_filename="start_LF.sh">start_LF.sh</WaNoInputFile>
+ </WaNoInputFiles>
+ <WaNoOutputFiles>
+ </WaNoOutputFiles>
+</WaNoTemplate>

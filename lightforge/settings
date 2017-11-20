@@ -1,0 +1,35 @@
+morphology_type: {{wano["TABS"]["general"]["morphology_type"]}}
+morphology_file: {{wano["TABS"]["general"]["morphology_file"]}}
+device_layout: {{wano["TABS"]["general"]["device_layout"]}}
+connect_electrodes: {{wano["TABS"]["general"]["connect_electrodes"]}}
+dimensions: [{{wano["TABS"]["general"]["device_dimensions"]["Lx"]}},{{wano["TABS"]["general"]["device_dimensions"]["Ly"]}},{{wano["TABS"]["general"]["device_dimensions"]["Lz"]}}]
+particles:
+    holes: {{wano["TABS"]["physics"]["particle_types"]["holes"]}}
+    electrons: {{wano["TABS"]["physics"]["particle_types"]["electrons"]}}
+    excitons: {{wano["TABS"]["physics"]["particle_types"]["excitons"]}}
+pbc: [{{wano["TABS"]["general"]["PBC"]["x"]}},{{wano["TABS"]["general"]["PBC"]["y"]}},{{wano["TABS"]["general"]["PBC"]["z"]}}]
+
+layers: {{wano["TABS"]["device"]["layers"]}}
+
+electrodes: {{wano["TABS"]["device"]["electrodes"]}}
+
+neighbours: {{wano["TABS"]["topology"]["max neighbours"]}}
+
+pair_input: {{wano["TABS"]["topology"]["pair parameters"]}}
+
+transfer_integral_source: {{wano["TABS"]["topology"]["transfer_integral_source"]}}
+transfer_integral_file: J_all.dat
+
+experiments: {{wano["TABS"]["operation"]["experiments"]}}
+
+image_charges: {%if  wano["TABS"]["general"]["connect_electrodes"] == True  %}1 {% else %}0{%  endif  %}
+coulomb_mesh: {%if  wano["TABS"]["general"]["connect_electrodes"] == True  %}True {% else %}False{%  endif  %}
+iv_fluctuation: {{wano["TABS"]["computational"]["IV fluctuation"]}}
+parallel: {{wano["TABS"]["computational"]["parallel"]}}
+reset_random_numbers: 600000
+write_xyz_morphology: True
+rates: {{wano["TABS"]["physics"]["rates"]}}
+exciton_transport_rates: {{wano["TABS"]["physics"]["exciton_settings"]["transport_rates"]}}
+do_analysis: {{wano["TABS"]["computational"]["do_analysis"]}}
+use_scratch: {{wano["TABS"]["computational"]["use_scratch"]}}
+max_iterations: {{wano["TABS"]["computational"]["max_iterations"]}}
