@@ -31,9 +31,10 @@
  </WaNoGroup>
  </WaNoTabs>
  </WaNoRoot>
- <WaNoExecCommand>python ./readwano.py > atlas.input</WaNoExecCommand>
+ <WaNoExecCommand>bash ./tcad_init.sh</WaNoExecCommand>
  <WaNoInputFiles>
    <WaNoInputFile logical_filename="input.in">input_template.in</WaNoInputFile>
+   <WaNoInputFile logical_filename="tcad_init.sh">tcad_init.sh</WaNoInputFile>
    <WaNoInputFile logical_filename="readwano.py">readwano.py</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
