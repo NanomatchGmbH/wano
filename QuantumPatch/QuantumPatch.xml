@@ -28,6 +28,20 @@
         <Entry id="0" chosen="True" >ESP</Entry>
         <Entry id="1">Mulliken</Entry>
       </WaNoChoice>
+      <WaNoChoice name="LambdaBasis">
+        <Entry id="0" chosen="True" >SV(P)</Entry>
+        <Entry id="1">def2-SV(P)</Entry>
+        <Entry id="2">SVP</Entry>
+        <Entry id="3">def2-SVP</Entry>
+        <Entry id="4">TZVP</Entry>
+        <Entry id="5">def2-TZVP</Entry>
+        <Entry id="6">TZVPP</Entry>
+        <Entry id="7">def2-TZVPP</Entry>
+      </WaNoChoice>
+     <WaNoChoice name="LambdaFunctional">
+        <Entry id="0" chosen="True" >b-p</Entry>
+        <Entry id="1">b3-lyp</Entry>
+      </WaNoChoice>
   </WaNoDictBox>
   <WaNoDictBox name="Self-consistency parameters">
     <WaNoInt name="Screened Iterations">7</WaNoInt>

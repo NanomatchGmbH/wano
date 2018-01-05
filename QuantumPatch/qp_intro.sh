@@ -27,6 +27,9 @@ export DFT_MEMORY="{{ wano["Hardware Parameters"]["DFT Memory [MB]"] | int }}"
 export CALCULATE_JS="{{ wano["General Options"]["Calculate Js"] }}"
 export CALCULATE_LS="{{ wano["General Options"]["Calculate Lambdas"] }}"
 
+export LAMBDABASIS="{{ wano["DFT Settings"]["LambdaBasis"] }}"
+export LAMBDAFUNCTIONAL="{{ wano["DFT Settings"]["LambdaFunctional"] }}"
+
 #if [ "$CALCULATE_JS" == "True" ]
 #then
 #    export CALCULATE_JS="on"
