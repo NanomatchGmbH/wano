@@ -1,8 +1,11 @@
 <WaNoTemplate>
  <WaNoRoot name="QuantumPatch">
-  <WaNoFile logical_filename="morphology.cml" name="Morphology (CML)">Put .xyz file here</WaNoFile>
-  <WaNoDictBox name="DFT Settings">
+  <WaNoDictBox name="General Options">
+     <WaNoFile logical_filename="morphology.cml" name="Morphology (CML)">Put .xyz file here</WaNoFile>
      <WaNoBool name="Calculate Js">True</WaNoBool>
+     <WaNoBool name="Calculate Lambdas">True</WaNoBool>    
+  </WaNoDictBox>
+  <WaNoDictBox name="DFT Settings">
      <WaNoChoice name="Engine">
         <Entry id="0" chosen="True" >Turbomole</Entry>
         <Entry id="1">Gaussian</Entry>
