@@ -42,6 +42,7 @@
         <Entry id="0" chosen="True" >b-p</Entry>
         <Entry id="1">b3-lyp</Entry>
       </WaNoChoice>
+      <WaNoString name="GaussianSCFHeader"></WaNoString>
   </WaNoDictBox>
   <WaNoDictBox name="Self-consistency parameters">
     <WaNoInt name="Screened Iterations">7</WaNoInt>
@@ -51,7 +52,7 @@
   <WaNoDictBox name="Cutoffs">
     <WaNoFloat name="Inner Part Cutoff">10.0</WaNoFloat>
     <WaNoFloat name="Pair Cutoff">7.0</WaNoFloat>
-    <WaNoFloat name="Environment Radius">24.0</WaNoFloat>
+    <WaNoFloat name="Environment Radius">60.0</WaNoFloat>
   </WaNoDictBox>
   <WaNoDictBox name="Hardware Parameters">
     <WaNoFloat name="DFT Memory [MB]">1000</WaNoFloat>

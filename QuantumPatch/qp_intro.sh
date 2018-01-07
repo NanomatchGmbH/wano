@@ -29,6 +29,7 @@ export CALCULATE_LS="{{ wano["General Options"]["Calculate Lambdas"] }}"
 
 export LAMBDABASIS="{{ wano["DFT Settings"]["LambdaBasis"] }}"
 export LAMBDAFUNCTIONAL="{{ wano["DFT Settings"]["LambdaFunctional"] }}"
+export GAUSSIAN_SCFHEADER="{{ wano["DFT Settings"]["GaussianSCFHeader"] }}"
 
 #if [ "$CALCULATE_JS" == "True" ]
 #then

@@ -17,12 +17,14 @@ export OMP_NUM_THREADS=1
 
 export DFTENGINE="{{ wano["Hardware Parameters"]["Engine"] }}"
 export DFT_MEMORY="{{ wano["Hardware Parameters"]["DFT Memory [MB]"] | int }}"
+export GAUSSIAN_SCFHEADER="{{ wano["Hardware Parameters"]["GaussianSCFHeader"] }}"
 
 export BASIS="{{ wano["Parameters"]["Basis"] }}"
 export FUNCTIONAL="{{ wano["Parameters"]["Functional"] }}"
 
 MYPDB="{{ wano["Deposit PDB"] }}"
 MYSPF="{{ wano["Deposit SPF"] }}"
+
 
 DH_PRESENT=$(cat $MYSPF | grep dihedral | wc -l)
 

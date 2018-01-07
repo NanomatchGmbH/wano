@@ -24,6 +24,7 @@ babel $MOLECULE ${INPUTBASE}_2dsketch.png
 
 export DFTENGINE="{{ wano["Hardware Parameters"]["Engine"] }}"
 export DFT_MEMORY="{{ wano["Hardware Parameters"]["DFT Memory [MB]"] | int }}"
+export GAUSSIAN_SCFHEADER="{{ wano["Hardware Parameters"]["GaussianSCFHeader"] }}"
 
 export DO_GEOOPT="{{ wano["Geometrical Optimization"]["Optimize"] }}"
 export BASIS="{{ wano["Geometrical Optimization"]["Basis"] }}"
