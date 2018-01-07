@@ -25,14 +25,15 @@ transfer_integral_source: {{wano["TABS"]["topology"]["transfer_integral_source"]
 pair_input: {{wano["TABS"]["topology"]["pair parameters"]}}
 
 
-experiments: 
-- {{wano["TABS"]["operation"]["simulations"]}}
-  {{wano["TABS"]["operation"]["measurement"]}}
-  {{wano["TABS"]["operation"]["Temperature"]}}
-  {{wano["TABS"]["operation"]["field_strength"]}}
-  {{wano["TABS"]["operation"]["field_direction"]}}
-  {{wano["TABS"]["operation"]["initial_charges"]}}
-	
+experiments: [{
+ "simulations": {{wano["TABS"]["operation"]["simulations"]}}, 
+ "measurement": {{wano["TABS"]["operation"]["measurement"]}}, 
+ "Temperature": {{wano["TABS"]["operation"]["Temperature"]}}, 
+ "field_strength": {{wano["TABS"]["operation"]["field_strength"]}}, 
+ "field_direction": {{wano["TABS"]["operation"]["field_direction"]}}, 
+ "initial_charges": {{wano["TABS"]["operation"]["initial_charges"]}}
+}]
+
 iv_fluctuation: {{wano["TABS"]["operation"]["computational"]["IV fluctuation"]}}
 max_iterations: {{wano["TABS"]["operation"]["computational"]["max_iterations"]}}
 
