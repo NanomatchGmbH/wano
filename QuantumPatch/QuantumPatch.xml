@@ -67,11 +67,7 @@
 
  <WaNoOutputFiles>
     <WaNoOutputFile>output.zip</WaNoOutputFile>
-    <WaNoOutputFile>data_for_kmc/COM.dat</WaNoOutputFile>
-    <WaNoOutputFile>data_for_kmc/lumo_J.dat</WaNoOutputFile>
-    <WaNoOutputFile>data_for_kmc/homo_J.dat</WaNoOutputFile>
-    <WaNoOutputFile>data_for_kmc/lumo_dE.dat</WaNoOutputFile>
-    <WaNoOutputFile>data_for_kmc/homo_dE.dat</WaNoOutputFile>
+    <WaNoOutputFile>data_for_kmc/QP_output.zip</WaNoOutputFile>
     <WaNoOutputFile>02output/homo.edge</WaNoOutputFile>
     <WaNoOutputFile>02output/lumo.edge</WaNoOutputFile>
  </WaNoOutputFiles>
