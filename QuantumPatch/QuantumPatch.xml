@@ -52,7 +52,7 @@
   <WaNoDictBox name="Cutoffs">
     <WaNoFloat name="Inner Part Cutoff">10.0</WaNoFloat>
     <WaNoFloat name="Pair Cutoff">7.0</WaNoFloat>
-    <WaNoFloat name="Environment Radius">60.0</WaNoFloat>
+    <WaNoFloat name="Environment Radius">25.0</WaNoFloat>
   </WaNoDictBox>
   <WaNoDictBox name="Hardware Parameters">
     <WaNoFloat name="DFT Memory [MB]">1000</WaNoFloat>
