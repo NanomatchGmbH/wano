@@ -21,6 +21,7 @@ electrodes: {{wano["TABS"]["device"]["electrodes"]}}
 
 neighbours: {{wano["TABS"]["topology"]["max neighbours"]}}
 transfer_integral_source: {{wano["TABS"]["topology"]["transfer_integral_source"]}}
+std_scale: {{wano["TABS"]["physics"]["electrode_J_scale"]}}
 
 pair_input: {{wano["TABS"]["topology"]["pair parameters"]}}
 
