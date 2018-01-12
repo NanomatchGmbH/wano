@@ -45,7 +45,7 @@
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping">False</WaNoBool>
         <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping_regeneration_steps">30</WaNoInt>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_stack_distance">0.8</WaNoFloat>
-
+        <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_J_scale">-0.2</WaNoFloat>
       </WaNoGroup>
 
 
@@ -79,6 +79,15 @@
               </WaNoDropDown>
               <WaNoFile visibility_condition="'%s' == 'file'" visibility_var_path="TABS.device.layers.{{ path[3] }}.morphology_source" logical_filename="COM_{{ path[3] }}.dat" name="morphology_file">Put file here</WaNoFile>
               <WaNoFile visibility_condition="'%s' == 'stochastic_extension'" visibility_var_path="TABS.device.layers.{{ path[3] }}.morphology_source" logical_filename="COM_{{ path[3] }}.dat" name="morphology_input_file">Put file here</WaNoFile>
+                 
+              <WaNoDropDown visibility_condition="'%s' == 'QP_output'" visibility_var_path="TABS.device.layers.{{ path[3] }}.morphology_source" name="identify_species_id_by">
+                 <Entry id="0" chosen="True">order_in_morphology_file</Entry>
+                 <Entry id="1">molecule_pdb</Entry>
+              </WaNoDropDown>
+              <WaNoDropDown visibility_condition="'%s' != 'cubic'" visibility_var_path="TABS.device.layers.{{ path[3] }}.morphology_source" name="mol_concentration_source">
+                 <Entry id="0" chosen="True">manual</Entry>
+                 <Entry id="1">from_morphology_file</Entry>
+              </WaNoDropDown>
 
               <WaNoDropDown name="onsite_energy_source">
                  <Entry id="0" chosen="True">QP_output</Entry>
@@ -98,11 +107,8 @@
               <WaNoMultipleOf name="molecule_species">
                 <Element id="0">
                   <WaNoInt name="species_id">0</WaNoInt>
-                  <WaNoDropDown name="concentration_source">
-                     <Entry id="0" chosen="True">from_morphology_file</Entry>
-                     <Entry id="1">manual</Entry>
-                  </WaNoDropDown>
-                  <WaNoFloat visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.device.layers.{{ path[3] }}.molecule_species.{{ path[5] }}.concentration_source" name="concentration">1.0</WaNoFloat>
+                  <WaNoFile visibility_condition="'%s' == 'molecule_pdb'" visibility_var_path="TABS.device.layers.{{ path[3] }}.identify_species_id_by" logical_filename="molecule_{{ path[3] }}_{{ path[5] }}.pdb" name="molecule_pdb">Put file here</WaNoFile>
+                  <WaNoFloat visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.device.layers.{{ path[3] }}.mol_concentration_source" name="concentration">1.0</WaNoFloat>
             
                   <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.holes" name="ionization_potential">
                     <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.onsite_energy_source" name="mean">-5.2</WaNoFloat>
@@ -131,7 +137,7 @@
                     
                     <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="mean_lambda">-5.2</WaNoFloat>
                     <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="disorder_lambda">0.1</WaNoFloat>
-                    <WaNoFloat visibility_condition="'%s' == 'constant'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="lambda_value">0.2</WaNoFloat>
+                    <WaNoFloat visibility_condition="'t' in '%s'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="lambda_value">0.2</WaNoFloat>
                   </WaNoDictBox>
 
                 </Element>
