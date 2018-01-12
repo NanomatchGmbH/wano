@@ -1,7 +1,7 @@
 <WaNoTemplate>
  <WaNoRoot name="QuantumPatch">
   <WaNoDictBox name="General Options">
-     <WaNoFile logical_filename="morphology.cml" name="Morphology (CML)">Put .xyz file here</WaNoFile>
+     <WaNoFile logical_filename="morphology.cml" name="Morphology (CML)">Put .cml file here</WaNoFile>
      <WaNoBool name="Calculate Js">True</WaNoBool>
      <WaNoBool name="Calculate Lambdas">True</WaNoBool>    
   </WaNoDictBox>
@@ -28,6 +28,21 @@
         <Entry id="0" chosen="True" >ESP</Entry>
         <Entry id="1">Mulliken</Entry>
       </WaNoChoice>
+      <WaNoChoice name="LambdaBasis">
+        <Entry id="0" chosen="True" >SV(P)</Entry>
+        <Entry id="1">def2-SV(P)</Entry>
+        <Entry id="2">SVP</Entry>
+        <Entry id="3">def2-SVP</Entry>
+        <Entry id="4">TZVP</Entry>
+        <Entry id="5">def2-TZVP</Entry>
+        <Entry id="6">TZVPP</Entry>
+        <Entry id="7">def2-TZVPP</Entry>
+      </WaNoChoice>
+     <WaNoChoice name="LambdaFunctional">
+        <Entry id="0" chosen="True" >b-p</Entry>
+        <Entry id="1">b3-lyp</Entry>
+      </WaNoChoice>
+      <WaNoString name="GaussianSCFHeader"></WaNoString>
   </WaNoDictBox>
   <WaNoDictBox name="Self-consistency parameters">
     <WaNoInt name="Screened Iterations">7</WaNoInt>
@@ -37,7 +52,7 @@
   <WaNoDictBox name="Cutoffs">
     <WaNoFloat name="Inner Part Cutoff">10.0</WaNoFloat>
     <WaNoFloat name="Pair Cutoff">7.0</WaNoFloat>
-    <WaNoFloat name="Environment Radius">24.0</WaNoFloat>
+    <WaNoFloat name="Environment Radius">60.0</WaNoFloat>
   </WaNoDictBox>
   <WaNoDictBox name="Hardware Parameters">
     <WaNoFloat name="DFT Memory [MB]">1000</WaNoFloat>
@@ -52,11 +67,7 @@
 
  <WaNoOutputFiles>
     <WaNoOutputFile>output.zip</WaNoOutputFile>
-    <WaNoOutputFile>data_for_kmc/COM.dat</WaNoOutputFile>
-    <WaNoOutputFile>data_for_kmc/lumo_J.dat</WaNoOutputFile>
-    <WaNoOutputFile>data_for_kmc/homo_J.dat</WaNoOutputFile>
-    <WaNoOutputFile>data_for_kmc/lumo_dE.dat</WaNoOutputFile>
-    <WaNoOutputFile>data_for_kmc/homo_dE.dat</WaNoOutputFile>
+    <WaNoOutputFile>data_for_kmc/QP_output.zip</WaNoOutputFile>
     <WaNoOutputFile>02output/homo.edge</WaNoOutputFile>
     <WaNoOutputFile>02output/lumo.edge</WaNoOutputFile>
  </WaNoOutputFiles>

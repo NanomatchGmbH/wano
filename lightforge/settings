@@ -1,35 +1,44 @@
-morphology_type: {{wano["TABS"]["general"]["morphology_type"]}}
-morphology_file: {{wano["TABS"]["general"]["morphology_file"]}}
 device_layout: {{wano["TABS"]["general"]["device_layout"]}}
 connect_electrodes: {{wano["TABS"]["general"]["connect_electrodes"]}}
-dimensions: [{{wano["TABS"]["general"]["device_dimensions"]["Lx"]}},{{wano["TABS"]["general"]["device_dimensions"]["Ly"]}},{{wano["TABS"]["general"]["device_dimensions"]["Lz"]}}]
 particles:
-    holes: {{wano["TABS"]["physics"]["particle_types"]["holes"]}}
-    electrons: {{wano["TABS"]["physics"]["particle_types"]["electrons"]}}
-    excitons: {{wano["TABS"]["physics"]["particle_types"]["excitons"]}}
+    holes: {{wano["TABS"]["general"]["particle_types"]["holes"]}}
+    electrons: {{wano["TABS"]["general"]["particle_types"]["electrons"]}}
+    excitons: {{wano["TABS"]["general"]["particle_types"]["excitons"]}}
 pbc: [{{wano["TABS"]["general"]["PBC"]["x"]}},{{wano["TABS"]["general"]["PBC"]["y"]}},{{wano["TABS"]["general"]["PBC"]["z"]}}]
+set_pbc: automatic
+
+rates: {{wano["TABS"]["physics"]["rates"]}}
+epsilon_material: {{wano["TABS"]["physics"]["epsilon_material"]}}
+distance_epsilon: {{wano["TABS"]["physics"]["distance_epsilon"]}}
+screening_length: {{wano["TABS"]["physics"]["screening_length"]}} 
+doping: {{wano["TABS"]["physics"]["doping"]}}
+doping_regeneration_steps: {{wano["TABS"]["physics"]["doping_regeneration_steps"]}}
+electrode_stack_distance: {{wano["TABS"]["physics"]["electrode_stack_distance"]}}
 
 layers: {{wano["TABS"]["device"]["layers"]}}
 
 electrodes: {{wano["TABS"]["device"]["electrodes"]}}
 
 neighbours: {{wano["TABS"]["topology"]["max neighbours"]}}
+transfer_integral_source: {{wano["TABS"]["topology"]["transfer_integral_source"]}}
 
 pair_input: {{wano["TABS"]["topology"]["pair parameters"]}}
 
-transfer_integral_source: {{wano["TABS"]["topology"]["transfer_integral_source"]}}
-transfer_integral_file: J_all.dat
 
-experiments: {{wano["TABS"]["operation"]["experiments"]}}
+experiments: [{
+ "simulations": {{wano["TABS"]["operation"]["simulations"]}}, 
+ "measurement": {{wano["TABS"]["operation"]["measurement"]}}, 
+ "Temperature": {{wano["TABS"]["operation"]["Temperature"]}}, 
+ "field_strength": {{wano["TABS"]["operation"]["field_strength"]}}, 
+ "field_direction": {{wano["TABS"]["operation"]["field_direction"]}}, 
+ "initial_charges": {{wano["TABS"]["operation"]["initial_charges"]}}
+}]
 
-image_charges: {%if  wano["TABS"]["general"]["connect_electrodes"] == True  %}1 {% else %}0{%  endif  %}
-coulomb_mesh: {%if  wano["TABS"]["general"]["connect_electrodes"] == True  %}True {% else %}False{%  endif  %}
-iv_fluctuation: {{wano["TABS"]["computational"]["IV fluctuation"]}}
-reset_random_numbers: 600000
-write_xyz_morphology: True
-rates: {{wano["TABS"]["physics"]["rates"]}}
-exciton_transport_rates: {{wano["TABS"]["physics"]["exciton_settings"]["transport_rates"]}}
-do_analysis: {{wano["TABS"]["computational"]["do_analysis"]}}
-max_iterations: {{wano["TABS"]["computational"]["max_iterations"]}}
+iv_fluctuation: {{wano["TABS"]["operation"]["computational"]["IV fluctuation"]}}
+max_iterations: {{wano["TABS"]["operation"]["computational"]["max_iterations"]}}
+
 from_wano: True
+reset_random_numbers: 600000
+coulomb_mesh: {%if  wano["TABS"]["general"]["connect_electrodes"] == True  %}True {% else %}False{%  endif  %}
+image_charges: {%if  wano["TABS"]["general"]["connect_electrodes"] == True  %}1 {% else %}0{%  endif  %}
 
