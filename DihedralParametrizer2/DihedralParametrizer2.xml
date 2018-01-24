@@ -1,8 +1,22 @@
 <WaNoTemplate>
- <WaNoRoot name="DihedralParametrizer">
-  <WaNoFile logical_filename="molecule.mol2" name="Molecule mol2">mol2 file here</WaNoFile>
-  <WaNoBool name="DFT single point">True</WaNoBool>
-  <WaNoDictBox name="Parameters">
+ <WaNoRoot name="DihedralParametrizer2">
+  <WaNoFile logical_filename="molecule.pdb" name="Molecule pdb">pdb file here</WaNoFile>
+  <WaNoFile logical_filename="molecule.spf" name="Molecule spf">spf file here</WaNoFile>
+  <WaNoInt name="Number of Steps">18</WaNoInt>
+  <WaNoDropDown name="relax engine">
+    <Entry id="0">FF</Entry>
+    <Entry id="1">DFTB_noscc</Entry>
+    <Entry id="2">DFTB</Entry>
+  </WaNoDropDown>
+  <WaNoDropDown name="evaluation engine">
+    <Entry id="0">DFTB</Entry>
+    <Entry id="1">DFT</Entry>
+    <Entry id="2">DFTB_noscc</Entry>
+  </WaNoDropDown>
+  <WaNoInt name="scf iterations">2</WaNoInt>
+  <WaNoFloat name="MC step multiplier">1.0</WaNoInt>
+  <WaNoInt name="evaluation points">100</WaNoInt>
+  <WaNoDictBox  visibility_condition="'%s' == 'DFT'" visibility_var_path="DihedralParametrizer2.evaluation engine" name="DFT Parameters">
       <WaNoDropDown name="Basis">
         <Entry id="0" chosen="True" >SV(P)</Entry>
         <Entry id="1">def2-SV(P)</Entry>
@@ -17,7 +31,6 @@
         <Entry id="0" chosen="True" >b-p</Entry>
         <Entry id="1">b3-lyp</Entry>
      </WaNoDropDown>
-     <WaNoInt name="Number of Steps">40</WaNoInt>
   </WaNoDictBox>
 
  </WaNoRoot>
