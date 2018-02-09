@@ -9,4 +9,5 @@ then
 else
     lightforge.py -s settings
 fi 
-zip -r outpout.zip range_expander/nearest_neighbour_distance_type1.png range_expander/nearest_neighbour_distance_type2.png material/energy_crosssection_*x.png material/transfer_integrals experiments/current_density_* experiments/IQE* experiments/mobilities_* range_expander/*PBC.xyz experiments/IV* experiments/photon* experiments/quenching*
+zip -r outpout.zip  material/*.png experiments/*.dat experiments/*.png experiments/*.txt
+
