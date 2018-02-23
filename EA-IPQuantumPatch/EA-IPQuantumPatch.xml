@@ -1,0 +1,88 @@
+<WaNoTemplate>
+ <WaNoRoot name="EA-IPQuantumPatch">
+  <WaNoDictBox name="General Options">
+     <WaNoFile logical_filename="morphology.cml" name="Morphology (CML)">Put .cml file here</WaNoFile>
+     <WaNoBool name="Calculate Js">True</WaNoBool>
+     <WaNoBool name="Calculate Lambdas">True</WaNoBool>    
+  </WaNoDictBox>
+  <WaNoDictBox name="DFT Settings">
+      <WaNoChoice name="Basis">
+        <Entry id="0" chosen="True" >SV(P)</Entry>
+        <Entry id="1">def2-SV(P)</Entry>
+        <Entry id="2">SVP</Entry>
+        <Entry id="3">def2-SVP</Entry>
+        <Entry id="4">TZVP</Entry>
+        <Entry id="5">def2-TZVP</Entry>
+        <Entry id="6">TZVPP</Entry>
+        <Entry id="7">def2-TZVPP</Entry>
+      </WaNoChoice>
+     <WaNoChoice name="Functional">
+        <Entry id="0" chosen="True" >b-p</Entry>
+        <Entry id="1">b3-lyp</Entry>
+        <Entry id="2">pbe0</Entry>
+        <Entry id="3">m06-2x</Entry>
+        <Entry id="4">lh14t-calpbe</Entry>
+        <Entry id="5">pbeh-3c</Entry>
+        <Entry id="6">b97-3c</Entry>
+      </WaNoChoice>
+     <WaNoChoice name="Last Iteration Functional">
+        <Entry id="0" chosen="True" >b-p</Entry>
+        <Entry id="1">b3-lyp</Entry>
+        <Entry id="2">pbe0</Entry>
+        <Entry id="3">m06-2x</Entry>
+        <Entry id="4">lh14t-calpbe</Entry>
+        <Entry id="5">pbeh-3c</Entry>
+        <Entry id="6">b97-3c</Entry>
+      </WaNoChoice>
+     <WaNoChoice name="Partial Charge Method">
+        <Entry id="0" chosen="True" >ESP</Entry>
+        <Entry id="1">Mulliken</Entry>
+      </WaNoChoice>
+      <WaNoChoice name="LambdaBasis">
+        <Entry id="0" chosen="True" >SV(P)</Entry>
+        <Entry id="1">def2-SV(P)</Entry>
+        <Entry id="2">SVP</Entry>
+        <Entry id="3">def2-SVP</Entry>
+        <Entry id="4">TZVP</Entry>
+        <Entry id="5">def2-TZVP</Entry>
+        <Entry id="6">TZVPP</Entry>
+        <Entry id="7">def2-TZVPP</Entry>
+      </WaNoChoice>
+     <WaNoChoice name="LambdaFunctional">
+        <Entry id="0" chosen="True" >b-p</Entry>
+        <Entry id="1">b3-lyp</Entry>
+        <Entry id="2">pbe0</Entry>
+        <Entry id="3">m06-2x</Entry>
+        <Entry id="4">lh14t-calpbe</Entry>
+        <Entry id="5">pbeh-3c</Entry>
+        <Entry id="6">b97-3c</Entry>
+      </WaNoChoice>
+  </WaNoDictBox>
+  <WaNoDictBox name="Self-consistency parameters">
+    <WaNoInt name="Screened Iterations">7</WaNoInt>
+    <WaNoBool name="Damping">True</WaNoBool>
+    <WaNoFloat name="Damping Factor">0.15</WaNoFloat>
+  </WaNoDictBox>
+  <WaNoDictBox name="Cutoffs">
+    <WaNoFloat name="Inner Part Cutoff">10.0</WaNoFloat>
+    <WaNoFloat name="Pair Cutoff">7.0</WaNoFloat>
+    <WaNoFloat name="Environment Radius">25.0</WaNoFloat>
+  </WaNoDictBox>
+  <WaNoDictBox name="Hardware Parameters">
+    <WaNoFloat name="DFT Memory [MB]">1000</WaNoFloat>
+  </WaNoDictBox>
+ </WaNoRoot>
+
+ <WaNoExecCommand>bash ./qp_intro.sh</WaNoExecCommand>
+
+ <WaNoInputFiles>
+   <WaNoInputFile logical_filename="qp_intro.sh">qp_intro.sh</WaNoInputFile>
+ </WaNoInputFiles>
+
+ <WaNoOutputFiles>
+    <WaNoOutputFile>output.zip</WaNoOutputFile>
+    <WaNoOutputFile>files_for_kmc/QP_output.zip</WaNoOutputFile>
+    <WaNoOutputFile>02output/homo.edge</WaNoOutputFile>
+    <WaNoOutputFile>02output/lumo.edge</WaNoOutputFile>
+ </WaNoOutputFiles>
+</WaNoTemplate>
