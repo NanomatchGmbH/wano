@@ -155,7 +155,7 @@ fi
 
 $SHREDDERPATH/QuantumPatchPreprocessor.py 2>&1 >/dev/null #this creates the default config
 
-echo $SHREDDERPATH/QuantumPatchPreprocessor.py INPUT=$SHREDDER_INPUT \
+$SHREDDERPATH/QuantumPatchPreprocessor.py INPUT=$SHREDDER_INPUT \
                 dft_engine=turbomole \
                 basisset_ridft_charged=$BASIS basisset_ridft_uncharged=$BASIS basis_gaussian=$BASIS basis_lambda_gaussian=$LAMBDABASIS basisset_lambda=$LAMBDABASIS \
                 functional_lambda_gaussian=$LAMBDAFUNCTIONAL functional_gaussian=$FUNCTIONAL functional_ridft_charged=$FUNCTIONAL functional_ridft_uncharged=$FUNCTIONAL functional_lambda=$LAMBDAFUNCTIONAL \
@@ -185,7 +185,6 @@ echo $SHREDDERPATH/QuantumPatchPreprocessor.py INPUT=$SHREDDER_INPUT \
                 charge_states="$CHARGE_STATES" \
                 change_functional_last_itr=True \
                 functional_last_itr=$LASTITERFUNCTIONAL
-exit 0
 
 
 if [ "$UC_TOTAL_PROCESSORS" == "1" ]
@@ -193,8 +192,6 @@ then
  echo "QuantumPatch needs at least 2 processors to run, because the first processor only handles communication, exiting"
  exit 9
 fi
-
-
 
 #Here we check, whether variables are set and add them to the mpirun exports. This is not required for mpirun with PBS/Torque, but required with everything else.
 #We could also specify only the required ones, but we do not know that a priori (i.e. whether Turbomole or Gaussian is to be used.
