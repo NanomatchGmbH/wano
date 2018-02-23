@@ -91,6 +91,8 @@ export DFT_MEMORY="{{ wano["Hardware Parameters"]["DFT Memory [MB]"] | int }}"
 export LAMBDABASIS="{{ wano["DFT Settings"]["LambdaBasis"] }}"
 export LAMBDAFUNCTIONAL="{{ wano["DFT Settings"]["LambdaFunctional"] }}"
 export CHARGE_STATES="{{ wano["DFT Settings"]["Charge States"] }}"
+#export USEHYBRID= wano["DFT Settings"]["Hybrid"] 
+export USEHYBRID=False
 
 # ----------------            Setting convenience exports for later ---------------#
 
@@ -179,7 +181,7 @@ $SHREDDERPATH/QuantumPatchPreprocessor.py INPUT=$SHREDDER_INPUT \
                 use_crystal_shredder=False \
                 polarization_cutoff=$ENVIRONMENT_RADIUS \
                 shredder_type=EAIP \
-                use_hybrid_shredder={{ wano["DFT Settings"]["Hybrid"] }} \
+                use_hybrid_shredder=$USEHYBRID \
                 use_scratch=$use_scratch \
                 use_cpc=True \
                 dftbplus_skfiles_path=$DFTBPARAMETERS \

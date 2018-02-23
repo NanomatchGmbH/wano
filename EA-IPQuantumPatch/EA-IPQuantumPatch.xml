@@ -6,7 +6,7 @@
      <WaNoBool name="Calculate Lambdas">True</WaNoBool>
   </WaNoDictBox>
   <WaNoDictBox name="DFT Settings">
-      <WaNoBool name="Hybrid">False</WaNoBool>
+      <!-- WaNoBool name="Hybrid">False</WaNoBool> -->
       <WaNoDropDown name="Charge States">
         <Entry id="0" chosen="True" >[+1]</Entry>
         <Entry id="1">[-1]</Entry>
