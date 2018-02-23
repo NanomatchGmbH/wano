@@ -55,41 +55,42 @@ echo "EA-IP QuantumPatchWrapper v3.1"
 
 # ----------------            Setting convenience exports for later ---------------#
 
-SHREDDER_INPUT="{{ wano["General Options"]["Morphology (CML)"] }}"
-BASIS="{{ wano["DFT Settings"]["Basis"] }}"
-FUNCTIONAL="{{ wano["DFT Settings"]["Functional"] }}"
-LASTITERFUNCTIONAL="{{ wano["DFT Settings"]["Last Iteration Functional"] }}"
-PARTIAL_CHARGE_METHOD="{{ wano["DFT Settings"]["Partial Charge Method"] }}"
-CHARGESTATES="{{ wano["DFT Settings"]["Charge States"] }}"
-SCREENEDITERATIONS="{{ wano["Self-consistency parameters"]["Screened Iterations"] }}"
+export SHREDDER_INPUT="{{ wano["General Options"]["Morphology (CML)"] }}"
+export BASIS="{{ wano["DFT Settings"]["Basis"] }}"
+export FUNCTIONAL="{{ wano["DFT Settings"]["Functional"] }}"
+export LASTITERFUNCTIONAL="{{ wano["DFT Settings"]["Last Iteration Functional"] }}"
+export PARTIAL_CHARGE_METHOD="{{ wano["DFT Settings"]["Partial Charge Method"] }}"
+export CHARGESTATES="{{ wano["DFT Settings"]["Charge States"] }}"
+export SCREENEDITERATIONS="{{ wano["Self-consistency parameters"]["Screened Iterations"] }}"
+export CALCULATE_LS="{{ wano["General Options"]["Calculate Lambdas"] }}"
 
 
-DAMPINGTRUEFALSE="{{ wano["Self-consistency parameters"]["Damping"] }}"
+export DAMPINGTRUEFALSE="{{ wano["Self-consistency parameters"]["Damping"] }}"
 
 if [ "$DAMPINGTRUEFALSE" == "True" ]
 then
-    USE_DAMPING="on"
+    export USE_DAMPING="on"
 else
-    USE_DAMPING="off"
+    export USE_DAMPING="off"
 fi
 
-DAMPING="{{ wano["Self-consistency parameters"]["Damping Factor"] }}"
+export DAMPING="{{ wano["Self-consistency parameters"]["Damping Factor"] }}"
 
-INNER_PART_METHOD="{{ wano["Cutoffs"]["Inner Part Method"] }}"
+export INNER_PART_METHOD="$(tolower {{ wano["Cutoffs"]["Inner Part Method"] }} )"
 if [ "$INNER_PART_METHOD" == "Number of Molecules" ]
 then
-    INNER_PART_METHOD="Number"
+    export INNER_PART_METHOD="Number"
 fi
-INNER_PART_CUT="{{ wano["Cutoffs"]["Inner Part Cutoff"] }}"
-INNER_PART_NUMMOL="{{ wano["Cutoffs"]["Number of Molecules"] }}"
+export INNER_PART_CUT="{{ wano["Cutoffs"]["Inner Part Cutoff"] }}"
+export INNER_PART_NUMMOL="{{ wano["Cutoffs"]["Number of Molecules"] }}"
 
-PAIRCUTOFF="{{ wano["Cutoffs"]["Pair Cutoff"] }}"
-ENVIRONMENT_RADIUS="{{ wano["Cutoffs"]["Environment Radius"] }}"
+export PAIRCUTOFF="{{ wano["Cutoffs"]["Pair Cutoff"] }}"
+export ENVIRONMENT_RADIUS="{{ wano["Cutoffs"]["Environment Radius"] }}"
 export DFT_MEMORY="{{ wano["Hardware Parameters"]["DFT Memory [MB]"] | int }}"
 
-LAMBDABASIS="{{ wano["DFT Settings"]["LambdaBasis"] }}"
-LAMBDAFUNCTIONAL="{{ wano["DFT Settings"]["LambdaFunctional"] }}"
-CHARGE_STATES="{{ wano["DFT Settings"]["Charge States"] }}"
+export LAMBDABASIS="{{ wano["DFT Settings"]["LambdaBasis"] }}"
+export LAMBDAFUNCTIONAL="{{ wano["DFT Settings"]["LambdaFunctional"] }}"
+export CHARGE_STATES="{{ wano["DFT Settings"]["Charge States"] }}"
 
 # ----------------            Setting convenience exports for later ---------------#
 
@@ -209,8 +210,7 @@ do
   fi
 done
 
-echo "RUNNING $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $SHREDDERPATH/QuantumPatch.py jobs/joblist"
-exit 0
+echo "Running $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $SHREDDERPATH/QuantumPatch.py jobs/joblist"
 $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $SHREDDERPATH/QuantumPatch.py jobs/joblist >> progress.txt 2> shredder_mpi_stderr
 
 $SHREDDERPATH/bin/plot.py
