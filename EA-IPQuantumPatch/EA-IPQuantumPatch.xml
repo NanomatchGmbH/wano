@@ -2,11 +2,17 @@
  <WaNoRoot name="EA-IPQuantumPatch">
   <WaNoDictBox name="General Options">
      <WaNoFile logical_filename="morphology.cml" name="Morphology (CML)">Put .cml file here</WaNoFile>
-     <WaNoBool name="Calculate Js">True</WaNoBool>
-     <WaNoBool name="Calculate Lambdas">True</WaNoBool>    
+     <!-- <WaNoBool name="Calculate Js">True</WaNoBool> -->
+     <WaNoBool name="Calculate Lambdas">True</WaNoBool>
   </WaNoDictBox>
   <WaNoDictBox name="DFT Settings">
-      <WaNoChoice name="Basis">
+      <WaNoBool name="Hybrid">False</WaNoBool>
+      <WaNoDropDown name="Charge States">
+        <Entry id="0" chosen="True" >[+1]</Entry>
+        <Entry id="1">[-1]</Entry>
+        <Entry id="2">[+1,-1]</Entry>
+      </WaNoDropDown>
+      <WaNoDropDown name="Basis">
         <Entry id="0" chosen="True" >SV(P)</Entry>
         <Entry id="1">def2-SV(P)</Entry>
         <Entry id="2">SVP</Entry>
@@ -15,8 +21,8 @@
         <Entry id="5">def2-TZVP</Entry>
         <Entry id="6">TZVPP</Entry>
         <Entry id="7">def2-TZVPP</Entry>
-      </WaNoChoice>
-     <WaNoChoice name="Functional">
+      </WaNoDropDown>
+     <WaNoDropDown name="Functional">
         <Entry id="0" chosen="True" >b-p</Entry>
         <Entry id="1">b3-lyp</Entry>
         <Entry id="2">pbe0</Entry>
@@ -24,8 +30,8 @@
         <Entry id="4">lh14t-calpbe</Entry>
         <Entry id="5">pbeh-3c</Entry>
         <Entry id="6">b97-3c</Entry>
-      </WaNoChoice>
-     <WaNoChoice name="Last Iteration Functional">
+      </WaNoDropDown>
+     <WaNoDropDown name="Last Iteration Functional">
         <Entry id="0" chosen="True" >b-p</Entry>
         <Entry id="1">b3-lyp</Entry>
         <Entry id="2">pbe0</Entry>
@@ -33,12 +39,12 @@
         <Entry id="4">lh14t-calpbe</Entry>
         <Entry id="5">pbeh-3c</Entry>
         <Entry id="6">b97-3c</Entry>
-      </WaNoChoice>
-     <WaNoChoice name="Partial Charge Method">
+      </WaNoDropDown>
+     <WaNoDropDown name="Partial Charge Method">
         <Entry id="0" chosen="True" >ESP</Entry>
         <Entry id="1">Mulliken</Entry>
-      </WaNoChoice>
-      <WaNoChoice name="LambdaBasis">
+      </WaNoDropDown>
+      <WaNoDropDown name="LambdaBasis">
         <Entry id="0" chosen="True" >SV(P)</Entry>
         <Entry id="1">def2-SV(P)</Entry>
         <Entry id="2">SVP</Entry>
@@ -47,8 +53,8 @@
         <Entry id="5">def2-TZVP</Entry>
         <Entry id="6">TZVPP</Entry>
         <Entry id="7">def2-TZVPP</Entry>
-      </WaNoChoice>
-     <WaNoChoice name="LambdaFunctional">
+      </WaNoDropDown>
+     <WaNoDropDown name="LambdaFunctional">
         <Entry id="0" chosen="True" >b-p</Entry>
         <Entry id="1">b3-lyp</Entry>
         <Entry id="2">pbe0</Entry>
@@ -56,7 +62,7 @@
         <Entry id="4">lh14t-calpbe</Entry>
         <Entry id="5">pbeh-3c</Entry>
         <Entry id="6">b97-3c</Entry>
-      </WaNoChoice>
+      </WaNoDropDown>
   </WaNoDictBox>
   <WaNoDictBox name="Self-consistency parameters">
     <WaNoInt name="Screened Iterations">7</WaNoInt>
@@ -64,7 +70,12 @@
     <WaNoFloat name="Damping Factor">0.15</WaNoFloat>
   </WaNoDictBox>
   <WaNoDictBox name="Cutoffs">
-    <WaNoFloat name="Inner Part Cutoff">10.0</WaNoFloat>
+      <WaNoDropDown name="Inner Part Method">
+        <Entry id="0" >Distance</Entry>
+        <Entry id="1" chosen="True">Number of Molecules</Entry>
+      </WaNoDropDown>
+    <WaNoFloat visibility_condition="'%s' == 'Distance'" visibility_var_path="Cutoffs.Inner Part Method" name="Inner Part Cutoff">10.0</WaNoFloat>
+    <WaNoInt visibility_condition="'%s' == 'Number of Molecules'" visibility_var_path="Cutoffs.Inner Part Method" name="Number of Molecules">10</WaNoInt>
     <WaNoFloat name="Pair Cutoff">7.0</WaNoFloat>
     <WaNoFloat name="Environment Radius">25.0</WaNoFloat>
   </WaNoDictBox>
