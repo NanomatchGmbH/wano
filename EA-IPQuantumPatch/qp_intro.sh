@@ -215,11 +215,11 @@ done
 echo "Running $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $SHREDDERPATH/QuantumPatch.py jobs/joblist"
 $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $SHREDDERPATH/QuantumPatch.py jobs/joblist >> progress.txt 2> shredder_mpi_stderr
 
-$SHREDDERPATH/bin/plot.py
+###$SHREDDERPATH/bin/plot.py
 
 rm -rf cpu_*
 
-$SHREDDERBIN/convert_data_for_kmc.py
+###$SHREDDERBIN/convert_data_for_kmc.py
 
 #zip -r output.zip 02output dimer environment *.cml monomers settings.yml -x environment/iteration\*/mol\*/gaussian.log environment/iteration\*/mol\*/gaussian.input environment/iteration\*/mol\*/check.chk monomers/mol\*/gaussian.log monomers/mol\*/gaussian.input  monomers/mol\*/check.chk monomers/\*.out monomers/\*coord
 zip -r output.zip 02output data_for_kmc settings.yml
