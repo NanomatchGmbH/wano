@@ -5,7 +5,7 @@ export OMP_NUM_THREADS=1
 
 if [ "$UC_TOTAL_PROCESSORS" -gt 1 ]
 then
-    $MPI_PATH/bin/mpirun -np $UC_TOTAL_PROCESSORS -x PATH lightforge.py -s settings
+    $MPI_PATH/bin/mpirun --mca btl ^openib -x PATH -x PYTHONPATH -hostfile $HOSTFILE lightforge.py -s settings
 else
     lightforge.py -s settings
 fi 
