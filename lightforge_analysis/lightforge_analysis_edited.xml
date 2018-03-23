@@ -1,0 +1,21 @@
+<WaNoTemplate>
+  <WaNoRoot name="lightforge analysis">
+    <WaNoFile logical_filename="settings" name="settings" local="True">/home/franz/projects/samsung/analysis_wano/settings</WaNoFile>
+    <WaNoFile logical_filename="material.npz" name="material npz" local="True">/home/franz/projects/samsung/analysis_wano/material.npz</WaNoFile>
+    <WaNoMultipleOf name="replay files">
+      <Element id="0">
+        <WaNoFile logical_filename="part_{{ path[1] }}.npz" name="replay npz" local="True">/home/franz/projects/samsung/analysis_wano/part_0.npz</WaNoFile>
+      </Element>
+    </WaNoMultipleOf>
+    <WaNoInt name="startframe">0.0</WaNoInt>
+    <WaNoInt name="endframe">1000</WaNoInt>
+    <WaNoFloat name="timestep">0.0</WaNoFloat>
+  </WaNoRoot>
+  <WaNoExecCommand>bash ./start_LF.sh </WaNoExecCommand>
+  <WaNoInputFiles>
+    <WaNoInputFile logical_filename="start_LF.sh">start_LF.sh</WaNoInputFile>
+    <WaNoInputFile logical_filename="analysis_autorun">analysis_autorun</WaNoInputFile>
+  </WaNoInputFiles>
+  <WaNoOutputFiles>  
+ </WaNoOutputFiles>
+</WaNoTemplate>

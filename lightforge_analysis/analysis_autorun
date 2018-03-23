@@ -1,0 +1,2 @@
+self.build_xyz_trajectory(self.particles, {{wano["startframe"]}}, {{wano["endframe"]}}, {{wano["timestep"]}}, "trajec.xyz")
+exit()
