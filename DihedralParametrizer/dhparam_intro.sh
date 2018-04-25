@@ -9,7 +9,7 @@ if [ -d $SCRATCH ]
 then
     WORKING_DIR=$SCRATCH/`whoami`/`uuidgen`
     mkdir -p $WORKING_DIR
-    cp -r $DATA_DIR/* $WORKING_DIR/
+    rsync --exclude=stdout --exclude=stderr -a $DATA_DIR/*  $WORKING_DIR/
     cd $WORKING_DIR
 fi
 
