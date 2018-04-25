@@ -24,6 +24,7 @@
     <Entry id="0" chosen="True" >Turbomole</Entry>
     <Entry id="1">Gaussian</Entry>
     </WaNoChoice>
+    <WaNoString name="GaussianSCFHeader"></WaNoString>
     <WaNoFloat name="DFT Memory [MB]">1000</WaNoFloat>
   </WaNoDictBox>
  </WaNoRoot>

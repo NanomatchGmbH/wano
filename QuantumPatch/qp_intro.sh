@@ -1,7 +1,7 @@
-export SHREDDER_INPUT={{ wano["Morphology (CML)"] }}
-export CMLFILE={{ wano["Morphology (CML)"] }}
-export CMLFILE_1={{ wano["Morphology (CML)"] }}
-export SHREDDER_INPUT={{ wano["Morphology (CML)"] }}
+export SHREDDER_INPUT={{ wano["General Options"]["Morphology (CML)"] }}
+export CMLFILE={{ wano["General Options"]["Morphology (CML)"] }}
+export CMLFILE_1={{ wano["General Options"]["Morphology (CML)"] }}
+export SHREDDER_INPUT={{ wano["General Options"]["Morphology (CML)"] }}
 
 export DFTENGINE="{{ wano["DFT Settings"]["Engine"] }}"
 export BASIS="{{ wano["DFT Settings"]["Basis"] }}"
@@ -24,7 +24,12 @@ export PAIRCUTOFF="{{ wano["Cutoffs"]["Pair Cutoff"] }}"
 export ENVIRONMENT_RADIUS="{{ wano["Cutoffs"]["Environment Radius"] }}"
 export DFT_MEMORY="{{ wano["Hardware Parameters"]["DFT Memory [MB]"] | int }}"
 
-export CALCULATE_JS="{{ wano["DFT Settings"]["Calculate Js"] }}"
+export CALCULATE_JS="{{ wano["General Options"]["Calculate Js"] }}"
+export CALCULATE_LS="{{ wano["General Options"]["Calculate Lambdas"] }}"
+
+export LAMBDABASIS="{{ wano["DFT Settings"]["LambdaBasis"] }}"
+export LAMBDAFUNCTIONAL="{{ wano["DFT Settings"]["LambdaFunctional"] }}"
+export GAUSSIAN_SCFHEADER="{{ wano["DFT Settings"]["GaussianSCFHeader"] }}"
 
 #if [ "$CALCULATE_JS" == "True" ]
 #then
