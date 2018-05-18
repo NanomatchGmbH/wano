@@ -41,8 +41,6 @@
 
         <WaNoBool name="show_advanced">False</WaNoBool>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="distance_epsilon">False</WaNoBool>
-        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="superexchange">False</WaNoBool>
-        <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="recursive_neigbours">20</WaNoInt>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="screening_length">1.3</WaNoFloat>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping">False</WaNoBool>
         <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping_regeneration_steps">30</WaNoInt>
@@ -279,7 +277,8 @@
 
 
       <WaNoGroup name="operation">
-
+        <WaNoBool name="restart">False</WaNoBool>
+        <WaNoFile visibility_condition="%s == True'" visibility_var_path="TABS.operation.restart" logical_filename="initial_positions.dat" name="initial positions">Put file here</WaNoFile>
         <WaNoInt name="simulations">1</WaNoInt>
         <WaNoDropDown name="measurement">
           <Entry id="0">DC</Entry>

@@ -8,7 +8,6 @@ pbc: [{{wano["TABS"]["general"]["PBC"]["x"]}},{{wano["TABS"]["general"]["PBC"]["
 set_pbc: automatic
 
 rates: {{wano["TABS"]["physics"]["rates"]}}
-superexchange: {{wano["TABS"]["physics"]["superexchange"]}}
 epsilon_material: {{wano["TABS"]["physics"]["epsilon_material"]}}
 distance_epsilon: {{wano["TABS"]["physics"]["distance_epsilon"]}}
 screening_length: {{wano["TABS"]["physics"]["screening_length"]}} 
@@ -38,6 +37,8 @@ experiments: [{
 
 iv_fluctuation: {{wano["TABS"]["operation"]["computational"]["IV fluctuation"]}}
 max_iterations: {{wano["TABS"]["operation"]["computational"]["max_iterations"]}}
+restart: {{wano["TABS"]["operation"]["restart"]}}
+initial_positions: {{wano["TABS"]["operation"]["initial positions"]}}
 
 from_wano: True
 reset_random_numbers: 600000
