@@ -1,6 +1,12 @@
 #!/bin/bash
 source $NANOMATCH/configs/lightforge.config
 
+if [ -f lf_output.zip ]; then
+	unzip -d ./ lf_output.zip
+	sleep 2
+	rm lf_output.zip
+fi
+
 export OMP_NUM_THREADS=1
 
 if [ "$UC_TOTAL_PROCESSORS" -gt 1 ]

@@ -50,10 +50,6 @@
 
 
       <WaNoGroup name="device">
-
-      	<WaNoBool name="morphology from system file">False</WaNoBool>
-      	<WaNoFile visibility_condition="%s == True" visibility_var_path="TABS.device.morphology from system file" logical_filename="system.npz" name="system_file">Put file here</WaNoFile>
-
         <WaNoMultipleOf name="layers">
           <Element id="0">
 
