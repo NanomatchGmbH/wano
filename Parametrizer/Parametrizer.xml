@@ -47,9 +47,9 @@
     <WaNoFloat name="DFT Memory [MB]">1000</WaNoFloat>
   </WaNoDictBox>
  </WaNoRoot>
- <WaNoExecCommand>bash ./param_intro.sh</WaNoExecCommand>
+ <WaNoExecCommand>bash ./parametrizer</WaNoExecCommand>
  <WaNoInputFiles>
-   <WaNoInputFile logical_filename="param_intro.sh">param_intro.sh</WaNoInputFile>
+   <WaNoInputFile logical_filename="parametrizer">parametrizer</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <WaNoOutputFile>report.zip</WaNoOutputFile>

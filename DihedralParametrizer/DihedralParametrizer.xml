@@ -28,9 +28,9 @@
     <WaNoFloat name="DFT Memory [MB]">1000</WaNoFloat>
   </WaNoDictBox>
  </WaNoRoot>
- <WaNoExecCommand>bash ./dhparam_intro.sh</WaNoExecCommand>
+ <WaNoExecCommand>bash ./dihedralparametrizer</WaNoExecCommand>
  <WaNoInputFiles>
-   <WaNoInputFile logical_filename="dhparam_intro.sh">dhparam_intro.sh</WaNoInputFile>
+   <WaNoInputFile logical_filename="dihedralparametrizer">dihedralparametrizer</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <WaNoOutputFile>molecule_dh.pdb</WaNoOutputFile>
