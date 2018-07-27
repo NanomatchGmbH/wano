@@ -44,3 +44,11 @@ reset_random_numbers: 600000
 coulomb_mesh: {%if  wano["TABS"]["general"]["connect_electrodes"] == True  %}True {% else %}False{%  endif  %}
 image_charges: {%if  wano["TABS"]["general"]["connect_electrodes"] == True  %}1 {% else %}0{%  endif  %}
 
+ti_damping: {{wano["TABS"]["operation"]["activate bond damping"]}}
+noise_damping: {{wano["TABS"]["operation"]["activate bond damping"]}}
+max_bond_noise: {{wano["TABS"]["operation"]["bond damping"]["max bond noise"]}}
+max_damp_factor: {{wano["TABS"]["operation"]["bond damping"]["max damp factor"]}}
+damping_activation_threshold: {{wano["TABS"]["operation"]["bond damping"]["activation threshold"]}}
+friction: {{wano["TABS"]["operation"]["bond damping"]["healing"]}}
+jump_tacker_update_iter: {{wano["TABS"]["operation"]["bond damping"]["bond update iter"]}}
+
