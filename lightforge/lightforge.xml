@@ -51,6 +51,9 @@
 
       <WaNoGroup name="device">
 
+      	<WaNoBool name="morphology from system file">False</WaNoBool>
+      	<WaNoFile visibility_condition="%s == True" visibility_var_path="TABS.device.morphology from system file" logical_filename="system.npz" name="system_file">Put file here</WaNoFile>
+
         <WaNoMultipleOf name="layers">
           <Element id="0">
 
@@ -278,7 +281,7 @@
 
       <WaNoGroup name="operation">
         <WaNoBool name="restart">False</WaNoBool>
-        <WaNoFile visibility_condition="%s == True'" visibility_var_path="TABS.operation.restart" logical_filename="initial_positions.dat" name="initial positions">Put file here</WaNoFile>
+        <WaNoFile visibility_condition="%s == True'" visibility_var_path="TABS.operation.restart" logical_filename="lf_output.zip" name="restart file">Put file here</WaNoFile>
         <WaNoInt name="simulations">1</WaNoInt>
         <WaNoDropDown name="measurement">
           <Entry id="0">DC</Entry>

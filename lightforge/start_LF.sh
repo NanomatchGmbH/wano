@@ -9,7 +9,7 @@ then
 else
     lightforge.py -s settings
 fi 
-zip -r outpout.zip  material/*.png experiments/*.dat experiments/*.png experiments/*.txt
+zip -r lf_output.zip  material/* experiments/*
 
 count=`ls -1 experiments/*.png 2>/dev/null | wc -l`
 if [ $count != 0 ];then 

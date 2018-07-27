@@ -39,6 +39,8 @@ iv_fluctuation: {{wano["TABS"]["operation"]["computational"]["IV fluctuation"]}}
 max_iterations: {{wano["TABS"]["operation"]["computational"]["max_iterations"]}}
 restart: {{wano["TABS"]["operation"]["restart"]}}
 initial_positions: {{wano["TABS"]["operation"]["initial positions"]}}
+system_file: {{wano["TABS"]["general"]["system_file"]}}
+morphology_from_system_file: {{wano["TABS"]["device"]["morphology from system file"]}}
 
 from_wano: True
 reset_random_numbers: 600000
