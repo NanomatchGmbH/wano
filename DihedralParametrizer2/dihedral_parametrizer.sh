@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $NANOMATCH/configs/DihedralParametrizer2.config
+source $NANOMATCH/configs/DihedralParametrizer.config
 
 WORKING_DIR=`pwd`
 DATA_DIR=$WORKING_DIR
