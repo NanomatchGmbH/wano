@@ -6,6 +6,7 @@ echo "analysis_autorun: True" >> autorun_settings
 mkdir experiments
 mkdir experiments/replay_0
 unzip replay.zip
+unzip QP_inputs.zip
 mv part*.npz experiments/replay_0/
 mkdir material
 cp material.npz material/material_0.npz
@@ -15,7 +16,7 @@ export OMP_NUM_THREADS=1
 
 if [ "$UC_TOTAL_PROCESSORS" -gt 1 ]
 then
-    $MPI_PATH/bin/mpirun --mca btl ^openib -x PATH -x PYTHONPATH -x SCRATCH -hostfile $HOSTFILE lightforge.py -s settings
+    $MPI_PATH/bin/mpirun --mca btl ^openib -x PATH -x PYTHONPATH -x SCRATCH -hostfile $HOSTFILE lightforge.py -s autorun_settings
 else
     $MPI_PATH/bin/mpirun -np 1 lightforge.py -s autorun_settings
 fi 
