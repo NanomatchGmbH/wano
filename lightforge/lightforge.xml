@@ -41,8 +41,6 @@
 
         <WaNoBool name="show_advanced">False</WaNoBool>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="distance_epsilon">False</WaNoBool>
-        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="superexchange">False</WaNoBool>
-        <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="recursive_neigbours">20</WaNoInt>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="screening_length">1.3</WaNoFloat>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping">False</WaNoBool>
         <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping_regeneration_steps">30</WaNoInt>
@@ -52,7 +50,6 @@
 
 
       <WaNoGroup name="device">
-
         <WaNoMultipleOf name="layers">
           <Element id="0">
 
@@ -279,7 +276,8 @@
 
 
       <WaNoGroup name="operation">
-
+        <WaNoBool name="restart">False</WaNoBool>
+        <WaNoFile visibility_condition="%s == True" visibility_var_path="TABS.operation.restart" logical_filename="lf_output.zip" name="restart file">Put file here</WaNoFile>
         <WaNoInt name="simulations">1</WaNoInt>
         <WaNoDropDown name="measurement">
           <Entry id="0">DC</Entry>
@@ -317,9 +315,16 @@
           <WaNoInt name="max_iterations">10000000</WaNoInt>
         </WaNoDictBox>
 
+        <WaNoBool name="activate bond damping">False</WaNoBool>
+        <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.operation.activate bond damping" name="bond damping">
+          <WaNoFloat name="max bond noise">0.85</WaNoFloat>
+          <WaNoFloat name="max damp factor">0.1</WaNoFloat>
+          <WaNoFloat name="activation threshold">0.1</WaNoFloat>
+          <WaNoFloat name="healing">0.1</WaNoFloat>
+          <WaNoInt name="bond update iter">2000</WaNoInt>
+        </WaNoDictBox>
+
       </WaNoGroup>
-
-
 
 
 

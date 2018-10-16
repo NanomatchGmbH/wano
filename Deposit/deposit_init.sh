@@ -42,7 +42,7 @@ if [ -d $SCRATCH ]
 then
 if [ -d $WORKING_DIR ]
 then
-    cp -r $WORKING_DIR/* $DATA_DIR/
+    rsync -av $WORKING_DIR/* $DATA_DIR/ --exclude "*.stderr" --exclude "*.stdout" --exclude "stdout" --exclude "stderr"
     cd $DATA_DIR
     rm -r $WORKING_DIR
 fi
