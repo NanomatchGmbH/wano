@@ -1,6 +1,7 @@
 <WaNoTemplate>
  <WaNoRoot name="Parametrizer">
   <WaNoFile logical_filename="molecule.mol2" name="Molecule (Mol2)">Mol2 input file</WaNoFile>
+  <WaNoThreeRandomLetters name="Molecule Identifier"></WaNoThreeRandomLetters>
   <WaNoDictBox name="Geometrical Optimization">
       <WaNoBool name="Optimize">False</WaNoBool>
       <WaNoChoice name="Basis">

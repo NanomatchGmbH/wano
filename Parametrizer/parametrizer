@@ -30,6 +30,8 @@ export DO_GEOOPT="{{ wano["Geometrical Optimization"]["Optimize"] }}"
 export BASIS="{{ wano["Geometrical Optimization"]["Basis"] }}"
 export FUNCTIONAL="{{ wano["Geometrical Optimization"]["Functional"] }}"
 
+export RESIDUE_RENAME_TO="{{ wano["Molecule Identifier"] }}"
+
 if [ "$DO_GEOOPT" == "True" ]
 then
     python2 $SHREDDERBIN/exe_generate_settings.py
@@ -47,6 +49,7 @@ rm -f settings.yml
 
 Deposit.py -calc-charges $MOLECULE $MOLECULE
 Deposit.py -generate_spf_from_mol2 $MOLECULE $INPUTBASE.spf
+Deposit.py -rename_residue $INPUTBASE.pdb $INPUTBASE.spf $RESIDUE_RENAME_TO
 Deposit.py -render-tachyon $MOLECULE
 
 packReport.py $MOLECULE
