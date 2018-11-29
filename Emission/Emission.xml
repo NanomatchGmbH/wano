@@ -1,0 +1,92 @@
+<WaNoTemplate>
+    <WaNoRoot name="Emission">
+        <WaNoFile logical_filename="molecule.xyz" name="Molecule">molecule.xyz</WaNoFile>
+        <WaNoBool name="Optimize Geometry">False</WaNoBool>
+        <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Optimize Geometry" name="Geometry Optimization Options">
+            <WaNoDropDown name="Basis">
+                <Entry id="0" chosen="True" >SV(P)</Entry>
+                <Entry id="1">def2-SV(P)</Entry>
+                <Entry id="2">SVP</Entry>
+                <Entry id="3">def2-SVP</Entry>
+                <Entry id="4">TZVP</Entry>
+                <Entry id="5">def2-TZVP</Entry>
+                <Entry id="6">TZVPP</Entry>
+                <Entry id="7">def2-TZVPP</Entry>
+            </WaNoDropDown>
+            <WaNoDropDown name="Functional">
+                <Entry id="0" chosen="True" >b-p</Entry>
+                <Entry id="1">b3-lyp</Entry>
+                <Entry id="2">pbe</Entry>
+                <Entry id="3">tpss</Entry>
+            </WaNoDropDown>
+        </WaNoDictBox>
+        <WaNoDropDown name="Emission Type">
+            <Entry id="0" chosen="True">Fluorescence</Entry>
+            <Entry id="1">Phosphorescence</Entry>
+        </WaNoDropDown>
+        <WaNoDictBox visibility_condition="'%s' == 'Fluorescence'" visibility_var_path="Emission Type" name="Fluorescence Calculation Options">
+            <WaNoDropDown name="Basis">
+                <Entry id="0" chosen="True" >SV(P)</Entry>
+                <Entry id="1">def2-SV(P)</Entry>
+                <Entry id="2">SVP</Entry>
+                <Entry id="3">def2-SVP</Entry>
+                <Entry id="4">TZVP</Entry>
+                <Entry id="5">def2-TZVP</Entry>
+                <Entry id="6">TZVPP</Entry>
+                <Entry id="7">def2-TZVPP</Entry>
+            </WaNoDropDown>
+            <WaNoDropDown name="Functional">
+                <Entry id="0" chosen="True" >b-p</Entry>
+                <Entry id="1">b2-plyp</Entry>
+                <Entry id="2">b3-lyp</Entry>
+                <Entry id="3">pbe</Entry>
+                <Entry id="4">tpss</Entry>
+            </WaNoDropDown>
+            <WaNoDropDown name="Multiplicity">
+                <Entry id="0" chosen="True">Singlet</Entry>
+                <Entry id="1">Triplet</Entry>
+            </WaNoDropDown>
+            <WaNoInt name="Excitations">5</WaNoInt>
+        </WaNoDictBox>
+        <WaNoDictBox visibility_condition="'%s' == 'Phosphorescence'" visibility_var_path="Emission Type" name="Phosphorescence Calculation Options">
+            <WaNoDropDown name="Basis">
+                <Entry id="0" chosen="True" >"def2-SVP"</Entry>
+                <Entry id="1">"def2-SV(P)"</Entry>
+                <Entry id="2">"def2-TZVP"</Entry>
+                <Entry id="3">"def2-TZVPP"</Entry>
+                <Entry id="4">"3-21g"</Entry>
+                <Entry id="5">"3-21g*"</Entry>
+                <Entry id="6">"6-31g"</Entry>
+                <Entry id="7">"6-31g*"</Entry>
+                <Entry id="8">"6-311g"</Entry>
+                <Entry id="9">"6-311g*"</Entry>
+                <Entry id="10">"6-311g**"</Entry>
+                <Entry id="11">"6-311+g*"</Entry>
+                <Entry id="12">"6-311+g**"</Entry>
+                <Entry id="13">"6-311++g**"</Entry>
+            </WaNoDropDown>
+            <WaNoDropDown name="Functional">
+                <Entry id="0" chosen="True">b3-lyp</Entry>
+            </WaNoDropDown>
+            <WaNoInt name="Excitations">3</WaNoInt>
+        </WaNoDictBox>
+        <WaNoBool name="Automatic Center Atom">True</WaNoBool>
+        <WaNoInt visibility_condition="%s == False" visibility_var_path="Automatic Center Atom" name="Center Atom">0</WaNoInt>
+        <WaNoBool name="Orientation Analysis Output">False</WaNoBool>
+        <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Orientation Analysis Output" name="Internal Atomic Basis">
+            <WaNoInt name="Atom 1">1</WaNoInt>
+            <WaNoInt name="Atom 2">2</WaNoInt>
+            <WaNoInt name="Atom 3">3</WaNoInt>
+        </WaNoDictBox>
+ </WaNoRoot>
+<WaNoExecCommand>export NANOMATCH=/home/nanodev_build/nanomatch; source $NANOMATCH/configs/quantumpatch.config; python3 emission_run.py</WaNoExecCommand>
+<WaNoInputFiles>
+    <WaNoInputFile logical_filename="emission_run.py">emission_run.py</WaNoInputFile>
+</WaNoInputFiles>
+<WaNoOutputFiles>
+     <WaNoOutputFile>report.zip</WaNoOutputFile>
+     <WaNoOutputFile>optimized_molecule.xyz</WaNoOutputFile>
+     <WaNoOutputFile>detailed.yml</WaNoOutputFile>
+     <WaNoOutputFile>orientation_analysis.yml</WaNoOutputFile>
+</WaNoOutputFiles>
+</WaNoTemplate>
