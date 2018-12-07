@@ -50,20 +50,20 @@
         </WaNoDictBox>
         <WaNoDictBox visibility_condition="'%s' == 'Phosphorescence'" visibility_var_path="Emission Type" name="Phosphorescence Calculation Options">
             <WaNoDropDown name="Basis">
-                <Entry id="0" chosen="True" >"def2-SVP"</Entry>
-                <Entry id="1">"def2-SV(P)"</Entry>
-                <Entry id="2">"def2-TZVP"</Entry>
-                <Entry id="3">"def2-TZVPP"</Entry>
-                <Entry id="4">"3-21g"</Entry>
-                <Entry id="5">"3-21g*"</Entry>
-                <Entry id="6">"6-31g"</Entry>
-                <Entry id="7">"6-31g*"</Entry>
-                <Entry id="8">"6-311g"</Entry>
-                <Entry id="9">"6-311g*"</Entry>
-                <Entry id="10">"6-311g**"</Entry>
-                <Entry id="11">"6-311+g*"</Entry>
-                <Entry id="12">"6-311+g**"</Entry>
-                <Entry id="13">"6-311++g**"</Entry>
+                <Entry id="0" chosen="True" >def2-SVP</Entry>
+                <Entry id="1">def2-SV(P)</Entry>
+                <Entry id="2">def2-TZVP</Entry>
+                <Entry id="3">def2-TZVPP</Entry>
+                <Entry id="4">3-21g</Entry>
+                <Entry id="5">3-21g*</Entry>
+                <Entry id="6">6-31g</Entry>
+                <Entry id="7">6-31g*</Entry>
+                <Entry id="8">6-311g</Entry>
+                <Entry id="9">6-311g*</Entry>
+                <Entry id="10">6-311g**</Entry>
+                <Entry id="11">6-311+g*</Entry>
+                <Entry id="12">6-311+g**</Entry>
+                <Entry id="13">6-311++g**</Entry>
             </WaNoDropDown>
             <WaNoDropDown name="Functional">
                 <Entry id="0" chosen="True">b3-lyp</Entry>
