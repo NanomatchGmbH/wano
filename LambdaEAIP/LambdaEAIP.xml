@@ -9,8 +9,8 @@
             <WaNoBool name="Calculate Lambda">False</WaNoBool>
             <WaNoDropDown name="Lambda Type" visibility_condition="%s == True" visibility_var_path="General Settings.Calculate Lambda">
                 <Entry id="0" chosen="True">Both</Entry>
-                <Entry id="1">Hole only</Entry>
-                <Entry id="2">Electron only</Entry>
+                <Entry id="1">Hole</Entry>
+                <Entry id="2">Electron</Entry>
             </WaNoDropDown>
             <WaNoBool name="Calculate EA">False</WaNoBool>
             <WaNoBool name="Calculate IP">False</WaNoBool>

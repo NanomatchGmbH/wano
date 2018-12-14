@@ -1,29 +1,30 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
-Script that uses WaNo input to generate emission data
+Script that uses WaNo input to calculate Lambdas, EAs, and IPs.
 """
 
-from DFTBase.Turbomole import Turbomole
-from Shredder.MoleculeSystem import TemporaryMol
-from Shredder.Parsers.XYZParser import XYZParser
+from MolecularTools.LambdaEAIP import LambdaEAIP
+
 from os import environ
+from os.path import exists
 from zipfile import ZipFile
-
-import numpy as np
-import yaml
 
 
 if __name__ == "__main__":
-
-    exec_dir = "calculations"
-    opts = {
-        "threads": int(environ["UC_TOTAL_PROCESSORS"]),
-    }
-    # Indirection to check if a functional is a hybrid
-    hybrids = ["b3-lyp", "b2-plyp"]
-
-
+    threads = int(environ["UC_TOTAL_PROCESSORS"])
+    memory = int(environ["UC_MEMORY_PER_NODE"])
+    args = ["Geometry Optimization Options.Threads=%d" % threads,
+            "Geometry Optimization Options.Memory=%d" % memory,
+            "Single Point Options.Threads=%d" % threads,
+            "Single Point Options.Memory=%d" % memory]
     # Write report file
+    tool = LambdaEAIP(args, "rendered_wano.yml")
+    tool.run()
     with ZipFile("report.zip", "w") as archive:
         archive.write("detailed.yml")
+        charges = [0, 1, -1]
+        for q in charges:
+            molname = "optimized_molecule_charge%d.xyz" % q
+            if exists(molname):
+                archive.write(molname)
