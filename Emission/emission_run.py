@@ -210,6 +210,8 @@ if __name__ == "__main__":
         options["roots"] = inputs["Excitations"]
         options["basis"] = inputs["Basis"]
         options["functional"] = inputs["Functional"]
+        if inputs["Functional"] in hybrids:
+            options["method"] = "dscf"
         dfte = Turbomole("%s/linear_response" % exec_dir, options)
         dfte.write_input_generic(coords, elems, [])
         dfte.run()
