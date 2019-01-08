@@ -674,7 +674,11 @@
                         <Entry id="1" chosen="True">Number of Molecules</Entry>
                         <Entry id="2">List of Molecule IDs</Entry>
                     </WaNoDropDown>
-                    <WaNoFloat visibility_condition="'%s' == 'Inner Box Side Length'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="Inner Box Side Length">10.0</WaNoFloat>
+                    <WaNoDictBox visibility_condition="'%s' == 'Inner Box Side Length'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="Inner Box Side Length">
+                        <WaNoFloat name="Cutoff x direction">10.0</WaNoFloat>
+                        <WaNoFloat name="Cutoff y direction">10.0</WaNoFloat>
+                        <WaNoFloat name="Cutoff z direction">10.0</WaNoFloat>
+                    </WaNoDictBox>
                     <WaNoString visibility_condition="'%s' == 'List of Molecule IDs'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="List of Molecule IDs">1-100;473</WaNoString>
                     <WaNoInt visibility_condition="'%s' == 'Number of Molecules'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="Number of Molecules">100</WaNoInt>
                 </WaNoDictBox>
