@@ -1,0 +1,1070 @@
+<WaNoTemplate>
+    <WaNoRoot name="QuantumPatch">
+        <WaNoTabs name="Tabs">
+            <WaNoGroup name="General">
+                <WaNoDictBox name="General Options">
+                    <WaNoFile logical_filename="morphology.cml" name="Morphology">Put .cml file here</WaNoFile>
+                    <WaNoInt name="Monomer Charge">0</WaNoInt>
+                    <WaNoInt name="Monomer Multiplicity">0</WaNoInt>
+                    <WaNoBool name="Run QuantumPatch">True</WaNoBool>
+                    <WaNoDropDown visibility_condition="%s == True" visibility_var_path="Tabs.General.General Options.Run QuantumPatch" name="QuantumPatch Type">
+                        <Entry id="0" chosen="True">Polarized</Entry>
+                        <Entry id="1">Polaron</Entry>
+                        <Entry id="2">Exciton</Entry>
+                    </WaNoDropDown>
+                    <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Options.Run QuantumPatch" name="Calculate Js">True</WaNoBool>
+                    <WaNoBool name="Calculate Lambdas">True</WaNoBool>
+                </WaNoDictBox>
+                <WaNoMultipleOf name="Molecular States">
+                    <Entry id="0">
+                        <WaNoDictBox name="State">
+                            <WaNoInt name="Charge">0</WaNoInt>
+                            <WaNoInt name="Multiplicity">0</WaNoInt>
+                            <WaNoInt name="Excitiation">0</WaNoInt>
+                        </WaNoDictBox>
+                    </Entry>
+                    <Entry id="1">
+                        <WaNoDictBox name="State">
+                            <WaNoInt name="Charge">1</WaNoInt>
+                            <WaNoInt name="Multiplicity">2</WaNoInt>
+                            <WaNoInt name="Excitiation">0</WaNoInt>
+                        </WaNoDictBox>
+                    </Entry>
+                </WaNoMultipleOf>
+            </WaNoGroup>
+            <WaNoGroup name="Engines">
+                <WaNoMultipleOf name="DFT Engines">
+                    <Entry id="0">
+                        <WaNoDropDown name="Engine">
+                            <Entry id="0" chosen="true">Turbomole</Entry>
+                            <Entry id="1">Psi4</Entry>
+                            <Entry id="2">DFTB+</Entry>
+                        </WaNoDropDown>
+                        <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Turbomole Settings">
+                            <WaNoDropDown name="Partial Charge Method">
+                                <Entry id="0" chosen="true">ESP</Entry>
+                                <Entry id="1">Mulliken</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Functional">
+                                <Entry id="0">SVWN</Entry>
+                                <Entry id="1">SVWN_Gaussian</Entry>
+                                <Entry id="2">PWLDA</Entry>
+                                <Entry id="3">BLYP</Entry>
+                                <Entry id="4">BVWN</Entry>
+                                <Entry id="5" chosen="true">BP86</Entry>
+                                <Entry id="6">PBE</Entry>
+                                <Entry id="7">TPSS</Entry>
+                                <Entry id="8">BHLYP</Entry>
+                                <Entry id="9">B3LYP</Entry>
+                                <Entry id="10">B3LYP_Gaussian</Entry>
+                                <Entry id="11">PBE0</Entry>
+                                <Entry id="12">TPSSH</Entry>
+                                <Entry id="13">PW6B95</Entry>
+                                <Entry id="14">M06</Entry>
+                                <Entry id="15">M06-1</Entry>
+                                <Entry id="16">M06-2x</Entry>
+                                <Entry id="17">B2PLYP</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Basis">
+                                <Entry id="0">sto-3g hondo</Entry>
+                                <Entry id="1">4-31g hondo</Entry>
+                                <Entry id="2">6-31g hondo</Entry>
+                                <Entry id="3">3-21g hondo</Entry>
+                                <Entry id="4">6-31G</Entry>
+                                <Entry id="5">6-31G*</Entry>
+                                <Entry id="6">6-31G**</Entry>
+                                <Entry id="7">6-311G</Entry>
+                                <Entry id="8">6-311G*</Entry>
+                                <Entry id="9">6-311G**</Entry>
+                                <Entry id="10">6-311++G**</Entry>
+                                <Entry id="11">DZ</Entry>
+                                <Entry id="12">DZP</Entry>
+                                <Entry id="13">TZ</Entry>
+                                <Entry id="14">TZP</Entry>
+                                <Entry id="15">TZV</Entry>
+                                <Entry id="16">TZVP</Entry>
+                                <Entry id="17">TZVPP</Entry>
+                                <Entry id="18">TZVPPP</Entry>
+                                <Entry id="19">QZV</Entry>
+                                <Entry id="20">QZVP</Entry>
+                                <Entry id="21">SV</Entry>
+                                <Entry id="22">SVP</Entry>
+                                <Entry id="23">SV(P)</Entry>
+                                <Entry id="24">def-SVP</Entry>
+                                <Entry id="25" chosen="true">def-SV(P)</Entry>
+                                <Entry id="26">def-TZVP</Entry>
+                                <Entry id="27">def-TZVPP</Entry>
+                                <Entry id="28">def-QZVP</Entry>
+                                <Entry id="29">def-QZVPP</Entry>
+                                <Entry id="30">def2-SVP</Entry>
+                                <Entry id="31">def2-SV(P)</Entry>
+                                <Entry id="32">def2-TZVP</Entry>
+                                <Entry id="33">def2-TZVPP</Entry>
+                                <Entry id="34">def2-SZVPD</Entry>
+                                <Entry id="35">def2-TZVPD</Entry>
+                                <Entry id="36">def2-TZVPPD</Entry>
+                                <Entry id="37">def2-QZVPD</Entry>
+                                <Entry id="38">def2-QZVPPD</Entry>
+                                <Entry id="39">dhf-SV(P)</Entry>
+                                <Entry id="40">dhf-SVP</Entry>
+                                <Entry id="41">dhf-TZVP</Entry>
+                                <Entry id="42">dhf-TZVPP</Entry>
+                                <Entry id="43">dhf-QZVP</Entry>
+                                <Entry id="44">dhf-QZVPP</Entry>
+                                <Entry id="45">cc-pVDZ</Entry>
+                                <Entry id="46">aug-cc-pVDZ</Entry>
+                                <Entry id="47">cc-pwVDZ</Entry>
+                                <Entry id="48">aug-cc-pwVDZ</Entry>
+                                <Entry id="49">cc-pVTZ</Entry>
+                                <Entry id="50">aug-cc-pVTZ</Entry>
+                                <Entry id="51">cc-pwVTZ</Entry>
+                                <Entry id="52">aug-cc-pwVTZ</Entry>
+                                <Entry id="53">cc-pVQZ</Entry>
+                                <Entry id="54">aug-cc-pVQZ</Entry>
+                                <Entry id="55">cc-pwVQZ</Entry>
+                                <Entry id="56">aug-cc-pwVQ</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Last Iteration Functional">
+                                <Entry id="0">SVWN</Entry>
+                                <Entry id="1">SVWN_Gaussian</Entry>
+                                <Entry id="2">PWLDA</Entry>
+                                <Entry id="3">BLYP</Entry>
+                                <Entry id="4">BVWN</Entry>
+                                <Entry id="5" chosen="true">BP86</Entry>
+                                <Entry id="6">PBE</Entry>
+                                <Entry id="7">TPSS</Entry>
+                                <Entry id="8">BHLYP</Entry>
+                                <Entry id="9">B3LYP</Entry>
+                                <Entry id="10">B3LYP_Gaussian</Entry>
+                                <Entry id="11">PBE0</Entry>
+                                <Entry id="12">TPSSH</Entry>
+                                <Entry id="13">PW6B95</Entry>
+                                <Entry id="14">M06</Entry>
+                                <Entry id="15">M06-1</Entry>
+                                <Entry id="16">M06-2x</Entry>
+                                <Entry id="17">B2PLYP</Entry>
+                            </WaNoDropDown>
+                            <WaNoInt name="Threads">1</WaNoInt>
+                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                        </WaNoDictBox>
+                        <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Psi4 Settings">
+                            <WaNoDropDown name="Partial Charge Method">
+                                <Entry id="0" chosen="true" >ESP</Entry>
+                                <Entry id="1">Mulliken</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Functional">
+                                <Entry id="0">B1LYP</Entry>
+                                <Entry id="1">B2GPPLYP</Entry>
+                                <Entry id="2">B2PLYP</Entry>
+                                <Entry id="3">B3LYP</Entry>
+                                <Entry id="4">BLYP</Entry>
+                                <Entry id="5" chosen="true">BP86</Entry>
+                                <Entry id="6">CAM-B3LYP</Entry>
+                                <Entry id="7">HSE06</Entry>
+                                <Entry id="8">M11</Entry>
+                                <Entry id="9">M11-L</Entry>
+                                <Entry id="10">PBE</Entry>
+                                <Entry id="11">REVPBE</Entry>
+                                <Entry id="12">PBE0</Entry>
+                                <Entry id="13">REVPBE0</Entry>
+                                <Entry id="14">PW91</Entry>
+                                <Entry id="15">TPSS</Entry>
+                                <Entry id="16">TPSSH</Entry>
+                                <Entry id="17">REVTPSSH</Entry>
+                                <Entry id="18">WPBE</Entry>
+                                <Entry id="19">X3LYP</Entry>
+                                <Entry id="20">XLYP</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Basis">
+                                <Entry id="0">STO-3G</Entry>
+                                <Entry id="1">3-21G</Entry>
+                                <Entry id="2">6-31G</Entry>
+                                <Entry id="3">6-31G*</Entry>
+                                <Entry id="4">6-31G**</Entry>
+                                <Entry id="5">6-31+G</Entry>
+                                <Entry id="6">6-31+G*</Entry>
+                                <Entry id="7">6-31+G**</Entry>
+                                <Entry id="8">6-31++G</Entry>
+                                <Entry id="9">6-31++G*</Entry>
+                                <Entry id="10">6-31++G**</Entry>
+                                <Entry id="11">6-311G</Entry>
+                                <Entry id="12">6-311G*</Entry>
+                                <Entry id="13">6-311G**</Entry>
+                                <Entry id="14">6-311+G</Entry>
+                                <Entry id="15">6-311+G*</Entry>
+                                <Entry id="16">6-311+G**</Entry>
+                                <Entry id="17">6-311++G</Entry>
+                                <Entry id="18">6-311++G*</Entry>
+                                <Entry id="19">6-311++G**</Entry>
+                                <Entry id="20">def2-SV(P)</Entry>
+                                <Entry id="21">def2-SVP</Entry>
+                                <Entry id="22">def2-TZVP</Entry>
+                                <Entry id="23">def2-TZVPP</Entry>
+                                <Entry id="24">def2-QZVP</Entry>
+                                <Entry id="25">def2-QZVPP</Entry>
+                                <Entry id="26">cc-pVDZ</Entry>
+                                <Entry id="27">cc-pVTZ</Entry>
+                                <Entry id="28">cc-pVQZ</Entry>
+                                <Entry id="29">aug-cc-pVDZ</Entry>
+                                <Entry id="30">aug-cc-pVTZ</Entry>
+                                <Entry id="31">aug-cc-pVQZ</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Last Iteration Functional">
+                                <Entry id="0">B1LYP</Entry>
+                                <Entry id="1">B2GPPLYP</Entry>
+                                <Entry id="2">B2PLYP</Entry>
+                                <Entry id="3">B3LYP</Entry>
+                                <Entry id="4">BLYP</Entry>
+                                <Entry id="5" chosen="true">BP86</Entry>
+                                <Entry id="6">CAM-B3LYP</Entry>
+                                <Entry id="7">HSE06</Entry>
+                                <Entry id="8">M11</Entry>
+                                <Entry id="9">M11-L</Entry>
+                                <Entry id="10">PBE</Entry>
+                                <Entry id="11">REVPBE</Entry>
+                                <Entry id="12">PBE0</Entry>
+                                <Entry id="13">REVPBE0</Entry>
+                                <Entry id="14">PW91</Entry>
+                                <Entry id="15">TPSS</Entry>
+                                <Entry id="16">TPSSH</Entry>
+                                <Entry id="17">REVTPSSH</Entry>
+                                <Entry id="18">WPBE</Entry>
+                                <Entry id="19">X3LYP</Entry>
+                                <Entry id="20">XLYP</Entry>
+                            </WaNoDropDown>
+                            <WaNoInt name="Threads">1</WaNoInt>
+                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                        </WaNoDictBox>
+                        <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="DFTB+ Settings">
+                            <WaNoDropDown name="Partial Charge Method">
+                                <Entry id="0" chosen="true" >CM3</Entry>
+                                <Entry id="1">Mulliken</Entry>
+                            </WaNoDropDown>
+                            <WaNoInt name="Threads">1</WaNoInt>
+                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                        </WaNoDictBox>
+                    </Entry>
+                    <Entry id="1">
+                        <WaNoDropDown name="Engine">
+                            <Entry id="0">Turbomole</Entry>
+                            <Entry id="1" chosen="true">Psi4</Entry>
+                            <Entry id="2">DFTB+</Entry>
+                        </WaNoDropDown>
+                        <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Turbomole Settings">
+                            <WaNoDropDown name="Partial Charge Method">
+                                <Entry id="0" chosen="true">ESP</Entry>
+                                <Entry id="1">Mulliken</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Functional">
+                                <Entry id="0">SVWN</Entry>
+                                <Entry id="1">SVWN_Gaussian</Entry>
+                                <Entry id="2">PWLDA</Entry>
+                                <Entry id="3">BLYP</Entry>
+                                <Entry id="4">BVWN</Entry>
+                                <Entry id="5" chosen="true">BP86</Entry>
+                                <Entry id="6">PBE</Entry>
+                                <Entry id="7">TPSS</Entry>
+                                <Entry id="8">BHLYP</Entry>
+                                <Entry id="9">B3LYP</Entry>
+                                <Entry id="10">B3LYP_Gaussian</Entry>
+                                <Entry id="11">PBE0</Entry>
+                                <Entry id="12">TPSSH</Entry>
+                                <Entry id="13">PW6B95</Entry>
+                                <Entry id="14">M06</Entry>
+                                <Entry id="15">M06-1</Entry>
+                                <Entry id="16">M06-2x</Entry>
+                                <Entry id="17">B2PLYP</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Basis">
+                                <Entry id="0">sto-3g hondo</Entry>
+                                <Entry id="1">4-31g hondo</Entry>
+                                <Entry id="2">6-31g hondo</Entry>
+                                <Entry id="3">3-21g hondo</Entry>
+                                <Entry id="4">6-31G</Entry>
+                                <Entry id="5">6-31G*</Entry>
+                                <Entry id="6">6-31G**</Entry>
+                                <Entry id="7">6-311G</Entry>
+                                <Entry id="8">6-311G*</Entry>
+                                <Entry id="9">6-311G**</Entry>
+                                <Entry id="10">6-311++G**</Entry>
+                                <Entry id="11">DZ</Entry>
+                                <Entry id="12">DZP</Entry>
+                                <Entry id="13">TZ</Entry>
+                                <Entry id="14">TZP</Entry>
+                                <Entry id="15">TZV</Entry>
+                                <Entry id="16">TZVP</Entry>
+                                <Entry id="17">TZVPP</Entry>
+                                <Entry id="18">TZVPPP</Entry>
+                                <Entry id="19">QZV</Entry>
+                                <Entry id="20">QZVP</Entry>
+                                <Entry id="21">SV</Entry>
+                                <Entry id="22">SVP</Entry>
+                                <Entry id="23">SV(P)</Entry>
+                                <Entry id="24">def-SVP</Entry>
+                                <Entry id="25" chosen="true">def-SV(P)</Entry>
+                                <Entry id="26">def-TZVP</Entry>
+                                <Entry id="27">def-TZVPP</Entry>
+                                <Entry id="28">def-QZVP</Entry>
+                                <Entry id="29">def-QZVPP</Entry>
+                                <Entry id="30">def2-SVP</Entry>
+                                <Entry id="31">def2-SV(P)</Entry>
+                                <Entry id="32">def2-TZVP</Entry>
+                                <Entry id="33">def2-TZVPP</Entry>
+                                <Entry id="34">def2-SZVPD</Entry>
+                                <Entry id="35">def2-TZVPD</Entry>
+                                <Entry id="36">def2-TZVPPD</Entry>
+                                <Entry id="37">def2-QZVPD</Entry>
+                                <Entry id="38">def2-QZVPPD</Entry>
+                                <Entry id="39">dhf-SV(P)</Entry>
+                                <Entry id="40">dhf-SVP</Entry>
+                                <Entry id="41">dhf-TZVP</Entry>
+                                <Entry id="42">dhf-TZVPP</Entry>
+                                <Entry id="43">dhf-QZVP</Entry>
+                                <Entry id="44">dhf-QZVPP</Entry>
+                                <Entry id="45">cc-pVDZ</Entry>
+                                <Entry id="46">aug-cc-pVDZ</Entry>
+                                <Entry id="47">cc-pwVDZ</Entry>
+                                <Entry id="48">aug-cc-pwVDZ</Entry>
+                                <Entry id="49">cc-pVTZ</Entry>
+                                <Entry id="50">aug-cc-pVTZ</Entry>
+                                <Entry id="51">cc-pwVTZ</Entry>
+                                <Entry id="52">aug-cc-pwVTZ</Entry>
+                                <Entry id="53">cc-pVQZ</Entry>
+                                <Entry id="54">aug-cc-pVQZ</Entry>
+                                <Entry id="55">cc-pwVQZ</Entry>
+                                <Entry id="56">aug-cc-pwVQ</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Last Iteration Functional">
+                                <Entry id="0">SVWN</Entry>
+                                <Entry id="1">SVWN_Gaussian</Entry>
+                                <Entry id="2">PWLDA</Entry>
+                                <Entry id="3">BLYP</Entry>
+                                <Entry id="4">BVWN</Entry>
+                                <Entry id="5" chosen="true">BP86</Entry>
+                                <Entry id="6">PBE</Entry>
+                                <Entry id="7">TPSS</Entry>
+                                <Entry id="8">BHLYP</Entry>
+                                <Entry id="9">B3LYP</Entry>
+                                <Entry id="10">B3LYP_Gaussian</Entry>
+                                <Entry id="11">PBE0</Entry>
+                                <Entry id="12">TPSSH</Entry>
+                                <Entry id="13">PW6B95</Entry>
+                                <Entry id="14">M06</Entry>
+                                <Entry id="15">M06-1</Entry>
+                                <Entry id="16">M06-2x</Entry>
+                                <Entry id="17">B2PLYP</Entry>
+                            </WaNoDropDown>
+                            <WaNoInt name="Threads">1</WaNoInt>
+                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                        </WaNoDictBox>
+                        <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Psi4 Settings">
+                            <WaNoDropDown name="Partial Charge Method">
+                                <Entry id="0" chosen="true" >ESP</Entry>
+                                <Entry id="1">Mulliken</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Functional">
+                                <Entry id="0">B1LYP</Entry>
+                                <Entry id="1">B2GPPLYP</Entry>
+                                <Entry id="2">B2PLYP</Entry>
+                                <Entry id="3">B3LYP</Entry>
+                                <Entry id="4">BLYP</Entry>
+                                <Entry id="5" chosen="true">BP86</Entry>
+                                <Entry id="6">CAM-B3LYP</Entry>
+                                <Entry id="7">HSE06</Entry>
+                                <Entry id="8">M11</Entry>
+                                <Entry id="9">M11-L</Entry>
+                                <Entry id="10">PBE</Entry>
+                                <Entry id="11">REVPBE</Entry>
+                                <Entry id="12">PBE0</Entry>
+                                <Entry id="13">REVPBE0</Entry>
+                                <Entry id="14">PW91</Entry>
+                                <Entry id="15">TPSS</Entry>
+                                <Entry id="16">TPSSH</Entry>
+                                <Entry id="17">REVTPSSH</Entry>
+                                <Entry id="18">WPBE</Entry>
+                                <Entry id="19">X3LYP</Entry>
+                                <Entry id="20">XLYP</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Basis">
+                                <Entry id="0">STO-3G</Entry>
+                                <Entry id="1">3-21G</Entry>
+                                <Entry id="2">6-31G</Entry>
+                                <Entry id="3">6-31G*</Entry>
+                                <Entry id="4">6-31G**</Entry>
+                                <Entry id="5">6-31+G</Entry>
+                                <Entry id="6">6-31+G*</Entry>
+                                <Entry id="7">6-31+G**</Entry>
+                                <Entry id="8">6-31++G</Entry>
+                                <Entry id="9">6-31++G*</Entry>
+                                <Entry id="10">6-31++G**</Entry>
+                                <Entry id="11">6-311G</Entry>
+                                <Entry id="12">6-311G*</Entry>
+                                <Entry id="13">6-311G**</Entry>
+                                <Entry id="14">6-311+G</Entry>
+                                <Entry id="15">6-311+G*</Entry>
+                                <Entry id="16">6-311+G**</Entry>
+                                <Entry id="17">6-311++G</Entry>
+                                <Entry id="18">6-311++G*</Entry>
+                                <Entry id="19">6-311++G**</Entry>
+                                <Entry id="20" chosen="true">def2-SV(P)</Entry>
+                                <Entry id="21">def2-SVP</Entry>
+                                <Entry id="22">def2-TZVP</Entry>
+                                <Entry id="23">def2-TZVPP</Entry>
+                                <Entry id="24">def2-QZVP</Entry>
+                                <Entry id="25">def2-QZVPP</Entry>
+                                <Entry id="26">cc-pVDZ</Entry>
+                                <Entry id="27">cc-pVTZ</Entry>
+                                <Entry id="28">cc-pVQZ</Entry>
+                                <Entry id="29">aug-cc-pVDZ</Entry>
+                                <Entry id="30">aug-cc-pVTZ</Entry>
+                                <Entry id="31">aug-cc-pVQZ</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Last Iteration Functional">
+                                <Entry id="0">B1LYP</Entry>
+                                <Entry id="1">B2GPPLYP</Entry>
+                                <Entry id="2">B2PLYP</Entry>
+                                <Entry id="3">B3LYP</Entry>
+                                <Entry id="4">BLYP</Entry>
+                                <Entry id="5" chosen="true">BP86</Entry>
+                                <Entry id="6">CAM-B3LYP</Entry>
+                                <Entry id="7">HSE06</Entry>
+                                <Entry id="8">M11</Entry>
+                                <Entry id="9">M11-L</Entry>
+                                <Entry id="10">PBE</Entry>
+                                <Entry id="11">REVPBE</Entry>
+                                <Entry id="12">PBE0</Entry>
+                                <Entry id="13">REVPBE0</Entry>
+                                <Entry id="14">PW91</Entry>
+                                <Entry id="15">TPSS</Entry>
+                                <Entry id="16">TPSSH</Entry>
+                                <Entry id="17">REVTPSSH</Entry>
+                                <Entry id="18">WPBE</Entry>
+                                <Entry id="19">X3LYP</Entry>
+                                <Entry id="20">XLYP</Entry>
+                            </WaNoDropDown>
+                            <WaNoInt name="Threads">1</WaNoInt>
+                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                        </WaNoDictBox>
+                        <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="DFTB+ Settings">
+                            <WaNoDropDown name="Partial Charge Method">
+                                <Entry id="0" chosen="true" >CM3</Entry>
+                                <Entry id="1">Mulliken</Entry>
+                            </WaNoDropDown>
+                            <WaNoInt name="Threads">1</WaNoInt>
+                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                        </WaNoDictBox>
+                    </Entry>
+                    <Entry id="2">
+                        <WaNoDropDown name="Engine">
+                            <Entry id="0">Turbomole</Entry>
+                            <Entry id="1">Psi4</Entry>
+                            <Entry id="2" chosen="true">DFTB+</Entry>
+                        </WaNoDropDown>
+                        <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Turbomole Settings">
+                            <WaNoDropDown name="Partial Charge Method">
+                                <Entry id="0" chosen="true">ESP</Entry>
+                                <Entry id="1">Mulliken</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Functional">
+                                <Entry id="0">SVWN</Entry>
+                                <Entry id="1">SVWN_Gaussian</Entry>
+                                <Entry id="2">PWLDA</Entry>
+                                <Entry id="3">BLYP</Entry>
+                                <Entry id="4">BVWN</Entry>
+                                <Entry id="5" chosen="true">BP86</Entry>
+                                <Entry id="6">PBE</Entry>
+                                <Entry id="7">TPSS</Entry>
+                                <Entry id="8">BHLYP</Entry>
+                                <Entry id="9">B3LYP</Entry>
+                                <Entry id="10">B3LYP_Gaussian</Entry>
+                                <Entry id="11">PBE0</Entry>
+                                <Entry id="12">TPSSH</Entry>
+                                <Entry id="13">PW6B95</Entry>
+                                <Entry id="14">M06</Entry>
+                                <Entry id="15">M06-1</Entry>
+                                <Entry id="16">M06-2x</Entry>
+                                <Entry id="17">B2PLYP</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Basis">
+                                <Entry id="0">sto-3g hondo</Entry>
+                                <Entry id="1">4-31g hondo</Entry>
+                                <Entry id="2">6-31g hondo</Entry>
+                                <Entry id="3">3-21g hondo</Entry>
+                                <Entry id="4">6-31G</Entry>
+                                <Entry id="5">6-31G*</Entry>
+                                <Entry id="6">6-31G**</Entry>
+                                <Entry id="7">6-311G</Entry>
+                                <Entry id="8">6-311G*</Entry>
+                                <Entry id="9">6-311G**</Entry>
+                                <Entry id="10">6-311++G**</Entry>
+                                <Entry id="11">DZ</Entry>
+                                <Entry id="12">DZP</Entry>
+                                <Entry id="13">TZ</Entry>
+                                <Entry id="14">TZP</Entry>
+                                <Entry id="15">TZV</Entry>
+                                <Entry id="16">TZVP</Entry>
+                                <Entry id="17">TZVPP</Entry>
+                                <Entry id="18">TZVPPP</Entry>
+                                <Entry id="19">QZV</Entry>
+                                <Entry id="20">QZVP</Entry>
+                                <Entry id="21">SV</Entry>
+                                <Entry id="22">SVP</Entry>
+                                <Entry id="23">SV(P)</Entry>
+                                <Entry id="24">def-SVP</Entry>
+                                <Entry id="25" chosen="true">def-SV(P)</Entry>
+                                <Entry id="26">def-TZVP</Entry>
+                                <Entry id="27">def-TZVPP</Entry>
+                                <Entry id="28">def-QZVP</Entry>
+                                <Entry id="29">def-QZVPP</Entry>
+                                <Entry id="30">def2-SVP</Entry>
+                                <Entry id="31">def2-SV(P)</Entry>
+                                <Entry id="32">def2-TZVP</Entry>
+                                <Entry id="33">def2-TZVPP</Entry>
+                                <Entry id="34">def2-SZVPD</Entry>
+                                <Entry id="35">def2-TZVPD</Entry>
+                                <Entry id="36">def2-TZVPPD</Entry>
+                                <Entry id="37">def2-QZVPD</Entry>
+                                <Entry id="38">def2-QZVPPD</Entry>
+                                <Entry id="39">dhf-SV(P)</Entry>
+                                <Entry id="40">dhf-SVP</Entry>
+                                <Entry id="41">dhf-TZVP</Entry>
+                                <Entry id="42">dhf-TZVPP</Entry>
+                                <Entry id="43">dhf-QZVP</Entry>
+                                <Entry id="44">dhf-QZVPP</Entry>
+                                <Entry id="45">cc-pVDZ</Entry>
+                                <Entry id="46">aug-cc-pVDZ</Entry>
+                                <Entry id="47">cc-pwVDZ</Entry>
+                                <Entry id="48">aug-cc-pwVDZ</Entry>
+                                <Entry id="49">cc-pVTZ</Entry>
+                                <Entry id="50">aug-cc-pVTZ</Entry>
+                                <Entry id="51">cc-pwVTZ</Entry>
+                                <Entry id="52">aug-cc-pwVTZ</Entry>
+                                <Entry id="53">cc-pVQZ</Entry>
+                                <Entry id="54">aug-cc-pVQZ</Entry>
+                                <Entry id="55">cc-pwVQZ</Entry>
+                                <Entry id="56">aug-cc-pwVQ</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Last Iteration Functional">
+                                <Entry id="0">SVWN</Entry>
+                                <Entry id="1">SVWN_Gaussian</Entry>
+                                <Entry id="2">PWLDA</Entry>
+                                <Entry id="3">BLYP</Entry>
+                                <Entry id="4">BVWN</Entry>
+                                <Entry id="5" chosen="true">BP86</Entry>
+                                <Entry id="6">PBE</Entry>
+                                <Entry id="7">TPSS</Entry>
+                                <Entry id="8">BHLYP</Entry>
+                                <Entry id="9">B3LYP</Entry>
+                                <Entry id="10">B3LYP_Gaussian</Entry>
+                                <Entry id="11">PBE0</Entry>
+                                <Entry id="12">TPSSH</Entry>
+                                <Entry id="13">PW6B95</Entry>
+                                <Entry id="14">M06</Entry>
+                                <Entry id="15">M06-1</Entry>
+                                <Entry id="16">M06-2x</Entry>
+                                <Entry id="17">B2PLYP</Entry>
+                            </WaNoDropDown>
+                            <WaNoInt name="Threads">1</WaNoInt>
+                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                        </WaNoDictBox>
+                        <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Psi4 Settings">
+                            <WaNoDropDown name="Partial Charge Method">
+                                <Entry id="0" chosen="true" >ESP</Entry>
+                                <Entry id="1">Mulliken</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Functional">
+                                <Entry id="0">B1LYP</Entry>
+                                <Entry id="1">B2GPPLYP</Entry>
+                                <Entry id="2">B2PLYP</Entry>
+                                <Entry id="3">B3LYP</Entry>
+                                <Entry id="4">BLYP</Entry>
+                                <Entry id="5" chosen="true">BP86</Entry>
+                                <Entry id="6">CAM-B3LYP</Entry>
+                                <Entry id="7">HSE06</Entry>
+                                <Entry id="8">M11</Entry>
+                                <Entry id="9">M11-L</Entry>
+                                <Entry id="10">PBE</Entry>
+                                <Entry id="11">REVPBE</Entry>
+                                <Entry id="12">PBE0</Entry>
+                                <Entry id="13">REVPBE0</Entry>
+                                <Entry id="14">PW91</Entry>
+                                <Entry id="15">TPSS</Entry>
+                                <Entry id="16">TPSSH</Entry>
+                                <Entry id="17">REVTPSSH</Entry>
+                                <Entry id="18">WPBE</Entry>
+                                <Entry id="19">X3LYP</Entry>
+                                <Entry id="20">XLYP</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Basis">
+                                <Entry id="0">STO-3G</Entry>
+                                <Entry id="1">3-21G</Entry>
+                                <Entry id="2">6-31G</Entry>
+                                <Entry id="3">6-31G*</Entry>
+                                <Entry id="4">6-31G**</Entry>
+                                <Entry id="5">6-31+G</Entry>
+                                <Entry id="6">6-31+G*</Entry>
+                                <Entry id="7">6-31+G**</Entry>
+                                <Entry id="8">6-31++G</Entry>
+                                <Entry id="9">6-31++G*</Entry>
+                                <Entry id="10">6-31++G**</Entry>
+                                <Entry id="11">6-311G</Entry>
+                                <Entry id="12">6-311G*</Entry>
+                                <Entry id="13">6-311G**</Entry>
+                                <Entry id="14">6-311+G</Entry>
+                                <Entry id="15">6-311+G*</Entry>
+                                <Entry id="16">6-311+G**</Entry>
+                                <Entry id="17">6-311++G</Entry>
+                                <Entry id="18">6-311++G*</Entry>
+                                <Entry id="19">6-311++G**</Entry>
+                                <Entry id="20">def2-SV(P)</Entry>
+                                <Entry id="21">def2-SVP</Entry>
+                                <Entry id="22">def2-TZVP</Entry>
+                                <Entry id="23">def2-TZVPP</Entry>
+                                <Entry id="24">def2-QZVP</Entry>
+                                <Entry id="25">def2-QZVPP</Entry>
+                                <Entry id="26">cc-pVDZ</Entry>
+                                <Entry id="27">cc-pVTZ</Entry>
+                                <Entry id="28">cc-pVQZ</Entry>
+                                <Entry id="29">aug-cc-pVDZ</Entry>
+                                <Entry id="30">aug-cc-pVTZ</Entry>
+                                <Entry id="31">aug-cc-pVQZ</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Last Iteration Functional">
+                                <Entry id="0">B1LYP</Entry>
+                                <Entry id="1">B2GPPLYP</Entry>
+                                <Entry id="2">B2PLYP</Entry>
+                                <Entry id="3">B3LYP</Entry>
+                                <Entry id="4">BLYP</Entry>
+                                <Entry id="5" chosen="true">BP86</Entry>
+                                <Entry id="6">CAM-B3LYP</Entry>
+                                <Entry id="7">HSE06</Entry>
+                                <Entry id="8">M11</Entry>
+                                <Entry id="9">M11-L</Entry>
+                                <Entry id="10">PBE</Entry>
+                                <Entry id="11">REVPBE</Entry>
+                                <Entry id="12">PBE0</Entry>
+                                <Entry id="13">REVPBE0</Entry>
+                                <Entry id="14">PW91</Entry>
+                                <Entry id="15">TPSS</Entry>
+                                <Entry id="16">TPSSH</Entry>
+                                <Entry id="17">REVTPSSH</Entry>
+                                <Entry id="18">WPBE</Entry>
+                                <Entry id="19">X3LYP</Entry>
+                                <Entry id="20">XLYP</Entry>
+                            </WaNoDropDown>
+                            <WaNoInt name="Threads">1</WaNoInt>
+                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                        </WaNoDictBox>
+                        <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="DFTB+ Settings">
+                            <WaNoDropDown name="Partial Charge Method">
+                                <Entry id="0" chosen="true" >CM3</Entry>
+                                <Entry id="1">Mulliken</Entry>
+                            </WaNoDropDown>
+                            <WaNoInt name="Threads">1</WaNoInt>
+                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                        </WaNoDictBox>
+                    </Entry>
+                </WaNoMultipleOf>
+            </WaNoGroup>
+            <WaNoGroup name="Shells">
+                <WaNoDictBox name="Core Shell">
+                    <WaNoInt name="Screened Iterations">7</WaNoInt>
+                    <WaNoDropDown name="Inner Part Method">
+                        <Entry id="0">Inner Box Side Length</Entry>
+                        <Entry id="1" chosen="True">Number of Molecules</Entry>
+                        <Entry id="2">List of Molecule IDs</Entry>
+                    </WaNoDropDown>
+                    <WaNoFloat visibility_condition="'%s' == 'Inner Box Side Length'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="Inner Box Side Length">10.0</WaNoFloat>
+                    <WaNoString visibility_condition="'%s' == 'List of Molecule IDs'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="List of Molecule IDs">1-100;473</WaNoString>
+                    <WaNoInt visibility_condition="'%s' == 'Number of Molecules'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="Number of Molecules">100</WaNoInt>
+                </WaNoDictBox>
+                <WaNoMultipleOf name="Outer Shells">
+                    <Entry id="0">
+                        <WaNoDictBox name="Shell">
+                            <WaNoDropDown name="Uses Engine">
+                                <Entry id="0" chosen="true">DynamicDropdown</Entry>
+                                <Entry id="1">Engine 0</Entry>
+                                <Entry id="2">Engine 1</Entry>
+                                <Entry id="3">Engine 2</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Shelltype">
+                                <Entry id="0" chosen="true">dynamic</Entry>
+                                <Entry id="1">static</Entry>
+                            </WaNoDropDown>
+                            <WaNoFloat name="Cutoff Radius">25.0</WaNoFloat>
+                        </WaNoDictBox>
+                    </Entry>
+                    <Entry id="1">
+                        <WaNoDictBox name="Shell">
+                            <WaNoDropDown name="Uses Engine">
+                                <Entry id="0" chosen="true">DynamicDropdown</Entry>
+                                <Entry id="1">Engine 0</Entry>
+                                <Entry id="2">Engine 1</Entry>
+                                <Entry id="3">Engine 2</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="Shelltype">
+                                <Entry id="0">dynamic</Entry>
+                                <Entry id="1" chosen="true">static</Entry>
+                            </WaNoDropDown>
+                            <WaNoFloat name="Cutoff Radius">60.0</WaNoFloat>
+                        </WaNoDictBox>
+                    </Entry>
+                </WaNoMultipleOf>
+            </WaNoGroup>
+            <WaNoGroup visibility_condition="%s == True" visibility_var_path="Tabs.General.General Options.Calculate Lambdas" name="LambdaEAIP">
+                <WaNoDictBox name="General Settings">
+                    <WaNoBool name="Calculate Lambda">False</WaNoBool>
+                    <WaNoDropDown name="Lambda Type" visibility_condition="%s == True" visibility_var_path="Tabs.LambdaEAIP.General Settings.Calculate Lambda">
+                        <Entry id="0" chosen="True">Both</Entry>
+                        <Entry id="1">Hole</Entry>
+                        <Entry id="2">Electron</Entry>
+                    </WaNoDropDown>
+                    <WaNoBool name="Calculate EA">False</WaNoBool>
+                    <WaNoBool name="Calculate IP">False</WaNoBool>
+                    <WaNoBool name="Vertical EA/IP">True</WaNoBool>
+                </WaNoDictBox>
+                <WaNoDictBox name="Geometry Optimization Options">
+                    <WaNoDropDown name="DFT Engine">
+                        <Entry id="0" chosen="true">Turbomole</Entry>
+                        <Entry id="1">Psi4</Entry>
+                        <Entry id="2">DFTB+</Entry>
+                    </WaNoDropDown>
+                    <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="Tabs.LambdaEAIP.Geometry Optimization Options.DFT Engine" name="Turbomole Settings">
+                        <WaNoDropDown name="Partial Charge Method">
+                            <Entry id="0" chosen="true">ESP</Entry>
+                            <Entry id="1">Mulliken</Entry>
+                        </WaNoDropDown>
+                        <WaNoDropDown name="Functional">
+                            <Entry id="0">SVWN</Entry>
+                            <Entry id="1">SVWN_Gaussian</Entry>
+                            <Entry id="2">PWLDA</Entry>
+                            <Entry id="3">BLYP</Entry>
+                            <Entry id="4">BVWN</Entry>
+                            <Entry id="5">BP86</Entry>
+                            <Entry id="6">PBE</Entry>
+                            <Entry id="7">TPSS</Entry>
+                            <Entry id="8">BHLYP</Entry>
+                            <Entry id="9" chosen="true">B3LYP</Entry>
+                            <Entry id="10">B3LYP_Gaussian</Entry>
+                            <Entry id="11">PBE0</Entry>
+                            <Entry id="12">TPSSH</Entry>
+                            <Entry id="13">PW6B95</Entry>
+                            <Entry id="14">M06</Entry>
+                            <Entry id="15">M06-1</Entry>
+                            <Entry id="16">M06-2x</Entry>
+                            <Entry id="17">B2PLYP</Entry>
+                        </WaNoDropDown>
+                        <WaNoDropDown name="Basis">
+                            <Entry id="0">sto-3g hondo</Entry>
+                            <Entry id="1">4-31g hondo</Entry>
+                            <Entry id="2">6-31g hondo</Entry>
+                            <Entry id="3">3-21g hondo</Entry>
+                            <Entry id="4">6-31G</Entry>
+                            <Entry id="5">6-31G*</Entry>
+                            <Entry id="6">6-31G**</Entry>
+                            <Entry id="7">6-311G</Entry>
+                            <Entry id="8">6-311G*</Entry>
+                            <Entry id="9">6-311G**</Entry>
+                            <Entry id="10">6-311++G**</Entry>
+                            <Entry id="11">DZ</Entry>
+                            <Entry id="12">DZP</Entry>
+                            <Entry id="13">TZ</Entry>
+                            <Entry id="14">TZP</Entry>
+                            <Entry id="15">TZV</Entry>
+                            <Entry id="16">TZVP</Entry>
+                            <Entry id="17">TZVPP</Entry>
+                            <Entry id="18">TZVPPP</Entry>
+                            <Entry id="19">QZV</Entry>
+                            <Entry id="20">QZVP</Entry>
+                            <Entry id="21">SV</Entry>
+                            <Entry id="22">SVP</Entry>
+                            <Entry id="23">SV(P)</Entry>
+                            <Entry id="24">def-SVP</Entry>
+                            <Entry id="25" chosen="true">def-SV(P)</Entry>
+                            <Entry id="26">def-TZVP</Entry>
+                            <Entry id="27">def-TZVPP</Entry>
+                            <Entry id="28">def-QZVP</Entry>
+                            <Entry id="29">def-QZVPP</Entry>
+                            <Entry id="30">def2-SVP</Entry>
+                            <Entry id="31">def2-SV(P)</Entry>
+                            <Entry id="32">def2-TZVP</Entry>
+                            <Entry id="33">def2-TZVPP</Entry>
+                            <Entry id="34">def2-SZVPD</Entry>
+                            <Entry id="35">def2-TZVPD</Entry>
+                            <Entry id="36">def2-TZVPPD</Entry>
+                            <Entry id="37">def2-QZVPD</Entry>
+                            <Entry id="38">def2-QZVPPD</Entry>
+                            <Entry id="39">dhf-SV(P)</Entry>
+                            <Entry id="40">dhf-SVP</Entry>
+                            <Entry id="41">dhf-TZVP</Entry>
+                            <Entry id="42">dhf-TZVPP</Entry>
+                            <Entry id="43">dhf-QZVP</Entry>
+                            <Entry id="44">dhf-QZVPP</Entry>
+                            <Entry id="45">cc-pVDZ</Entry>
+                            <Entry id="46">aug-cc-pVDZ</Entry>
+                            <Entry id="47">cc-pwVDZ</Entry>
+                            <Entry id="48">aug-cc-pwVDZ</Entry>
+                            <Entry id="49">cc-pVTZ</Entry>
+                            <Entry id="50">aug-cc-pVTZ</Entry>
+                            <Entry id="51">cc-pwVTZ</Entry>
+                            <Entry id="52">aug-cc-pwVTZ</Entry>
+                            <Entry id="53">cc-pVQZ</Entry>
+                            <Entry id="54">aug-cc-pVQZ</Entry>
+                            <Entry id="55">cc-pwVQZ</Entry>
+                            <Entry id="56">aug-cc-pwVQ</Entry>
+                        </WaNoDropDown>
+                        <WaNoInt name="Threads">1</WaNoInt>
+                        <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                    </WaNoDictBox>
+                    <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="Tabs.LambdaEAIP.Geometry Optimization Options.DFT Engine" name="Psi4 Settings">
+                        <WaNoDropDown name="Partial Charge Method">
+                            <Entry id="0" chosen="true" >ESP</Entry>
+                            <Entry id="1">Mulliken</Entry>
+                        </WaNoDropDown>
+                        <WaNoDropDown name="Functional">
+                            <Entry id="0">B1LYP</Entry>
+                            <Entry id="1">B2GPPLYP</Entry>
+                            <Entry id="2">B2PLYP</Entry>
+                            <Entry id="3" chosen="true">B3LYP</Entry>
+                            <Entry id="4">BLYP</Entry>
+                            <Entry id="5">BP86</Entry>
+                            <Entry id="6">CAM-B3LYP</Entry>
+                            <Entry id="7">HSE06</Entry>
+                            <Entry id="8">M11</Entry>
+                            <Entry id="9">M11-L</Entry>
+                            <Entry id="10">PBE</Entry>
+                            <Entry id="11">REVPBE</Entry>
+                            <Entry id="12">PBE0</Entry>
+                            <Entry id="13">REVPBE0</Entry>
+                            <Entry id="14">PW91</Entry>
+                            <Entry id="15">TPSS</Entry>
+                            <Entry id="16">TPSSH</Entry>
+                            <Entry id="17">REVTPSSH</Entry>
+                            <Entry id="18">WPBE</Entry>
+                            <Entry id="19">X3LYP</Entry>
+                            <Entry id="20">XLYP</Entry>
+                        </WaNoDropDown>
+                        <WaNoDropDown name="Basis">
+                            <Entry id="0">STO-3G</Entry>
+                            <Entry id="1">3-21G</Entry>
+                            <Entry id="2">6-31G</Entry>
+                            <Entry id="3">6-31G*</Entry>
+                            <Entry id="4">6-31G**</Entry>
+                            <Entry id="5">6-31+G</Entry>
+                            <Entry id="6">6-31+G*</Entry>
+                            <Entry id="7">6-31+G**</Entry>
+                            <Entry id="8">6-31++G</Entry>
+                            <Entry id="9">6-31++G*</Entry>
+                            <Entry id="10">6-31++G**</Entry>
+                            <Entry id="11">6-311G</Entry>
+                            <Entry id="12">6-311G*</Entry>
+                            <Entry id="13">6-311G**</Entry>
+                            <Entry id="14">6-311+G</Entry>
+                            <Entry id="15">6-311+G*</Entry>
+                            <Entry id="16">6-311+G**</Entry>
+                            <Entry id="17">6-311++G</Entry>
+                            <Entry id="18">6-311++G*</Entry>
+                            <Entry id="19">6-311++G**</Entry>
+                            <Entry id="20" chosen="true">def2-SV(P)</Entry>
+                            <Entry id="21">def2-SVP</Entry>
+                            <Entry id="22">def2-TZVP</Entry>
+                            <Entry id="23">def2-TZVPP</Entry>
+                            <Entry id="24">def2-QZVP</Entry>
+                            <Entry id="25">def2-QZVPP</Entry>
+                            <Entry id="26">cc-pVDZ</Entry>
+                            <Entry id="27">cc-pVTZ</Entry>
+                            <Entry id="28">cc-pVQZ</Entry>
+                            <Entry id="29">aug-cc-pVDZ</Entry>
+                            <Entry id="30">aug-cc-pVTZ</Entry>
+                            <Entry id="31">aug-cc-pVQZ</Entry>
+                        </WaNoDropDown>
+                        <WaNoInt name="Threads">1</WaNoInt>
+                        <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                    </WaNoDictBox>
+                    <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="Tabs.LambdaEAIP.Geometry Optimization Options.DFT Engine" name="DFTB+ Settings">
+                        <WaNoDropDown name="Partial Charge Method">
+                            <Entry id="0" chosen="true" >CM3</Entry>
+                            <Entry id="1">Mulliken</Entry>
+                        </WaNoDropDown>
+                        <WaNoInt name="Threads">1</WaNoInt>
+                        <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                    </WaNoDictBox>
+                </WaNoDictBox>
+                <WaNoDictBox name="Single Point Options">
+                    <WaNoDropDown name="DFT Engine">
+                        <Entry id="0" chosen="true">Turbomole</Entry>
+                        <Entry id="1">Psi4</Entry>
+                        <Entry id="2">DFTB+</Entry>
+                    </WaNoDropDown>
+                    <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="Tabs.LambdaEAIP.Single Point Options.DFT Engine" name="Turbomole Settings">
+                        <WaNoDropDown name="Partial Charge Method">
+                            <Entry id="0" chosen="true">ESP</Entry>
+                            <Entry id="1">Mulliken</Entry>
+                        </WaNoDropDown>
+                        <WaNoDropDown name="Functional">
+                            <Entry id="0">SVWN</Entry>
+                            <Entry id="1">SVWN_Gaussian</Entry>
+                            <Entry id="2">PWLDA</Entry>
+                            <Entry id="3">BLYP</Entry>
+                            <Entry id="4">BVWN</Entry>
+                            <Entry id="5">BP86</Entry>
+                            <Entry id="6">PBE</Entry>
+                            <Entry id="7">TPSS</Entry>
+                            <Entry id="8">BHLYP</Entry>
+                            <Entry id="9" chosen="true">B3LYP</Entry>
+                            <Entry id="10">B3LYP_Gaussian</Entry>
+                            <Entry id="11">PBE0</Entry>
+                            <Entry id="12">TPSSH</Entry>
+                            <Entry id="13">PW6B95</Entry>
+                            <Entry id="14">M06</Entry>
+                            <Entry id="15">M06-1</Entry>
+                            <Entry id="16">M06-2x</Entry>
+                            <Entry id="17">B2PLYP</Entry>
+                        </WaNoDropDown>
+                        <WaNoDropDown name="Basis">
+                            <Entry id="0">sto-3g hondo</Entry>
+                            <Entry id="1">4-31g hondo</Entry>
+                            <Entry id="2">6-31g hondo</Entry>
+                            <Entry id="3">3-21g hondo</Entry>
+                            <Entry id="4">6-31G</Entry>
+                            <Entry id="5">6-31G*</Entry>
+                            <Entry id="6">6-31G**</Entry>
+                            <Entry id="7">6-311G</Entry>
+                            <Entry id="8">6-311G*</Entry>
+                            <Entry id="9">6-311G**</Entry>
+                            <Entry id="10">6-311++G**</Entry>
+                            <Entry id="11">DZ</Entry>
+                            <Entry id="12">DZP</Entry>
+                            <Entry id="13">TZ</Entry>
+                            <Entry id="14">TZP</Entry>
+                            <Entry id="15">TZV</Entry>
+                            <Entry id="16">TZVP</Entry>
+                            <Entry id="17">TZVPP</Entry>
+                            <Entry id="18">TZVPPP</Entry>
+                            <Entry id="19">QZV</Entry>
+                            <Entry id="20">QZVP</Entry>
+                            <Entry id="21">SV</Entry>
+                            <Entry id="22">SVP</Entry>
+                            <Entry id="23">SV(P)</Entry>
+                            <Entry id="24">def-SVP</Entry>
+                            <Entry id="25" chosen="true">def-SV(P)</Entry>
+                            <Entry id="26">def-TZVP</Entry>
+                            <Entry id="27">def-TZVPP</Entry>
+                            <Entry id="28">def-QZVP</Entry>
+                            <Entry id="29">def-QZVPP</Entry>
+                            <Entry id="30">def2-SVP</Entry>
+                            <Entry id="31">def2-SV(P)</Entry>
+                            <Entry id="32">def2-TZVP</Entry>
+                            <Entry id="33">def2-TZVPP</Entry>
+                            <Entry id="34">def2-SZVPD</Entry>
+                            <Entry id="35">def2-TZVPD</Entry>
+                            <Entry id="36">def2-TZVPPD</Entry>
+                            <Entry id="37">def2-QZVPD</Entry>
+                            <Entry id="38">def2-QZVPPD</Entry>
+                            <Entry id="39">dhf-SV(P)</Entry>
+                            <Entry id="40">dhf-SVP</Entry>
+                            <Entry id="41">dhf-TZVP</Entry>
+                            <Entry id="42">dhf-TZVPP</Entry>
+                            <Entry id="43">dhf-QZVP</Entry>
+                            <Entry id="44">dhf-QZVPP</Entry>
+                            <Entry id="45">cc-pVDZ</Entry>
+                            <Entry id="46">aug-cc-pVDZ</Entry>
+                            <Entry id="47">cc-pwVDZ</Entry>
+                            <Entry id="48">aug-cc-pwVDZ</Entry>
+                            <Entry id="49">cc-pVTZ</Entry>
+                            <Entry id="50">aug-cc-pVTZ</Entry>
+                            <Entry id="51">cc-pwVTZ</Entry>
+                            <Entry id="52">aug-cc-pwVTZ</Entry>
+                            <Entry id="53">cc-pVQZ</Entry>
+                            <Entry id="54">aug-cc-pVQZ</Entry>
+                            <Entry id="55">cc-pwVQZ</Entry>
+                            <Entry id="56">aug-cc-pwVQ</Entry>
+                        </WaNoDropDown>
+                        <WaNoInt name="Threads">1</WaNoInt>
+                        <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                    </WaNoDictBox>
+                    <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="Tabs.LambdaEAIP.Single Point Options.DFT Engine" name="Psi4 Settings">
+                        <WaNoDropDown name="Partial Charge Method">
+                            <Entry id="0" chosen="true" >ESP</Entry>
+                            <Entry id="1">Mulliken</Entry>
+                        </WaNoDropDown>
+                        <WaNoDropDown name="Functional">
+                            <Entry id="0">B1LYP</Entry>
+                            <Entry id="1">B2GPPLYP</Entry>
+                            <Entry id="2">B2PLYP</Entry>
+                            <Entry id="3" chosen="true">B3LYP</Entry>
+                            <Entry id="4">BLYP</Entry>
+                            <Entry id="5">BP86</Entry>
+                            <Entry id="6">CAM-B3LYP</Entry>
+                            <Entry id="7">HSE06</Entry>
+                            <Entry id="8">M11</Entry>
+                            <Entry id="9">M11-L</Entry>
+                            <Entry id="10">PBE</Entry>
+                            <Entry id="11">REVPBE</Entry>
+                            <Entry id="12">PBE0</Entry>
+                            <Entry id="13">REVPBE0</Entry>
+                            <Entry id="14">PW91</Entry>
+                            <Entry id="15">TPSS</Entry>
+                            <Entry id="16">TPSSH</Entry>
+                            <Entry id="17">REVTPSSH</Entry>
+                            <Entry id="18">WPBE</Entry>
+                            <Entry id="19">X3LYP</Entry>
+                            <Entry id="20">XLYP</Entry>
+                        </WaNoDropDown>
+                        <WaNoDropDown name="Basis">
+                            <Entry id="0">STO-3G</Entry>
+                            <Entry id="1">3-21G</Entry>
+                            <Entry id="2">6-31G</Entry>
+                            <Entry id="3">6-31G*</Entry>
+                            <Entry id="4">6-31G**</Entry>
+                            <Entry id="5">6-31+G</Entry>
+                            <Entry id="6">6-31+G*</Entry>
+                            <Entry id="7">6-31+G**</Entry>
+                            <Entry id="8">6-31++G</Entry>
+                            <Entry id="9">6-31++G*</Entry>
+                            <Entry id="10">6-31++G**</Entry>
+                            <Entry id="11">6-311G</Entry>
+                            <Entry id="12">6-311G*</Entry>
+                            <Entry id="13">6-311G**</Entry>
+                            <Entry id="14">6-311+G</Entry>
+                            <Entry id="15">6-311+G*</Entry>
+                            <Entry id="16">6-311+G**</Entry>
+                            <Entry id="17">6-311++G</Entry>
+                            <Entry id="18">6-311++G*</Entry>
+                            <Entry id="19">6-311++G**</Entry>
+                            <Entry id="20" chosen="true">def2-SV(P)</Entry>
+                            <Entry id="21">def2-SVP</Entry>
+                            <Entry id="22">def2-TZVP</Entry>
+                            <Entry id="23">def2-TZVPP</Entry>
+                            <Entry id="24">def2-QZVP</Entry>
+                            <Entry id="25">def2-QZVPP</Entry>
+                            <Entry id="26">cc-pVDZ</Entry>
+                            <Entry id="27">cc-pVTZ</Entry>
+                            <Entry id="28">cc-pVQZ</Entry>
+                            <Entry id="29">aug-cc-pVDZ</Entry>
+                            <Entry id="30">aug-cc-pVTZ</Entry>
+                            <Entry id="31">aug-cc-pVQZ</Entry>
+                        </WaNoDropDown>
+                        <WaNoInt name="Threads">1</WaNoInt>
+                        <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                    </WaNoDictBox>
+                    <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="Tabs.LambdaEAIP.Single Point Options.DFT Engine" name="DFTB+ Settings">
+                        <WaNoDropDown name="Partial Charge Method">
+                            <Entry id="0" chosen="true" >CM3</Entry>
+                            <Entry id="1">Mulliken</Entry>
+                        </WaNoDropDown>
+                        <WaNoInt name="Threads">1</WaNoInt>
+                        <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                    </WaNoDictBox>
+                </WaNoDictBox>
+            </WaNoGroup>
+        </WaNoTabs>
+    </WaNoRoot>
+    <WaNoExecCommand>bash ./qp_intro.sh</WaNoExecCommand>
+    <WaNoInputFiles>
+        <WaNoInputFile logical_filename="qp_intro.sh">qp_intro.sh</WaNoInputFile>
+    </WaNoInputFiles>
+    <WaNoOutputFiles>
+        <WaNoOutputFile>report.zip</WaNoOutputFile>
+    </WaNoOutputFiles>
+</WaNoTemplate>
