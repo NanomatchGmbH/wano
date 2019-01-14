@@ -1,43 +1,55 @@
-export SHREDDER_INPUT={{ wano["General Options"]["Morphology (CML)"] }}
-export CMLFILE={{ wano["General Options"]["Morphology (CML)"] }}
-export CMLFILE_1={{ wano["General Options"]["Morphology (CML)"] }}
-export SHREDDER_INPUT={{ wano["General Options"]["Morphology (CML)"] }}
-
-export DFTENGINE="{{ wano["DFT Settings"]["Engine"] }}"
-export BASIS="{{ wano["DFT Settings"]["Basis"] }}"
-export FUNCTIONAL="{{ wano["DFT Settings"]["Functional"] }}"
-export PARTIAL_CHARGE_METHOD="{{ wano["DFT Settings"]["Partial Charge Method"] }}"
-export SCREENEDITERATIONS="{{ wano["Self-consistency parameters"]["Screened Iterations"] }}"
-
-DAMPINGTRUEFALSE="{{ wano["Self-consistency parameters"]["Damping"] }}"
-
-if [ "$DAMPINGTRUEFALSE" == "True" ]
-then
-    export USE_DAMPING="on"
-else
-    export USE_DAMPING="off"
-fi
-
-export DAMPING="{{ wano["Self-consistency parameters"]["Damping Factor"] }}"
-export INNER_PART_CUT="{{ wano["Cutoffs"]["Inner Part Cutoff"] }}"
-export PAIRCUTOFF="{{ wano["Cutoffs"]["Pair Cutoff"] }}"
-export ENVIRONMENT_RADIUS="{{ wano["Cutoffs"]["Environment Radius"] }}"
-export DFT_MEMORY="{{ wano["Hardware Parameters"]["DFT Memory [MB]"] | int }}"
-
-export CALCULATE_JS="{{ wano["General Options"]["Calculate Js"] }}"
-export CALCULATE_LS="{{ wano["General Options"]["Calculate Lambdas"] }}"
-
-export LAMBDABASIS="{{ wano["DFT Settings"]["LambdaBasis"] }}"
-export LAMBDAFUNCTIONAL="{{ wano["DFT Settings"]["LambdaFunctional"] }}"
-export GAUSSIAN_SCFHEADER="{{ wano["DFT Settings"]["GaussianSCFHeader"] }}"
-
-#if [ "$CALCULATE_JS" == "True" ]
-#then
-#    export CALCULATE_JS="on"
-#else
-#    export CALCULATE_JS="off"
-#fi
+#!/bin/bash
 
 source $NANOMATCH/configs/quantumpatch.config
+source $NANOMATCH/configs/dftb.config
 
-QuantumPatch.sh
+
+####    SANITY CHECKS prior exec     ####
+
+if [ "$UC_TOTAL_PROCESSORS" == "1" ]
+then
+ echo "QuantumPatch needs at least 2 processors to run, because the first processor only handles communication, exiting"
+ exit 9012
+fi
+
+if [ "AA$SCRATCH" == "AA" ]
+then
+    echo "Not using Scratch, please setup scratch. Exiting."
+    use_scratch=False
+    exit 5012
+else
+    use_scratch=True
+fi
+
+#### End of SANITY CHECKS prior exec ####
+function varisset {
+        if [ -z ${!1+x} ]
+        then
+                echo "false"
+        else
+                echo "true"
+        fi
+}
+
+export OMP_NUM_THREADS=1
+
+
+
+# Here we check, whether variables are set and add them to the mpirun exports. This is not required for mpirun with PBS/Torque, but required with everything else.
+# We could also specify only the required ones, but we do not know that a priori (i.e. whether Turbomole or Gaussian is to be used.
+# To avoid warnings, we therefore check first whether something is set and only then add it to the command.
+environmentvariables=( "OMP_NUM_THREADS" "PATH" "HOSTFILE" "PYTHONPATH" "SCRATCH" "SHREDDERPATH" "SHREDDERPYTHON" "TURBODIR" "TURBOMOLE_SYSNAME" "TURBOTMPDIR" "GAUSS_SCRDIR" "g09root" "G09BASIS" "GAUSS_ARCHDIR" "GAUSS_BSDDIR" "GAUSS_EXEDIR" "GAUSS_LEXEDIR" "GV_DIR" "PGI_TERM" "_DSM_BARRIER" "NM_LICENSE_SERVER" "LD_LIBRARY_PATH" "DFTBPATH" "DFTBSLKO" )
+
+ENVCOMMAND=""
+for var in "${environmentvariables[@]}"
+do
+  #echo "${var}"
+  if [ "$(varisset ${var})" == "true" ]
+  then
+        ENVCOMMAND="$ENVCOMMAND -x $var"
+        #echo "${var} is set"
+  fi
+done
+
+echo "Running $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $SHREDDERPATH/QuantumPatch.py jobs/joblist"
+$MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $SHREDDERPATH/QuantumPatch.py jobs/joblist >> progress.txt 2> shredder_mpi_stderr
