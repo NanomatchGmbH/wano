@@ -2,17 +2,17 @@
     <WaNoRoot name="QuantumPatch">
         <WaNoTabs name="Tabs">
             <WaNoGroup name="General">
-                <WaNoDictBox name="General Options">
+                <WaNoDictBox name="General Settings">
                     <WaNoFile logical_filename="morphology.cml" name="Morphology">Put .cml file here</WaNoFile>
                     <WaNoInt name="Monomer Charge">0</WaNoInt>
                     <WaNoInt name="Monomer Multiplicity">0</WaNoInt>
                     <WaNoBool name="Run QuantumPatch">True</WaNoBool>
-                    <WaNoDropDown visibility_condition="%s == True" visibility_var_path="Tabs.General.General Options.Run QuantumPatch" name="QuantumPatch Type">
+                    <WaNoDropDown visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="QuantumPatch Type">
                         <Entry id="0" chosen="True">Polarized</Entry>
                         <Entry id="1">Polaron</Entry>
                         <Entry id="2">Exciton</Entry>
                     </WaNoDropDown>
-                    <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Options.Run QuantumPatch" name="Calculate Js">True</WaNoBool>
+                    <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Calculate Js">True</WaNoBool>
                     <WaNoBool name="Include Lambda/EA/IP Calculation">True</WaNoBool>
                 </WaNoDictBox>
                 <WaNoMultipleOf name="Molecular States">
@@ -708,26 +708,27 @@
                     </Entry>
                 </WaNoMultipleOf>
             </WaNoGroup>
-            <WaNoGroup visibility_condition="%s == True" visibility_var_path="Tabs.General.General Options.Include Lambda/EA/IP Calculation" name="LambdaEAIP">
-                <WaNoDictBox name="General Settings">
-                    <WaNoBool name="Calculate Lambda">False</WaNoBool>
-                    <WaNoDropDown name="Lambda Type" visibility_condition="%s == True" visibility_var_path="Tabs.LambdaEAIP.General Settings.Calculate Lambda">
+            <WaNoGroup name="LambdaEAIP">
+                <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Include Lambda/EA/IP Calculation" name="Settings">
+                    <WaNoBool name="Calculate Lambda">True</WaNoBool>
+                    <WaNoDropDown name="Lambda Type" visibility_condition="%s == True" visibility_var_path="Tabs.LambdaEAIP.Settings.Calculate Lambda">
                         <Entry id="0" chosen="True">Both</Entry>
                         <Entry id="1">Hole</Entry>
                         <Entry id="2">Electron</Entry>
                     </WaNoDropDown>
                     <WaNoBool name="Calculate EA">False</WaNoBool>
                     <WaNoBool name="Calculate IP">False</WaNoBool>
-                    <WaNoBool name="Vertical EA/IP">True</WaNoBool>
-                </WaNoDictBox>
-                <WaNoDynamicDropDown name="Engine for Geometry Optimizations" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
+                    <WaNoBool name="Vertical EA/IP">False</WaNoBool>
+                <WaNoDynamicDropDown name="Engine for Geometry Optimizations" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="2" />
                 <WaNoDynamicDropDown name="Engine for Single Points" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
+                </WaNoDictBox>
             </WaNoGroup>
         </WaNoTabs>
     </WaNoRoot>
-    <WaNoExecCommand>bash ./qp_intro.sh</WaNoExecCommand>
+    <WaNoExecCommand>bash ./init.sh</WaNoExecCommand>
     <WaNoInputFiles>
-        <WaNoInputFile logical_filename="qp_intro.sh">qp_intro.sh</WaNoInputFile>
+        <WaNoInputFile logical_filename="init.sh">init.sh</WaNoInputFile>
+        <WaNoInputFile logical_filename="init_lambda.py">init_lambda.py</WaNoInputFile>
     </WaNoInputFiles>
     <WaNoOutputFiles>
         <WaNoOutputFile>report.zip</WaNoOutputFile>
