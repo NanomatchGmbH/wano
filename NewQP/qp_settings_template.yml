@@ -1,0 +1,36 @@
+QuantumPatch:
+  convergence_criterion: steps
+  partial_charge_cutoff: 60
+DFTEngine:
+  defaults:
+    Turbomole:
+      basis: def2-SVP
+      functional: b-p
+      threads: 1
+      memory: 1500
+      reference: rdft
+      charge_model: ESP
+    Psi4Engine: sameas:DFTEngine.defaults.Turbomole
+    DFTBplus:
+      threads: 1
+      charge_model: mulliken
+      thirdorder: true
+      skfset: 3ob-3-1
+  charged:
+    settings: sameas:DFTEngine.defaults.Turbomole
+    name: Turbomole
+  fallback:
+    settings: sameas:DFTEngine.defaults.Turbomole
+    name: Turbomole
+    dofallback: false
+System:
+  Core:
+    default_molstates: 0;1
+Analysis:
+  MatrixEAIP:
+    radius: sameas:System.Shells.0.cutoff
+  MachineLearning:
+    enable: false
+INPUT: morphology.cml
+calculate_Js: true
+cutoff: 7
