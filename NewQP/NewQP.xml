@@ -4,8 +4,6 @@
             <WaNoGroup name="General">
                 <WaNoDictBox name="General Settings">
                     <WaNoFile logical_filename="morphology.cml" name="Morphology">Put .cml file here</WaNoFile>
-                    <WaNoInt name="Monomer Charge">0</WaNoInt>
-                    <WaNoInt name="Monomer Multiplicity">0</WaNoInt>
                     <WaNoBool name="Run QuantumPatch">True</WaNoBool>
                     <WaNoDropDown visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="QuantumPatch Type">
                         <Entry id="0" chosen="True">Polarized</Entry>
@@ -45,6 +43,7 @@
                                 <Entry id="0" chosen="true">ESP</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoDropDown name="Functional">
                                 <Entry id="0">SVWN</Entry>
                                 <Entry id="1">SVWN_Gaussian</Entry>
@@ -132,6 +131,7 @@
                                 <Entry id="0" chosen="true" >ESP</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoDropDown name="Functional">
                                 <Entry id="0">B1LYP</Entry>
                                 <Entry id="1">B2GPPLYP</Entry>
@@ -197,6 +197,7 @@
                                 <Entry id="0" chosen="true" >CM3</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
@@ -213,6 +214,7 @@
                                 <Entry id="0" chosen="true">ESP</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoDropDown name="Functional">
                                 <Entry id="0">SVWN</Entry>
                                 <Entry id="1">SVWN_Gaussian</Entry>
@@ -300,6 +302,7 @@
                                 <Entry id="0" chosen="true" >ESP</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoDropDown name="Functional">
                                 <Entry id="0">B1LYP</Entry>
                                 <Entry id="1">B2GPPLYP</Entry>
@@ -365,6 +368,7 @@
                                 <Entry id="0" chosen="true" >CM3</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
@@ -381,6 +385,7 @@
                                 <Entry id="0" chosen="true">ESP</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoDropDown name="Functional">
                                 <Entry id="0">SVWN</Entry>
                                 <Entry id="1">SVWN_Gaussian</Entry>
@@ -468,6 +473,7 @@
                                 <Entry id="0" chosen="true" >ESP</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoDropDown name="Functional">
                                 <Entry id="0">B1LYP</Entry>
                                 <Entry id="1">B2GPPLYP</Entry>
@@ -533,6 +539,7 @@
                                 <Entry id="0" chosen="true" >CM3</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>

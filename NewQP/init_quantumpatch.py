@@ -46,6 +46,7 @@ if __name__ == "__main__":
                 "functional": settings["Functional"],
                 "threads": settings["Threads"],
                 "memory": settings["Memory (MB)"],
+                "disersion": settings["D3(BJ) Dispersion Correction"],
                 "charge_model": settings["Partial Charge Method"],
             }
         elif engine_name == "DFTB+":
@@ -54,6 +55,7 @@ if __name__ == "__main__":
                 "thirdorder": True,
                 "threads": settings["Threads"],
                 "memory": settings["Memory (MB)"],
+                "disersion": settings["D3(BJ) Dispersion Correction"],
                 "charge_model": settings["Partial Charge Method"],
             }
         else:
