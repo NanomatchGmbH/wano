@@ -20,10 +20,12 @@ if __name__ == "__main__":
                         "Settings": engine_settings})
     tmp = wano["Tabs"]["General"]["General Settings"]
     molecule = {"Path": tmp["Morphology"],
-                "Charge": tmp["Monomer Charge"],
-                "Multiplicity": tmp["Monomer Multiplicity"]}
+                "Charge": 0,
+                "Multiplicity": 0
+                }
     settings = {"Molecule": molecule,
                 "Engines": engines,
-                "LambdaEAIP": wano["Tabs"]["LambdaEAIP"]}
+                "LambdaEAIP": wano["Tabs"]["LambdaEAIP"]
+                }
     with open("LambdaEAIP_settings.yml", "w") as wanoout:
         yaml.dump(settings, wanoout, default_flow_style=False)

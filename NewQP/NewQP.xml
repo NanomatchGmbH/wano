@@ -604,11 +604,12 @@
             </WaNoGroup>
         </WaNoTabs>
     </WaNoRoot>
-    <WaNoExecCommand>bash ./init.sh</WaNoExecCommand>
+    <WaNoExecCommand>export NANOMATCH=/home/nanodev_build/nanomatch; bash ./init.sh</WaNoExecCommand>
     <WaNoInputFiles>
         <WaNoInputFile logical_filename="init.sh">init.sh</WaNoInputFile>
         <WaNoInputFile logical_filename="init_lambda.py">init_lambda.py</WaNoInputFile>
         <WaNoInputFile logical_filename="init_quantumpatch.py">init_quantumpatch.py</WaNoInputFile>
+        <WaNoInputFile logical_filename="qp_settings_template.yml">qp_settings_template.yml</WaNoInputFile>
     </WaNoInputFiles>
     <WaNoOutputFiles>
         <WaNoOutputFile>report.zip</WaNoOutputFile>

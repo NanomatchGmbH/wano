@@ -48,14 +48,29 @@ do
   fi
 done
 
+export QP_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Run QuantumPatch"] }}"
+export LAMBDA_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Include Lambda/EA/IP Calculation"] }}"
+
 echo "Creating input files."
-./init_lambda.py
-./init_quantumpatch.py
+if [ "$LAMBDA_RUN" == "True" ]
+then
+    /usr/bin/env python3 init_lambda.py
+fi
 
-echo "Running $NANOMATCH/MolecularTools/LambdaEAIP.py"
-$NANOMATCH/MolecularTools/LambdaEAIP.py
+if [ "$QP_RUN" == "True" ]
+then
+    /usr/bin/env python3 init_quantumpatch.py
+fi
 
-echo "Running $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $SHREDDERPATH/QuantumPatch.py jobs/joblist"
-$MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $SHREDDERPATH/QuantumPatch.py jobs/joblist >> progress.txt 2> shredder_mpi_stderr
+if [ "$LAMBDA_RUN" == "True" ]
+then
+    echo "Running $NANOMATCH/QuantumPatch/MolecularTools/LambdaEAIP.py"
+    $NANOMATCH/QuantumPatch/MolecularTools/LambdaEAIP.py
+fi
+if [ "$QP_RUN" == "True" ]
+then
+    echo "Running $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $NANOMATCH/QuantumPatch/QuantumPatchNG.py"
+    $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $NANOMATCH/QuantumPatch/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
+fi
 
 zip report.zip detailed.yml optimized_molecule*.xyz
