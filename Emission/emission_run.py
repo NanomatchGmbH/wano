@@ -99,8 +99,6 @@ if __name__ == "__main__":
         "threads": int(environ["UC_TOTAL_PROCESSORS"]),
         "charge": 0
     }
-    # Indirection to check if a functional is a hybrid
-    hybrids = ["b3-lyp", "b2-plyp"]
 
     # If wanted, a geometry optimization of the input molecule is executed
     if wano["Optimize Geometry"] is True:
@@ -109,8 +107,6 @@ if __name__ == "__main__":
         options["optimize"] = True
         options["basis"] = inputs["Basis"]
         options["functional"] = inputs["Functional"]
-        if inputs["Functional"] in hybrids:
-            options["method"] = "dscf"
         dfte = Turbomole("%s/geometry_optimization" % exec_dir, options)
         dfte.write_input_for_molecules([mol], [])
         dfte.run()
@@ -210,8 +206,6 @@ if __name__ == "__main__":
         options["roots"] = inputs["Excitations"]
         options["basis"] = inputs["Basis"]
         options["functional"] = inputs["Functional"]
-        if inputs["Functional"] in hybrids:
-            options["method"] = "dscf"
         dfte = Turbomole("%s/linear_response" % exec_dir, options)
         dfte.write_input_generic(coords, elems, [])
         dfte.run()
