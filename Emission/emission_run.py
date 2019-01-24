@@ -172,11 +172,11 @@ if __name__ == "__main__":
         dftbd.write_vmd_state_file("dipole_and_phosphorescence")
         if is_orientation_analysis:
             orientation_yml = dict()
-            orientation_yml[0] = dftbd.orientation_analysis_static_dipole_input()
+            orientation_yml["0"] = dftbd.orientation_analysis_static_dipole_input()
             phos_vecs = dftbd.orientation_analysis_quadratic_response_input()
             i = 0
             while i < 3:
-                orientation_yml[i + 1] = phos_vecs[i].copy()
+                orientation_yml["%d" % i + 1] = phos_vecs[i].copy()
                 i += 1
             with open("orientation_analysis.yml", "w") as outfile:
                 yaml.safe_dump(orientation_yml, outfile)
@@ -216,8 +216,8 @@ if __name__ == "__main__":
         dftbd.write_vmd_state_file("dipole_and_fluorescence")
         if is_orientation_analysis:  # Orientation analysis output generation
             orientation_yml = dict()
-            orientation_yml[0] = dftbd.orientation_analysis_static_dipole_input()
-            orientation_yml[1] = dftbd.orientation_analysis_linear_response_input()
+            orientation_yml["0"] = dftbd.orientation_analysis_static_dipole_input()
+            orientation_yml["1"] = dftbd.orientation_analysis_linear_response_input()
             with open("orientation_analysis.yml", "w") as outfile:
                 yaml.safe_dump(orientation_yml, outfile)
         # Creating standard YAML output

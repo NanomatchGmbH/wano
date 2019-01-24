@@ -210,5 +210,6 @@
 </WaNoInputFiles>
 <WaNoOutputFiles>
      <WaNoOutputFile>report.zip</WaNoOutputFile>
+     <WaNoOutputFile>orientation_analysis.yml</WaNoOutputFile>
 </WaNoOutputFiles>
 </WaNoTemplate>
