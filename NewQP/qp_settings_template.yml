@@ -1,6 +1,10 @@
 QuantumPatch:
+  morphology: morphology.cml
   convergence_criterion: steps
   partial_charge_cutoff: 60
+  dimer_cutoff: 7.0
+  number_of_equilibration_steps: 7
+  charge_damping: 0.15
 DFTEngine:
   defaults:
     Turbomole:
@@ -25,12 +29,8 @@ DFTEngine:
     dofallback: false
 System:
   Core:
-    default_molstates: 0;1
 Analysis:
   MatrixEAIP:
     radius: sameas:System.Shells.0.cutoff
   MachineLearning:
     enable: false
-INPUT: morphology.cml
-calculate_Js: true
-cutoff: 7
