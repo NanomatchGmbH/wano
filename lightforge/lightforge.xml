@@ -38,6 +38,7 @@
         </WaNoDropDown>
 
         <WaNoFloat name="epsilon_material">4.0</WaNoFloat>
+        <WaNoBool name="superexchange">True</WaNoBool>
 
         <WaNoBool name="show_advanced">False</WaNoBool>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="distance_epsilon">False</WaNoBool>
@@ -50,6 +51,10 @@
 
 
       <WaNoGroup name="device">
+        <WaNoDropDown name="expansion scheme">
+          <Entry id="0" chosen="True">lfx</Entry>
+          <Entry id="1">edcm</Entry>
+        </WaNoDropDown>
         <WaNoMultipleOf name="layers">
           <Element id="0">
 
@@ -79,7 +84,7 @@
               <WaNoFile visibility_condition="'%s' == 'file'" visibility_var_path="TABS.device.layers.{{ path[3] }}.morphology_source" logical_filename="COM_{{ path[3] }}.dat" name="morphology_file">Put file here</WaNoFile>
               <WaNoFile visibility_condition="'%s' == 'stochastic_extension'" visibility_var_path="TABS.device.layers.{{ path[3] }}.morphology_source" logical_filename="COM_{{ path[3] }}.dat" name="morphology_input_file">Put file here</WaNoFile>
                  
-              <WaNoDropDown visibility_condition="'%s' == 'QP_output'" visibility_var_path="TABS.device.layers.{{ path[3] }}.morphology_source" name="identify_species_id_by">
+              <WaNoDropDown name="identify_species_id_by">
                  <Entry id="0" chosen="True">order_in_morphology_file</Entry>
                  <Entry id="1">molecule_pdb</Entry>
               </WaNoDropDown>
