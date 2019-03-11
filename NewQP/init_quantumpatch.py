@@ -27,11 +27,10 @@ if __name__ == "__main__":
                "Polaron/Exciton": "charged_equilibration"}
     shelltype = {"dynamic": "scf",
                  "static": "static"}
-    # settings_ng top level settings
-    cfg["calculate_Js"] = wano_general["Calculate Js"]
     # settings_ng "QuantumPatch" Category
     cfg["QuantumPatch"]["type"] = qp_type[qp_run]
     cfg["QuantumPatch"]["number_of_equilibration_steps"] = max_iter
+    cfg["QuantumPatch"]["calculateJs"] = wano_general["Calculate Js"]
     # settings_ng "DFTEngine" Category
     cfg["DFTEngine"]["user"] = dict()
     for engine in wano["Tabs"]["Engines"]["DFT Engines"]:
@@ -51,7 +50,7 @@ if __name__ == "__main__":
             }
         elif engine_name == "DFTB+":
             entry = {
-                "engine": engine_name,
+                "engine": "DFTBplus",
                 "thirdorder": True,
                 "threads": settings["Threads"],
                 "memory": settings["Memory (MB)"],
@@ -82,6 +81,7 @@ if __name__ == "__main__":
             "enable_switch": False
         }
     # settings_ng "System" Category
+    cfg["System"]["Core"] = dict()
     if wano_core["Inner Part Method"] == "Number of Molecules":
         cfg["System"]["Core"]["type"] = "number"
         cfg["System"]["Core"]["number"] = wano_core["Number of Molecules"]
@@ -95,6 +95,8 @@ if __name__ == "__main__":
     elif wano_core["Inner Part Method"] == "List of Molecule IDs":
         cfg["System"]["Core"]["type"] = "list"
         cfg["System"]["Core"]["list"] = wano_core["list of Molecule IDs"]
+    cfg["System"]["Core"]["engine"] = wano_core["Used Engine"]
+    cfg["System"]["Core"]["default_molstates"] = wano_core["Default Molecular States"]
     i = 0
     cfg["System"]["Shells"] = dict()
     for shell in wano_shells["Outer Shells"]:
