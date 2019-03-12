@@ -34,6 +34,10 @@
     </Element>
   </WaNoMultipleOf>
  </WaNoGroup>
+  <WaNoGroup name="Postprocessing">
+  <WaNoBool name="Extend morphology (x,y)">False</WaNoBool>
+  <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.Postprocessing.Extend morphology (x,y)" name="Cut first layer by (A)">7.0</WaNoFloat>
+ </WaNoGroup>
  </WaNoTabs>
  </WaNoRoot>
  <WaNoExecCommand>bash ./deposit_init.sh</WaNoExecCommand>

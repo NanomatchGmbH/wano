@@ -30,9 +30,19 @@ then
     fi
 fi
 
-Deposit.py {% for element in wano["TABS"]["Molecules"]["Molecules"] %} molecule.{{ loop.index - 1 }}.pdb={{ element["Molecule"] }}  molecule.{{ loop.index - 1 }}.spf={{ element["Forcefield"] }} molecule.{{ loop.index - 1 }}.conc={{ element["Mixing Ratio"] }} {% endfor %}  simparams.Thi={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Initial Temperature [K]"] }}  simparams.Tlo={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Final Temperature [K]"] }} simparams.sa.Tacc={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["SA Acc Temp"] }} simparams.sa.cycles={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of SA cycles"] }} simparams.sa.steps={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of Steps"] }} simparams.Nmol={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of Molecules"] }} simparams.moves.dihedralmoves={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Dihedral Moves"] }}  Box.Lx={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["Lx"] }}  Box.Ly={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["Ly"] }}  Box.Lz={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["Lz"] }}  Box.pbc_cutoff={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["PBC"]["Cutoff"] }}  simparams.PBC={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["PBC"]["enabled"] }} machineparams.ncpu=${UC_PROCESSORS_PER_NODE}
+Deposit.py {% for element in wano["TABS"]["Molecules"]["Molecules"] %} molecule.{{ loop.index - 1 }}.pdb={{ element["Molecule"] }}  molecule.{{ loop.index - 1 }}.spf={{ element["Forcefield"] }} molecule.{{ loop.index - 1 }}.conc={{ element["Mixing Ratio"] }} {% endfor %}  simparams.Thi={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Initial Temperature [K]"] }}  simparams.Tlo={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Final Temperature [K]"] }} simparams.sa.Tacc={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["SA Acc Temp"] }} simparams.sa.cycles={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of SA cycles"] }} simparams.sa.steps={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of Steps"] }} simparams.Nmol={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of Molecules"] }} simparams.moves.dihedralmoves={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Dihedral Moves"] }}  Box.Lx={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["Lx"] }}  Box.Ly={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["Ly"] }}  Box.Lz={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["Lz"] }}  Box.pbc_cutoff={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["PBC"]["Cutoff"] }}  simparams.PBC={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["PBC"]["enabled"] }} machineparams.ncpu=${UC_PROCESSORS_PER_NODE} Box.grid_overhang=30
 
 babel structure.cml structure.mol2
+
+if [ "{{ wano["TABS"]["Postprocessing"]["Extend morphology (x,y)"] }}" == "True" ]
+then
+    $DEPOSITPATH/Tools/add_periodic_copies.py {{ wano["TABS"]["Postprocessing"]["Cut first layer by (A)"] }}
+    mv periodic_output/structurePBC.cml .
+    rm -f periodic_output/*.cml
+    zip -r periodic_output_single_molecules.zip periodic_output
+    rm -r periodic_output/
+fi
+
 
 zip restartfile.zip deposited_*.pdb.gz static_parameters.dpcf.gz static_parameters.dpcf_molinfo.dat.gz grid.vdw.gz grid.es.gz neighbourgrid.vdw.gz
 
@@ -47,3 +57,5 @@ then
     rm -r $WORKING_DIR
 fi
 fi
+
+
