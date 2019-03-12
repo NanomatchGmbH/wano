@@ -210,8 +210,6 @@
 </WaNoInputFiles>
 <WaNoOutputFiles>
      <WaNoOutputFile>report.zip</WaNoOutputFile>
-     <WaNoOutputFile>optimized_molecule.xyz</WaNoOutputFile>
-     <WaNoOutputFile>detailed.yml</WaNoOutputFile>
      <WaNoOutputFile>orientation_analysis.yml</WaNoOutputFile>
 </WaNoOutputFiles>
 </WaNoTemplate>
