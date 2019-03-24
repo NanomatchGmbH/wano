@@ -8,6 +8,7 @@
                     <WaNoDropDown visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="QuantumPatch Type">
                         <Entry id="0" chosen="True">Polarized</Entry>
                         <Entry id="1">Polaron/Exciton</Entry>
+                        <Entry id="2">Matrix EAIP</Entry>
                     </WaNoDropDown>
                     <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Calculate Js">True</WaNoBool>
                     <WaNoBool name="Include Lambda/EA/IP Calculation">True</WaNoBool>
@@ -15,16 +16,18 @@
                 <WaNoMultipleOf name="Molecular States">
                     <Entry id="0">
                         <WaNoDictBox name="State">
-                            <WaNoInt name="Charge">0</WaNoInt>
-                            <WaNoInt name="Multiplicity">0</WaNoInt>
-                            <WaNoInt name="Excitation">0</WaNoInt>
+                            <WaNoInt name="Charge">1</WaNoInt>
+                            <WaNoInt name="Multiplicity">2</WaNoInt>
+                            <WaNoInt name="Excitated State of Interest">0</WaNoInt>
+                            <WaNoInt name="Roots">0</WaNoInt>
                         </WaNoDictBox>
                     </Entry>
                     <Entry id="1">
                         <WaNoDictBox name="State">
-                            <WaNoInt name="Charge">1</WaNoInt>
+                            <WaNoInt name="Charge">-1</WaNoInt>
                             <WaNoInt name="Multiplicity">2</WaNoInt>
-                            <WaNoInt name="Excitation">0</WaNoInt>
+                            <WaNoInt name="Excitated State of Interest">0</WaNoInt>
+                            <WaNoInt name="Roots">0</WaNoInt>
                         </WaNoDictBox>
                     </Entry>
                 </WaNoMultipleOf>
@@ -38,6 +41,8 @@
                             <Entry id="1">Psi4</Entry>
                             <Entry id="2">DFTB+</Entry>
                         </WaNoDropDown>
+                        <WaNoBool name="Fallback">False</WaNoBool>
+                        <WaNoDynamicDropDown visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Fallback" visibility_condition="'%s' == 'True'" name="Fallback Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
                         <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Turbomole Settings">
                             <WaNoDropDown name="Partial Charge Method">
                                 <Entry id="0" chosen="true">ESP</Entry>
@@ -209,6 +214,8 @@
                             <Entry id="1" chosen="true">Psi4</Entry>
                             <Entry id="2">DFTB+</Entry>
                         </WaNoDropDown>
+                        <WaNoBool name="Fallback">False</WaNoBool>
+                        <WaNoDynamicDropDown visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Fallback" visibility_condition="'%s' == 'True'" name="Fallback Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
                         <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Turbomole Settings">
                             <WaNoDropDown name="Partial Charge Method">
                                 <Entry id="0" chosen="true">ESP</Entry>
@@ -380,6 +387,8 @@
                             <Entry id="1">Psi4</Entry>
                             <Entry id="2" chosen="true">DFTB+</Entry>
                         </WaNoDropDown>
+                        <WaNoBool name="Fallback">False</WaNoBool>
+                        <WaNoDynamicDropDown visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Fallback" visibility_condition="'%s' == 'True'" name="Fallback Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
                         <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Turbomole Settings">
                             <WaNoDropDown name="Partial Charge Method">
                                 <Entry id="0" chosen="true">ESP</Entry>
