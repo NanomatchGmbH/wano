@@ -24,7 +24,9 @@ if __name__ == "__main__":
     max_iter = wano_core["Screened Iterations"]
     # Indirection arrays to translate settings from WaNo expression to input
     qp_type = {"Polarized": "uncharged_equilibration",
-               "Polaron/Exciton": "charged_equilibration"}
+               "Polaron/Exciton": "charged_equilibration",
+               "Matrix EAIP": "matrix_eaip",
+               "Excitonic Preprocessing": "excitonic_preprocessing"}
     shelltype = {"dynamic": "scf",
                  "static": "static"}
     # settings_ng "QuantumPatch" Category
@@ -45,7 +47,7 @@ if __name__ == "__main__":
                 "functional": settings["Functional"],
                 "threads": settings["Threads"],
                 "memory": settings["Memory (MB)"],
-                "disersion": settings["D3(BJ) Dispersion Correction"],
+                "dispersion": settings["D3(BJ) Dispersion Correction"],
                 "charge_model": settings["Partial Charge Method"],
             }
         elif engine_name == "DFTB+":
@@ -54,11 +56,15 @@ if __name__ == "__main__":
                 "thirdorder": True,
                 "threads": settings["Threads"],
                 "memory": settings["Memory (MB)"],
-                "disersion": settings["D3(BJ) Dispersion Correction"],
+                "dispersion": settings["D3(BJ) Dispersion Correction"],
                 "charge_model": settings["Partial Charge Method"],
             }
         else:
             raise QuantumPatchWaNoError("Unknown DFT engine %s" % engine_name)
+        if engine_name == "Turbomole":
+            entry["scf_convergence"] = settings["SCF Convergence"]
+        if engine["Fallback"]:
+            entry["fallback"] = engine["Fallback Engine"]
         cfg["DFTEngine"]["user"][name] = entry
     cfg["DFTEngine"]["last_iter"] = dict()
     if wano_core["Different Engine on Last Iteration"]:
@@ -95,8 +101,14 @@ if __name__ == "__main__":
     elif wano_core["Inner Part Method"] == "List of Molecule IDs":
         cfg["System"]["Core"]["type"] = "list"
         cfg["System"]["Core"]["list"] = wano_core["list of Molecule IDs"]
+    by_iter = dict()  # Inserts engine_by_iter section
+    if wano_core["Different Engine on Last Iteration"]:
+        by_iter["LastUncharged"] = wano_core["Last Iteration Engine"]
+        by_iter["LastCharged"] = wano_core["Last Iteration Engine"]
+    cfg["System"]["Core"]["engine_by_iter"] = by_iter
     cfg["System"]["Core"]["engine"] = wano_core["Used Engine"]
     cfg["System"]["Core"]["default_molstates"] = wano_core["Default Molecular States"]
+    cfg["System"]["Core"]["GeometricalOptimizationSteps"] = []
     i = 0
     cfg["System"]["Shells"] = dict()
     for shell in wano_shells["Outer Shells"]:
@@ -105,6 +117,11 @@ if __name__ == "__main__":
             "type": shelltype[shell["Shell"]["Shelltype"]],
             "engine": shell["Shell"]["Used Engine"]
         }
+        by_iter = dict()  # Inserts engine_by_iter section
+        if shell["Shell"]["Different Engine on Last Iteration"]:
+            by_iter["LastUncharged"] = shell["Shell"]["Last Iteration Engine"]
+            by_iter["LastCharged"] = shell["Shell"]["Last Iteration Engine"]
+        cfg["System"]["Shells"][str(i)]["engine_by_iter"] = by_iter
         i += 1
     cfg["System"]["MolStates"] = dict()
     i = 0
@@ -112,9 +129,16 @@ if __name__ == "__main__":
         cfg["System"]["MolStates"][str(i)] = {
             "charge": molstate["State"]["Charge"],
             "multiplicity": molstate["State"]["Multiplicity"],
-            "excitation": molstate["State"]["Excitation"]
+            "excited_state_of_interest": molstate["State"]["Excited State of Interest"],
+            "roots": molstate["State"]["Roots"]
         }
         i += 1
+    # Analysis section options
+    if wano_general["QuantumPatch Type"] == "Matrix EAIP":
+        if wano_general["Include in-matrix Lambda Calculation"]:
+            cfg["Analysis"]["MatrixEAIP"]["do_lambda"] = True
+        else:
+            cfg["Analysis"]["MatrixEAIP"]["do_lambda"] = False
     # Write modified settings file to disk.
     with open("settings_ng.yml", "w") as qpngout:
         yaml.dump(cfg, qpngout, default_flow_style=False)

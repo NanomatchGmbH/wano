@@ -69,8 +69,8 @@ then
 fi
 if [ "$QP_RUN" == "True" ]
 then
-    echo "Running $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $NANOMATCH/QuantumPatch/QuantumPatchNG.py"
-    $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $NANOMATCH/QuantumPatch/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
+    echo "Running $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr"
+    $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
 fi
 
 zip report.zip detailed.yml optimized_molecule*.xyz
