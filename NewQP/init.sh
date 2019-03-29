@@ -73,4 +73,4 @@ then
     $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
 fi
 
-zip report.zip detailed.yml optimized_molecule*.xyz
+zip -r report.zip Analysis

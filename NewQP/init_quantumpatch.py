@@ -53,7 +53,6 @@ if __name__ == "__main__":
         elif engine_name == "DFTB+":
             entry = {
                 "engine": "DFTBplus",
-                "thirdorder": True,
                 "threads": settings["Threads"],
                 "memory": settings["Memory (MB)"],
                 "dispersion": settings["D3(BJ) Dispersion Correction"],
@@ -66,26 +65,6 @@ if __name__ == "__main__":
         if engine["Fallback"]:
             entry["fallback"] = engine["Fallback Engine"]
         cfg["DFTEngine"]["user"][name] = entry
-    cfg["DFTEngine"]["last_iter"] = dict()
-    if wano_core["Different Engine on Last Iteration"]:
-        name = wano_core["Last Iteration Engine"]
-        cfg["DFTEngine"]["last_iter"]["settings"] = "sameas:DFTEngine.user.%s" % name
-        engine_name = None
-        for engine in wano["Tabs"]["Engines"]["DFT Engines"]:
-            if engine["Name"] == name:
-                engine_name = engine["Engine"]
-                break
-        if not engine_name:
-            msg = "Unknown engine %s in Last Iteration Engine." % name
-            raise QuantumPatchWaNoError(msg)
-        cfg["DFTEngine"]["last_iter"]["name"] = engine_name
-        cfg["DFTEngine"]["last_iter"]["enable_switch"] = True
-    else:
-        cfg["DFTEngine"]["last_iter"] = {
-            "settings": "sameas:DFTEngine.defaults.Turbomole",
-            "name": "Turbomole",
-            "enable_switch": False
-        }
     # settings_ng "System" Category
     cfg["System"]["Core"] = dict()
     if wano_core["Inner Part Method"] == "Number of Molecules":
