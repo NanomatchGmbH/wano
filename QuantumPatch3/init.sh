@@ -49,7 +49,7 @@ do
 done
 
 export QP_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Run QuantumPatch"] }}"
-export LAMBDA_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Include Lambda/EA/IP Calculation"] }}"
+export LAMBDA_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Include in-vacuo Lambda/EA/IP Calculation"] }}"
 
 echo "Creating input files."
 if [ "$LAMBDA_RUN" == "True" ]

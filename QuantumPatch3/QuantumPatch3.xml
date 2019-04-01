@@ -1,5 +1,5 @@
 <WaNoTemplate>
-    <WaNoRoot name="QuantumPatch">
+    <WaNoRoot name="QuantumPatch3">
         <WaNoTabs name="Tabs">
             <WaNoGroup name="General">
                 <WaNoDictBox name="General Settings">
