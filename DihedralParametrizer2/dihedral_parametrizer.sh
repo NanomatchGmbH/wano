@@ -2,6 +2,14 @@
 
 source $NANOMATCH/configs/DihedralParametrizer2.config
 
+HASDHS=$(grep dihedral molecule.spf| wc -l)
+if [ "$HASDHS" == "0" ]
+then
+    echo "No dihedrals found in pdb. Exiting and renaming input file to dh file."
+    mv molecule.spf dihedral_forcefield.spf
+    exit 0
+fi
+
 WORKING_DIR=`pwd`
 DATA_DIR=$WORKING_DIR
 
