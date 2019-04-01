@@ -186,6 +186,7 @@
  <WaNoInputFiles>
    <WaNoInputFile logical_filename="init.sh">init.sh</WaNoInputFile>
    <WaNoInputFile logical_filename="init_parametrizer.py">init_parametrizer.py</WaNoInputFile>
+   <WaNoInputFile logical_filename="merge_dh.py">merge_dh.py</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <WaNoOutputFile>report.zip</WaNoOutputFile>
