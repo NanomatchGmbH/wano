@@ -31,10 +31,14 @@ DFTEngine:
       skfset: 3ob-3-1
     Dalton:
       engine: Dalton
-      basis: def2-SVP
-      functional: BP86
+      basis: 3-21G
+      ecp_basis: ecp-sdd-dz
+      functional: B3LYP
+      autoset_ecp_atoms: True
+      quad_resp: True
+      roots: 1
       threads: 1
-      memory: 1500
+      memory: 8000
       charge_model: ESP
   geo_opt:
     keysfrom: DFTEngine.defaults.DFTBplus

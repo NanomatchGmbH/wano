@@ -12,7 +12,7 @@
                  <WaNoDictBox name="Phosphorescence">
                     <WaNoBool name="enabled">False</WaNoBool>
                     <WaNoInt  name="roots">1</WaNoInt>
-                    <WaNoDynamicDropDown name="Dalton Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
+                    <WaNoDynamicDropDown name="Dalton Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="3" />
                 </WaNoDictBox>
                  <WaNoDictBox name="TTA Rates">
                     <WaNoBool name="enabled">False</WaNoBool>
@@ -774,7 +774,6 @@
             </WaNoGroup>
             <WaNoGroup name="Shells">
                 <WaNoDictBox name="Core Shell">
-                    <WaNoInt name="Screened Iterations">7</WaNoInt>
                     <WaNoDropDown name="Inner Part Method">
                         <Entry id="0" chosen="True">Inner Box Cutoff</Entry>
                         <Entry id="1">Number of Molecules</Entry>
@@ -787,9 +786,6 @@
                     </WaNoDictBox>
                     <WaNoString visibility_condition="'%s' == 'List of Molecule IDs'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="List of Molecule IDs">molstate.0: 0-55;77;263 | molstate.1: 43;57;79-100</WaNoString>
                     <WaNoInt visibility_condition="'%s' == 'Number of Molecules'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="Number of Molecules">100</WaNoInt>
-                    <WaNoDynamicDropDown name="Used Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
-                    <WaNoBool name="Different Engine on Last Iteration">False</WaNoBool>
-                    <WaNoDynamicDropDown name="Last Iteration Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" visibility_condition="%s == True" visibility_var_path="Tabs.Shells.Core Shell.Different Engine on Last Iteration" />
                 </WaNoDictBox>
          </WaNoGroup>
         </WaNoTabs>

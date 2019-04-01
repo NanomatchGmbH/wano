@@ -22,10 +22,12 @@ if __name__ == "__main__":
     wano_core = wano_shells["Core Shell"]
     # settings_ng "DFTEngine" Category
     cfg["DFTEngine"]["user"] = dict()
+    first_engine_name = "Turbomole 1"
     for engine in wano["Tabs"]["Engines"]["DFT Engines"]:
         # Reformats engine output from NewQP rendered WaNo
         engine_name = engine["Engine"]
         name = engine["Name"]
+        first_engine_name = name
         settings = engine["%s Settings" % engine_name]
         if engine_name == "Turbomole" or engine_name == "Psi4":
             entry = {
@@ -46,11 +48,12 @@ if __name__ == "__main__":
                 "charge_model": settings["Partial Charge Method"],
             }
         elif engine_name == "Dalton":
-            entry = {
-                "engine": "Dalton",
+            entry = cfg["DFTEngine"]["defaults"]["Dalton"].copy()
+            entry.update({
+                "engine": "DaltonEngine",
                 "threads": settings["Threads"],
                 "memory": settings["Memory (MB)"]
-            }
+            })
         else:
             raise QuantumPatchWaNoError("Unknown DFT engine %s" % engine_name)
         if engine_name == "Turbomole":
@@ -74,12 +77,9 @@ if __name__ == "__main__":
         cfg["System"]["Core"]["type"] = "list"
         cfg["System"]["Core"]["list"] = wano_core["list of Molecule IDs"]
     by_iter = dict()  # Inserts engine_by_iter section
-    if wano_core["Different Engine on Last Iteration"]:
-        by_iter["LastUncharged"] = wano_core["Last Iteration Engine"]
-        by_iter["LastCharged"] = wano_core["Last Iteration Engine"]
     cfg["System"]["Core"]["engine_by_iter"] = by_iter
-    cfg["System"]["Core"]["engine"] = wano_core["Used Engine"]
     cfg["System"]["Core"]["GeometricalOptimizationSteps"] = []
+    cfg["System"]["Core"]["engine"] = first_engine_name
     # Analysis section options
     general = wano["Tabs"]["General"]
     if general["Fluorescence"]["enabled"]:
@@ -88,6 +88,7 @@ if __name__ == "__main__":
     if general["Phosphorescence"]["enabled"]:
         cfg["Analysis"]["Excitonic"]["Phosphorescence"]["enabled"] = True
         cfg["Analysis"]["Excitonic"]["Phosphorescence"]["DFTEngine"] = general["Phosphorescence"]["Dalton Engine"]
+        cfg["Analysis"]["Excitonic"]["Phosphorescence"]["roots"] =     general["Phosphorescence"]["roots"]
     if general["TTA Rates"]["enabled"]:
         cfg["Analysis"]["Excitonic"]["TTA"]["enabled"] = True
         cfg["Analysis"]["Excitonic"]["TTA"]["DFTEngine"] = general["TTA Rates"]["Engine"]
