@@ -5,6 +5,13 @@ source $NANOMATCH/configs/DihedralParametrizer2.config
 HASDHS=$(grep dihedral molecule.spf| wc -l)
 if [ "$HASDHS" == "0" ]
 then
+    python -c 'import yaml, sys; print(yaml.safe_load(sys.stdin))' < molecule.spf > /dev/null 2> /dev/null
+    if [ ! $? -eq 0 ]
+    then
+        echo "Could not read spf file. Exiting. Please check the format."
+        exit 1
+    fi
+
     echo "No dihedrals found in pdb. Exiting and renaming input file to dh file."
     mv molecule.spf dihedral_forcefield.spf
     exit 0
