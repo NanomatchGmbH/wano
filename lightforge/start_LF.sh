@@ -13,9 +13,10 @@ if [ "$UC_TOTAL_PROCESSORS" -gt 1 ]
 then
     $MPI_PATH/bin/mpirun --mca btl ^openib -x PATH -x PYTHONPATH -x SCRATCH -hostfile $HOSTFILE lightforge.py -s settings
 else
-    lightforge.py -s settings
+	echo "guckguck"
+    #lightforge.py -s settings
 fi 
-zip -r lf_output.zip  material/* experiments/*
+#zip -r lf_output.zip  material/* experiments/*
 
 count=`ls -1 experiments/*.png 2>/dev/null | wc -l`
 if [ $count != 0 ];then 

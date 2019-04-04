@@ -3,7 +3,6 @@
     <WaNoTabs name="TABS">
       
       <WaNoGroup name="general">
-
         <WaNoDropDown name="device_layout">
           <Entry id="0">stack</Entry>
           <Entry id="1">manual</Entry>
@@ -27,185 +26,215 @@
           <WaNoBool name="electrons">False</WaNoBool>
           <WaNoBool name="excitons">False</WaNoBool>
         </WaNoDictBox>
-
-      </WaNoGroup>
-
-      <WaNoGroup name="physics">
-         
-        <WaNoDropDown name="rates">
-          <Entry id="0" chosen="True">Marcus</Entry>
-          <Entry id="1">Miller</Entry>
-        </WaNoDropDown>
-
-        <WaNoFloat name="epsilon_material">4.0</WaNoFloat>
-        <WaNoBool name="superexchange">True</WaNoBool>
-
-        <WaNoBool name="show_advanced">False</WaNoBool>
-        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="distance_epsilon">False</WaNoBool>
-        <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="screening_length">1.3</WaNoFloat>
-        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping">False</WaNoBool>
-        <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping_regeneration_steps">30</WaNoInt>
-        <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_stack_distance">0.8</WaNoFloat>
-        <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_J_scale">-0.2</WaNoFloat>
       </WaNoGroup>
 
 
-      <WaNoGroup name="device">
-        <WaNoDropDown name="expansion scheme">
-          <Entry id="0" chosen="True">lfx</Entry>
-          <Entry id="1">edcm</Entry>
-        </WaNoDropDown>
-        <WaNoMultipleOf name="layers">
+      <WaNoGroup name="IO">
+        <WaNoBool name="use QP output">True</WaNoBool>
+        <WaNoMultipleOf visibility_condition="%s == True" visibility_var_path="TABS.IO.use QP output" name="QP output file">
           <Element id="0">
-
-              <WaNoFloat visibility_condition="'%s' != 'manual'" visibility_var_path="TABS.general.device_layout" name="thickness">10</WaNoFloat>
-              <WaNoFloat visibility_condition="'%s' != 'manual'" visibility_var_path="TABS.general.device_layout" name="width">10</WaNoFloat>
-
-              <WaNoDictBox visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="dimensions"> 
-                <WaNoFloat name="Lx">10</WaNoFloat>
-                <WaNoFloat name="Ly">20</WaNoFloat>
-                <WaNoFloat name="Lz">20</WaNoFloat>
-              </WaNoDictBox>
-
-              <WaNoDictBox visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="layer_center">
-                <WaNoFloat name="Lx">0</WaNoFloat>
-                <WaNoFloat name="Ly">0</WaNoFloat>
-                <WaNoFloat name="Lz">0</WaNoFloat>
-              </WaNoDictBox>  
-              <WaNoBool name="use_QuantumPatch_output">True</WaNoBool>
-              <WaNoFile visibility_condition="%s == True" visibility_var_path="TABS.device.layers.{{ path[3] }}.use_QuantumPatch_output" logical_filename="QP_output_layer_{{ path[3] }}.zip" name="QP_output">Put file here</WaNoFile>
-
-              <WaNoDropDown name="morphology_source">
-                 <Entry id="0" chosen="True">QP_output</Entry>
-                 <Entry id="1">file</Entry>
-                 <Entry id="2">cubic</Entry>
-                 <Entry id="3">stochastic_extension</Entry>
-              </WaNoDropDown>
-              <WaNoFile visibility_condition="'%s' == 'file'" visibility_var_path="TABS.device.layers.{{ path[3] }}.morphology_source" logical_filename="COM_{{ path[3] }}.dat" name="morphology_file">Put file here</WaNoFile>
-              <WaNoFile visibility_condition="'%s' == 'stochastic_extension'" visibility_var_path="TABS.device.layers.{{ path[3] }}.morphology_source" logical_filename="COM_{{ path[3] }}.dat" name="morphology_input_file">Put file here</WaNoFile>
-                 
-              <WaNoDropDown name="identify_species_id_by">
-                 <Entry id="0" chosen="True">order_in_morphology_file</Entry>
-                 <Entry id="1">molecule_pdb</Entry>
-              </WaNoDropDown>
-              <WaNoDropDown visibility_condition="'%s' != 'cubic'" visibility_var_path="TABS.device.layers.{{ path[3] }}.morphology_source" name="mol_concentration_source">
-                 <Entry id="0" chosen="True">manual</Entry>
-                 <Entry id="1">from_morphology_file</Entry>
-              </WaNoDropDown>
-
-              <WaNoDropDown name="onsite_energy_source">
-                 <Entry id="0" chosen="True">QP_output</Entry>
-                 <Entry id="1">file</Entry>
-                 <Entry id="2">Gaussian</Entry>
-              </WaNoDropDown>
-              <WaNoFile visibility_condition="'%s' == 'file'" visibility_var_path="TABS.device.layers.{{ path[3] }}.onsite_energy_source" logical_filename="onsite_energy_{{ path[3] }}.dat" name="energy_file">Put file here</WaNoFile>
-
-              <WaNoDropDown visibility_condition="'%s' == 'Marcus'" visibility_var_path="TABS.physics.rates" name="reorganization_energies_source">
-                 <Entry id="0" chosen="True">QP_output</Entry>
-                 <Entry id="1">constant</Entry>
-                 <Entry id="2">file</Entry>
-                 <Entry id="3">Gaussian</Entry>
-              </WaNoDropDown>
-              <WaNoFile visibility_condition="'%s' == 'file'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" logical_filename="lambdas_{{ path[3] }}.dat" name="reorganization_energy_file">Put file here</WaNoFile>
-
-              <WaNoMultipleOf name="molecule_species">
-                <Element id="0">
-                  <WaNoInt name="species_id">0</WaNoInt>
-                  <WaNoFile visibility_condition="'%s' == 'molecule_pdb'" visibility_var_path="TABS.device.layers.{{ path[3] }}.identify_species_id_by" logical_filename="molecule_{{ path[3] }}_{{ path[5] }}.pdb" name="molecule_pdb">Put file here</WaNoFile>
-                  <WaNoFloat visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.device.layers.{{ path[3] }}.mol_concentration_source" name="concentration">1.0</WaNoFloat>
-            
-                  <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.holes" name="ionization_potential">
-                    <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.onsite_energy_source" name="mean">-5.2</WaNoFloat>
-                    <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.onsite_energy_source" name="disorder">0.1</WaNoFloat>
-                    
-                    <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="mean_lambda">-5.2</WaNoFloat>
-                    <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="disorder_lambda">0.1</WaNoFloat>
-                    <WaNoFloat visibility_condition="'%s' == 'constant'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="lambda_value">0.2</WaNoFloat>
-                  </WaNoDictBox>
-            
-                  <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.electrons" name="electron_affinity">
-                    <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.onsite_energy_source" name="mean">-5.2</WaNoFloat>
-                    <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.onsite_energy_source" name="disorder">0.1</WaNoFloat>
-                    
-                    <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="mean_lambda">-5.2</WaNoFloat>
-                    <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="disorder_lambda">0.1</WaNoFloat>
-                    <WaNoFloat visibility_condition="'%s' == 'constant'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="lambda_value">0.2</WaNoFloat>
-                  </WaNoDictBox>  
-                  
-                  <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="excitation_energies">
-                    <WaNoFloat name="singlet_decay_rate">1000000000</WaNoFloat>
-                    <WaNoFloat name="triplet_decay_rate">1000000</WaNoFloat>
-                    <WaNoFloat name="thermal_decay_rate">100000</WaNoFloat>
-                    <WaNoFloat visibility_condition="'%s' != 'file'" visibility_var_path="TABS.device.layers.{{ path[3] }}.onsite_energy_source" name="mean">1.2</WaNoFloat>
-                    <WaNoFloat visibility_condition="'%s' != 'file'" visibility_var_path="TABS.device.layers.{{ path[3] }}.onsite_energy_source" name="disorder">0.1</WaNoFloat>
-                    
-                    <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="mean_lambda">-5.2</WaNoFloat>
-                    <WaNoFloat visibility_condition="'%s' == 'Gaussian'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="disorder_lambda">0.1</WaNoFloat>
-                    <WaNoFloat visibility_condition="'t' in '%s'" visibility_var_path="TABS.device.layers.{{ path[3] }}.reorganization_energies_source" name="lambda_value">0.2</WaNoFloat>
-                  </WaNoDictBox>
-
-                </Element>
-              </WaNoMultipleOf>
-
+             <WaNoString name="name">mol: A,B</WaNoString>
+             <WaNoFile logical_filename="QP_output{{ path[3] }}.zip" name="QP_output.zip">Put file here</WaNoFile>
           </Element>
         </WaNoMultipleOf>
 
-
-        <WaNoMultipleOf visibility_condition="%s == True" visibility_var_path="TABS.general.connect_electrodes" name="electrodes">
+        <WaNoMultipleOf visibility_condition="%s == True" visibility_var_path="TABS.IO.use QP output" name="molecule pdbs">
           <Element id="0">
+             <WaNoString name="name">mol: A</WaNoString>
+             <WaNoFile logical_filename="molecule_pdb{{ path[3] }}.pdb" name="molecule.pdb">Put file here</WaNoFile>
+          </Element>
+        </WaNoMultipleOf>
+      </WaNoGroup>
 
-            <WaNoDictBox visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_norm_vector">
-              <WaNoFloat name="x">1.0</WaNoFloat>
-              <WaNoFloat name="y">0.0</WaNoFloat>
-              <WaNoFloat name="z">0.0</WaNoFloat>  
-            </WaNoDictBox>  
 
-            <WaNoDictBox visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_dimensions">
-              <WaNoFloat name="Ly">20.0</WaNoFloat>
-              <WaNoFloat name="Lz">20.0</WaNoFloat>
-            </WaNoDictBox>  
-
-            <WaNoDictBox visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_centers">
-              <WaNoFloat name="x">-0.5</WaNoFloat>
-              <WaNoFloat name="y">0.0</WaNoFloat>
-              <WaNoFloat name="z">0.0</WaNoFloat>  
-            </WaNoDictBox>  
-
-            <WaNoFloat name="electrode_workfunction">-5.0</WaNoFloat>
-
-            <WaNoDropDown name="coupling_model">
-              <Entry id="0">QP_output</Entry>
-              <Entry id="1">QM_fit</Entry>
-              <Entry id="2">parametrized</Entry>
+      <WaNoGroup name="materials">
+        <WaNoDropDown name="excitonics">
+          <Entry id="0" chosen="True">use QP abinitio input</Entry>
+          <Entry id="1">use presets</Entry>
+          <Entry id="2">use heuristic parameters</Entry>
+          <Entry id="3">no excitons</Entry>
+        </WaNoDropDown>
+        <WaNoMultipleOf name="materials">
+          <Element id="0">
+            <WaNoString name="name">mol A</WaNoString>
+            <WaNoDropDown name="input_mode_transport">
+              <Entry id="0" chosen="True">QP: eaip,sig,l</Entry>
+              <Entry id="1">QP: m,sig,l PAR: eaip</Entry>
+              <Entry id="2">QP: m,sig PAR: eaip,l</Entry>
+              <Entry id="3">QP: m,l PAR: eaip,sig</Entry>
+              <Entry id="4">QP: m PAR: eaip,sig,l</Entry>
+              <Entry id="5">PAR: eaip,sig,l,m=cubic</Entry>
+              <Entry id="6">QP: eaip,sig,l, File: m</Entry>
+              <Entry id="7">QP: sig,l, PAR: eaip File: m</Entry>
             </WaNoDropDown>
 
-            <WaNoFloat visibility_condition="'%s' == 'parametrized'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_wf_decay_length">0.3</WaNoFloat>
-            <WaNoFloat visibility_condition="'%s' == 'parametrized'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling">0.001</WaNoFloat>
-            <WaNoFile visibility_condition="'%s' == 'QM_fit'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling_file">Put file here</WaNoFile>
+            <WaNoSwitch switch_path="TABS.materials.materials.{{ path[3] }}.input_mode_transport" name="TP">
+              <WaNoDictBox switch_name="QP: eaip,sig,l" name="molecule parameters">
+                <WaNoDynamicDropDown name="molecule_pdb" collection_path="TABS.IO.molecule pdbs" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output sigma" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output lambda" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output eaip" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton presets" subpath="name" chosen="0" />
+              </WaNoDictBox>
+              <WaNoDictBox switch_name="QP: m,sig,l PAR: eaip" name="molecule parameters">
+                <WaNoDynamicDropDown name="molecule_pdb" collection_path="TABS.IO.molecule pdbs" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output sigma" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output lambda" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoMatrixFloat rows="1" cols="2" row_header="mean" col_header="IP;EA" name="energies"></WaNoMatrixFloat>
+                <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton presets" subpath="name" chosen="0" />
+              </WaNoDictBox>
+              <WaNoDictBox switch_name="QP: m,sig PAR: eaip,l" name="molecule parameters">
+                <WaNoDynamicDropDown name="molecule_pdb" collection_path="TABS.IO.molecule pdbs" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output sigma" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoMatrixFloat rows="2" cols="2" row_header="mean;lambda" col_header="IP;EA" name="energies"></WaNoMatrixFloat>
+                <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton presets" subpath="name" chosen="0" />
+              </WaNoDictBox>
+              <WaNoDictBox switch_name="QP: m,l PAR: eaip,sig" name="molecule parameters">
+                <WaNoDynamicDropDown name="molecule_pdb" collection_path="TABS.IO.molecule pdbs" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output lambda" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoMatrixFloat rows="2" cols="2" row_header="mean;sigma" col_header="IP;EA" name="energies"></WaNoMatrixFloat>
+                <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton presets" subpath="name" chosen="0" />
+              </WaNoDictBox>
+              <WaNoDictBox switch_name="QP: m PAR: eaip,sig,l" name="molecule parameters">
+                <WaNoDynamicDropDown name="molecule_pdb" collection_path="TABS.IO.molecule pdbs" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoMatrixFloat rows="3" cols="2" row_header="mean;sigma;lambda" col_header="IP;EA" name="energies"></WaNoMatrixFloat>
+                <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton presets" subpath="name" chosen="0" />
+              </WaNoDictBox>
 
+              <WaNoDictBox switch_name="PAR: eaip,sig,l,m=cubic" name="molecule parameters">
+                <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoMatrixFloat rows="3" cols="2" row_header="mean;sigma;lambda" col_header="IP;EA" name="energies"></WaNoMatrixFloat>
+                <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton presets" subpath="name" chosen="0" />
+              </WaNoDictBox>
+              <WaNoDictBox switch_name="QP: eaip,sig,l, File: m" name="molecule parameters">
+                <WaNoDynamicDropDown name="molecule_pdb" collection_path="TABS.IO.molecule pdbs" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output sigma" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output lambda" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output eaip" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoFile logical_filename="COM{{ path[3] }}.dat" name="morphology file">Put file here</WaNoFile>
+                <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton presets" subpath="name" chosen="0" />
+              </WaNoDictBox>
+              <WaNoDictBox switch_name="QP: sig,l, PAR: eaip File: m" name="molecule parameters">
+                <WaNoDynamicDropDown name="molecule_pdb" collection_path="TABS.IO.molecule pdbs" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output sigma" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output lambda" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoMatrixFloat rows="1" cols="2" row_header="mean" col_header="IP;EA" name="energies"></WaNoMatrixFloat>
+                <WaNoFile logical_filename="COM{{ path[3] }}.dat" name="morphology file">Put file here</WaNoFile>
+                <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton presets" subpath="name" chosen="0" />
+              </WaNoDictBox>
+
+            </WaNoSwitch>
+          </Element>
+        </WaNoMultipleOf>
+
+        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="show exciton presets">False</WaNoBool>
+        <WaNoMultipleOf visibility_condition="%s == True" visibility_var_path="TABS.materials.show exciton presets" name="exciton presets">
+          <Element id="0">
+            <WaNoString name="name">fluorescent</WaNoString>
+            <WaNoDictBox name="properties">
+              <WaNoString name="singlet_decay_rate">2e8</WaNoString>
+              <WaNoString name="triplet_decay_rate">1e3</WaNoString>
+              <WaNoString name="thermal_decay_rate">1e5</WaNoString>
+              <WaNoString name="max_TTA">1e6</WaNoString>
+              <WaNoString name="max_TPQ">1e6</WaNoString>
+              <WaNoString name="isc_rate">1e5</WaNoString>
+              <WaNoString name="risc_rate">1e3</WaNoString>
+              <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
+              <WaNoString name="s1s1_reorgnaization_energy">0.3</WaNoString>
+              <WaNoString name="binding_energy">1.0</WaNoString>
+              <WaNoFloat name="energy_disorder">0.1</WaNoFloat>
+              <WaNoFloat name="singlet_triplet_gap">0.4</WaNoFloat>
+            </WaNoDictBox>  
           </Element>
 
           <Element id="1">
-
-            <WaNoDictBox visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_norm_vector">
-              <WaNoFloat name="x">-1.0</WaNoFloat>
-              <WaNoFloat name="y">0.0</WaNoFloat>
-              <WaNoFloat name="z">0.0</WaNoFloat>  
+            <WaNoString name="name">phosphorescent</WaNoString>
+            <WaNoDictBox name="properties">
+              <WaNoString name="singlet_decay_rate">2e8</WaNoString>
+              <WaNoString name="triplet_decay_rate">1e6</WaNoString>
+              <WaNoString name="thermal_decay_rate">1e5</WaNoString>
+              <WaNoString name="max_TTA">1e11</WaNoString>
+              <WaNoString name="max_TPQ">1e11</WaNoString>
+              <WaNoString name="isc_rate">1e14</WaNoString>
+              <WaNoString name="risc_rate">1e3</WaNoString>
+              <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
+              <WaNoString name="s1s1_reorgnaization_energy">0.3</WaNoString>
+              <WaNoString name="binding_energy">1.0</WaNoString>
+              <WaNoFloat name="energy_disorder">0.1</WaNoFloat>
+              <WaNoFloat name="singlet_triplet_gap">0.4</WaNoFloat>
             </WaNoDictBox>  
+          </Element>         
+        </WaNoMultipleOf>
+      </WaNoGroup>
 
-            <WaNoDictBox visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_dimensions">
-              <WaNoFloat name="Ly">20.0</WaNoFloat>
-              <WaNoFloat name="Lz">20.0</WaNoFloat>
-            </WaNoDictBox>  
 
-            <WaNoDictBox visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_centers">
-              <WaNoFloat name="x">20.5</WaNoFloat>
-              <WaNoFloat name="y">0.0</WaNoFloat>
-              <WaNoFloat name="z">0.0</WaNoFloat>  
-            </WaNoDictBox>  
 
-            <WaNoFloat name="electrode_workfunction">-3.0</WaNoFloat>
+      <WaNoGroup name="device">
 
+        <WaNoFloat visibility_condition="'%s' != 'manual'" visibility_var_path="TABS.general.device_layout" name="morpholgy width [nm]">10</WaNoFloat>
+        <WaNoMultipleOf name="layers">
+          <Element id="0">
+            <WaNoMatrixFloat visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" rows="1" cols="3" row_header="" col_header="x;y;z" name="dimensions"></WaNoMatrixFloat>
+            <WaNoMatrixFloat visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" rows="1" cols="3" row_header="" col_header="x;y;z" name="layer_center"></WaNoMatrixFloat>
+            <WaNoFloat visibility_condition="'%s' != 'manual'" visibility_var_path="TABS.general.device_layout" name="thickness [nm]">10</WaNoFloat>
+            <WaNoDropDown name="data input mode">
+              <Entry id="0" chosen="True">automatic</Entry>
+              <Entry id="1">morphology: select QP_output</Entry>
+              <Entry id="2">custom Files: morphology</Entry>
+              <Entry id="3">custom Files: morphology, eaip</Entry>
+            </WaNoDropDown>
+
+            <WaNoSwitch switch_path="TABS.device.layers.{{ path[3] }}.data input mode" name="TP">
+              <WaNoInviBox switch_name="custom Files: morphology" name="box1">
+                <WaNoFile name="morphology file" logical_filename="COM{{ path[3] }}.dat">Put file here</WaNoFile>
+              </WaNoInviBox>
+              <WaNoInviBox switch_name="custom Files: morphology, eaip" name="box1">
+                <WaNoFile name="morphology file" logical_filename="COM{{ path[3] }}.dat">Put file here</WaNoFile>
+                <WaNoFile name="eaip file" logical_filename="eaip{{ path[3] }}.dat">Put file here</WaNoFile>
+              </WaNoInviBox>              
+              <WaNone switch_name="automatic" name="banane"></WaNone>
+              <WaNoDynamicDropDown switch_name="morphology: select QP_output" name="morphology QP_output" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+            </WaNoSwitch>
+
+            <WaNoMultipleOf name="molecule species">
+              <Element id="0">
+                <WaNoDynamicDropDown name="material" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
+                <WaNoFloat name="concentration">1.0</WaNoFloat>
+              </Element>
+            </WaNoMultipleOf>
+          </Element>
+        </WaNoMultipleOf>
+
+        <WaNoMultipleOf visibility_condition="%s == True" visibility_var_path="TABS.general.connect_electrodes" name="electrodes">
+          <Element id="0">
+            <WaNoMatrixFloat visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" rows="1" cols="3" row_header="" col_header="x;y;z" name="electrode_norm_vector"></WaNoMatrixFloat>
+            <WaNoMatrixFloat visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" rows="1" cols="2" row_header="" col_header="y;z" name="electrode_dimensions"></WaNoMatrixFloat>
+            <WaNoMatrixFloat visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" rows="1" cols="3" row_header="" col_header="x;y;z" name="electrode_center"></WaNoMatrixFloat>
+            <WaNoFloat name="electrode_workfunction">-5.0</WaNoFloat>
+            <WaNoDropDown name="coupling_model">
+              <Entry id="0">QP_output</Entry>
+              <Entry id="1">QM_fit</Entry>
+              <Entry id="2">parametrized</Entry>
+            </WaNoDropDown>
+
+            <WaNoFloat visibility_condition="'%s' == 'parametrized'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_wf_decay_length">0.3</WaNoFloat>
+            <WaNoFloat visibility_condition="'%s' == 'parametrized'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling">0.001</WaNoFloat>
+            <WaNoFile visibility_condition="'%s' == 'QM_fit'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling_file">Put file here</WaNoFile>
+          </Element>
+
+          <Element id="1">
+            <WaNoMatrixFloat visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" rows="1" cols="3" row_header="" col_header="x;y;z" name="electrode_norm_vector"></WaNoMatrixFloat>
+            <WaNoMatrixFloat visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" rows="1" cols="2" row_header="" col_header="y;z" name="electrode_dimensions"></WaNoMatrixFloat>
+            <WaNoMatrixFloat visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" rows="1" cols="3" row_header="" col_header="x;y;z" name="electrode_center"></WaNoMatrixFloat>
+            <WaNoFloat name="electrode_workfunction">-5.0</WaNoFloat>
             <WaNoDropDown name="coupling_model">
               <Entry id="0">QP_output</Entry>
               <Entry id="1">QM_fit</Entry>
@@ -217,16 +246,18 @@
             <WaNoFile visibility_condition="'%s' == 'QM_fit'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling_file">Put file here</WaNoFile>
 
           </Element>
-
-
         </WaNoMultipleOf>
+
+        <WaNoDropDown name="morphology expansion scheme">
+          <Entry id="0" chosen="True">lfx</Entry>
+          <Entry id="1">edcm</Entry>
+          <Entry id="2">no expansion (!dimensions fixed!)</Entry>
+        </WaNoDropDown>
       </WaNoGroup>  
 
 
 
-
       <WaNoGroup name="topology">
-
         <WaNoInt name="max neighbours">45</WaNoInt>
 
         <WaNoDropDown name="transfer_integral_source">
@@ -237,17 +268,15 @@
 
         <WaNoMultipleOf name="pair parameters">
           <Element id="0">
-          
-            <WaNoInt name="molecule_type_id1">0</WaNoInt>
-            <WaNoInt name="molecule_type_id2">0</WaNoInt>
-
+            <WaNoDynamicDropDown name="molecule 1" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
+            <WaNoDynamicDropDown name="molecule 2" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
+  
             <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="pair_cutoff">
               <WaNoFloat name="mean_distance">2.5</WaNoFloat>
               <WaNoFloat name="smearing">0.3</WaNoFloat>
             </WaNoDictBox> 
 
-            <WaNoFile visibility_condition="'%s' == 'QP_output'" visibility_var_path="TABS.topology.transfer_integral_source" logical_filename="QP_output_pair_{{ path[3] }}.zip" name="QP_output">Put file here</WaNoFile>
-
+            <WaNoDynamicDropDown visibility_condition="'%s' == 'QP_output'" visibility_var_path="TABS.topology.transfer_integral_source" name="QP_output" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
 
             <WaNoDictBox visibility_condition="'%s' != 'QP_output'" visibility_var_path="TABS.topology.transfer_integral_source" name="transfer_integral_parameters">
               <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.holes" name="hole_transfer_integrals">
@@ -268,15 +297,37 @@
             </WaNoDictBox>
 
 
-            <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="Foerster_parameters">
+            <WaNoDictBox visibility_condition="'%s' == 'use heuristic parameters'" visibility_var_path="TABS.materials.excitonics" name="Foerster_parameters_S1">
               <WaNoString name="Foerster_radius_forwards">2.5</WaNoString>
               <WaNoString name="Foerster_radius_backwards">0.5</WaNoString>
             </WaNoDictBox>        
+            <WaNoDictBox visibility_condition="'%s' == 'use heuristic parameters'" visibility_var_path="TABS.materials.excitonics" name="Foerster_parameters_T1">
+              <WaNoString name="Foerster_radius_forwards">2.5</WaNoString>
+              <WaNoString name="Foerster_radius_backwards">0.5</WaNoString>
+            </WaNoDictBox>  
 
           </Element>
         </WaNoMultipleOf>
       </WaNoGroup>
 
+
+      <WaNoGroup name="physics">
+        <WaNoDropDown name="rates">
+          <Entry id="0" chosen="True">Marcus</Entry>
+          <Entry id="1">Miller</Entry>
+        </WaNoDropDown>
+
+        <WaNoFloat name="epsilon_material">4.0</WaNoFloat>
+        <WaNoBool name="superexchange">True</WaNoBool>
+
+        <WaNoBool name="show_advanced">False</WaNoBool>
+        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="distance_epsilon">False</WaNoBool>
+        <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="screening_length">1.3</WaNoFloat>
+        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping">False</WaNoBool>
+        <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping_regeneration_steps">30</WaNoInt>
+        <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_stack_distance">0.8</WaNoFloat>
+        <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_J_scale">-0.2</WaNoFloat>
+      </WaNoGroup>
 
 
 
@@ -288,32 +339,11 @@
           <Entry id="0">DC</Entry>
         </WaNoDropDown>
 
-        <WaNoMultipleOf name="Temperature">
-          <Element id="0">
-            <WaNoFloat name="Temperature">300</WaNoFloat>
-          </Element>
-        </WaNoMultipleOf> 
-
-        <WaNoMultipleOf name="field_strength">
-          <Element id="0">
-            <WaNoFloat name="field_strength">0.01</WaNoFloat>
-          </Element>
-        </WaNoMultipleOf>
-
-        <WaNoMultipleOf visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="field_direction">
-          <Element id="0">
-            <WaNoFloat name="x">1</WaNoFloat>
-            <WaNoFloat name="y">0</WaNoFloat>
-            <WaNoFloat name="z">0</WaNoFloat>  
-          </Element>
-        </WaNoMultipleOf> 
-
-        <WaNoMultipleOf name="initial_charges">
-          <Element id="0">
-            <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.holes" name="holes">0</WaNoInt>
-            <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.electrons" name="electrons">0</WaNoInt>
-          </Element>
-        </WaNoMultipleOf> 
+        <WaNoString name="temperature [V/nm]">300</WaNoString>
+        <WaNoString name="field_strength [V/nm]">0.02 0.03 0.04</WaNoString>
+        <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.holes" name="initial holes">10</WaNoString>
+        <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.electrons" name="initial electrons">10</WaNoString>
+        <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="field direction">1 0 0</WaNoString>
 
         <WaNoDictBox name="computational">
           <WaNoFloat name="IV fluctuation">0.2</WaNoFloat>
@@ -330,8 +360,6 @@
         </WaNoDictBox>
 
       </WaNoGroup>
-
-
 
 
   </WaNoTabs>
