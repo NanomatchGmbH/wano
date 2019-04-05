@@ -1,6 +1,8 @@
 #!/bin/bash
 
-source $NANOMATCH/configs/quantumpatch.config
+export NANOVER="V2"
+
+source $NANOMATCH/$NANOVER/configs/quantumpatch.config
 
 
 if [ "AA$SCRATCH" == "AA" ]
@@ -41,7 +43,7 @@ done
 
 echo "Creating input files."
 /usr/bin/env python3 init_analysis.py
-echo "Running /usr/bin/env python3 $NANOMATCH/QuantumPatch/QuantumPatchAnalysis.py"
-/usr/bin/env python3 $NANOMATCH/QuantumPatch/QuantumPatchAnalysis.py
+echo "Running /usr/bin/env python3 $NANOMATCH/$NANOVER//QuantumPatch/QuantumPatchAnalysis.py"
+/usr/bin/env python3 $NANOMATCH/$NANOVER/QuantumPatch/QuantumPatchAnalysis.py
 
 zip report.zip orientation_analysis.png

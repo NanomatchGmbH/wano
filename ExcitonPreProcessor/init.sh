@@ -1,7 +1,9 @@
 #!/bin/bash
 
-source $NANOMATCH/configs/quantumpatch.config
-source $NANOMATCH/configs/dftb.config
+export NANOVER="V2"
+
+source $NANOMATCH/$NANOVER/configs/quantumpatch.config
+source $NANOMATCH/$NANOVER/configs/dftb.config
 
 
 # SANITY CHECKS

@@ -1,5 +1,7 @@
 #!/bin/bash
-source $NANOMATCH/configs/lightforge.config
+
+export NANOVER="V2"
+source $NANOMATCH/$NANOVER/configs/lightforge.config
 
 if [ -f lf_output.zip ]; then
 	unzip -d ./ lf_output.zip

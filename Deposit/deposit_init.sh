@@ -1,6 +1,6 @@
 #!/bin/bash
-
-source $NANOMATCH/configs/deposit.config
+export NANOVER="V2"
+source $NANOMATCH/$NANOVER/configs/deposit.config
 
 WORKING_DIR=`pwd`
 DATA_DIR=$WORKING_DIR

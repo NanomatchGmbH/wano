@@ -1,7 +1,8 @@
 #!/bin/bash
 
-source $NANOMATCH/configs/quantumpatch.config
-source $NANOMATCH/configs/dftb.config
+export NANOVER="V2"
+source $NANOMATCH/$NANOVER/configs/quantumpatch.config
+source $NANOMATCH/$NANOVER/configs/dftb.config
 
 
 # SANITY CHECKS
@@ -64,8 +65,8 @@ fi
 
 if [ "$LAMBDA_RUN" == "True" ]
 then
-    echo "Running $NANOMATCH/QuantumPatch/MolecularTools/LambdaEAIP.py"
-    $NANOMATCH/QuantumPatch/MolecularTools/LambdaEAIP.py
+    echo "Running $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/LambdaEAIP.py"
+    $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/LambdaEAIP.py
 fi
 if [ "$QP_RUN" == "True" ]
 then

@@ -1,6 +1,8 @@
 #!/bin/bash
 
-source $NANOMATCH/configs/DihedralParametrizer2.config
+export NANOVER="V2"
+
+source $NANOMATCH/$NANOVER/configs/DihedralParametrizer2.config
 
 HASDHS=$(grep dihedral molecule.spf| wc -l)
 if [ "$HASDHS" == "0" ]

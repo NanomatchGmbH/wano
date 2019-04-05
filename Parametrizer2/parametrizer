@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source $NANOMATCH/configs/parameterizer.config
+export NANOVER="V2"
+source $NANOMATCH/$NANOVER/configs/parameterizer.config
 
 WORKING_DIR=`pwd`
 

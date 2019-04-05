@@ -1,15 +1,16 @@
 #!/bin/bash
 
-source $NANOMATCH/configs/quantumpatch.config
+export NANOVER="V2"
+source $NANOMATCH/$NANOVER/configs/quantumpatch.config
 
 /usr/bin/env python3 init_parametrizer.py
 
-echo "Running $NANOMATCH/QuantumPatch/MolecularTools/Parametrizer.py"
-$NANOMATCH/QuantumPatch/MolecularTools/Parametrizer.py
+echo "Running $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/Parametrizer.py"
+$NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/Parametrizer.py
 
 
-DEPTOOLS=$NANOMATCH/deposit3/Tools
-SIMPY=$NANOMATCH/simona/python
+DEPTOOLS=$NANOMATCH/$NANOVER/deposit3/Tools
+SIMPY=$NANOMATCH/$NANOVER/simona/python
 export PYTHONPATH=$SIMPY:$PYTHONPATH
 
 python3 $DEPTOOLS/SPFgeneratorV2.py output_molecule.mol2 temporary_molecule_with_dhs.spf

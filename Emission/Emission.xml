@@ -204,7 +204,7 @@
             <WaNoInt name="Atom 3">3</WaNoInt>
         </WaNoDictBox>
  </WaNoRoot>
-<WaNoExecCommand>export NANOMATCH=/home/nanodev_build/nanomatch; source $NANOMATCH/configs/quantumpatch.config; python3 emission_run.py</WaNoExecCommand>
+<WaNoExecCommand>export NANOVER="V2"; source $NANOMATCH/$NANOVER/configs/quantumpatch.config; python3 emission_run.py</WaNoExecCommand>
 <WaNoInputFiles>
     <WaNoInputFile logical_filename="emission_run.py">emission_run.py</WaNoInputFile>
 </WaNoInputFiles>
