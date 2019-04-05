@@ -643,6 +643,6 @@
         <WaNoInputFile logical_filename="qp_settings_template.yml">qp_settings_template.yml</WaNoInputFile>
     </WaNoInputFiles>
     <WaNoOutputFiles>
-        <WaNoOutputFile>report.zip</WaNoOutputFile>
+        <WaNoOutputFile>Analysis.zip</WaNoOutputFile>
     </WaNoOutputFiles>
 </WaNoTemplate>

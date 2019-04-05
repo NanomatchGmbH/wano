@@ -53,4 +53,4 @@ echo "Creating input files."
 echo "Running $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py"
 $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py
 
-zip -r report.zip Analysis
+zip -r Analysis.zip Analysis
