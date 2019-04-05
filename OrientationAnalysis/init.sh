@@ -46,4 +46,4 @@ echo "Creating input files."
 echo "Running /usr/bin/env python3 $NANOMATCH/$NANOVER//QuantumPatch/QuantumPatchAnalysis.py"
 /usr/bin/env python3 $NANOMATCH/$NANOVER/QuantumPatch/QuantumPatchAnalysis.py
 
-zip report.zip orientation_analysis.png
+zip -r report.zip *
