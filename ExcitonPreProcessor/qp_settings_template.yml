@@ -1,0 +1,89 @@
+QuantumPatch:
+  morphology: morphology.cml
+  type: excitonic_preprocessing
+  dimer_cutoff: 7.0
+  number_of_equilibration_steps: 7
+  charge_damping: 0.15
+  partial_charge_cutoff: 60
+  calculateJs: false
+  chargetype_multipoles: false
+DFTEngine:
+  defaults:
+    Turbomole:
+      engine: Turbomole
+      basis: def2-SVP
+      functional: BP86
+      threads: 1
+      memory: 1500
+      charge_model: ESP
+    Psi4Engine:
+      engine: Psi4Engine
+      basis: def2-SVP
+      functional: BP86
+      threads: 1
+      memory: 1500
+      reference: rdft
+      charge_model: ESP
+    DFTBplus:
+      engine: DFTBplus
+      threads: 1
+      charge_model: cm3
+      skfset: 3ob-3-1
+    Dalton:
+      engine: Dalton
+      basis: 3-21G
+      ecp_basis: ecp-sdd-dz
+      functional: B3LYP
+      autoset_ecp_atoms: True
+      quad_resp: True
+      roots: 1
+      threads: 1
+      memory: 8000
+      charge_model: ESP
+  geo_opt:
+    keysfrom: DFTEngine.defaults.DFTBplus
+    ffenv: true
+System:
+  Core:
+    default_molstates: 0
+  Shells:
+    '0':
+      cutoff: 10.0
+      engine: DFTBplus 1
+      type: scf
+      engine_by_iter: {}
+    '1':
+      cutoff: 25.0
+      engine: DFTBplus 1
+      type: scf
+      engine_by_iter: {}
+    '2':
+      cutoff: 60.0
+      engine: DFTBplus 1
+      type: static
+      engine_by_iter: {}
+  MolStates:
+    '0':
+      charge: 0
+      multiplicity: 1
+      excited_state_of_interest: 0
+      roots: 10
+  IdenticalMolecules:
+    enable_mapping: false
+    filename: identical_molecules.txt
+    crystal_centers: []
+Analysis:
+  Excitonic:
+    Fluorescence:
+      enabled: false
+    Phosphorescence:
+      enabled: false
+    TTA:
+      enabled: false
+    TPQ:
+      enabled: false
+  MatrixEAIP:
+    radius: sameas:System.Shells.0.cutoff
+    do_lambda: false
+  MachineLearning:
+    enable: false

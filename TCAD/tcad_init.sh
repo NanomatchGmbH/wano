@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source $NANOMATCH/configs/silvaco.config
+export NANOVER="V2"
+source $NANOMATCH/$NANOVER/configs/silvaco.config
 python ./readwano.py > atlas.input
 
 atlas atlas.input > out.log

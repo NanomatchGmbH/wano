@@ -1,7 +1,9 @@
 #!/bin/bash
 
-source $NANOMATCH/configs/quantumpatch.config
-source $NANOMATCH/configs/dftb.config
+export NANOVER="V2"
+
+source $NANOMATCH/$NANOVER/configs/quantumpatch.config
+source $NANOMATCH/$NANOVER/configs/dftb.config
 
 
 # SANITY CHECKS
@@ -48,29 +50,9 @@ do
   fi
 done
 
-export QP_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Run QuantumPatch"] }}"
-export LAMBDA_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Include Lambda/EA/IP Calculation"] }}"
-
 echo "Creating input files."
-if [ "$LAMBDA_RUN" == "True" ]
-then
-    /usr/bin/env python3 init_lambda.py
-fi
+/usr/bin/env python3 init_quantumpatch.py
+echo "Running $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py"
+$MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py
 
-if [ "$QP_RUN" == "True" ]
-then
-    /usr/bin/env python3 init_quantumpatch.py
-fi
-
-if [ "$LAMBDA_RUN" == "True" ]
-then
-    echo "Running $NANOMATCH/QuantumPatch/MolecularTools/LambdaEAIP.py"
-    $NANOMATCH/QuantumPatch/MolecularTools/LambdaEAIP.py
-fi
-if [ "$QP_RUN" == "True" ]
-then
-    echo "Running $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $NANOMATCH/QuantumPatch/QuantumPatchNG.py"
-    $MPI_PATH/bin/mpirun --mca btl ^openib $ENVCOMMAND -hostfile $HOSTFILE $NANOMATCH/QuantumPatch/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
-fi
-
-zip report.zip detailed.yml optimized_molecule*.xyz
+zip -r Analysis.zip Analysis

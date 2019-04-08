@@ -36,7 +36,5 @@
  <WaNoOutputFiles>
     <WaNoOutputFile>molecule.pdb</WaNoOutputFile>
     <WaNoOutputFile>dihedral_forcefield.spf</WaNoOutputFile>
-    <WaNoOutputFile>dihedral_forcefield_clean.spf</WaNoOutputFile>
-    <WaNoOutputFile>*.png</WaNoOutputFile>    
  </WaNoOutputFiles>
 </WaNoTemplate>

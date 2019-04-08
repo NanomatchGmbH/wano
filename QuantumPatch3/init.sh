@@ -1,9 +1,17 @@
 #!/bin/bash
 
 export NANOVER="V2"
-
 source $NANOMATCH/$NANOVER/configs/quantumpatch.config
+source $NANOMATCH/$NANOVER/configs/dftb.config
 
+
+# SANITY CHECKS
+
+if [ "$UC_TOTAL_PROCESSORS" == "1" ]
+then
+ echo "QuantumPatch needs at least 2 processors to run, because the first processor only handles communication, exiting"
+ exit 9012
+fi
 
 if [ "AA$SCRATCH" == "AA" ]
 then
@@ -41,9 +49,29 @@ do
   fi
 done
 
-echo "Creating input files."
-/usr/bin/env python3 init_analysis.py
-echo "Running /usr/bin/env python3 $NANOMATCH/$NANOVER//QuantumPatch/QuantumPatchAnalysis.py"
-/usr/bin/env python3 $NANOMATCH/$NANOVER/QuantumPatch/QuantumPatchAnalysis.py
+export QP_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Run QuantumPatch"] }}"
+export LAMBDA_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Include in-vacuo Lambda/EA/IP Calculation"] }}"
 
-zip -r report.zip *
+echo "Creating input files."
+if [ "$LAMBDA_RUN" == "True" ]
+then
+    /usr/bin/env python3 init_lambda.py
+fi
+
+if [ "$QP_RUN" == "True" ]
+then
+    /usr/bin/env python3 init_quantumpatch.py
+fi
+
+if [ "$LAMBDA_RUN" == "True" ]
+then
+    echo "Running $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/LambdaEAIP.py"
+    $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/LambdaEAIP.py
+fi
+if [ "$QP_RUN" == "True" ]
+then
+    echo "Running $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr"
+    $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
+fi
+
+zip -r Analysis.zip Analysis

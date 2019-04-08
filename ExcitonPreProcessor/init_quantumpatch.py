@@ -17,26 +17,17 @@ if __name__ == "__main__":
     with open("qp_settings_template.yml", "r") as qpngin:
         cfg = yaml.load(qpngin)  # Script will modify this and re-write it
     # Shorthands
+    wano_general = wano["Tabs"]["General"]["General Settings"]
     wano_shells = wano["Tabs"]["Shells"]
     wano_core = wano_shells["Core Shell"]
-    wano_general = wano["Tabs"]["General"]["General Settings"]
-    qp_run = wano_general["QuantumPatch Type"]
-    max_iter = wano_core["Screened Iterations"]
-    # Indirection arrays to translate settings from WaNo expression to input
-    qp_type = {"Polarized": "uncharged_equilibration",
-               "Polaron/Exciton": "charged_equilibration"}
-    shelltype = {"dynamic": "scf",
-                 "static": "static"}
-    # settings_ng "QuantumPatch" Category
-    cfg["QuantumPatch"]["type"] = qp_type[qp_run]
-    cfg["QuantumPatch"]["number_of_equilibration_steps"] = max_iter
-    cfg["QuantumPatch"]["calculateJs"] = wano_general["Calculate Js"]
     # settings_ng "DFTEngine" Category
     cfg["DFTEngine"]["user"] = dict()
+    first_engine_name = "Turbomole 1"
     for engine in wano["Tabs"]["Engines"]["DFT Engines"]:
         # Reformats engine output from NewQP rendered WaNo
         engine_name = engine["Engine"]
         name = engine["Name"]
+        first_engine_name = name
         settings = engine["%s Settings" % engine_name]
         if engine_name == "Turbomole" or engine_name == "Psi4":
             entry = {
@@ -45,43 +36,33 @@ if __name__ == "__main__":
                 "functional": settings["Functional"],
                 "threads": settings["Threads"],
                 "memory": settings["Memory (MB)"],
-                "disersion": settings["D3(BJ) Dispersion Correction"],
+                "dispersion": settings["D3(BJ) Dispersion Correction"],
                 "charge_model": settings["Partial Charge Method"],
             }
         elif engine_name == "DFTB+":
             entry = {
                 "engine": "DFTBplus",
-                "thirdorder": True,
                 "threads": settings["Threads"],
                 "memory": settings["Memory (MB)"],
-                "disersion": settings["D3(BJ) Dispersion Correction"],
+                "dispersion": settings["D3(BJ) Dispersion Correction"],
                 "charge_model": settings["Partial Charge Method"],
             }
+        elif engine_name == "Dalton":
+            entry = cfg["DFTEngine"]["defaults"]["Dalton"].copy()
+            entry.update({
+                "engine": "DaltonEngine",
+                "threads": settings["Threads"],
+                "memory": settings["Memory (MB)"]
+            })
         else:
             raise QuantumPatchWaNoError("Unknown DFT engine %s" % engine_name)
+        if engine_name == "Turbomole":
+            entry["scf_convergence"] = settings["SCF Convergence"]
+        if engine["Fallback"]:
+            entry["fallback"] = engine["Fallback Engine"]
         cfg["DFTEngine"]["user"][name] = entry
     cfg["DFTEngine"]["last_iter"] = dict()
-    if wano_core["Different Engine on Last Iteration"]:
-        name = wano_core["Last Iteration Engine"]
-        cfg["DFTEngine"]["last_iter"]["settings"] = "sameas:DFTEngine.user.%s" % name
-        engine_name = None
-        for engine in wano["Tabs"]["Engines"]["DFT Engines"]:
-            if engine["Name"] == name:
-                engine_name = engine["Engine"]
-                break
-        if not engine_name:
-            msg = "Unknown engine %s in Last Iteration Engine." % name
-            raise QuantumPatchWaNoError(msg)
-        cfg["DFTEngine"]["last_iter"]["name"] = engine_name
-        cfg["DFTEngine"]["last_iter"]["enable_switch"] = True
-    else:
-        cfg["DFTEngine"]["last_iter"] = {
-            "settings": "sameas:DFTEngine.defaults.Turbomole",
-            "name": "Turbomole",
-            "enable_switch": False
-        }
     # settings_ng "System" Category
-    cfg["System"]["Core"] = dict()
     if wano_core["Inner Part Method"] == "Number of Molecules":
         cfg["System"]["Core"]["type"] = "number"
         cfg["System"]["Core"]["number"] = wano_core["Number of Molecules"]
@@ -95,26 +76,29 @@ if __name__ == "__main__":
     elif wano_core["Inner Part Method"] == "List of Molecule IDs":
         cfg["System"]["Core"]["type"] = "list"
         cfg["System"]["Core"]["list"] = wano_core["list of Molecule IDs"]
-    cfg["System"]["Core"]["engine"] = wano_core["Used Engine"]
-    cfg["System"]["Core"]["default_molstates"] = wano_core["Default Molecular States"]
-    i = 0
-    cfg["System"]["Shells"] = dict()
-    for shell in wano_shells["Outer Shells"]:
-        cfg["System"]["Shells"][str(i)] = {
-            "cutoff": shell["Shell"]["Cutoff Radius"],
-            "type": shelltype[shell["Shell"]["Shelltype"]],
-            "engine": shell["Shell"]["Used Engine"]
-        }
-        i += 1
-    cfg["System"]["MolStates"] = dict()
-    i = 0
-    for molstate in wano["Tabs"]["General"]["Molecular States"]:
-        cfg["System"]["MolStates"][str(i)] = {
-            "charge": molstate["State"]["Charge"],
-            "multiplicity": molstate["State"]["Multiplicity"],
-            "excitation": molstate["State"]["Excitation"]
-        }
-        i += 1
+    by_iter = dict()  # Inserts engine_by_iter section
+    cfg["System"]["Core"]["engine_by_iter"] = by_iter
+    cfg["System"]["Core"]["GeometricalOptimizationSteps"] = []
+    cfg["System"]["Core"]["engine"] = first_engine_name
+    # Analysis section options
+    general = wano["Tabs"]["General"]
+    if general["Fluorescence"]["enabled"]:
+        cfg["Analysis"]["Excitonic"]["Fluorescence"]["enabled"] = True
+        cfg["Analysis"]["Excitonic"]["Fluorescence"]["DFTEngine"] = general["Fluorescence"]["Engine"]
+    if general["Phosphorescence"]["enabled"]:
+        cfg["Analysis"]["Excitonic"]["Phosphorescence"]["enabled"] = True
+        cfg["Analysis"]["Excitonic"]["Phosphorescence"]["DFTEngine"] = general["Phosphorescence"]["Dalton Engine"]
+        cfg["Analysis"]["Excitonic"]["Phosphorescence"]["roots"] =     general["Phosphorescence"]["roots"]
+    if general["TTA Rates"]["enabled"]:
+        cfg["Analysis"]["Excitonic"]["TTA"]["enabled"] = True
+        cfg["Analysis"]["Excitonic"]["TTA"]["DFTEngine"] = general["TTA Rates"]["Engine"]
+        cfg["Analysis"]["Excitonic"]["TTA"]["roots"] = general["TTA Rates"]["roots"]
+    if general["TPQ Rates"]["enabled"]:
+        cfg["Analysis"]["Excitonic"]["TPQ"]["enabled"] = True
+        cfg["Analysis"]["Excitonic"]["TPQ"]["anion"] = general["TPQ Rates"]["anion"]
+        cfg["Analysis"]["Excitonic"]["TPQ"]["cation"] = general["TPQ Rates"]["cation"]
+        cfg["Analysis"]["Excitonic"]["TPQ"]["DFTEngine"] = general["TPQ Rates"]["Engine"]
+        cfg["Analysis"]["Excitonic"]["TPQ"]["roots"] = general["TPQ Rates"]["roots"]
     # Write modified settings file to disk.
     with open("settings_ng.yml", "w") as qpngout:
         yaml.dump(cfg, qpngout, default_flow_style=False)

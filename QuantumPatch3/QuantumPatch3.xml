@@ -1,5 +1,5 @@
 <WaNoTemplate>
-    <WaNoRoot name="QuantumPatch">
+    <WaNoRoot name="QuantumPatch3">
         <WaNoTabs name="Tabs">
             <WaNoGroup name="General">
                 <WaNoDictBox name="General Settings">
@@ -8,23 +8,27 @@
                     <WaNoDropDown visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="QuantumPatch Type">
                         <Entry id="0" chosen="True">Polarized</Entry>
                         <Entry id="1">Polaron/Exciton</Entry>
+                        <Entry id="2">Matrix EAIP</Entry>
                     </WaNoDropDown>
+                    <WaNoBool visibility_condition="'%s' == 'Matrix EAIP'" visibility_var_path="Tabs.General.General Settings.QuantumPatch Type" name="Include in-matrix Lambda Calculation">True</WaNoBool>
                     <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Calculate Js">True</WaNoBool>
-                    <WaNoBool name="Include Lambda/EA/IP Calculation">True</WaNoBool>
+                    <WaNoBool name="Include in-vacuo Lambda/EA/IP Calculation">True</WaNoBool>
                 </WaNoDictBox>
                 <WaNoMultipleOf name="Molecular States">
                     <Entry id="0">
                         <WaNoDictBox name="State">
-                            <WaNoInt name="Charge">0</WaNoInt>
-                            <WaNoInt name="Multiplicity">0</WaNoInt>
-                            <WaNoInt name="Excitation">0</WaNoInt>
+                            <WaNoInt name="Charge">1</WaNoInt>
+                            <WaNoInt name="Multiplicity">2</WaNoInt>
+                            <WaNoInt name="Excited State of Interest">0</WaNoInt>
+                            <WaNoInt name="Roots">0</WaNoInt>
                         </WaNoDictBox>
                     </Entry>
                     <Entry id="1">
                         <WaNoDictBox name="State">
-                            <WaNoInt name="Charge">1</WaNoInt>
+                            <WaNoInt name="Charge">-1</WaNoInt>
                             <WaNoInt name="Multiplicity">2</WaNoInt>
-                            <WaNoInt name="Excitation">0</WaNoInt>
+                            <WaNoInt name="Excited State of Interest">0</WaNoInt>
+                            <WaNoInt name="Roots">0</WaNoInt>
                         </WaNoDictBox>
                     </Entry>
                 </WaNoMultipleOf>
@@ -38,6 +42,8 @@
                             <Entry id="1">Psi4</Entry>
                             <Entry id="2">DFTB+</Entry>
                         </WaNoDropDown>
+                        <WaNoBool name="Fallback">False</WaNoBool>
+                        <WaNoDynamicDropDown visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Fallback" visibility_condition="'%s' == 'True'" name="Fallback Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
                         <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Turbomole Settings">
                             <WaNoDropDown name="Partial Charge Method">
                                 <Entry id="0" chosen="true">ESP</Entry>
@@ -122,6 +128,11 @@
                                 <Entry id="54">aug-cc-pVQZ</Entry>
                                 <Entry id="55">cc-pwVQZ</Entry>
                                 <Entry id="56">aug-cc-pwVQ</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="SCF Convergence">
+                                <Entry id="0" chosen="true">normal</Entry>
+                                <Entry id="1">tight</Entry>
+                                <Entry id="2">extreme</Entry>
                             </WaNoDropDown>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
@@ -209,6 +220,8 @@
                             <Entry id="1" chosen="true">Psi4</Entry>
                             <Entry id="2">DFTB+</Entry>
                         </WaNoDropDown>
+                        <WaNoBool name="Fallback">False</WaNoBool>
+                        <WaNoDynamicDropDown visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Fallback" visibility_condition="'%s' == 'True'" name="Fallback Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
                         <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Turbomole Settings">
                             <WaNoDropDown name="Partial Charge Method">
                                 <Entry id="0" chosen="true">ESP</Entry>
@@ -293,6 +306,11 @@
                                 <Entry id="54">aug-cc-pVQZ</Entry>
                                 <Entry id="55">cc-pwVQZ</Entry>
                                 <Entry id="56">aug-cc-pwVQ</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="SCF Convergence">
+                                <Entry id="0" chosen="true">Normal</Entry>
+                                <Entry id="1">Tight</Entry>
+                                <Entry id="2">Extreme</Entry>
                             </WaNoDropDown>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
@@ -380,6 +398,8 @@
                             <Entry id="1">Psi4</Entry>
                             <Entry id="2" chosen="true">DFTB+</Entry>
                         </WaNoDropDown>
+                        <WaNoBool name="Fallback">False</WaNoBool>
+                        <WaNoDynamicDropDown visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Fallback" visibility_condition="'%s' == 'True'" name="Fallback Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
                         <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Turbomole Settings">
                             <WaNoDropDown name="Partial Charge Method">
                                 <Entry id="0" chosen="true">ESP</Entry>
@@ -464,6 +484,11 @@
                                 <Entry id="54">aug-cc-pVQZ</Entry>
                                 <Entry id="55">cc-pwVQZ</Entry>
                                 <Entry id="56">aug-cc-pwVQ</Entry>
+                            </WaNoDropDown>
+                            <WaNoDropDown name="SCF Convergence">
+                                <Entry id="0" chosen="true">Normal</Entry>
+                                <Entry id="1">Tight</Entry>
+                                <Entry id="2">Extreme</Entry>
                             </WaNoDropDown>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
@@ -575,6 +600,8 @@
                                 <Entry id="1">static</Entry>
                             </WaNoDropDown>
                             <WaNoFloat name="Cutoff Radius">25.0</WaNoFloat>
+                            <WaNoBool name="Different Engine on Last Iteration">False</WaNoBool>
+                            <WaNoDynamicDropDown name="Last Iteration Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" visibility_condition="%s == True" visibility_var_path="Tabs.Shells.Core Shell.Different Engine on Last Iteration" />
                         </WaNoDictBox>
                     </Entry>
                     <Entry id="1">
@@ -585,12 +612,14 @@
                                 <Entry id="1" chosen="true">static</Entry>
                             </WaNoDropDown>
                             <WaNoFloat name="Cutoff Radius">60.0</WaNoFloat>
+                            <WaNoBool name="Different Engine on Last Iteration">False</WaNoBool>
+                            <WaNoDynamicDropDown name="Last Iteration Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" visibility_condition="%s == True" visibility_var_path="Tabs.Shells.Core Shell.Different Engine on Last Iteration" />
                         </WaNoDictBox>
                     </Entry>
                 </WaNoMultipleOf>
             </WaNoGroup>
             <WaNoGroup name="LambdaEAIP">
-                <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Include Lambda/EA/IP Calculation" name="Settings">
+                <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Include in-vacuo Lambda/EA/IP Calculation" name="Settings">
                     <WaNoBool name="Calculate Lambda">True</WaNoBool>
                     <WaNoDropDown name="Lambda Type" visibility_condition="%s == True" visibility_var_path="Tabs.LambdaEAIP.Settings.Calculate Lambda">
                         <Entry id="0" chosen="True">Both</Entry>
@@ -606,7 +635,7 @@
             </WaNoGroup>
         </WaNoTabs>
     </WaNoRoot>
-    <WaNoExecCommand>export NANOMATCH=/home/nanodev_build/nanomatch; bash ./init.sh</WaNoExecCommand>
+    <WaNoExecCommand>bash ./init.sh</WaNoExecCommand>
     <WaNoInputFiles>
         <WaNoInputFile logical_filename="init.sh">init.sh</WaNoInputFile>
         <WaNoInputFile logical_filename="init_lambda.py">init_lambda.py</WaNoInputFile>
@@ -614,6 +643,6 @@
         <WaNoInputFile logical_filename="qp_settings_template.yml">qp_settings_template.yml</WaNoInputFile>
     </WaNoInputFiles>
     <WaNoOutputFiles>
-        <WaNoOutputFile>report.zip</WaNoOutputFile>
+        <WaNoOutputFile>Analysis.zip</WaNoOutputFile>
     </WaNoOutputFiles>
 </WaNoTemplate>
