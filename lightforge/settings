@@ -25,7 +25,7 @@ QP_output_files: {{wano["TABS"]["IO"]["QP output file"]}}
 
 materials: {{wano["TABS"]["materials"]["materials"]}}
 
-exciton_presets: {{wano["TABS"]["materials"]["exciton presets"]}}
+exciton_presets: {{wano["TABS"]["materials"]["exciton_presets"]}}
 
 layers: {{wano["TABS"]["device"]["layers"]}}
 
@@ -39,12 +39,12 @@ pair_input: {{wano["TABS"]["topology"]["pair parameters"]}}
 
 
 experiments: 
-- simulations: {{wano["TABS"]["operation"]["simulations"]}},
-  measurement: {{wano["TABS"]["operation"]["measurement"]}},
-  Temperature: {{wano["TABS"]["operation"]["temperature [K]"]}},
-  field_strength: {{wano["TABS"]["operation"]["field_strength [V/nm]"]}},
-  field_direction: {{wano["TABS"]["operation"]["field direction"]}},
-  initial_holes: {{wano["TABS"]["operation"]["initial holes"]}},
+- simulations: {{wano["TABS"]["operation"]["simulations"]}}
+  measurement: {{wano["TABS"]["operation"]["measurement"]}}
+  Temperature: {{wano["TABS"]["operation"]["temperature [K]"]}}
+  field_strength: {{wano["TABS"]["operation"]["field_strength [V/nm]"]}}
+  field_direction: {{wano["TABS"]["operation"]["field direction"]}}
+  initial_holes: {{wano["TABS"]["operation"]["initial holes"]}}
   initial_electrons: {{wano["TABS"]["operation"]["initial electrons"]}}
 
 iv_fluctuation: {{wano["TABS"]["operation"]["computational"]["IV fluctuation"]}}
