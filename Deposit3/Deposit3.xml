@@ -1,5 +1,5 @@
 <WaNoTemplate>
- <WaNoRoot name="Deposit">
+ <WaNoRoot name="Deposit3">
  <WaNoTabs name="TABS">
  <WaNoGroup name="Simulation Parameters">
   <WaNoDictBox name="Simulation Box">
