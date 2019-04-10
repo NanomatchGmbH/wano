@@ -131,7 +131,7 @@
               <WaNoString name="isc_rate">1e14</WaNoString>
               <WaNoString name="risc_rate">1e3</WaNoString>
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
-              <WaNoString name="s1s1_reorgnaization_energy">0.3</WaNoString>
+              <WaNoString name="s1s1_reorganization_energy">0.3</WaNoString>
               <WaNoString name="binding_energy">1.0</WaNoString>
               <WaNoFloat name="energy_disorder">0.1</WaNoFloat>
               <WaNoFloat name="singlet_triplet_gap">0.4</WaNoFloat>
