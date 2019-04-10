@@ -123,6 +123,7 @@
                                 <Entry id="54">aug-cc-pVQZ</Entry>
                                 <Entry id="55">cc-pwVQZ</Entry>
                                 <Entry id="56">aug-cc-pwVQ</Entry>
+                                <Entry id="57">nm-SVPP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="SCF Convergence">
                                 <Entry id="0" chosen="true">normal</Entry>
@@ -306,6 +307,7 @@
                                 <Entry id="54">aug-cc-pVQZ</Entry>
                                 <Entry id="55">cc-pwVQZ</Entry>
                                 <Entry id="56">aug-cc-pwVQ</Entry>
+                                <Entry id="57">nm-SVPP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="SCF Convergence">
                                 <Entry id="0" chosen="true">Normal</Entry>
@@ -498,6 +500,7 @@
                                 <Entry id="54">aug-cc-pVQZ</Entry>
                                 <Entry id="55">cc-pwVQZ</Entry>
                                 <Entry id="56">aug-cc-pwVQ</Entry>
+                                <Entry id="57">nm-SVPP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="SCF Convergence">
                                 <Entry id="0" chosen="true">Normal</Entry>
@@ -681,6 +684,7 @@
                                 <Entry id="54">aug-cc-pVQZ</Entry>
                                 <Entry id="55">cc-pwVQZ</Entry>
                                 <Entry id="56">aug-cc-pwVQ</Entry>
+                                <Entry id="57">nm-SVPP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="SCF Convergence">
                                 <Entry id="0" chosen="true">Normal</Entry>
