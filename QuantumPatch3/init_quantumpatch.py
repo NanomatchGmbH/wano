@@ -77,7 +77,7 @@ if __name__ == "__main__":
             "cutoff_y": wano_core["Inner Box Cutoff"]["Cutoff y direction"],
             "cutoff_z": wano_core["Inner Box Cutoff"]["Cutoff z direction"]
         }
-    elif wano_core["Inner Part Method"] == "List of Molecule IDs":
+    elif wano_core["Inner Part Method"] == "list of Molecule IDs":
         cfg["System"]["Core"]["type"] = "list"
         cfg["System"]["Core"]["list"] = wano_core["list of Molecule IDs"]
     by_iter = dict()  # Inserts engine_by_iter section

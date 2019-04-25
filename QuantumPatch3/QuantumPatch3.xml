@@ -580,14 +580,14 @@
                     <WaNoDropDown name="Inner Part Method">
                         <Entry id="0" chosen="True">Inner Box Cutoff</Entry>
                         <Entry id="1">Number of Molecules</Entry>
-                        <Entry id="2">List of Molecule IDs</Entry>
+                        <Entry id="2">list of Molecule IDs</Entry>
                     </WaNoDropDown>
                     <WaNoDictBox visibility_condition="'%s' == 'Inner Box Cutoff'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="Inner Box Cutoff">
                         <WaNoFloat name="Cutoff x direction">10.0</WaNoFloat>
                         <WaNoFloat name="Cutoff y direction">10.0</WaNoFloat>
                         <WaNoFloat name="Cutoff z direction">10.0</WaNoFloat>
                     </WaNoDictBox>
-                    <WaNoString visibility_condition="'%s' == 'List of Molecule IDs'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="List of Molecule IDs">molstate.0: 0-55;77;263 | molstate.1: 43;57;79-100</WaNoString>
+                    <WaNoString visibility_condition="'%s' == 'list of Molecule IDs'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="list of Molecule IDs">molstate.0: 0-55;77;263 | molstate.1: 43;57;79-100</WaNoString>
                     <WaNoInt visibility_condition="'%s' == 'Number of Molecules'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="Number of Molecules">100</WaNoInt>
                     <WaNoString visibility_condition="'%s' != 'Polarized'" visibility_var_path="Tabs.General.General Settings.QuantumPatch Type" name="Default Molecular States">0;1</WaNoString>
                     <WaNoDynamicDropDown name="Used Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
