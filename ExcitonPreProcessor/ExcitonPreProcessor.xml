@@ -129,6 +129,7 @@
                                 <Entry id="0" chosen="true">normal</Entry>
                                 <Entry id="1">tight</Entry>
                                 <Entry id="2">extreme</Entry>
+                                <Entry id="3">superextreme</Entry>
                             </WaNoDropDown>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
