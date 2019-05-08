@@ -150,6 +150,7 @@
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="dimensions">10 10 10</WaNoString>
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="layer_center">0 0 0</WaNoString>
             <WaNoFloat visibility_condition="'%s' != 'manual'" visibility_var_path="TABS.general.device_layout" name="thickness">10</WaNoFloat>
+            <WaNoFloat name="gsp">0.0</WaNoFloat>
             <WaNoDropDown name="morphology_input_mode">
               <Entry id="0" chosen="True">automatic</Entry>
               <Entry id="1">select QP_output</Entry>
