@@ -162,10 +162,10 @@
               <WaNone switch_name="automatic" name="banane">"1"</WaNone>
               <WaNone switch_name="cubic" name="banane2">"2"</WaNone>
               <WaNoInviBox switch_name="custom Files: morphology" name="box1">
-                <WaNoFile name="morphology_file" logical_filename="COM{{ path[3] }}.dat">Put file here</WaNoFile>
+                <WaNoFile name="morphology file" logical_filename="COM{{ path[3] }}.dat">Put file here</WaNoFile>
               </WaNoInviBox>
               <WaNoInviBox switch_name="custom Files: morphology, eaip" name="box1">
-                <WaNoFile name="morphology_file" logical_filename="COM{{ path[3] }}.dat">Put file here</WaNoFile>
+                <WaNoFile name="morphology file" logical_filename="COM{{ path[3] }}.dat">Put file here</WaNoFile>
                 <WaNoFile name="eaip_file" logical_filename="eaip{{ path[3] }}.dat">Put file here</WaNoFile>
               </WaNoInviBox>              
               <WaNoDynamicDropDown switch_name="select QP_output" name="morphology_QP_output" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
