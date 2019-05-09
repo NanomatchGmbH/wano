@@ -11,6 +11,11 @@ fi
 
 export OMP_NUM_THREADS=1
 
+if [ -f override_settings.yml ]
+then
+    python ./merge_settings.py settings override_settings.yml
+fi
+
 if [ "$UC_TOTAL_PROCESSORS" -gt 1 ]
 then
     $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $LFPATH/lightforge.py -s settings

@@ -37,6 +37,8 @@
              <WaNoFile visibility_condition="%s == True" visibility_var_path="TABS.IO.use QP output" logical_filename="QP_output_{{ path[3] }}.zip" name="QP_output.zip">Put file here</WaNoFile>
           </Element>
         </WaNoMultipleOf>
+        <WaNoBool name="Override Settings" >False</WaNoBool>
+        <WaNoFile name="Override File" visibility_condition="%s == True" visibility_var_path="TABS.IO.Override Settings" logical_filename="override_settings.yml">YML file</WaNoFile>
       </WaNoGroup>
 
 
@@ -334,6 +336,7 @@
  <WaNoInputFiles>
    <WaNoInputFile logical_filename="settings">settings</WaNoInputFile>
    <WaNoInputFile logical_filename="start_LF.sh">start_LF.sh</WaNoInputFile>
+   <WaNoInputFile logical_filename="merge_settings.py">merge_settings.py</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <WaNoOutputFile>DriftDiffusion-in.yml</WaNoOutputFile>
