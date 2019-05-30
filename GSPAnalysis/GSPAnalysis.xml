@@ -20,13 +20,19 @@
     </WaNoRoot>
     <WaNoExecCommand>export NANOVER=V2
     source $NANOMATCH/$NANOVER/configs/quantumpatch.config
+    python $SHREDDERPATH/QuantumPatchAnalysis.py
     python $SHREDDERPATH/QuantumPatchAnalysis.py \
           Morphology.structure=morphology.cml \
           Morphology.parameters=morphology.spf \
+          Analysis.Orientation.axis.enabled=False \
+          Analysis.Orientation.complex_axis.enabled=False \
+          Analysis.Orientation.normal.enabled=False \
+          Analysis.QPGSP.enabled=True \
           Analysis.GSP.enabled=True \
           Analysis.GSP.cutoff={{ wano["Outside Box Cutoff [A]"] }} \
           Analysis.GSP.do_ewald={{ 'True' if (wano["Summation Method"] == "Ewald Sum") else 'False' }} \
-          Analysis.GSP.box_size = {{ wano["BoxSize (x,y) [A]"] }} 
+          Analysis.GSP.do_ewald=False \
+          Analysis.GSP.box_size={{ wano["BoxSize (x,y) [A]"] }} 
     </WaNoExecCommand>
     <WaNoInputFiles>
         <!-- <WaNoInputFile logical_filename="qpanalysis_settings_template.yml">qpanalysis_settings_template.yml</WaNoInputFile> -->
