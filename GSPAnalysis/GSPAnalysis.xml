@@ -27,7 +27,7 @@
           Analysis.Orientation.axis.enabled=False \
           Analysis.Orientation.complex_axis.enabled=False \
           Analysis.Orientation.normal.enabled=False \
-          Analysis.QPGSP.enabled=True \
+          Analysis.QPGSP.enabled=False \
           Analysis.GSP.enabled=True \
           Analysis.GSP.cutoff={{ wano["Outside Box Cutoff [A]"] }} \
           Analysis.GSP.do_ewald={{ 'True' if (wano["Summation Method"] == "Ewald Sum") else 'False' }} \
@@ -38,7 +38,6 @@
         <!-- <WaNoInputFile logical_filename="qpanalysis_settings_template.yml">qpanalysis_settings_template.yml</WaNoInputFile> -->
     </WaNoInputFiles>
     <WaNoOutputFiles>
-        <WaNoOutputFile>report.zip</WaNoOutputFile>
-        <WaNoOutputFile>orientation_analysis.png</WaNoOutputFile>
+        <WaNoOutputFile>stdout</WaNoOutputFile>
     </WaNoOutputFiles>
 </WaNoTemplate>
