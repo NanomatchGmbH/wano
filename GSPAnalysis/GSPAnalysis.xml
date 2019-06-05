@@ -31,7 +31,6 @@
           Analysis.GSP.enabled=True \
           Analysis.GSP.cutoff={{ wano["Outside Box Cutoff [A]"] }} \
           Analysis.GSP.do_ewald={{ 'True' if (wano["Summation Method"] == "Ewald Sum") else 'False' }} \
-          Analysis.GSP.do_ewald=False \
           Analysis.GSP.box_size={{ wano["BoxSize (x,y) [A]"] }} 
     </WaNoExecCommand>
     <WaNoInputFiles>
