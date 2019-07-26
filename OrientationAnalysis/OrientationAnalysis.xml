@@ -1,7 +1,20 @@
 <WaNoTemplate>
     <WaNoRoot name="OrientationAnalysis">
-        <WaNoFile logical_filename="morphology.cml" name="Morphology">Put .cml file here</WaNoFile>
-        <WaNoFile logical_filename="orientation_analysis.yml" name="Emission Analysis Output">orientation_analysis.yml from emission run</WaNoFile>
+        <WaNoBool name="Enable TD Analysis">False</WaNoBool>
+        <WaNoBox name="Transition Dipole Analysis" visibility_condition="%s == True" visibility_var_path="Enable TD Analysis">
+            <WaNoFile logical_filename="morphology.cml" name="Morphology">Put .cml file here</WaNoFile>
+            <WaNoFile logical_filename="orientation_analysis.yml" name="Emission Analysis Output">orientation_analysis.yml from emission run</WaNoFile>
+        </WaNoBox>
+        <WaNoBool name="Enable Axes Analysis">True</WaNoBool>
+         <WaNoInt name="number of bins" visibility_condition="%s == True" visibility_var_path="Enable Axes Analysis" >15</WaNoInt>
+         <WaNoMultipleOf name="Axes" visibility_condition="%s == True" visibility_var_path="Enable Axes Analysis" >
+            <Element id="0">
+                <WaNoString name="label">unset</WaNoString>
+                <WaNoString name="moltype">None</WaNoString>
+                <WaNoInt name="atomid 1">0</WaNoInt>
+                <WaNoInt name="atomid 2">1</WaNoInt>
+            </Element>
+        </WaNoMultipleOf>
     </WaNoRoot>
     <WaNoExecCommand>bash ./init.sh</WaNoExecCommand>
     <WaNoInputFiles>
