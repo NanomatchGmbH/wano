@@ -3,7 +3,7 @@
         <WaNoFile logical_filename="morphology.cml" name="Morphology">Put .cml file here</WaNoFile>
         <WaNoBool name="Enable TD Analysis">False</WaNoBool>
         <WaNoBox name="Transition Dipole Analysis" visibility_condition="%s == True" visibility_var_path="Enable TD Analysis">
-            <WaNoFile logical_filename="orientation_analysis.yml" name="Emission Analysis Output">orientation_analysis.yml from emission run</WaNoFile>
+            <WaNoFile visibility_condition="%s == True" visibility_var_path="Enable TD Analysis" logical_filename="orientation_analysis.yml" name="Emission Analysis Output">orientation_analysis.yml from emission run</WaNoFile>
         </WaNoBox>
         <WaNoBool name="Enable Axes Analysis">True</WaNoBool>
          <WaNoInt name="number of bins" visibility_condition="%s == True" visibility_var_path="Enable Axes Analysis" >15</WaNoInt>

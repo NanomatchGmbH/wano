@@ -9,5 +9,6 @@ Analysis:
     axis:
       enabled: false
     complex_axis:
+      enabled: false
     normal:
       enabled: false
