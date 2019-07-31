@@ -37,6 +37,7 @@ std_scale: {{wano["TABS"]["physics"]["electrode_J_scale"]}}
 
 pair_input: {{wano["TABS"]["topology"]["pair parameters"]}}
 
+transfer_integral_file: {{wano["TABS"]["topology"]["transfer_integral_file"]}}
 
 experiments: 
 - simulations: {{wano["TABS"]["operation"]["simulations"]}}

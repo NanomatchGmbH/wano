@@ -234,7 +234,10 @@
           <Entry id="0">QP_output</Entry>
           <Entry id="1">QM_expansion</Entry>
           <Entry id="2">Miller-Abrahams</Entry>
+          <Entry id="3">file</Entry>
         </WaNoDropDown>
+
+        <WaNoFile visibility_condition="'%s' == 'file'" visibility_var_path="TABS.topology.transfer_integral_source" logical_filename="transfer_integral_file.dat" name="transfer_integral_file">Put file here</WaNoFile>
 
         <WaNoMultipleOf name="pair parameters">
           <Element id="0">
