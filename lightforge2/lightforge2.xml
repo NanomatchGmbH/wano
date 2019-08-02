@@ -159,6 +159,7 @@
               <Entry id="2">cubic</Entry>
               <Entry id="3">custom Files: morphology</Entry>
               <Entry id="4">custom Files: morphology, eaip</Entry>
+              <Entry id="5">custom Files: morphology, homolumo</Entry>
             </WaNoDropDown>
 
             <WaNoSwitch switch_path="TABS.device.layers.{{ path[3] }}.morphology_input_mode" name="TP">
@@ -170,7 +171,11 @@
               <WaNoInviBox switch_name="custom Files: morphology, eaip" name="box1">
                 <WaNoFile name="morphology file" logical_filename="COM{{ path[3] }}.dat">Put file here</WaNoFile>
                 <WaNoFile name="eaip_file" logical_filename="eaip{{ path[3] }}.dat">Put file here</WaNoFile>
-              </WaNoInviBox>              
+              </WaNoInviBox> 
+              <WaNoInviBox switch_name="custom Files: morphology, homolumo" name="box1">
+                <WaNoFile name="morphology file" logical_filename="COM{{ path[3] }}.dat">Put file here</WaNoFile>
+                <WaNoFile name="homolumo file" logical_filename="homolumo{{ path[3] }}.dat">Put file here</WaNoFile>
+              </WaNoInviBox>           
               <WaNoDynamicDropDown switch_name="select QP_output" name="morphology_QP_output" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
             </WaNoSwitch>
 
