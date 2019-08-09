@@ -65,3 +65,8 @@ damping_activation_threshold: {{wano["TABS"]["operation"]["bond damping"]["activ
 friction: {{wano["TABS"]["operation"]["bond damping"]["healing"]}}
 jump_tacker_update_iter: {{wano["TABS"]["operation"]["bond damping"]["bond update iter"]}}
 
+tta_rate: {{wano["TABS"]["physics"]["tta_rate"]}}
+td_scaling: {{wano["TABS"]["physics"]["td_scaling"]}}
+irradiance: {{wano["TABS"]["operation"]["irradiance [W/m2]"]}}
+light_on_time: {{wano["TABS"]["operation"]["light_on_time [s]"]}}
+light_off_time: {{wano["TABS"]["operation"]["light_off_time [s]"]}}

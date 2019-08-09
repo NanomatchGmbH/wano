@@ -107,11 +107,15 @@
           <Element id="0">
             <WaNoString name="name">fluorescent</WaNoString>
             <WaNoDictBox name="properties">
-              <WaNoString name="singlet_decay_rate">2e8</WaNoString>
+              <WaNoString name="singlet_decay_rate">1e8</WaNoString>
               <WaNoString name="triplet_decay_rate">1e3</WaNoString>
               <WaNoString name="thermal_decay_rate">1e5</WaNoString>
               <WaNoString name="max_TTA">1e6</WaNoString>
+              <WaNoString name="max_TSA">1e6</WaNoString>
               <WaNoString name="max_TPQ">1e6</WaNoString>
+              <WaNoString name="max_SSA">1e11</WaNoString>
+              <WaNoString name="max_STA">1e11</WaNoString>
+              <WaNoString name="max_SPQ">1e11</WaNoString>
               <WaNoString name="isc_rate">1e5</WaNoString>
               <WaNoString name="risc_rate">1e3</WaNoString>
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
@@ -125,11 +129,15 @@
           <Element id="1">
             <WaNoString name="name">phosphorescent</WaNoString>
             <WaNoDictBox name="properties">
-              <WaNoString name="singlet_decay_rate">2e8</WaNoString>
+              <WaNoString name="singlet_decay_rate">1e8</WaNoString>
               <WaNoString name="triplet_decay_rate">1e6</WaNoString>
               <WaNoString name="thermal_decay_rate">1e5</WaNoString>
-              <WaNoString name="max_TTA">1e11</WaNoString>
-              <WaNoString name="max_TPQ">1e11</WaNoString>
+              <WaNoString name="max_TTA">1e10</WaNoString>
+              <WaNoString name="max_TSA">1e10</WaNoString>
+              <WaNoString name="max_TPQ">1e10</WaNoString>
+              <WaNoString name="max_SSA">1e11</WaNoString>
+              <WaNoString name="max_STA">1e11</WaNoString>
+              <WaNoString name="max_SPQ">1e11</WaNoString>
               <WaNoString name="isc_rate">1e14</WaNoString>
               <WaNoString name="risc_rate">1e3</WaNoString>
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
@@ -277,6 +285,14 @@
             <WaNoDictBox visibility_condition="'%s' == 'use heuristic parameters'" visibility_var_path="TABS.materials.excitonics" name="Foerster_parameters_T1">
               <WaNoString name="Foerster_radius_forwards">2.5</WaNoString>
               <WaNoString name="Foerster_radius_backwards">0.5</WaNoString>
+            </WaNoDictBox>
+            <WaNoDictBox visibility_condition="'%s' == 'use heuristic parameters'" visibility_var_path="TABS.materials.excitonics" name="Foerster_parameters_S1T1">
+              <WaNoString name="Foerster_radius_forwards">1.0</WaNoString>
+              <WaNoString name="Foerster_radius_backwards">1.0</WaNoString>
+            </WaNoDictBox> 
+            <WaNoDictBox visibility_condition="'%s' == 'use heuristic parameters'" visibility_var_path="TABS.materials.excitonics" name="Foerster_parameters_T1S1">
+              <WaNoString name="Foerster_radius_forwards">1.0</WaNoString>
+              <WaNoString name="Foerster_radius_backwards">1.0</WaNoString>
             </WaNoDictBox>  
 
           </Element>
@@ -300,6 +316,8 @@
         <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping_regeneration_steps">30</WaNoInt>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_stack_distance">0.8</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_J_scale">-0.2</WaNoFloat>
+        <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="tta_rate">Miller</WaNoString>
+        <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="td_scaling">0.4</WaNoString>
       </WaNoGroup>
 
 
@@ -310,7 +328,13 @@
         <WaNoInt name="simulations">1</WaNoInt>
         <WaNoDropDown name="measurement">
           <Entry id="0">DC</Entry>
+          <Entry id="1">photoluminescence</Entry>
         </WaNoDropDown>
+
+        <WaNoFloat visibility_condition="'%s' == 'photoluminescence'" visibility_var_path="TABS.operation.measurement" name="irradiance [W/m2]">0.0</WaNoFloat>
+        <WaNoString visibility_condition="'%s' == 'photoluminescence'" visibility_var_path="TABS.operation.measurement" name="light_on_time [s]">1.0e-8</WaNoString>
+        <WaNoString visibility_condition="'%s' == 'photoluminescence'" visibility_var_path="TABS.operation.measurement" name="light_off_time [s]">1.0e-2</WaNoString>
+
 
         <WaNoString name="temperature [K]">300</WaNoString>
         <WaNoString name="field_strength [V/nm]">0.02 0.03 0.04</WaNoString>
