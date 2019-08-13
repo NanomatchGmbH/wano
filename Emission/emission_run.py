@@ -176,7 +176,7 @@ if __name__ == "__main__":
             phos_vecs = dftbd.orientation_analysis_quadratic_response_input()
             i = 0
             while i < 3:
-                orientation_yml["%d" % i + 1] = phos_vecs[i].copy()
+                orientation_yml["%d" % (i + 1)] = phos_vecs[i].copy()
                 i += 1
             with open("orientation_analysis.yml", "w") as outfile:
                 yaml.safe_dump(orientation_yml, outfile)
