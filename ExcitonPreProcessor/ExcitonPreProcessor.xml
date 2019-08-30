@@ -131,6 +131,7 @@
                                 <Entry id="2">extreme</Entry>
                                 <Entry id="3">superextreme</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="TD-DFT with Tamm-Dancoff Approx.">False</WaNoBool>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
@@ -315,6 +316,7 @@
                                 <Entry id="1">Tight</Entry>
                                 <Entry id="2">Extreme</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="TD-DFT with Tamm-Dancoff Approx.">False</WaNoBool>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
@@ -508,6 +510,7 @@
                                 <Entry id="1">Tight</Entry>
                                 <Entry id="2">Extreme</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="TD-DFT with Tamm-Dancoff Approx.">False</WaNoBool>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
@@ -692,6 +695,7 @@
                                 <Entry id="1">Tight</Entry>
                                 <Entry id="2">Extreme</Entry>
                             </WaNoDropDown>
+                            <WaNoBool name="TD-DFT with Tamm-Dancoff Approx.">False</WaNoBool>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
