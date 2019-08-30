@@ -4,7 +4,7 @@
         <WaNoBool name="Optimize Geometry">False</WaNoBool>
         <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Optimize Geometry" name="Geometry Optimization Options">
             <WaNoDropDown name="Basis">
-                <Entry id="0">sto-3g hondo</Entry>
+                <Entry id="0">STO-3G</Entry>
                 <Entry id="1">4-31g hondo</Entry>
                 <Entry id="2">6-31g hondo</Entry>
                 <Entry id="3">3-21g hondo</Entry>
@@ -89,7 +89,7 @@
         </WaNoDropDown>
         <WaNoDictBox visibility_condition="'%s' == 'Fluorescence'" visibility_var_path="Emission Type" name="Fluorescence Calculation Options">
             <WaNoDropDown name="Basis">
-                <Entry id="0">sto-3g hondo</Entry>
+                <Entry id="0">STO-3G</Entry>
                 <Entry id="1">4-31g hondo</Entry>
                 <Entry id="2">6-31g hondo</Entry>
                 <Entry id="3">3-21g hondo</Entry>

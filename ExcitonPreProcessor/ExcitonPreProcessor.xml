@@ -66,7 +66,7 @@
                                 <Entry id="17">B2PLYP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="Basis">
-                                <Entry id="0">sto-3g hondo</Entry>
+                                <Entry id="0">STO-3G</Entry>
                                 <Entry id="1">4-31g hondo</Entry>
                                 <Entry id="2">6-31g hondo</Entry>
                                 <Entry id="3">3-21g hondo</Entry>
@@ -252,7 +252,7 @@
                                 <Entry id="17">B2PLYP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="Basis">
-                                <Entry id="0">sto-3g hondo</Entry>
+                                <Entry id="0">STO-3G</Entry>
                                 <Entry id="1">4-31g hondo</Entry>
                                 <Entry id="2">6-31g hondo</Entry>
                                 <Entry id="3">3-21g hondo</Entry>
@@ -446,7 +446,7 @@
                                 <Entry id="17">B2PLYP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="Basis">
-                                <Entry id="0">sto-3g hondo</Entry>
+                                <Entry id="0">STO-3G</Entry>
                                 <Entry id="1">4-31g hondo</Entry>
                                 <Entry id="2">6-31g hondo</Entry>
                                 <Entry id="3">3-21g hondo</Entry>
@@ -631,7 +631,7 @@
                                 <Entry id="17">B2PLYP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="Basis">
-                                <Entry id="0">sto-3g hondo</Entry>
+                                <Entry id="0">STO-3G</Entry>
                                 <Entry id="1">4-31g hondo</Entry>
                                 <Entry id="2">6-31g hondo</Entry>
                                 <Entry id="3">3-21g hondo</Entry>
