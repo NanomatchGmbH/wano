@@ -8,6 +8,7 @@ pbc: [{{wano["TABS"]["general"]["PBC"]["x"]}},{{wano["TABS"]["general"]["PBC"]["
 set_pbc: automatic
 
 rates: {{wano["TABS"]["physics"]["rates"]}}
+ct_rate_memory_multiplier: {{wano["TABS"]["physics"]["ct_rate_memory_multiplier"]}}
 epsilon_material: {{wano["TABS"]["physics"]["epsilon_material"]}}
 distance_epsilon: {{wano["TABS"]["physics"]["distance_epsilon"]}}
 screening_length: {{wano["TABS"]["physics"]["screening_length"]}} 
