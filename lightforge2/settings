@@ -22,7 +22,7 @@ scaling: [None]
 excitonics: {{wano["TABS"]["materials"]["excitonics"]}}
 morphology_width: {{wano["TABS"]["device"]["morphology width [nm]"]}}
 
-QP_output_files: {{wano["TABS"]["IO"]["QP output file"]}}
+{%if  wano["TABS"]["IO"]["use QP output"] == True  %}QP_output_files: {{wano["TABS"]["IO"]["QP output file"]}} {%  endif  %}
 
 materials: {{wano["TABS"]["materials"]["materials"]}}
 
