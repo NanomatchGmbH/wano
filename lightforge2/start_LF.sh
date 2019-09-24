@@ -22,11 +22,10 @@ then
 else
     lightforge.py -s settings
 fi 
-zip -r lf_output.zip  material/* experiments/*
+zip -r results.zip  results
+zip -r lightforge_data.zip lightforge_data
 
-count=`ls -1 experiments/*.png 2>/dev/null | wc -l`
-if [ $count != 0 ];then 
-	if [ ! -f DriftDiffusion-in.yml ]; then
-    	touch DriftDiffusion-in.yml
-	fi
-fi 
+
+if [ ! -f DriftDiffusion-in.yml ]; then
+    touch DriftDiffusion-in.yml
+fi

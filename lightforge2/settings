@@ -8,6 +8,7 @@ pbc: [{{wano["TABS"]["general"]["PBC"]["x"]}},{{wano["TABS"]["general"]["PBC"]["
 set_pbc: automatic
 
 rates: {{wano["TABS"]["physics"]["rates"]}}
+ct_rate_memory_multiplier: {{wano["TABS"]["physics"]["ct_rate_memory_multiplier"]}}
 epsilon_material: {{wano["TABS"]["physics"]["epsilon_material"]}}
 distance_epsilon: {{wano["TABS"]["physics"]["distance_epsilon"]}}
 screening_length: {{wano["TABS"]["physics"]["screening_length"]}} 
@@ -21,7 +22,7 @@ scaling: [None]
 excitonics: {{wano["TABS"]["materials"]["excitonics"]}}
 morphology_width: {{wano["TABS"]["device"]["morphology width [nm]"]}}
 
-QP_output_files: {{wano["TABS"]["IO"]["QP output file"]}}
+{%if  wano["TABS"]["IO"]["use QP output"] == True  %}QP_output_files: {{wano["TABS"]["IO"]["QP output file"]}} {%  endif  %}
 
 materials: {{wano["TABS"]["materials"]["materials"]}}
 

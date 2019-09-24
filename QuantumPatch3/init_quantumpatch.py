@@ -77,6 +77,12 @@ if __name__ == "__main__":
             "cutoff_y": wano_core["Inner Box Cutoff"]["Cutoff y direction"],
             "cutoff_z": wano_core["Inner Box Cutoff"]["Cutoff z direction"]
         }
+    elif wano_core["Inner Part Method"] == "Number of Random Pairs":
+        cfg["System"]["Core"]["type"] = "random_molstate_pairs"
+        cfg["System"]["Core"]["number"] = wano_core["Number of Molecules"]
+    elif wano_core["Inner Part Method"] == "Number of Random Crosspairs":
+        cfg["System"]["Core"]["type"] = "random_molstate_crosspairs"
+        cfg["System"]["Core"]["number"] = wano_core["Number of Molecules"]
     elif wano_core["Inner Part Method"] == "list of Molecule IDs":
         cfg["System"]["Core"]["type"] = "list"
         cfg["System"]["Core"]["list"] = wano_core["list of Molecule IDs"]

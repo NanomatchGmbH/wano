@@ -304,6 +304,7 @@
         <WaNoDropDown name="rates">
           <Entry id="0" chosen="True">Marcus</Entry>
           <Entry id="1">Miller</Entry>
+          <Entry id="2">mixed-marcus</Entry>
         </WaNoDropDown>
 
         <WaNoFloat name="epsilon_material">4.0</WaNoFloat>
@@ -318,6 +319,7 @@
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_J_scale">-0.2</WaNoFloat>
         <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="tta_rate">Miller</WaNoString>
         <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="td_scaling">0.4</WaNoString>
+        <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="ct_rate_memory_multiplier">1.0</WaNoFloat>
       </WaNoGroup>
 
 
