@@ -650,5 +650,7 @@
     </WaNoInputFiles>
     <WaNoOutputFiles>
         <WaNoOutputFile>Analysis.zip</WaNoOutputFile>
+        <WaNoOutputFile>Analysis/GSP/partial_charges.yml</WaNoOutputFile>
+        <WaNoOutputFile>Analysis/GSP/core_shell.cml</WaNoOutputFile>
     </WaNoOutputFiles>
 </WaNoTemplate>
