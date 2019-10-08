@@ -51,6 +51,7 @@ experiments:
 
 iv_fluctuation: {{wano["TABS"]["operation"]["computational"]["IV fluctuation"]}}
 max_iterations: {{wano["TABS"]["operation"]["computational"]["max_iterations"]}}
+max_time: {{wano["TABS"]["operation"]["computational"]["max_time"]}}
 continue_run: {{wano["TABS"]["operation"]["restart"]}}
 
 new_wano: True
