@@ -90,6 +90,7 @@ if __name__ == "__main__":
     if wano_core["Different Engine on Last Iteration"]:
         by_iter["LastUncharged"] = wano_core["Last Iteration Engine"]
         by_iter["LastCharged"] = wano_core["Last Iteration Engine"]
+        by_iter["Dimer"] = wano_core["Last Iteration Engine"]
     cfg["System"]["Core"]["engine_by_iter"] = by_iter
     cfg["System"]["Core"]["engine"] = wano_core["Used Engine"]
     cfg["System"]["Core"]["default_molstates"] = wano_core["Default Molecular States"]
@@ -106,6 +107,7 @@ if __name__ == "__main__":
         if shell["Shell"]["Different Engine on Last Iteration"]:
             by_iter["LastUncharged"] = shell["Shell"]["Last Iteration Engine"]
             by_iter["LastCharged"] = shell["Shell"]["Last Iteration Engine"]
+            by_iter["Dimer"] = shell["Shell"]["Last Iteration Engine"]
         cfg["System"]["Shells"][str(i)]["engine_by_iter"] = by_iter
         i += 1
     cfg["System"]["MolStates"] = dict()
