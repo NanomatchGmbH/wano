@@ -69,6 +69,9 @@
                                 <Entry id="15">M06-1</Entry>
                                 <Entry id="16">M06-2x</Entry>
                                 <Entry id="17">B2PLYP</Entry>
+                                <Entry id="18">wB97</Entry>
+                                <Entry id="19">wB97X</Entry>
+                                <Entry id="20">CAM-B3LYP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="Basis">
                                 <Entry id="0">STO-3G</Entry>
@@ -249,6 +252,9 @@
                                 <Entry id="15">M06-1</Entry>
                                 <Entry id="16">M06-2x</Entry>
                                 <Entry id="17">B2PLYP</Entry>
+                                <Entry id="18">wB97</Entry>
+                                <Entry id="19">wB97X</Entry>
+                                <Entry id="20">CAM-B3LYP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="Basis">
                                 <Entry id="0">STO-3G</Entry>
@@ -428,6 +434,9 @@
                                 <Entry id="15">M06-1</Entry>
                                 <Entry id="16">M06-2x</Entry>
                                 <Entry id="17">B2PLYP</Entry>
+                                <Entry id="18">wB97</Entry>
+                                <Entry id="19">wB97X</Entry>
+                                <Entry id="20">CAM-B3LYP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="Basis">
                                 <Entry id="0">STO-3G</Entry>
