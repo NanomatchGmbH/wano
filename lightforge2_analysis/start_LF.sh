@@ -1,16 +1,9 @@
 #!/bin/bash
 export NANOVER=V2
 source $NANOMATCH/$NANOVER/configs/lightforge.config
-cp settings autorun_settings
+unzip lightforge_data_subset.zip
+awk '$1!="analysis_autorun:" {print $0}' settings > autorun_settings
 echo "analysis_autorun: True" >> autorun_settings
-mkdir experiments
-mkdir experiments/replay_0
-unzip replay.zip
-unzip QP_inputs.zip
-mv part*.npz experiments/replay_0/
-mkdir material
-cp material.npz material/material_0.npz
-echo "job_id: 0 settings_id: 0 mat_id: 0 field_direction: [1.0, 0.0, 0.0] field_strength: 0.03 initial_charges: [0, 0] Temperature: 300.0\n" > experiments/experiment_inventory_0.txt
 
 export OMP_NUM_THREADS=1
 
