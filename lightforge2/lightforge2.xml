@@ -146,6 +146,28 @@
               <WaNoFloat name="energy_disorder">0.1</WaNoFloat>
               <WaNoFloat name="singlet_triplet_gap">0.4</WaNoFloat>
             </WaNoDictBox>  
+          </Element>   
+
+          <Element id="2">
+            <WaNoString name="name">doping</WaNoString>
+            <WaNoDictBox name="properties">
+              <WaNoString name="singlet_decay_rate">0</WaNoString>
+              <WaNoString name="triplet_decay_rate">0</WaNoString>
+              <WaNoString name="thermal_decay_rate">0</WaNoString>
+              <WaNoString name="max_TTA">0</WaNoString>
+              <WaNoString name="max_TSA">0</WaNoString>
+              <WaNoString name="max_TPQ">0</WaNoString>
+              <WaNoString name="max_SSA">0</WaNoString>
+              <WaNoString name="max_STA">0</WaNoString>
+              <WaNoString name="max_SPQ">0</WaNoString>
+              <WaNoString name="isc_rate">0</WaNoString>
+              <WaNoString name="risc_rate">0</WaNoString>
+              <WaNoString name="rel_light_absorbtion">0.0</WaNoString>
+              <WaNoString name="s1s1_reorganization_energy">0.0</WaNoString>
+              <WaNoString name="binding_energy">0.0</WaNoString>
+              <WaNoFloat name="energy_disorder">0.0</WaNoFloat>
+              <WaNoFloat name="singlet_triplet_gap">0.0</WaNoFloat>
+            </WaNoDictBox>  
           </Element>         
         </WaNoMultipleOf>
       </WaNoGroup>
@@ -258,6 +280,7 @@
             <WaNoDynamicDropDown name="molecule 2" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
   
             <WaNoDynamicDropDown visibility_condition="'%s' == 'QP_output'" visibility_var_path="TABS.topology.transfer_integral_source" name="QP_output" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+            <WaNoDynamicDropDown visibility_condition="'%s' == 'QP'" visibility_var_path="TABS.physics.coulomb_correction_mode" name="QP_output_CT" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
 
             <WaNoDictBox visibility_condition="'%s' != 'QP_output'" visibility_var_path="TABS.topology.transfer_integral_source" name="transfer_integral_parameters">
               <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.holes" name="hole_transfer_integrals">
@@ -315,6 +338,13 @@
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="screening_length">1.3</WaNoFloat>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping">False</WaNoBool>
         <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping_regeneration_steps">30</WaNoInt>
+        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.doping" name="coulomb_correction">False</WaNoBool>
+        <WaNoDropDown visibility_condition="%s == True" visibility_var_path="TABS.physics.coulomb_correction" name="coulomb_correction_mode">
+          <Entry id="0" chosen="True">cutoff</Entry>
+          <Entry id="1">QP</Entry>
+          <Entry id="2">constant</Entry>
+        </WaNoDropDown>
+        <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.coulomb_correction" name="coulomb_binding_energy">0.5</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_stack_distance">0.8</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_J_scale">-0.2</WaNoFloat>
         <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="tta_rate">Miller</WaNoString>

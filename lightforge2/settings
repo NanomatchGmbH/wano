@@ -8,6 +8,9 @@ pbc: [{{wano["TABS"]["general"]["PBC"]["x"]}},{{wano["TABS"]["general"]["PBC"]["
 set_pbc: automatic
 
 rates: {{wano["TABS"]["physics"]["rates"]}}
+coulomb_correction: {{wano["TABS"]["physics"]["coulomb_correction"]}}
+coulomb_correction_mode: {{wano["TABS"]["physics"]["coulomb_correction_mode"]}}
+coulomb_binding_energy: {{wano["TABS"]["physics"]["coulomb_binding_energy"]}}
 ct_rate_memory_multiplier: {{wano["TABS"]["physics"]["ct_rate_memory_multiplier"]}}
 epsilon_material: {{wano["TABS"]["physics"]["epsilon_material"]}}
 distance_epsilon: {{wano["TABS"]["physics"]["distance_epsilon"]}}
