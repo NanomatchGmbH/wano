@@ -280,7 +280,7 @@
             <WaNoDynamicDropDown name="molecule 2" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
   
             <WaNoDynamicDropDown visibility_condition="'%s' == 'QP_output'" visibility_var_path="TABS.topology.transfer_integral_source" name="QP_output" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
-            <WaNoDynamicDropDown visibility_condition="'%s' == 'QP'" visibility_var_path="TABS.physics.coulomb_correction_mode" name="QP_output_CT" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+            <WaNoDynamicDropDown visibility_condition="'%s' == 'QP'" visibility_var_path="TABS.physics.coulomb_correction_mode" name="QP_output_coulomb" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
 
             <WaNoDictBox visibility_condition="'%s' != 'QP_output'" visibility_var_path="TABS.topology.transfer_integral_source" name="transfer_integral_parameters">
               <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.holes" name="hole_transfer_integrals">
