@@ -4,9 +4,9 @@ export NANOVER="V2"
 source $NANOMATCH/$NANOVER/configs/lightforge.config
 
 if [ -f lf_output.zip ]; then
-	unzip -d ./ lf_output.zip
-	sleep 2
-	rm lf_output.zip
+    unzip -d ./ lf_output.zip
+    sleep 2
+    rm lf_output.zip
 fi
 
 export OMP_NUM_THREADS=1
@@ -24,6 +24,18 @@ else
 fi 
 zip -r results.zip  results
 zip -r lightforge_data.zip lightforge_data
+
+for i in 0;do
+    zip -r lightforge_data_subset.zip lightforge_data/material_data/*_"$i".* 
+    zip -r lightforge_data_subset.zip lightforge_data/runtime_data/*_"$i".*
+    zip -r lightforge_data_subset.zip lightforge_data/runtime_data/replay_"$i"
+done
+zip lightforge_data_subset.zip *.pdb
+zip lightforge_data_subset.zip settings
+QP_inputs=`awk '$1=="QP_output.zip:"{print $2}' settings`
+for i in `echo $QP_inputs`; do
+    zip lightforge_data_subset.zip $i
+done
 
 
 if [ ! -f DriftDiffusion-in.yml ]; then
