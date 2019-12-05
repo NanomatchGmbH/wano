@@ -1,0 +1,44 @@
+<WaNoTemplate>
+ <WaNoRoot name="TCAD">
+ <WaNoTabs name="TABS">
+ <WaNoGroup name="Layer Setup">
+     <WaNoGroup name="Upper Electrode">
+         <WaNoString name="Base material">Aluminum</WaNoString>
+         <WaNoFloat name="Work Function">2.3</WaNoFloat>
+     </WaNoGroup>
+  <WaNoMultipleOf name="Layers">
+    <Element id="0">
+       <WaNoString name="Custom Name">Name</WaNoString>
+       <!-- <WaNoFile logical_filename="molecule_{{ path[3] }}.pdb" name="Molecule">Choose Molecule</WaNoFile>
+        <WaNoFile logical_filename="molecule_{{ path[3] }}.spf" name="Forcefield">Choose Forcefield</WaNoFile> -->
+       <WaNoFloat name="Spacing">0.001</WaNoFloat>
+       <WaNoFloat name="Thickness">0.04</WaNoFloat>
+       <WaNoFile logical_filename="kmc_input_{{ path[3] }}.dat" name="KMC Parameters">KMC.dat</WaNoFile>
+       <WaNoBool name="Doping">False</WaNoBool>
+       <WaNoBox name="Doping Settings" visibility_condition="%s == True" visibility_var_path="TABS.Layer Setup.Layers.{{ path[3] }}.Doping" >
+        <WaNoFloat name="Concentration">0.01</WaNoFloat>
+         <WaNoChoice name="Type">
+          <Entry id="0" chosen="True" >n.type</Entry>
+          <Entry id="1">p.type</Entry>
+         </WaNoChoice>
+       </WaNoBox>
+    </Element>
+  </WaNoMultipleOf>
+  <WaNoGroup name="Lower Electrode">
+      <WaNoString name="Base material">ITO</WaNoString>
+         <WaNoFloat name="Work Function">4.7</WaNoFloat>
+     </WaNoGroup>
+ </WaNoGroup>
+ </WaNoTabs>
+ </WaNoRoot>
+ <WaNoExecCommand>bash ./tcad_init.sh</WaNoExecCommand>
+ <WaNoInputFiles>
+   <WaNoInputFile logical_filename="input.in">input_template.in</WaNoInputFile>
+   <WaNoInputFile logical_filename="tcad_init.sh">tcad_init.sh</WaNoInputFile>
+   <WaNoInputFile logical_filename="readwano.py">readwano.py</WaNoInputFile>
+ </WaNoInputFiles>
+ <WaNoOutputFiles>
+    <!-- <WaNoOutputFile>structure.cml</WaNoOutputFile>
+     <WaNoOutputFile>restartfile.zip</WaNoOutputFile> -->
+ </WaNoOutputFiles>
+</WaNoTemplate>

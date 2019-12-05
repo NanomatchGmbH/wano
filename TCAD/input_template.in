@@ -1,0 +1,64 @@
+{% raw %}
+#go atlas simflags= "-p 80 "
+title Simulation
+
+mesh width=6.5e8
+x.mesh l= 0.0  spacing=5
+x.mesh l=10.0  spacing=5
+
+{% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
+y.mesh l={{ element["start"] }} spacing={{ element["Spacing"] }}{% if loop.last %}
+y.mesh l={{ element["end"] }} spacing={{ element["Spacing"] }}{% endif %}
+{% endfor -%} 
+
+{% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
+region num={{ loop.index }}   user.material={{ element["Custom Name"] }}_{{ loop.index }} y.min={{ element["start"] }}  y.max={{ element["end"] }}
+{% endfor %} 
+
+elec   num=1   name=cathode material={{ wano["TABS"]["Layer Setup"]["Upper Electrode"]["Base material"] }} top
+elec   num=2   name=anode   material={{ wano["TABS"]["Layer Setup"]["Lower Electrode"]["Base material"] }} bottom
+
+{% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
+{% if element["Doping"] == True %}
+doping uniform region={{ loop.index }} conc={{ element["Doping Settings"]["Concentration"] }} {{ element["Doping Settings"]["Type"] }}
+{% endif %}
+{%- endfor %} 
+
+# Set material parameters
+{% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
+material  material={{ element["Custom Name"] }}_{{ loop.index }} user.group=semiconductor user.default=Silicon eg300={{ element["kmc"]["transport_gap"] }}  ntc.gauss={{ element["kmc"]["realspace_conductionDOS"] }} ntv.gauss={{ element["kmc"]["realspace_valenceDOS"] }} affinity={{ element["kmc"]["electron_affinity"] }} permittivity=3.2 sigc.gauss={{ element["kmc"]["sigma_ConductionBand"] }} sigv.gauss={{ element["kmc"]["sigma_ValenceBand"] }}
+{% endfor %}
+
+{% for element in wano["TABS"]["Layer Setup"]["Layers"] -%} 
+mobility material={{ element["Custom Name"] }}_{{ loop.index }} mun={{ element["kmc"]["electron_mobility"] }} mup={{ element["kmc"]["hole_mobility"] }} vthn.pfmob=2.5e8 vthp.pfmob=2.5e8
+{% endfor %}
+
+# Calcium (Cathode)
+contact name=cathode workfunc={{ wano["TABS"]["Layer Setup"]["Upper Electrode"]["Work Function"] }}
+# thermionic 
+
+# ITO (Anode)
+contact name=anode workfunc={{ wano["TABS"]["Layer Setup"]["Lower Electrode"]["Work Function"] }}
+#thermionic
+
+models pfmob print
+
+solve
+
+#probe mag.field max x=5 name="Electric Field"
+
+output u.langevin con.band val.band band.param charge
+
+save outfil=init.str
+# Ramping Vanode to -3V to plot the I-V Characteristics 
+solve vstep=-0.05 vfinal=-3 name=anode
+
+save outfil=reverse.str
+log outfile=a.log
+solve vstep=0.05 vfinal=1 name=anode 
+save outfile=forward1.str
+solve vstep=0.05 vfinal=3 name=anode 
+save outfile=a.str
+
+quit
+{% endraw %}

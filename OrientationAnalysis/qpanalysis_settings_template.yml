@@ -1,0 +1,14 @@
+Morphology:
+  structure: morphology.cml
+Analysis:
+  GSP:
+    enabled: false
+  QPGSP:
+    enabled: false
+  Orientation:
+    axis:
+      enabled: false
+    complex_axis:
+      enabled: false
+    normal:
+      enabled: false

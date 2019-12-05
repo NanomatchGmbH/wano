@@ -1,2 +1,0 @@
-mpirun fiesta {{ wano["Parallelization Parameters"]["Number of columns"] }} {{ wano["Parallelization Parameters"]["Number of rows"] }} {{ wano["Parallelization Parameters"]["Number of slices"] }} > log_gw
-

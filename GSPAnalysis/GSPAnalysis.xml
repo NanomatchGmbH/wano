@@ -1,0 +1,48 @@
+<WaNoTemplate>
+    <WaNoRoot name="GSPAnalysis">
+        <WaNoFile logical_filename="morphology.cml" name="Morphology">Put .cml file here</WaNoFile>
+        <WaNoDropDown name="Partial Charges">
+            <Entry id="0" chosen="True">Vacuum (Force Field)</Entry>
+            <Entry id="1">QuantumPatch</Entry>
+        </WaNoDropDown>
+        <WaNoFile visibility_condition="'%s' == 'Vacuum (Force Field)'" visibility_var_path="Partial Charges"  logical_filename="morphology.spf" name="Forcefield">Put .spf file here</WaNoFile>
+        <WaNoFile visibility_condition="'%s' == 'QuantumPatch'" visibility_var_path="Partial Charges"  logical_filename="partialcharges.yml" name="QP partial charges">Put partialcharges.yml file here</WaNoFile>
+        <WaNoDropDown name="Summation Method">
+            <Entry id="0" chosen="True">Ewald Sum</Entry>
+            <Entry id="1">Direct Sum</Entry>
+        </WaNoDropDown>
+        <WaNoFloat 
+             visibility_condition="'%s' == 'Direct Sum' " 
+             visibility_var_path="Summation Method" 
+             name="Outside Box Cutoff [A]"
+        >10.0</WaNoFloat>
+        <WaNoFloat 
+             visibility_condition="'%s' == 'Ewald Sum' " 
+             visibility_var_path="Summation Method" 
+             name="BoxSize (x,y) [A]"
+         >10.0</WaNoFloat>
+
+    </WaNoRoot>
+    <WaNoExecCommand>export NANOVER=V2
+    source $NANOMATCH/$NANOVER/configs/quantumpatch.config
+    python $SHREDDERPATH/QuantumPatchAnalysis.py
+    python $SHREDDERPATH/QuantumPatchAnalysis.py \
+          Morphology.structure=morphology.cml \
+          Morphology.parameters={{ 'morphology.spf' if (wano["Partial Charges"] == "Vacuum (Force Field)") else 'None' }}\
+          Analysis.Orientation.axis.enabled=False \
+          Analysis.Orientation.complex_axis.enabled=False \
+          Analysis.Orientation.normal.enabled=False \
+          Analysis.QPGSP.enabled=False \
+          Analysis.GSP.enabled=True \
+          Analysis.GSP.cutoff={{ wano["Outside Box Cutoff [A]"] }} \
+          Analysis.GSP.do_ewald={{ 'True' if (wano["Summation Method"] == "Ewald Sum") else 'False' }} \
+          Analysis.GSP.box_size={{ wano["BoxSize (x,y) [A]"] }} \
+          Analysis.GSP.qp_charge_file={{ 'partialcharges.yml' if (wano["Partial Charges"] == "QuantumPatch") else 'None' }}
+    </WaNoExecCommand>
+    <WaNoInputFiles>
+        <!-- <WaNoInputFile logical_filename="qpanalysis_settings_template.yml">qpanalysis_settings_template.yml</WaNoInputFile> -->
+    </WaNoInputFiles>
+    <WaNoOutputFiles>
+        <WaNoOutputFile>stdout</WaNoOutputFile>
+    </WaNoOutputFiles>
+</WaNoTemplate>
