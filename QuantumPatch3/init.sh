@@ -52,15 +52,18 @@ done
 export QP_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Run QuantumPatch"] }}"
 export LAMBDA_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Include in-vacuo Lambda/EA/IP Calculation"] }}"
 
-echo "Creating input files."
-if [ "$LAMBDA_RUN" == "True" ]
+if [ ! -f "settings_ng.yml" ]
 then
-    /usr/bin/env python3 init_lambda.py
-fi
+    echo "Creating input files."
+    if [ "$LAMBDA_RUN" == "True" ]
+    then
+        /usr/bin/env python3 init_lambda.py
+    fi
 
-if [ "$QP_RUN" == "True" ]
-then
-    /usr/bin/env python3 init_quantumpatch.py
+    if [ "$QP_RUN" == "True" ]
+    then
+        /usr/bin/env python3 init_quantumpatch.py
+    fi
 fi
 
 if [ "$LAMBDA_RUN" == "True" ]
@@ -73,5 +76,6 @@ then
     echo "Running $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr"
     $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
 fi
+
 
 zip -r Analysis.zip Analysis
