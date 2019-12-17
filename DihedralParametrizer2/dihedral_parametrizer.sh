@@ -47,7 +47,7 @@ fi
 
 if [ -d $WORKING_DIR ]
 then
-    rsync -av $WORKING_DIR/* $DATA_DIR/ --exclude "stdout" --exclude "stderr"
+    rsync -av $WORKING_DIR/* $DATA_DIR/ --exclude "*stdout*" --exclude "*stderr*"
     cd $DATA_DIR
     rm -r $WORKING_DIR
 fi
