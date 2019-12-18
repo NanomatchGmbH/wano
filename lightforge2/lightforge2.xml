@@ -335,6 +335,7 @@
         <WaNoBool name="superexchange">True</WaNoBool>
 
         <WaNoBool name="show_advanced">False</WaNoBool>
+        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="exciton_lifecycle">False</WaNoBool>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="distance_epsilon">False</WaNoBool>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="screening_length">1.3</WaNoFloat>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping">False</WaNoBool>
