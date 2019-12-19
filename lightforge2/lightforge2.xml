@@ -352,6 +352,7 @@
         <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="tta_rate">Miller</WaNoString>
         <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="td_scaling">0.4</WaNoString>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="ct_rate_memory_multiplier">1.0</WaNoFloat>
+        <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="n_injection_layer">1.0</WaNoFloat>
       </WaNoGroup>
 
 

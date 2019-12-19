@@ -69,6 +69,7 @@ max_damp_factor: {{wano["TABS"]["operation"]["bond damping"]["max damp factor"]}
 damping_activation_threshold: {{wano["TABS"]["operation"]["bond damping"]["activation threshold"]}}
 friction: {{wano["TABS"]["operation"]["bond damping"]["healing"]}}
 jump_tacker_update_iter: {{wano["TABS"]["operation"]["bond damping"]["bond update iter"]}}
+n_injection_layer: {{wano["TABS"]["physics"]["n_injection_layer"]}}
 
 tta_rate: {{wano["TABS"]["physics"]["tta_rate"]}}
 td_scaling: {{wano["TABS"]["physics"]["td_scaling"]}}
