@@ -378,7 +378,7 @@
         <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="field direction">1 0 0</WaNoString>
 
         <WaNoDictBox name="computational">
-          <WaNoFloat name="IV fluctuation">0.2</WaNoFloat>
+          <WaNoString name="IV fluctuation">0.2</WaNoString>
           <WaNoInt name="max_iterations">10000000</WaNoInt>
           <WaNoString name="max_time">1.0e5</WaNoString>
         </WaNoDictBox>
