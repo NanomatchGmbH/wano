@@ -76,4 +76,5 @@ td_scaling: {{wano["TABS"]["physics"]["td_scaling"]}}
 irradiance: {{wano["TABS"]["operation"]["irradiance [W/m2]"]}}
 light_on_time: {{wano["TABS"]["operation"]["light_on_time [s]"]}}
 light_off_time: {{wano["TABS"]["operation"]["light_off_time [s]"]}}
-track_exciton_lifecycle: {{wano["TABS"]["physics"]["exciton_lifecycle"]}}
+track_exciton_lifecycle: {{wano["TABS"]["analysis"]["exciton_lifecycle"]}}
+autorun_start: {{wano["TABS"]["analysis"]["autorun_start"]}}
