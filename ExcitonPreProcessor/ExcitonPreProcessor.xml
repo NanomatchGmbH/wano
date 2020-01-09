@@ -318,9 +318,10 @@
                                 <Entry id="57">nm-SVPP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="SCF Convergence">
-                                <Entry id="0" chosen="true">Normal</Entry>
-                                <Entry id="1">Tight</Entry>
-                                <Entry id="2">Extreme</Entry>
+                                <Entry id="0" chosen="true">normal</Entry>
+                                <Entry id="1">tight</Entry>
+                                <Entry id="2">extreme</Entry>
+                                <Entry id="3">superextreme</Entry>
                             </WaNoDropDown>
                             <WaNoBool name="TD-DFT with Tamm-Dancoff Approx.">False</WaNoBool>
                             <WaNoInt name="Threads">1</WaNoInt>
@@ -515,9 +516,10 @@
                                 <Entry id="57">nm-SVPP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="SCF Convergence">
-                                <Entry id="0" chosen="true">Normal</Entry>
-                                <Entry id="1">Tight</Entry>
-                                <Entry id="2">Extreme</Entry>
+                                <Entry id="0" chosen="true">normal</Entry>
+                                <Entry id="1">tight</Entry>
+                                <Entry id="2">extreme</Entry>
+                                <Entry id="3">superextreme</Entry>
                             </WaNoDropDown>
                             <WaNoBool name="TD-DFT with Tamm-Dancoff Approx.">False</WaNoBool>
                             <WaNoInt name="Threads">1</WaNoInt>
@@ -703,9 +705,10 @@
                                 <Entry id="57">nm-SVPP</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="SCF Convergence">
-                                <Entry id="0" chosen="true">Normal</Entry>
-                                <Entry id="1">Tight</Entry>
-                                <Entry id="2">Extreme</Entry>
+                                <Entry id="0" chosen="true">normal</Entry>
+                                <Entry id="1">tight</Entry>
+                                <Entry id="2">extreme</Entry>
+                                <Entry id="3">superextreme</Entry>
                             </WaNoDropDown>
                             <WaNoBool name="TD-DFT with Tamm-Dancoff Approx.">False</WaNoBool>
                             <WaNoInt name="Threads">1</WaNoInt>
