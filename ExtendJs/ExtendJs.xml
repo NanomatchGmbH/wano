@@ -27,7 +27,7 @@ unzip -n {{ element["File"] }}
 export NANOVER=V2
 source $NANOMATCH/$NANOVER/configs/quantumpatch.config
 
-$SHREDDERPATH/QPGeometry/DimerRelations.py structure.cml Analysis/energy/*_analysis_info.yml Analysis/electron_phonon/condensed_couplings_*.json
+$SHREDDERPATH/QPGeometry/DimerRelations.py structure.cml Analysis/energy/*_analysis_info.yml Analysis/electron_phonon/*_condensed_couplings.json
 
 # We zip the results.
 zip -r ExtendedJAnalysis.zip Analysis/
