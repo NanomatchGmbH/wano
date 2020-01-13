@@ -1,5 +1,5 @@
 <WaNoTemplate>
-    <WaNoRoot name="Parametrizer">
+    <WaNoRoot name="IntraOverlap">
         <WaNoDictBox name="QuantumPatch">
             <WaNoFile logical_filename="structure.cml" name="morphology">molecule_or_morphology.cml</WaNoFile>
         </WaNoDictBox>
