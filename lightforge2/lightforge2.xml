@@ -49,6 +49,7 @@
           <Entry id="2">use heuristic parameters</Entry>
           <Entry id="3">no excitons</Entry>
         </WaNoDropDown>
+        <WaNoBool name="manual dopant selection">False</WaNoBool>
         <WaNoMultipleOf name="materials">
           <Element id="0">
             <WaNoString name="name">mol A</WaNoString>
@@ -68,7 +69,9 @@
                 <WaNoDynamicDropDown name="QP_output_eaip" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
                 <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output_excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
                 <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton_presets" subpath="name" chosen="0" />
+                <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.materials.manual dopant selection" name="is_dopant">False</WaNoBool>
               </WaNoDictBox>
+              
               <WaNoDictBox switch_name="QP: sig,l PAR: eaip" name="molecule_parameters">
                 <WaNoFile logical_filename="molecule_{{ path[3] }}.pdb" name="molecule_pdb">Put file here</WaNoFile>
                 <WaNoDynamicDropDown name="QP_output_sigma" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
@@ -76,26 +79,32 @@
                 <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output_excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
                 <WaNoMatrixFloat rows="1" cols="2" row_header="mean" col_header="IP;EA" name="energies"></WaNoMatrixFloat>
                 <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton_presets" subpath="name" chosen="0" />
+                <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.materials.manual dopant selection" name="is_dopant">False</WaNoBool>
               </WaNoDictBox>
+
               <WaNoDictBox switch_name="QP: sig PAR: eaip,l" name="molecule_parameters">
                 <WaNoFile logical_filename="molecule_{{ path[3] }}.pdb" name="molecule_pdb">Put file here</WaNoFile>
                 <WaNoDynamicDropDown name="QP_output_sigma" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
                 <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output_excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
                 <WaNoMatrixFloat rows="2" cols="2" row_header="mean;lambda" col_header="IP;EA" name="energies"></WaNoMatrixFloat>
                 <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton_presets" subpath="name" chosen="0" />
+                <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.materials.manual dopant selection" name="is_dopant">False</WaNoBool>
               </WaNoDictBox>
+
               <WaNoDictBox switch_name="QP: l PAR: eaip,sig" name="molecule_parameters">
                 <WaNoFile logical_filename="molecule_{{ path[3] }}.pdb" name="molecule_pdb">Put file here</WaNoFile>
                 <WaNoDynamicDropDown name="QP_output_lambda" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
                 <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output_excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
                 <WaNoMatrixFloat rows="2" cols="2" row_header="mean;sigma" col_header="IP;EA" name="energies"></WaNoMatrixFloat>
                 <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton_presets" subpath="name" chosen="0" />
+                <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.materials.manual dopant selection" name="is_dopant">False</WaNoBool>
               </WaNoDictBox>
 
               <WaNoDictBox switch_name="PAR: eaip,sig,l" name="molecule_parameters">
                 <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output_excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
                 <WaNoMatrixFloat rows="3" cols="2" row_header="mean;sigma;lambda" col_header="IP;EA" name="energies"></WaNoMatrixFloat>
                 <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton_presets" subpath="name" chosen="0" />
+                <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.materials.manual dopant selection" name="is_dopant">False</WaNoBool>
               </WaNoDictBox>
 
             </WaNoSwitch>
