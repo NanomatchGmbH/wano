@@ -101,14 +101,15 @@
                 </WaNoDropDown>
                 <WaNoBool name="DFTB3 Preoptimization">True</WaNoBool>
                 <WaNoDropDown name="SCF Convergence">
-                    <Entry id="0" chosen="true">Normal</Entry>
-                    <Entry id="1">Tight</Entry>
-                    <Entry id="2">Extreme</Entry>
+                    <Entry id="0" chosen="true">normal</Entry>
+                    <Entry id="1">tight</Entry>
+                    <Entry id="2">extreme</Entry>
+                    <Entry id="3">superextreme</Entry>
                 </WaNoDropDown>
                 <WaNoDropDown name="Geometry Convergence">
-                    <Entry id="0" chosen="true">Normal</Entry>
-                    <Entry id="1">Tight</Entry>
-                    <Entry id="2">Extreme</Entry>
+                    <Entry id="0" chosen="true">normal</Entry>
+                    <Entry id="1">tight</Entry>
+                    <Entry id="2">extreme</Entry>
                 </WaNoDropDown>
             </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="DFT Engine.Engine" name="Psi4 Settings">
