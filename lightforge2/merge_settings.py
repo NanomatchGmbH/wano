@@ -8,7 +8,10 @@ import yaml
 def merge(user, default):
     if isinstance(user,dict) and isinstance(default,dict):
         for k,v in default.items():
-            user[k] = merge(user[k],v)
+            if k in user:
+                user[k] = merge(user[k],v)
+            else:
+                user[k] = v
     else:
         user=default
     return user
@@ -22,4 +25,4 @@ for otherfile in sys.argv[2:]:
     fileone = merge(fileone,otherf_obj)
 
 with open(sys.argv[1],'w') as outfile:
-    outfile.write(yaml.dump(fileone))
+    outfile.write(yaml.dump(fileone,default_flow_style=None))

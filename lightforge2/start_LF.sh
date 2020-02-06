@@ -11,6 +11,7 @@ fi
 
 export OMP_NUM_THREADS=1
 
+python reformat_settings.py settings
 if [ -f override_settings.yml ]
 then
     python ./merge_settings.py settings override_settings.yml
