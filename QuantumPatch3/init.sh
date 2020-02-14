@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NANOVER="V2"
+export NANOVER="V3"
 source $NANOMATCH/$NANOVER/configs/quantumpatch.config
 source $NANOMATCH/$NANOVER/configs/dftb.config
 
