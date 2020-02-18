@@ -1,0 +1,231 @@
+<WaNoTemplate>
+    <WaNoRoot name="Parametrizer">
+        <WaNoDictBox name="Molecule Settings">
+            <WaNoFile logical_filename="input_molecule.mol2" name="Molecule (Mol2)">Mol2 input file</WaNoFile>
+            <WaNoThreeRandomLetters name="Molecule Identifier"></WaNoThreeRandomLetters>
+            <WaNoBool name="Optimize Molecule">True</WaNoBool>
+        </WaNoDictBox>
+        <WaNoDictBox name="DFT Engine">
+            <WaNoDropDown name="Engine">
+                <Entry id="0" chosen="true">Turbomole</Entry>
+                <Entry id="1">Psi4</Entry>
+                <Entry id="2">DFTB+</Entry>
+                <Entry id="3">XTB</Entry>
+            </WaNoDropDown>
+            <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="DFT Engine.Engine" name="Turbomole Settings">
+                <WaNoDropDown name="Partial Charge Method">
+                    <Entry id="0" chosen="true">ESP</Entry>
+                    <Entry id="1">Mulliken</Entry>
+                </WaNoDropDown>
+                <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
+                <WaNoDropDown name="Functional">
+                    <Entry id="0">SVWN</Entry>
+                    <Entry id="1">SVWN_Gaussian</Entry>
+                    <Entry id="2">PWLDA</Entry>
+                    <Entry id="3">BLYP</Entry>
+                    <Entry id="4">BVWN</Entry>
+                    <Entry id="5" chosen="true">BP86</Entry>
+                    <Entry id="6">PBE</Entry>
+                    <Entry id="7">TPSS</Entry>
+                    <Entry id="8">BHLYP</Entry>
+                    <Entry id="9">B3LYP</Entry>
+                    <Entry id="10">B3LYP_Gaussian</Entry>
+                    <Entry id="11">PBE0</Entry>
+                    <Entry id="12">TPSSH</Entry>
+                    <Entry id="13">PW6B95</Entry>
+                    <Entry id="14">M06</Entry>
+                    <Entry id="15">M06-1</Entry>
+                    <Entry id="16">M06-2x</Entry>
+                    <Entry id="17">B2PLYP</Entry>
+                    <Entry id="18">wB97</Entry>
+                    <Entry id="19">wB97X</Entry>
+                    <Entry id="20">CAM-B3LYP</Entry>
+                </WaNoDropDown>
+                <WaNoDropDown name="Basis">
+                    <Entry id="0">STO-3G</Entry>
+                    <Entry id="1">4-31g hondo</Entry>
+                    <Entry id="2">6-31g hondo</Entry>
+                    <Entry id="3">3-21g hondo</Entry>
+                    <Entry id="4">6-31G</Entry>
+                    <Entry id="5">6-31G*</Entry>
+                    <Entry id="6">6-31G**</Entry>
+                    <Entry id="7">6-311G</Entry>
+                    <Entry id="8">6-311G*</Entry>
+                    <Entry id="9">6-311G**</Entry>
+                    <Entry id="10">6-311++G**</Entry>
+                    <Entry id="11">DZ</Entry>
+                    <Entry id="12">DZP</Entry>
+                    <Entry id="13">TZ</Entry>
+                    <Entry id="14">TZP</Entry>
+                    <Entry id="15">TZV</Entry>
+                    <Entry id="16">TZVP</Entry>
+                    <Entry id="17">TZVPP</Entry>
+                    <Entry id="18">TZVPPP</Entry>
+                    <Entry id="19">QZV</Entry>
+                    <Entry id="20">QZVP</Entry>
+                    <Entry id="21">SV</Entry>
+                    <Entry id="22">SVP</Entry>
+                    <Entry id="23">SV(P)</Entry>
+                    <Entry id="24">def-SVP</Entry>
+                    <Entry id="25" chosen="true">def-SV(P)</Entry>
+                    <Entry id="26">def-TZVP</Entry>
+                    <Entry id="27">def-TZVPP</Entry>
+                    <Entry id="28">def-QZVP</Entry>
+                    <Entry id="29">def-QZVPP</Entry>
+                    <Entry id="30">def2-SVP</Entry>
+                    <Entry id="31">def2-SV(P)</Entry>
+                    <Entry id="32">def2-TZVP</Entry>
+                    <Entry id="33">def2-TZVPP</Entry>
+                    <Entry id="34">def2-SZVPD</Entry>
+                    <Entry id="35">def2-TZVPD</Entry>
+                    <Entry id="36">def2-TZVPPD</Entry>
+                    <Entry id="37">def2-QZVPD</Entry>
+                    <Entry id="38">def2-QZVPPD</Entry>
+                    <Entry id="39">dhf-SV(P)</Entry>
+                    <Entry id="40">dhf-SVP</Entry>
+                    <Entry id="41">dhf-TZVP</Entry>
+                    <Entry id="42">dhf-TZVPP</Entry>
+                    <Entry id="43">dhf-QZVP</Entry>
+                    <Entry id="44">dhf-QZVPP</Entry>
+                    <Entry id="45">cc-pVDZ</Entry>
+                    <Entry id="46">aug-cc-pVDZ</Entry>
+                    <Entry id="47">cc-pwVDZ</Entry>
+                    <Entry id="48">aug-cc-pwVDZ</Entry>
+                    <Entry id="49">cc-pVTZ</Entry>
+                    <Entry id="50">aug-cc-pVTZ</Entry>
+                    <Entry id="51">cc-pwVTZ</Entry>
+                    <Entry id="52">aug-cc-pwVTZ</Entry>
+                    <Entry id="53">cc-pVQZ</Entry>
+                    <Entry id="54">aug-cc-pVQZ</Entry>
+                    <Entry id="55">cc-pwVQZ</Entry>
+                    <Entry id="56">aug-cc-pwVQ</Entry>
+                </WaNoDropDown>
+                <WaNoBool name="DFTB3 Preoptimization">True</WaNoBool>
+                <WaNoDropDown name="SCF Convergence">
+                    <Entry id="0" chosen="true">normal</Entry>
+                    <Entry id="1">tight</Entry>
+                    <Entry id="2">extreme</Entry>
+                    <Entry id="3">superextreme</Entry>
+                </WaNoDropDown>
+                <WaNoDropDown name="Geometry Convergence">
+                    <Entry id="0" chosen="true">normal</Entry>
+                    <Entry id="1">tight</Entry>
+                    <Entry id="2">extreme</Entry>
+                </WaNoDropDown>
+            </WaNoDictBox>
+            <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="DFT Engine.Engine" name="Psi4 Settings">
+                <WaNoDropDown name="Partial Charge Method">
+                    <Entry id="0" chosen="true" >ESP</Entry>
+                    <Entry id="1">Mulliken</Entry>
+                </WaNoDropDown>
+                <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
+                <WaNoDropDown name="Functional">
+                    <Entry id="0">B1LYP</Entry>
+                    <Entry id="1">B2GPPLYP</Entry>
+                    <Entry id="2">B2PLYP</Entry>
+                    <Entry id="3">B3LYP</Entry>
+                    <Entry id="4">BLYP</Entry>
+                    <Entry id="5" chosen="true">BP86</Entry>
+                    <Entry id="6">CAM-B3LYP</Entry>
+                    <Entry id="7">HSE06</Entry>
+                    <Entry id="8">M11</Entry>
+                    <Entry id="9">M11-L</Entry>
+                    <Entry id="10">PBE</Entry>
+                    <Entry id="11">REVPBE</Entry>
+                    <Entry id="12">PBE0</Entry>
+                    <Entry id="13">REVPBE0</Entry>
+                    <Entry id="14">PW91</Entry>
+                    <Entry id="15">TPSS</Entry>
+                    <Entry id="16">TPSSH</Entry>
+                    <Entry id="17">REVTPSSH</Entry>
+                    <Entry id="18">WPBE</Entry>
+                    <Entry id="19">X3LYP</Entry>
+                    <Entry id="20">XLYP</Entry>
+                </WaNoDropDown>
+                <WaNoDropDown name="Basis">
+                    <Entry id="0">STO-3G</Entry>
+                    <Entry id="1">3-21G</Entry>
+                    <Entry id="2">6-31G</Entry>
+                    <Entry id="3">6-31G*</Entry>
+                    <Entry id="4">6-31G**</Entry>
+                    <Entry id="5">6-31+G</Entry>
+                    <Entry id="6">6-31+G*</Entry>
+                    <Entry id="7">6-31+G**</Entry>
+                    <Entry id="8">6-31++G</Entry>
+                    <Entry id="9">6-31++G*</Entry>
+                    <Entry id="10">6-31++G**</Entry>
+                    <Entry id="11">6-311G</Entry>
+                    <Entry id="12">6-311G*</Entry>
+                    <Entry id="13">6-311G**</Entry>
+                    <Entry id="14">6-311+G</Entry>
+                    <Entry id="15">6-311+G*</Entry>
+                    <Entry id="16">6-311+G**</Entry>
+                    <Entry id="17">6-311++G</Entry>
+                    <Entry id="18">6-311++G*</Entry>
+                    <Entry id="19">6-311++G**</Entry>
+                    <Entry id="20">def2-SV(P)</Entry>
+                    <Entry id="21">def2-SVP</Entry>
+                    <Entry id="22">def2-TZVP</Entry>
+                    <Entry id="23">def2-TZVPP</Entry>
+                    <Entry id="24">def2-QZVP</Entry>
+                    <Entry id="25">def2-QZVPP</Entry>
+                    <Entry id="26">cc-pVDZ</Entry>
+                    <Entry id="27">cc-pVTZ</Entry>
+                    <Entry id="28">cc-pVQZ</Entry>
+                    <Entry id="29">aug-cc-pVDZ</Entry>
+                    <Entry id="30">aug-cc-pVTZ</Entry>
+                    <Entry id="31">aug-cc-pVQZ</Entry>
+                </WaNoDropDown>
+                <WaNoBool name="DFTB3 Preoptimization">True</WaNoBool>
+            </WaNoDictBox>
+            <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="DFT Engine.Engine" name="DFTB+ Settings">
+                <WaNoDropDown name="Partial Charge Method">
+                    <Entry id="0" chosen="true" >CM3</Entry>
+                    <Entry id="1">Mulliken</Entry>
+                </WaNoDropDown>
+                <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
+            </WaNoDictBox>
+            <WaNoDictBox visibility_condition="'%s' == 'XTB'" visibility_var_path="DFT Engine.Engine" name="XTB Settings">
+                    <WaNoDropDown name="SCF Convergence">
+                        <Entry id="0" >crude</Entry>
+                        <Entry id="1" chosen="true">normal</Entry>
+                        <Entry id="2">tight</Entry>
+                    </WaNoDropDown>
+                    <WaNoDropDown name="Optimization cycles">
+                        <Entry id="0" >1000</Entry>
+                        <Entry id="1" chosen="true">2000</Entry>
+                        <Entry id="2">5000</Entry>
+                    </WaNoDropDown>
+            </WaNoDictBox>
+                <WaNoDictBox name="Charge state of the molecule">
+            		<WaNoInt name="Charge">-1</WaNoInt>
+                    <WaNoInt name="Multiplicity">2</WaNoInt>
+            </WaNoDictBox>
+        </WaNoDictBox>
+    </WaNoRoot>
+ <WaNoExecCommand>
+#!/bin/bash
+
+export NANOVER="V2"
+source $NANOMATCH/$NANOVER/configs/parametrizer.config
+
+/usr/bin/env python3 init_parametrizer.py
+
+echo "Running $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/Parametrizer.py"
+$NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/Parametrizer.py
+
+add_dihedral_angles.sh output_molecule.mol2 molecule.spf
+
+zip report.zip output_molecule.mol2 molecule.pdb molecule.spf
+</WaNoExecCommand>
+ <WaNoInputFiles>
+   <WaNoInputFile logical_filename="init_parametrizer.py">init_parametrizer.py</WaNoInputFile>
+   <WaNoInputFile logical_filename="merge_dh.py">merge_dh.py</WaNoInputFile>
+ </WaNoInputFiles>
+ <WaNoOutputFiles>
+    <WaNoOutputFile>report.zip</WaNoOutputFile>
+    <WaNoOutputFile>molecule.spf</WaNoOutputFile>
+    <WaNoOutputFile>molecule.pdb</WaNoOutputFile>
+    <WaNoOutputFile>output_molecule.mol2</WaNoOutputFile>
+ </WaNoOutputFiles>
+</WaNoTemplate>
