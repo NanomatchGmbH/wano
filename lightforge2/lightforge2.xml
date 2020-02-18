@@ -66,7 +66,8 @@
                 <WaNoFile logical_filename="molecule_{{ path[3] }}.pdb" name="molecule_pdb">Put file here</WaNoFile>
                 <WaNoDynamicDropDown name="QP_output_sigma" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
                 <WaNoDynamicDropDown name="QP_output_lambda" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
-                <WaNoDynamicDropDown name="QP_output_eaip" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output_ip" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoDynamicDropDown name="QP_output_ea" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
                 <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output_excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
                 <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton_presets" subpath="name" chosen="0" />
                 <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.materials.manual dopant selection" name="is_dopant">False</WaNoBool>
