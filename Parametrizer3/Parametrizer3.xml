@@ -10,6 +10,7 @@
                 <Entry id="0" chosen="true">Turbomole</Entry>
                 <Entry id="1">Psi4</Entry>
                 <Entry id="2">DFTB+</Entry>
+                <Entry id="3">XTB</Entry>
             </WaNoDropDown>
             <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="DFT Engine.Engine" name="Turbomole Settings">
                 <WaNoDropDown name="Partial Charge Method">
@@ -34,7 +35,7 @@
                     <Entry id="13">PW6B95</Entry>
                     <Entry id="14">M06</Entry>
                     <Entry id="15">M06-1</Entry>
-                    <Entry id="16">M06-2X</Entry>
+                    <Entry id="16">M06-2x</Entry>
                     <Entry id="17">B2PLYP</Entry>
                     <Entry id="18">wB97</Entry>
                     <Entry id="19">wB97X</Entry>
@@ -184,11 +185,40 @@
                 </WaNoDropDown>
                 <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
             </WaNoDictBox>
+            <WaNoDictBox visibility_condition="'%s' == 'XTB'" visibility_var_path="DFT Engine.Engine" name="XTB Settings">
+                    <WaNoDropDown name="SCF Convergence">
+                        <Entry id="0" >crude</Entry>
+                        <Entry id="1" chosen="true">normal</Entry>
+                        <Entry id="2">tight</Entry>
+                    </WaNoDropDown>
+                    <WaNoDropDown name="Optimization cycles">
+                        <Entry id="0" >1000</Entry>
+                        <Entry id="1" chosen="true">2000</Entry>
+                        <Entry id="2">5000</Entry>
+                    </WaNoDropDown>
+            </WaNoDictBox>
+                <WaNoDictBox name="Charge state of the molecule">
+            		<WaNoInt name="Charge">-1</WaNoInt>
+                    <WaNoInt name="Multiplicity">2</WaNoInt>
+            </WaNoDictBox>
         </WaNoDictBox>
     </WaNoRoot>
- <WaNoExecCommand>bash ./init.sh</WaNoExecCommand>
+ <WaNoExecCommand>
+#!/bin/bash
+
+export NANOVER="V2"
+source $NANOMATCH/$NANOVER/configs/parametrizer.config
+
+/usr/bin/env python3 init_parametrizer.py
+
+echo "Running $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/Parametrizer.py"
+$NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/Parametrizer.py
+
+add_dihedral_angles.sh output_molecule.mol2 molecule.spf
+
+zip report.zip output_molecule.mol2 molecule.pdb molecule.spf
+</WaNoExecCommand>
  <WaNoInputFiles>
-   <WaNoInputFile logical_filename="init.sh">init.sh</WaNoInputFile>
    <WaNoInputFile logical_filename="init_parametrizer.py">init_parametrizer.py</WaNoInputFile>
    <WaNoInputFile logical_filename="merge_dh.py">merge_dh.py</WaNoInputFile>
  </WaNoInputFiles>
