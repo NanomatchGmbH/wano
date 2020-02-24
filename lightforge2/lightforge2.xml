@@ -57,8 +57,9 @@
               <Entry id="0" chosen="True">QP: eaip,sig,l</Entry>
               <Entry id="1">QP: sig,l PAR: eaip</Entry>
               <Entry id="2">QP: sig PAR: eaip,l</Entry>
-              <Entry id="3">QP: l PAR: eaip,sig</Entry>
-              <Entry id="4">PAR: eaip,sig,l</Entry>
+              <Entry id="3">QP: eaip,sig PAR: l</Entry>
+              <Entry id="4">QP: l PAR: eaip,sig</Entry>
+              <Entry id="5">PAR: eaip,sig,l</Entry>
             </WaNoDropDown>
 
             <WaNoSwitch switch_path="TABS.materials.materials.{{ path[3] }}.input_mode_transport" name="TP">
@@ -362,6 +363,7 @@
         <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="td_scaling">0.4</WaNoString>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="ct_rate_memory_multiplier">1.0</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="n_injection_layer">1.0</WaNoFloat>
+        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="ML_energy_environment">False</WaNoBool>
       </WaNoGroup>
 
 
@@ -406,6 +408,23 @@
       <WaNoGroup name="analysis">
       	<WaNoBool name="exciton_lifecycle">False</WaNoBool>
       	<WaNoFloat name="autorun_start">0.5</WaNoFloat>
+        <WaNoInt name="coulomb_autorun_iter">10</WaNoInt>
+        <WaNoDictBox name="DOS">
+          <WaNoBool name="analyse_dos">False</WaNoBool>
+          <WaNoBool name="get_hole_transport_level">False</WaNoBool>
+        </WaNoDictBox>
+        <WaNoBool name="analyse_ion_dop">False</WaNoBool>
+        <WaNoDictBox name="current_analysis">
+          <WaNoDictBox name="y_axis">
+            <WaNoBool name="mobility">False</WaNoBool>
+            <WaNoBool name="current_density">False</WaNoBool>
+            <WaNoBool name="ion_doping">False</WaNoBool>
+          </WaNoDictBox>
+          <WaNoDictBox name="x_axis">
+            <WaNoBool name="Temperature">False</WaNoBool>
+            <WaNoBool name="field_strength">False</WaNoBool>
+          </WaNoDictBox>
+        </WaNoDictBox>
       </WaNoGroup>
 
   </WaNoTabs>
