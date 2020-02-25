@@ -368,6 +368,7 @@
           <Entry id="2">constant</Entry>
         </WaNoDropDown>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.coulomb_correction" name="coulomb_binding_energy">0.5</WaNoFloat>
+        <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.coulomb_correction" name="coulomb_binding_shift">0.0</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_stack_distance">0.8</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_J_scale">-0.2</WaNoFloat>
         <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="tta_rate">Miller</WaNoString>
