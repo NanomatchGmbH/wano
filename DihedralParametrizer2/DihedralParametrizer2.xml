@@ -24,10 +24,18 @@
     </WaNoDropDown>
   </WaNoDictBox>
   <WaNoBool name="show advanced">False</WaNoBool>
+  <WaNoDictBox visibility_condition="%s == True" visibility_var_path="show advanced" name="algorithm settings">
   <WaNoInt visibility_condition="%s == True" visibility_var_path="show advanced" name="scf iterations">2</WaNoInt>
   <WaNoFloat visibility_condition="%s == True" visibility_var_path="show advanced" name="MC step multiplier">1.0</WaNoFloat>
   <WaNoInt visibility_condition="%s == True" visibility_var_path="show advanced" name="evaluation points">100</WaNoInt>
-
+  </WaNoDictBox>
+  <WaNoDictBox visibility_condition="%s == True" visibility_var_path="show advanced" name="intra forcefield settings">
+  <WaNoBool name="optimize forcefield">False</WaNoBool>
+  </WaNoDictBox>
+  
+  
+  
+  
  </WaNoRoot>
  <WaNoExecCommand>bash ./dihedral_parametrizer.sh </WaNoExecCommand>
  <WaNoInputFiles>
