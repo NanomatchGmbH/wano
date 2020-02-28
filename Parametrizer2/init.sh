@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NANOVER="V2"
+export NANOVER="V3"
 source $NANOMATCH/$NANOVER/configs/parametrizer.config
 
 /usr/bin/env python3 init_parametrizer.py
