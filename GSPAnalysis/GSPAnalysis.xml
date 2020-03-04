@@ -23,7 +23,7 @@
          >10.0</WaNoFloat>
 
     </WaNoRoot>
-    <WaNoExecCommand>export NANOVER=V2
+    <WaNoExecCommand>export NANOVER=V3
     source $NANOMATCH/$NANOVER/configs/quantumpatch.config
     python $SHREDDERPATH/QuantumPatchAnalysis.py
     python $SHREDDERPATH/QuantumPatchAnalysis.py \
