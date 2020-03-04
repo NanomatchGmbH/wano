@@ -102,7 +102,11 @@
                     <Entry id="55">cc-pwVQZ</Entry>
                     <Entry id="56">aug-cc-pwVQ</Entry>
                 </WaNoDropDown>
-                <WaNoBool name="DFTB3 Preoptimization">True</WaNoBool>
+                <WaNoDropDown name="Preoptimization">
+                    <Entry id="0" chosen="true">DFTB</Entry>
+                    <Entry id="1">XTB</Entry>
+                    <Entry id="2">None</Entry>
+                </WaNoDropDown>
                 <WaNoDropDown name="SCF Convergence">
                     <Entry id="0" chosen="true">normal</Entry>
                     <Entry id="1">tight</Entry>
@@ -178,8 +182,13 @@
                     <Entry id="30">aug-cc-pVTZ</Entry>
                     <Entry id="31">aug-cc-pVQZ</Entry>
                 </WaNoDropDown>
-                <WaNoBool name="DFTB3 Preoptimization">True</WaNoBool>
-            </WaNoDictBox>
+                <WaNoDropDown name="Preoptimization">
+                    <Entry id="0" chosen="true">DFTB</Entry>
+                    <Entry id="1">XTB</Entry>
+                    <Entry id="2">None</Entry>
+                </WaNoDropDown>            
+
+                </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="DFT Engine.Engine" name="DFTB+ Settings">
                 <WaNoDropDown name="Partial Charge Method">
                     <Entry id="0" chosen="true" >CM3</Entry>
