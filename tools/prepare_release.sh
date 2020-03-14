@@ -1,4 +1,5 @@
 #!/bin/bash
 
-git archive --format zip --prefix=wanos/ --output simstack-wanos.zip master
+TODAY=$(date "+%F")
+git archive --format zip --prefix=wanos/ --output $TODAY-simstack-wanos.zip master
 
