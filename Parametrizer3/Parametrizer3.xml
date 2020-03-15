@@ -4,8 +4,8 @@
             <WaNoFile logical_filename="input_molecule.mol2" name="Molecule (Mol2)">Mol2 input file</WaNoFile>
             <WaNoThreeRandomLetters name="Molecule Identifier"></WaNoThreeRandomLetters>
             <WaNoBool name="Optimize Molecule">True</WaNoBool>
-            <WaNoInt name="Charge">-1</WaNoInt>
-            <WaNoInt name="Multiplicity">2</WaNoInt>
+            <WaNoInt name="Charge">0</WaNoInt>
+            <WaNoInt name="Multiplicity">1</WaNoInt>
         </WaNoDictBox>
         <WaNoDictBox name="DFT Engine">
             <WaNoDropDown name="Engine">
@@ -223,7 +223,7 @@
 #!/bin/bash
 
 export NANOVER="V3"
-source $NANOMATCH/$NANOVER/configs/quantumpatch_daniel.config
+source $NANOMATCH/$NANOVER/configs/quantumpatch.config
 
 /usr/bin/env python3 init_parametrizer.py
 
