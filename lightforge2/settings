@@ -85,3 +85,5 @@ analyse_doping:
   analyse_ion_dop: {{wano["TABS"]["analysis"]["analyse_ion_dop"]}}
 current_analysis: {{wano["TABS"]["analysis"]["current_analysis"]}}
 ML_energy_environment: {{wano["TABS"]["physics"]["ML_energy_environment"]}}
+ti_prune: {{wano["TABS"]["topology"]["prune transfer integrals"]}}
+ti_prune_cutoff: {{wano["TABS"]["topology"]["transfer integral cutoff"]}}

@@ -344,6 +344,9 @@
 
           </Element>
         </WaNoMultipleOf>
+
+        <WaNoBool name="prune transfer integrals">False</WaNoBool>
+        <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.topology.prune transfer integrals" name="transfer integral cutoff">1.0e-5</WaNoString>
       </WaNoGroup>
 
 
