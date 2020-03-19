@@ -114,6 +114,7 @@
               </WaNoDictBox>
 
               <WaNoDictBox switch_name="PAR: eaip,sig,l" name="molecule_parameters">
+                <WaNoFile visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" logical_filename="molecule_{{ path[3] }}.pdb" name="molecule_pdb">Put file here</WaNoFile>
                 <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output_excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
                 <WaNoMatrixFloat rows="3" cols="2" row_header="mean;sigma;lambda" col_header="IP;EA" name="energies"></WaNoMatrixFloat>
                 <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton_presets" subpath="name" chosen="0" />
