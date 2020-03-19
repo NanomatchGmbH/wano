@@ -12,7 +12,7 @@
                     </WaNoDropDown>
                     <WaNoBool visibility_condition="'%s' == 'Matrix EAIP'" visibility_var_path="Tabs.General.General Settings.QuantumPatch Type" name="Include in-matrix Lambda Calculation">True</WaNoBool>
                     <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Calculate Js">True</WaNoBool>
-                    <WaNoInt visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Higher Order Js">7</WaNoInt>
+                    <WaNoInt visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Higher Order Js">1</WaNoInt>
                     <WaNoBool name="Include in-vacuo Lambda/EA/IP Calculation">True</WaNoBool>
                 </WaNoDictBox>
                 <WaNoMultipleOf name="Molecular States">

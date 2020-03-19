@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NANOVER="V2"
+export NANOVER="V3"
 
 source $NANOMATCH/$NANOVER/configs/DihedralParametrizer2.config
 
@@ -35,10 +35,10 @@ export OMP_NUM_THREADS=1
 
 if [ "$UC_TOTAL_PROCESSORS" -gt 1 ]
 then
-    dihedral_parametrizer2.py -joblist -pdb molecule.pdb -spf molecule.spf -n "{{ wano["Number of Steps"] | int }}" -engine "{{ wano["evaluation engine"] }}" -relax_engine "FF" -func "{{ wano["DFT Parameters"]["Functional"] }}" -basis "{{ wano["DFT Parameters"]["Basis"] }}" -eval_iter "{{ wano["evaluation points"] }}"  -mc_scale "{{ wano["MC step multiplier"] }}"  -scf_iter "{{ wano["scf iterations"] }}" > $DATA_DIR/dhparm_preprocessing.stdout 2> $DATA_DIR/dhparm_preprocessing.stderr
+    dihedral_parametrizer2.py -joblist -pdb molecule.pdb -spf molecule.spf -n "{{ wano["Number of Steps"] | int }}" -engine "{{ wano["evaluation engine"] }}" -relax_engine "FF" -func "{{ wano["DFT Parameters"]["Functional"] }}" -basis "{{ wano["DFT Parameters"]["Basis"] }}" -eval_iter "{{ wano["algorithm settings"]["evaluation points"] }}"  -mc_scale "{{ wano["algorithm settings"]["MC step multiplier"] }}"  -scf_iter "{{ wano["algorithm settings"]["scf iterations"] }}" {% if wano["intra forcefield settings"]["optimize forcefield"] == True %} -pp -cb -do -st {% endif %} > $DATA_DIR/dhparm_preprocessing.stdout 2> $DATA_DIR/dhparm_preprocessing.stderr
     $MPI_PATH/bin/mpirun -np $UC_TOTAL_PROCESSORS python -m mpi4py $DIHEDRAL_PARAMETRIZER_PATH/threadfarm/bin/thread_mpi_exe.py joblist  > $DATA_DIR/dhparm_run.stdout 2> $DATA_DIR/dhparm_run.stderr
 else
-    dihedral_parametrizer2.py -pdb molecule.pdb -spf molecule.spf -n "{{ wano["Number of Steps"] | int }}" -engine "{{ wano["evaluation engine"] }}" -relax_engine "FF" -func "{{ wano["DFT Parameters"]["Functional"] }}" -basis "{{ wano["DFT Parameters"]["Basis"] }}" -eval_iter "{{ wano["evaluation points"] }}"  -mc_scale "{{ wano["MC step multiplier"] }}"  -scf_iter "{{ wano["scf iterations"] }}"
+    dihedral_parametrizer2.py -pdb molecule.pdb -spf molecule.spf -n "{{ wano["Number of Steps"] | int }}" -engine "{{ wano["evaluation engine"] }}" -relax_engine "FF" -func "{{ wano["DFT Parameters"]["Functional"] }}" -basis "{{ wano["DFT Parameters"]["Basis"] }}" -eval_iter "{{ wano["algorithm settings"]["evaluation points"] }}"  -mc_scale "{{ wano["algorithm settings"]["MC step multiplier"] }}"  -scf_iter "{{ wano["algorithm settings"]["scf iterations"] }}" {% if wano["intra forcefield settings"]["optimize forcefield"] == True %} -pp -cb -do -st {% endif %}
 fi 
 
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NANOVER="V2"
+export NANOVER="V3"
 source $NANOMATCH/$NANOVER/configs/quantumpatch.config
 source $NANOMATCH/$NANOVER/configs/dftb.config
 
@@ -73,7 +73,7 @@ then
 fi
 if [ "$QP_RUN" == "True" ]
 then
-    echo "Running $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr"
+    echo "Running $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi.stderr"
     $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
 fi
 

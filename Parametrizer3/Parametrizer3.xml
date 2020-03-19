@@ -4,6 +4,8 @@
             <WaNoFile logical_filename="input_molecule.mol2" name="Molecule (Mol2)">Mol2 input file</WaNoFile>
             <WaNoThreeRandomLetters name="Molecule Identifier"></WaNoThreeRandomLetters>
             <WaNoBool name="Optimize Molecule">True</WaNoBool>
+            <WaNoInt name="Charge">0</WaNoInt>
+            <WaNoInt name="Multiplicity">1</WaNoInt>
         </WaNoDictBox>
         <WaNoDictBox name="DFT Engine">
             <WaNoDropDown name="Engine">
@@ -100,7 +102,11 @@
                     <Entry id="55">cc-pwVQZ</Entry>
                     <Entry id="56">aug-cc-pwVQ</Entry>
                 </WaNoDropDown>
-                <WaNoBool name="DFTB3 Preoptimization">True</WaNoBool>
+                <WaNoDropDown name="Preoptimization">
+                    <Entry id="0" chosen="true">DFTB</Entry>
+                    <Entry id="1">XTB</Entry>
+                    <Entry id="2">None</Entry>
+                </WaNoDropDown>
                 <WaNoDropDown name="SCF Convergence">
                     <Entry id="0" chosen="true">normal</Entry>
                     <Entry id="1">tight</Entry>
@@ -176,8 +182,13 @@
                     <Entry id="30">aug-cc-pVTZ</Entry>
                     <Entry id="31">aug-cc-pVQZ</Entry>
                 </WaNoDropDown>
-                <WaNoBool name="DFTB3 Preoptimization">True</WaNoBool>
-            </WaNoDictBox>
+                <WaNoDropDown name="Preoptimization">
+                    <Entry id="0" chosen="true">DFTB</Entry>
+                    <Entry id="1">XTB</Entry>
+                    <Entry id="2">None</Entry>
+                </WaNoDropDown>            
+
+                </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="DFT Engine.Engine" name="DFTB+ Settings">
                 <WaNoDropDown name="Partial Charge Method">
                     <Entry id="0" chosen="true" >CM3</Entry>
@@ -186,28 +197,34 @@
                 <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
             </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'XTB'" visibility_var_path="DFT Engine.Engine" name="XTB Settings">
+                    <WaNoDropDown name="Partial Charge Method">
+                        <Entry id="0" >Mulliken</Entry>
+                        <Entry id="1" chosen="true">CM5</Entry>
+                    </WaNoDropDown>
                     <WaNoDropDown name="SCF Convergence">
                         <Entry id="0" >crude</Entry>
                         <Entry id="1" chosen="true">normal</Entry>
                         <Entry id="2">tight</Entry>
                     </WaNoDropDown>
-                    <WaNoDropDown name="Optimization cycles">
+                    <WaNoDropDown name="Optimization Cycles">
                         <Entry id="0" >1000</Entry>
                         <Entry id="1" chosen="true">2000</Entry>
                         <Entry id="2">5000</Entry>
                     </WaNoDropDown>
-            </WaNoDictBox>
-                <WaNoDictBox name="Charge state of the molecule">
-            		<WaNoInt name="Charge">-1</WaNoInt>
-                    <WaNoInt name="Multiplicity">2</WaNoInt>
+                    <WaNoDropDown name="GFN">
+                        <Entry id="0" >1</Entry>
+                        <Entry id="1" chosen="true">2</Entry>
+                    </WaNoDropDown>
             </WaNoDictBox>
         </WaNoDictBox>
+
     </WaNoRoot>
  <WaNoExecCommand>
 #!/bin/bash
 
-export NANOVER="V2"
+export NANOVER="V3"
 source $NANOMATCH/$NANOVER/configs/parametrizer.config
+
 
 /usr/bin/env python3 init_parametrizer.py
 
