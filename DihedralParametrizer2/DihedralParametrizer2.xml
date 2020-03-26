@@ -44,5 +44,6 @@
  <WaNoOutputFiles>
     <WaNoOutputFile>molecule.pdb</WaNoOutputFile>
     <WaNoOutputFile>dihedral_forcefield.spf</WaNoOutputFile>
+    <WaNoOutputFile>optimal_dihedral_forcefield.spf</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
