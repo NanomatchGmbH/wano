@@ -1,6 +1,6 @@
 <WaNoTemplate>
     <WaNoRoot name="Emission">
-        <WaNoFile logical_filename="molecule.xyz" name="Molecule">molecule.xyz</WaNoFile>
+        <WaNoFile logical_filename="molecule.xyz" name="Molecule">molecule.xyz,pdb,mol2,cml</WaNoFile>
         <WaNoBool name="Optimize Geometry">False</WaNoBool>
         <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Optimize Geometry" name="Geometry Optimization Options">
             <WaNoDropDown name="Basis">
