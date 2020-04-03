@@ -8,7 +8,7 @@ from DFTBase.DaltonEngine import DaltonEngine
 from DFTBase.Turbomole import Turbomole
 from QPAnalysis.DFTBaseData import DFTBaseData
 from Shredder.MoleculeSystem import TemporaryMol
-from Shredder.Parsers.XYZParser import XYZParser
+from Shredder.Parsers.ParserCommon import parse_system
 from os import environ
 from zipfile import ZipFile
 
@@ -90,8 +90,7 @@ if __name__ == "__main__":
     with open("rendered_wano.yml", "r") as inyml:
         wano = yaml.safe_load(inyml)
 
-    xyz = XYZParser()
-    sys = xyz.parse_to_system(wano["Molecule"])
+    sys = parse_system(wano["Molecule"])
     mol = sys.molecule(0)
 
     exec_dir = "calculations"
