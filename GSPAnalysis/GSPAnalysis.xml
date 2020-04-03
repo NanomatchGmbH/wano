@@ -43,6 +43,5 @@
         <!-- <WaNoInputFile logical_filename="qpanalysis_settings_template.yml">qpanalysis_settings_template.yml</WaNoInputFile> -->
     </WaNoInputFiles>
     <WaNoOutputFiles>
-        <WaNoOutputFile>stdout</WaNoOutputFile>
     </WaNoOutputFiles>
 </WaNoTemplate>
