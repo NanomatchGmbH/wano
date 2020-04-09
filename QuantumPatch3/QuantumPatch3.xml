@@ -421,7 +421,7 @@
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
-                        <WaNoDictBox visibility_condition="'%s' == 'XTBEngine'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="XTB:Engine Settings">
+                        <WaNoDictBox visibility_condition="'%s' == 'XTBEngine'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="XTBEngine Settings">
                             <WaNoDropDown name="Partial Charge Method">
                                 <Entry id="0" chosen="true" >CM5</Entry>
                                 <Entry id="1">Mulliken</Entry>
@@ -618,7 +618,7 @@
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
-                        <WaNoDictBox visibility_condition="'%s' == 'XTBEngine'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="XTB Settings">
+                        <WaNoDictBox visibility_condition="'%s' == 'XTBEngine'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="XTBEngine Settings">
                             <WaNoDropDown name="Partial Charge Method">
                                 <Entry id="0" chosen="true" >CM5</Entry>
                                 <Entry id="1">Mulliken</Entry>
@@ -628,7 +628,7 @@
                         </WaNoDictBox>
                     </Entry>
                           <Entry id="3">
-                        <WaNoString name="Name">XTBEngine </WaNoString>
+                        <WaNoString name="Name">XTBEngine 1</WaNoString>
                         <WaNoDropDown name="Engine">
                             <Entry id="0">Turbomole</Entry>
                             <Entry id="1">Psi4</Entry>
@@ -815,7 +815,7 @@
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
-                        <WaNoDictBox visibility_condition="'%s' == 'XTBEngine'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="XTB Settings">
+                        <WaNoDictBox visibility_condition="'%s' == 'XTBEngine'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="XTBEngine Settings">
                             <WaNoDropDown name="Partial Charge Method">
                                 <Entry id="0" chosen="true" >CM5</Entry>
                                 <Entry id="1">Mulliken</Entry>
