@@ -61,7 +61,6 @@ if __name__ == "__main__":
                 "charge_model": settings["Partial Charge Method"],
             }
         elif engine_name == "XTBEngine":
-            print("here I am")
             entry = {
                 "engine": engine_name,
                 "threads": settings["Threads"],
