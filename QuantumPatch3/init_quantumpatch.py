@@ -60,6 +60,14 @@ if __name__ == "__main__":
                 "dispersion": settings["D3(BJ) Dispersion Correction"],
                 "charge_model": settings["Partial Charge Method"],
             }
+        elif engine_name == "XTBEngine":
+            print("here I am")
+            entry = {
+                "engine": engine_name,
+                "threads": settings["Threads"],
+                "memory": settings["Memory (MB)"],
+                "charge_model": settings["Partial Charge Method"],
+            }
         else:
             raise QuantumPatchWaNoError("Unknown DFT engine %s" % engine_name)
         if engine_name == "Turbomole":
