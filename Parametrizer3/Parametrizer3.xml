@@ -6,6 +6,7 @@
             <WaNoBool name="Optimize Molecule">True</WaNoBool>
             <WaNoInt name="Charge">0</WaNoInt>
             <WaNoInt name="Multiplicity">1</WaNoInt>
+            <WaNoInt name="Excited State of Interest" >0</WaNoInt>
         </WaNoDictBox>
         <WaNoDictBox name="DFT Engine">
             <WaNoDropDown name="Engine">

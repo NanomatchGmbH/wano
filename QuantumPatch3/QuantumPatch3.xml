@@ -12,7 +12,7 @@
                     </WaNoDropDown>
                     <WaNoBool visibility_condition="'%s' == 'Matrix EAIP'" visibility_var_path="Tabs.General.General Settings.QuantumPatch Type" name="Include in-matrix Lambda Calculation">True</WaNoBool>
                     <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Calculate Js">True</WaNoBool>
-                    <WaNoInt visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Higher Order Js">1</WaNoInt>
+                    <WaNoInt visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Higher Order Js">7</WaNoInt>
                     <WaNoBool name="Include in-vacuo Lambda/EA/IP Calculation">True</WaNoBool>
                 </WaNoDictBox>
                 <WaNoMultipleOf name="Molecular States">
@@ -42,6 +42,7 @@
                             <Entry id="0" chosen="true">Turbomole</Entry>
                             <Entry id="1">Psi4</Entry>
                             <Entry id="2">DFTB+</Entry>
+                            <Entry id="3">XTBEngine</Entry>
                         </WaNoDropDown>
                         <WaNoBool name="Fallback">False</WaNoBool>
                         <WaNoDynamicDropDown visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Fallback" visibility_condition="'%s' == 'True'" name="Fallback Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
@@ -223,6 +224,14 @@
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
+                        <WaNoDictBox visibility_condition="'%s' == 'XTBEngine'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="XTBEngine Settings">
+                            <WaNoDropDown name="Partial Charge Method">
+                                <Entry id="0" chosen="true" >CM5</Entry>
+                                <Entry id="1">Mulliken</Entry>
+                            </WaNoDropDown>
+                            <WaNoInt name="Threads">1</WaNoInt>
+                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                        </WaNoDictBox>
                     </Entry>
                     <Entry id="1">
                         <WaNoString name="Name">Psi4 1</WaNoString>
@@ -230,6 +239,7 @@
                             <Entry id="0">Turbomole</Entry>
                             <Entry id="1" chosen="true">Psi4</Entry>
                             <Entry id="2">DFTB+</Entry>
+                            <Entry id="3">XTBEngine</Entry>
                         </WaNoDropDown>
                         <WaNoBool name="Fallback">False</WaNoBool>
                         <WaNoDynamicDropDown visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Fallback" visibility_condition="'%s' == 'True'" name="Fallback Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
@@ -411,13 +421,22 @@
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
-                    </Entry>
+                        <WaNoDictBox visibility_condition="'%s' == 'XTBEngine'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="XTBEngine Settings">
+                            <WaNoDropDown name="Partial Charge Method">
+                                <Entry id="0" chosen="true" >CM5</Entry>
+                                <Entry id="1">Mulliken</Entry>
+                            </WaNoDropDown>
+                            <WaNoInt name="Threads">1</WaNoInt>
+                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                        </WaNoDictBox>
+                       </Entry>
                     <Entry id="2">
                         <WaNoString name="Name">DFTB+ 1</WaNoString>
                         <WaNoDropDown name="Engine">
                             <Entry id="0">Turbomole</Entry>
                             <Entry id="1">Psi4</Entry>
                             <Entry id="2" chosen="true">DFTB+</Entry>
+                            <Entry id="3" chosen="true">XTBEngine </Entry>                  
                         </WaNoDropDown>
                         <WaNoBool name="Fallback">False</WaNoBool>
                         <WaNoDynamicDropDown visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Fallback" visibility_condition="'%s' == 'True'" name="Fallback Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
@@ -596,6 +615,14 @@
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
                             <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
+                            <WaNoInt name="Threads">1</WaNoInt>
+                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
+                        </WaNoDictBox>
+                            <WaNoDictBox visibility_condition="'%s' == 'XTBEngine'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="XTB Settings">
+                            <WaNoDropDown name="Partial Charge Method">
+                                <Entry id="0" chosen="true" >CM5</Entry>
+                                <Entry id="1">Mulliken</Entry>
+                            </WaNoDropDown>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
