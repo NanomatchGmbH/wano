@@ -36,7 +36,7 @@
   </WaNoMultipleOf>
  </WaNoGroup>
   <WaNoGroup name="Postprocessing">
-  <WaNoBool name="Extend morphology (x,y)">False</WaNoBool>
+  <WaNoBool name="Extend morphology (x,y)">True</WaNoBool>
   <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.Postprocessing.Extend morphology (x,y)" name="Cut first layer by (A)">7.0</WaNoFloat>
  </WaNoGroup>
  </WaNoTabs>
@@ -47,6 +47,7 @@
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <WaNoOutputFile>structure.cml</WaNoOutputFile>
+    <WaNoOutputFile>structurePBC.cml</WaNoOutputFile>
     <WaNoOutputFile>restartfile.zip</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
