@@ -5,6 +5,7 @@ Script that uses WaNo input to write QuantumPatch input.
 """
 
 import yaml
+from QPAnalysis.AnalysisSettings import AnalysisSettings
 
 
 class QuantumPatchWaNoError(Exception):
@@ -20,11 +21,14 @@ def string_to_bool(tdanalysis_enabled):
     return tdanalysis_enabled
 
 if __name__ == "__main__":
-    with open("qpanalysis_settings_template.yml", "r") as qpngin:
-        cfg = yaml.safe_load(qpngin)  # Script will modify this and re-write it
+    anasettings = AnalysisSettings()
+    cfg = anasettings.as_dict()
+    #with open("qpanalysis_settings_template.yml", "r") as qpngin:
+    #    cfg = yaml.safe_load(qpngin)  # Script will modify this and re-write it
     # Orientation Analysis dict created by Emission WaNo
     with open("rendered_wano.yml",'rt') as wano_in:
         rendered_wano = yaml.safe_load(wano_in)
+    cfg["Morphology"]["structure"] = rendered_wano["Morphology"]
     tdanalysis_enabled = string_to_bool(rendered_wano["Enable TD Analysis"])
     if tdanalysis_enabled:
         with open("orientation_analysis.yml", "r") as oain:
