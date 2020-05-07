@@ -21,6 +21,7 @@
                     <Entry id="1">Mulliken</Entry>
                 </WaNoDropDown>
                 <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
+                <WaNoBool name="static_polarizability">False</WaNoBool>
                 <WaNoDropDown name="Functional">
                     <Entry id="0">SVWN</Entry>
                     <Entry id="1">SVWN_Gaussian</Entry>
