@@ -26,7 +26,7 @@ if [ -d $SCRATCH ]
 then
     WORKING_DIR=$SCRATCH/`whoami`/`uuidgen`
     mkdir -p $WORKING_DIR
-    cp -r $DATA_DIR/* $WORKING_DIR/
+    rsync -a $DATA_DIR/* $WORKING_DIR/ --exclude "*.stderr" --exclude "*.stdout"
     cd $WORKING_DIR
 fi
 
@@ -46,7 +46,7 @@ fi
 
 if [ -d $WORKING_DIR ]
 then
-    rsync -av $WORKING_DIR/* $DATA_DIR/ --exclude "*stdout*" --exclude "*stderr*"
+    rsync -a $WORKING_DIR/* $DATA_DIR/ --exclude "DihedralParametrizer2.stderr" --exclude "DihedralParametrizer2.stdout"
     cd $DATA_DIR
     rm -r $WORKING_DIR
 fi
