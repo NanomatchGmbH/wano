@@ -4,8 +4,9 @@
   <WaNoFile logical_filename="molecule.spf" name="Molecule spf">spf file here</WaNoFile>
   <WaNoInt name="Number of Steps">18</WaNoInt>
   <WaNoDropDown name="evaluation engine">
-    <Entry id="0">DFTB</Entry>
-    <Entry id="1">DFT</Entry>
+    <Entry id="0">DFTBplus</Entry>
+    <Entry id="1">XTBEngine</Entry>
+    <Entry id="2">Turbomole</Entry>
   </WaNoDropDown>
   <WaNoDictBox  visibility_condition="'%s' == 'DFT'" visibility_var_path="evaluation engine" name="DFT Parameters">
     <WaNoDropDown name="Basis">
@@ -21,6 +22,91 @@
     <WaNoDropDown name="Functional">
       <Entry id="0" chosen="True" >b-p</Entry>
       <Entry id="1">b3-lyp</Entry>
+    </WaNoDropDown>
+  </WaNoDictBox>
+  <WaNoDictBox  visibility_condition="'%s' == 'Turbomole'" visibility_var_path="evaluation engine" name="DFT Parameters">
+    <WaNoDropDown name="Functional">
+        <Entry id="0">SVWN</Entry>
+        <Entry id="1">SVWN_Gaussian</Entry>
+        <Entry id="2">PWLDA</Entry>
+        <Entry id="3">BLYP</Entry>
+        <Entry id="4">BVWN</Entry>
+        <Entry id="5" chosen="true">BP86</Entry>
+        <Entry id="6">PBE</Entry>
+        <Entry id="7">TPSS</Entry>
+        <Entry id="8">BHLYP</Entry>
+        <Entry id="9">B3LYP</Entry>
+        <Entry id="10">B3LYP_Gaussian</Entry>
+        <Entry id="11">PBE0</Entry>
+        <Entry id="12">TPSSH</Entry>
+        <Entry id="13">PW6B95</Entry>
+        <Entry id="14">M06</Entry>
+        <Entry id="15">M06-1</Entry>
+        <Entry id="16">M06-2X</Entry>
+        <Entry id="17">B2PLYP</Entry>
+        <Entry id="18">wB97</Entry>
+        <Entry id="19">wB97X</Entry>
+        <Entry id="20">CAM-B3LYP</Entry>
+    </WaNoDropDown>
+    <WaNoDropDown name="Basis">
+        <Entry id="0">STO-3G</Entry>
+        <Entry id="1">4-31g hondo</Entry>
+        <Entry id="2">6-31g hondo</Entry>
+        <Entry id="3">3-21g hondo</Entry>
+        <Entry id="4">6-31G</Entry>
+        <Entry id="5">6-31G*</Entry>
+        <Entry id="6">6-31G**</Entry>
+        <Entry id="7">6-311G</Entry>
+        <Entry id="8">6-311G*</Entry>
+        <Entry id="9">6-311G**</Entry>
+        <Entry id="10">6-311++G**</Entry>
+        <Entry id="11">DZ</Entry>
+        <Entry id="12">DZP</Entry>
+        <Entry id="13">TZ</Entry>
+        <Entry id="14">TZP</Entry>
+        <Entry id="15">TZV</Entry>
+        <Entry id="16">TZVP</Entry>
+        <Entry id="17">TZVPP</Entry>
+        <Entry id="18">TZVPPP</Entry>
+        <Entry id="19">QZV</Entry>
+        <Entry id="20">QZVP</Entry>
+        <Entry id="21">SV</Entry>
+        <Entry id="22">SVP</Entry>
+        <Entry id="23">SV(P)</Entry>
+        <Entry id="24">def-SVP</Entry>
+        <Entry id="25" chosen="true">def-SV(P)</Entry>
+        <Entry id="26">def-TZVP</Entry>
+        <Entry id="27">def-TZVPP</Entry>
+        <Entry id="28">def-QZVP</Entry>
+        <Entry id="29">def-QZVPP</Entry>
+        <Entry id="30">def2-SVP</Entry>
+        <Entry id="31">def2-SV(P)</Entry>
+        <Entry id="32">def2-TZVP</Entry>
+        <Entry id="33">def2-TZVPP</Entry>
+        <Entry id="34">def2-SZVPD</Entry>
+        <Entry id="35">def2-TZVPD</Entry>
+        <Entry id="36">def2-TZVPPD</Entry>
+        <Entry id="37">def2-QZVPD</Entry>
+        <Entry id="38">def2-QZVPPD</Entry>
+        <Entry id="39">dhf-SV(P)</Entry>
+        <Entry id="40">dhf-SVP</Entry>
+        <Entry id="41">dhf-TZVP</Entry>
+        <Entry id="42">dhf-TZVPP</Entry>
+        <Entry id="43">dhf-QZVP</Entry>
+        <Entry id="44">dhf-QZVPP</Entry>
+        <Entry id="45">cc-pVDZ</Entry>
+        <Entry id="46">aug-cc-pVDZ</Entry>
+        <Entry id="47">cc-pwVDZ</Entry>
+        <Entry id="48">aug-cc-pwVDZ</Entry>
+        <Entry id="49">cc-pVTZ</Entry>
+        <Entry id="50">aug-cc-pVTZ</Entry>
+        <Entry id="51">cc-pwVTZ</Entry>
+        <Entry id="52">aug-cc-pwVTZ</Entry>
+        <Entry id="53">cc-pVQZ</Entry>
+        <Entry id="54">aug-cc-pVQZ</Entry>
+        <Entry id="55">cc-pwVQZ</Entry>
+        <Entry id="56">aug-cc-pwVQ</Entry>
+        <Entry id="57">nm-SVPP</Entry>
     </WaNoDropDown>
   </WaNoDictBox>
   <WaNoBool name="show advanced">False</WaNoBool>
@@ -44,6 +130,5 @@
  <WaNoOutputFiles>
     <WaNoOutputFile>molecule.pdb</WaNoOutputFile>
     <WaNoOutputFile>dihedral_forcefield.spf</WaNoOutputFile>
-    <WaNoOutputFile>optimal_dihedral_forcefield.spf</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
