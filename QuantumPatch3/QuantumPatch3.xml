@@ -101,12 +101,12 @@
                                 <Entry id="22">SVP</Entry>
                                 <Entry id="23">SV(P)</Entry>
                                 <Entry id="24">def-SVP</Entry>
-                                <Entry id="25" chosen="true">def-SV(P)</Entry>
+                                <Entry id="25">def-SV(P)</Entry>
                                 <Entry id="26">def-TZVP</Entry>
                                 <Entry id="27">def-TZVPP</Entry>
                                 <Entry id="28">def-QZVP</Entry>
                                 <Entry id="29">def-QZVPP</Entry>
-                                <Entry id="30">def2-SVP</Entry>
+                                <Entry id="30" chosen="true">def2-SVP</Entry>
                                 <Entry id="31">def2-SV(P)</Entry>
                                 <Entry id="32">def2-TZVP</Entry>
                                 <Entry id="33">def2-TZVPP</Entry>
@@ -298,12 +298,12 @@
                                 <Entry id="22">SVP</Entry>
                                 <Entry id="23">SV(P)</Entry>
                                 <Entry id="24">def-SVP</Entry>
-                                <Entry id="25" chosen="true">def-SV(P)</Entry>
+                                <Entry id="25">def-SV(P)</Entry>
                                 <Entry id="26">def-TZVP</Entry>
                                 <Entry id="27">def-TZVPP</Entry>
                                 <Entry id="28">def-QZVP</Entry>
                                 <Entry id="29">def-QZVPP</Entry>
-                                <Entry id="30">def2-SVP</Entry>
+                                <Entry id="30" chosen="true">def2-SVP</Entry>
                                 <Entry id="31">def2-SV(P)</Entry>
                                 <Entry id="32">def2-TZVP</Entry>
                                 <Entry id="33">def2-TZVPP</Entry>
@@ -396,8 +396,8 @@
                                 <Entry id="17">6-311++G</Entry>
                                 <Entry id="18">6-311++G*</Entry>
                                 <Entry id="19">6-311++G**</Entry>
-                                <Entry id="20" chosen="true">def2-SV(P)</Entry>
-                                <Entry id="21">def2-SVP</Entry>
+                                <Entry id="20">def2-SV(P)</Entry>
+                                <Entry id="21" chosen="true">def2-SVP</Entry>
                                 <Entry id="22">def2-TZVP</Entry>
                                 <Entry id="23">def2-TZVPP</Entry>
                                 <Entry id="24">def2-QZVP</Entry>
@@ -495,12 +495,12 @@
                                 <Entry id="22">SVP</Entry>
                                 <Entry id="23">SV(P)</Entry>
                                 <Entry id="24">def-SVP</Entry>
-                                <Entry id="25" chosen="true">def-SV(P)</Entry>
+                                <Entry id="25">def-SV(P)</Entry>
                                 <Entry id="26">def-TZVP</Entry>
                                 <Entry id="27">def-TZVPP</Entry>
                                 <Entry id="28">def-QZVP</Entry>
                                 <Entry id="29">def-QZVPP</Entry>
-                                <Entry id="30">def2-SVP</Entry>
+                                <Entry id="30" chosen="true">def2-SVP</Entry>
                                 <Entry id="31">def2-SV(P)</Entry>
                                 <Entry id="32">def2-TZVP</Entry>
                                 <Entry id="33">def2-TZVPP</Entry>
@@ -692,12 +692,12 @@
                                 <Entry id="22">SVP</Entry>
                                 <Entry id="23">SV(P)</Entry>
                                 <Entry id="24">def-SVP</Entry>
-                                <Entry id="25" chosen="true">def-SV(P)</Entry>
+                                <Entry id="25">def-SV(P)</Entry>
                                 <Entry id="26">def-TZVP</Entry>
                                 <Entry id="27">def-TZVPP</Entry>
                                 <Entry id="28">def-QZVP</Entry>
                                 <Entry id="29">def-QZVPP</Entry>
-                                <Entry id="30">def2-SVP</Entry>
+                                <Entry id="30" chosen="true">def2-SVP</Entry>
                                 <Entry id="31">def2-SV(P)</Entry>
                                 <Entry id="32">def2-TZVP</Entry>
                                 <Entry id="33">def2-TZVPP</Entry>
