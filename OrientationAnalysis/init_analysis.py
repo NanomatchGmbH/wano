@@ -31,7 +31,7 @@ if __name__ == "__main__":
     cfg["Morphology"]["structure"] = rendered_wano["Morphology"]
     tdanalysis_enabled = string_to_bool(rendered_wano["Enable TD Analysis"])
     if tdanalysis_enabled:
-        with open("orientation_analysis.yml", "r") as oain:
+        with open("orientation_analysis_input.yml", "r") as oain:
             orientation_analysis = yaml.safe_load(oain)
         orientation_analysis["enabled"] = True
         cfg["Analysis"]["Orientation"]["complex_axis"] = orientation_analysis
