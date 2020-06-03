@@ -77,5 +77,9 @@ then
     $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
 fi
 
+mkdir -p Analysis/GSP
+touch Analysis/GSP/partial_charges.yml
+touch Analysis/GSP/core_shell.cml
+
 
 zip -r Analysis.zip Analysis
