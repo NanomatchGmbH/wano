@@ -195,10 +195,10 @@
             </WaNoDropDown>
             <WaNoInt name="Excitations">3</WaNoInt>
         </WaNoDictBox>
-        <WaNoBool name="Automatic Center Atom">True</WaNoBool>
-        <WaNoInt visibility_condition="%s == False" visibility_var_path="Automatic Center Atom" name="Center Atom">0</WaNoInt>
         <WaNoBool name="Orientation Analysis Output">False</WaNoBool>
         <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Orientation Analysis Output" name="Internal Atomic Basis">
+            <WaNoBool name="Automatic Center Atom">True</WaNoBool>
+            <WaNoInt visibility_condition="%s == False" visibility_var_path="Internal Atomic Basis.Automatic Center Atom" name="Center Atom">0</WaNoInt>
             <WaNoInt name="Atom 1">1</WaNoInt>
             <WaNoInt name="Atom 2">2</WaNoInt>
             <WaNoInt name="Atom 3">3</WaNoInt>
