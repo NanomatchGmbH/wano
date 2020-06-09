@@ -453,6 +453,7 @@
    <WaNoInputFile logical_filename="settings">settings</WaNoInputFile>
    <WaNoInputFile logical_filename="start_LF.sh">start_LF.sh</WaNoInputFile>
    <WaNoInputFile logical_filename="merge_settings.py">merge_settings.py</WaNoInputFile>
+   <WaNoInputFile logical_filename="reformat_settings.py">reformat_settings.py</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <WaNoOutputFile>DriftDiffusion-in.yml</WaNoOutputFile>
