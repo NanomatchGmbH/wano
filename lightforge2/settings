@@ -87,3 +87,4 @@ current_analysis: {{wano["TABS"]["analysis"]["current_analysis"]}}
 ML_energy_environment: {{wano["TABS"]["physics"]["ML_energy_environment"]}}
 ti_prune: {{wano["TABS"]["topology"]["prune transfer integrals"]}}
 ti_prune_cutoff: {{wano["TABS"]["topology"]["transfer integral cutoff"]}}
+rate_scaling: {{wano["TABS"]["physics"]["rate_scaling"]}}
