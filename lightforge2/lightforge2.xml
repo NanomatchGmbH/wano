@@ -380,6 +380,12 @@
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="ct_rate_memory_multiplier">1.0</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="n_injection_layer">1.0</WaNoFloat>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="ML_energy_environment">False</WaNoBool>
+        <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="rate_scaling">
+          <WaNoFloat name="exciton_separation">1.0</WaNoFloat>
+          <WaNoFloat name="charge_injection">1.0</WaNoFloat>
+          <WaNoFloat name="ptq">1.0</WaNoFloat>
+        </WaNoDictBox>  
+
       </WaNoGroup>
 
 
