@@ -33,7 +33,7 @@ if __name__ == "__main__":
     cfg["QuantumPatch"]["type"] = qp_type[qp_run]
     cfg["QuantumPatch"]["number_of_equilibration_steps"] = max_iter
     cfg["QuantumPatch"]["calculateJs"] = wano_general["Calculate Js"]
-    cfg["QuantumPatch"]["Charge Damping"] = wano_general["charge_damping"]
+    cfg["QuantumPatch"]["charge_damping"] = wano_general["Charge Damping"]
     cfg["Analysis"]["HigherOrder"] = {}
     cfg["Analysis"]["HigherOrder"]["ExtraJs"] = int(wano_general["Higher Order Js"])
     # settings_ng "DFTEngine" Category
