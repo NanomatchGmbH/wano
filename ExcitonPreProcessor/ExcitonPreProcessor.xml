@@ -19,7 +19,7 @@
                     <WaNoInt  name="roots">20</WaNoInt>
                     <WaNoDynamicDropDown name="Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
                 </WaNoDictBox>
-                 <WaNoDictBox name="TPQ Rates">
+                 <WaNoDictBox name="TPQ/SPQ Rates">
                     <WaNoBool name="enabled">False</WaNoBool>
                     <WaNoBool name="anion">True</WaNoBool>
                     <WaNoBool name="cation">True</WaNoBool>
