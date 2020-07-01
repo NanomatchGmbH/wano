@@ -94,7 +94,7 @@ if __name__ == "__main__":
         cfg["Analysis"]["Excitonic"]["TTA"]["enabled"] = True
         cfg["Analysis"]["Excitonic"]["TTA"]["DFTEngine"] = general["TTA Rates"]["Engine"]
         cfg["Analysis"]["Excitonic"]["TTA"]["roots"] = general["TTA Rates"]["roots"]
-    if general["TPQ Rates"]["enabled"]:
+    if general["TPQ/SPQ Rates"]["enabled"]:
         cfg["Analysis"]["Excitonic"]["TPQ"]["enabled"] = True
         cfg["Analysis"]["Excitonic"]["TPQ"]["anion"] = general["TPQ Rates"]["anion"]
         cfg["Analysis"]["Excitonic"]["TPQ"]["cation"] = general["TPQ Rates"]["cation"]
