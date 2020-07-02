@@ -1,0 +1,22 @@
+<WaNoTemplate>
+    <WaNoRoot name="Stoke Shift calculator">
+        <WaNoDictBox name="Molecule Settings">
+            <WaNoFile logical_filename="s0.yml" name="Parametrizer output file s0"> yml input file</WaNoFile>
+            <WaNoFile logical_filename="s1.yml" name="Parametrizer output file s1"> yml input file</WaNoFile>
+        </WaNoDictBox>
+    </WaNoRoot>
+
+ <WaNoExecCommand>
+#!/bin/bash
+
+export NANOVER="V3"
+source $NANOMATCH/$NANOVER/configs/parametrizer.config
+
+
+/usr/bin/env python3 $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/AnalyzeStokesShift.pywano["Molecule Settings"]["s0.yml"] wano["Molecule Settings"]["s1.yml"] 
+
+</WaNoExecCommand>
+  <WaNoOutputFiles>
+    <WaNoOutputFile>report.yml</WaNoOutputFile>
+ </WaNoOutputFiles>
+</WaNoTemplate>
