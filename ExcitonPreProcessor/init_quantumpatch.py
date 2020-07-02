@@ -96,10 +96,10 @@ if __name__ == "__main__":
         cfg["Analysis"]["Excitonic"]["TTA"]["roots"] = general["TTA Rates"]["roots"]
     if general["TPQ/SPQ Rates"]["enabled"]:
         cfg["Analysis"]["Excitonic"]["TPQ"]["enabled"] = True
-        cfg["Analysis"]["Excitonic"]["TPQ"]["anion"] = general["TPQ Rates"]["anion"]
-        cfg["Analysis"]["Excitonic"]["TPQ"]["cation"] = general["TPQ Rates"]["cation"]
-        cfg["Analysis"]["Excitonic"]["TPQ"]["DFTEngine"] = general["TPQ Rates"]["Engine"]
-        cfg["Analysis"]["Excitonic"]["TPQ"]["roots"] = general["TPQ Rates"]["roots"]
+        cfg["Analysis"]["Excitonic"]["TPQ"]["anion"] = general["TPQ/SPQ Rates"]["anion"]
+        cfg["Analysis"]["Excitonic"]["TPQ"]["cation"] = general["TPQ/SPQ Rates"]["cation"]
+        cfg["Analysis"]["Excitonic"]["TPQ"]["DFTEngine"] = general["TPQ/SPQ Rates"]["Engine"]
+        cfg["Analysis"]["Excitonic"]["TPQ"]["roots"] = general["TPQ/SPQ Rates"]["roots"]
     # Write modified settings file to disk.
     with open("settings_ng.yml", "w") as qpngout:
         yaml.dump(cfg, qpngout, default_flow_style=False)
