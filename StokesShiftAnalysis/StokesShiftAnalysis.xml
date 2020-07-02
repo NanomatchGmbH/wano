@@ -13,7 +13,9 @@ export NANOVER="V3"
 source $NANOMATCH/$NANOVER/configs/parametrizer.config
 
 
-/usr/bin/env python3 $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/AnalyzeStokesShift.pywano["Molecule Settings"]["s0.yml"] wano["Molecule Settings"]["s1.yml"] 
+/usr/bin/env python3 $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/AnalyzeStokesShift.py {{ wano["Molecule Settings"]["Parametrizer output file s0"] }} {{ wano["Molecule Settings"]["Parametrizer output file s1"] }}
+
+
 
 </WaNoExecCommand>
   <WaNoOutputFiles>
