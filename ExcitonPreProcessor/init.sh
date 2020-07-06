@@ -51,7 +51,13 @@ do
 done
 
 echo "Creating input files."
-/usr/bin/env python3 init_quantumpatch.py
+
+if [ ! -f settings_ng.yml ]
+then
+     /usr/bin/env python3 init_quantumpatch.py
+fi
+
+
 echo "Running $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py"
 $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py
 
