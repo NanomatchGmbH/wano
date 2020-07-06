@@ -257,5 +257,6 @@ zip report.zip output_molecule.mol2 molecule.pdb molecule.spf
     <WaNoOutputFile>molecule.spf</WaNoOutputFile>
     <WaNoOutputFile>molecule.pdb</WaNoOutputFile>
     <WaNoOutputFile>output_molecule.mol2</WaNoOutputFile>
+    <WaNoOutputFile>mol_data.yml</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
