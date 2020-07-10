@@ -21,6 +21,12 @@ if [ "$DO_RESTART" == "True" ]
 then
     if [ -f restartfile.zip ]
     then
+        zip -qT restartfile.zip
+        if [ "$?" != "0" ]
+        then
+            echo "Could not read restartfile. Aborting run."
+            exit $?
+        fi
         echo "Found Checkpoint, extracting for restart."
         unzip -q -o restartfile.zip
         rm restartfile.zip
