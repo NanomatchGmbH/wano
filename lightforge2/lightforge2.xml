@@ -387,6 +387,7 @@
           <WaNoFloat name="exciton_separation">1.0</WaNoFloat>
           <WaNoFloat name="charge_injection">1.0</WaNoFloat>
           <WaNoFloat name="ptq">1.0</WaNoFloat>
+          <WaNoFloat name="dexter_spinflip">1.0</WaNoFloat>
         </WaNoDictBox>  
 
       </WaNoGroup>
