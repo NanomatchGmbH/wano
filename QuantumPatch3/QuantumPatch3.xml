@@ -218,7 +218,7 @@
                         </WaNoDictBox>
                         <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="DFTB+ Settings">
                             <WaNoDropDown name="Partial Charge Method">
-                                <Entry id="0" chosen="true" >CM3</Entry>
+                                <Entry id="0" chosen="true" >CM5</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
                             <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
@@ -415,7 +415,7 @@
                         </WaNoDictBox>
                         <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="DFTB+ Settings">
                             <WaNoDropDown name="Partial Charge Method">
-                                <Entry id="0" chosen="true" >CM3</Entry>
+                                <Entry id="0" chosen="true" >CM5</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
                             <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
@@ -612,7 +612,7 @@
                         </WaNoDictBox>
                         <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="DFTB+ Settings">
                             <WaNoDropDown name="Partial Charge Method">
-                                <Entry id="0" chosen="true" >CM3</Entry>
+                                <Entry id="0" chosen="true" >CM5</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
                             <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
@@ -809,7 +809,7 @@
                         </WaNoDictBox>
                         <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="DFTB+ Settings">
                             <WaNoDropDown name="Partial Charge Method">
-                                <Entry id="0" chosen="true" >CM3</Entry>
+                                <Entry id="0" chosen="true" >CM5</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
                             <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
