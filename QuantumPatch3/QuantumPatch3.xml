@@ -836,6 +836,7 @@
                         <Entry id="2">list of Molecule IDs</Entry>
                         <Entry id="3">Number of Random Pairs</Entry>
                         <Entry id="4">Number of Random Crosspairs</Entry>
+                        <Entry id="5">Number of Molecules of each Type</Entry>
                     </WaNoDropDown>
                     <WaNoDictBox visibility_condition="'%s' == 'Inner Box Cutoff'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="Inner Box Cutoff">
                         <WaNoFloat name="Cutoff x direction">10.0</WaNoFloat>
