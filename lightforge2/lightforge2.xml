@@ -216,6 +216,7 @@
               <Entry id="3">custom Files: morphology</Entry>
               <Entry id="4">custom Files: morphology, eaip</Entry>
               <Entry id="5">custom Files: morphology, homolumo</Entry>
+              <Entry id="6">QP_output: HL generator</Entry>
             </WaNoDropDown>
 
             <WaNoSwitch switch_path="TABS.device.layers.{{ path[3] }}.morphology_input_mode" name="TP">
@@ -233,6 +234,7 @@
                 <WaNoFile name="homolumo file" logical_filename="homolumo{{ path[3] }}.dat">Put file here</WaNoFile>
               </WaNoInviBox>           
               <WaNoDynamicDropDown switch_name="select QP_output" name="morphology_QP_output" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+              <WaNoDynamicDropDown switch_name="QP_output: HL generator" name="morphology_QP_output" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
             </WaNoSwitch>
 
             <WaNoMultipleOf name="molecule_species">
@@ -374,6 +376,7 @@
           <Entry id="1">QP</Entry>
           <Entry id="2">constant</Entry>
         </WaNoDropDown>
+        <WaNoBool visibility_condition="'%s' == 'QP'" visibility_var_path="TABS.physics.coulomb_correction_mode" name="polarization_correction">False</WaNoBool>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.coulomb_correction" name="coulomb_binding_energy">0.5</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.coulomb_correction" name="coulomb_binding_shift">0.0</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_stack_distance">0.8</WaNoFloat>
@@ -389,6 +392,7 @@
           <WaNoFloat name="ptq">1.0</WaNoFloat>
           <WaNoFloat name="dexter_spinflip">1.0</WaNoFloat>
         </WaNoDictBox>  
+        <WaNoMatrixFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" rows="1" cols="3" row_header="nm" col_header="x;y;z" name="mesh_scale">1.0</WaNoMatrixFloat>
 
       </WaNoGroup>
 
