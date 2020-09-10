@@ -10,6 +10,7 @@ set_pbc: automatic
 rates: {{wano["TABS"]["physics"]["rates"]}}
 coulomb_correction: {{wano["TABS"]["physics"]["coulomb_correction"]}}
 coulomb_correction_mode: {{wano["TABS"]["physics"]["coulomb_correction_mode"]}}
+polarization_correction: {{wano["TABS"]["physics"]["polarization_correction"]}}
 coulomb_binding_energy: {{wano["TABS"]["physics"]["coulomb_binding_energy"]}}
 coulomb_binding_shift: {{wano["TABS"]["physics"]["coulomb_binding_shift"]}}
 ct_rate_memory_multiplier: {{wano["TABS"]["physics"]["ct_rate_memory_multiplier"]}}
@@ -88,3 +89,4 @@ ML_energy_environment: {{wano["TABS"]["physics"]["ML_energy_environment"]}}
 ti_prune: {{wano["TABS"]["topology"]["prune transfer integrals"]}}
 ti_prune_cutoff: {{wano["TABS"]["topology"]["transfer integral cutoff"]}}
 rate_scaling: {{wano["TABS"]["physics"]["rate_scaling"]}}
+mesh_scale: {{wano["TABS"]["physics"]["mesh_scale"]}}
