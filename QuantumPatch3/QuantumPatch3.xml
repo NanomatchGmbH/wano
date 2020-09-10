@@ -836,6 +836,7 @@
                         <Entry id="2">list of Molecule IDs</Entry>
                         <Entry id="3">Number of Random Pairs</Entry>
                         <Entry id="4">Number of Random Crosspairs</Entry>
+                        <Entry id="5">Number of Molecules of each Type</Entry>
                     </WaNoDropDown>
                     <WaNoDictBox visibility_condition="'%s' == 'Inner Box Cutoff'" visibility_var_path="Tabs.Shells.Core Shell.Inner Part Method" name="Inner Box Cutoff">
                         <WaNoFloat name="Cutoff x direction">10.0</WaNoFloat>
@@ -891,7 +892,19 @@
                 <WaNoDynamicDropDown name="Engine for Single Points" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
                 </WaNoDictBox>
             </WaNoGroup>
-        </WaNoTabs>
+            <WaNoGroup name="Post processing">
+                    <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Predict site energy distribution">False</WaNoBool>
+                    <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Site energy prediction settings">
+                    <WaNoFile visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" logical_filename="structure.cml" name="non PBC Structure">Put .cml file here</WaNoFile>
+                    <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Periodic copies">
+                        <WaNoInt name="x">2</WaNoInt>
+                        <WaNoInt name="y">2</WaNoInt>
+                        <WaNoInt name="z">2</WaNoInt>
+                    </WaNoDictBox>
+                    <WaNoInt visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Coulomb cutoff">25</WaNoInt>
+                </WaNoDictBox>
+            </WaNoGroup>
+            </WaNoTabs>
     </WaNoRoot>
     <WaNoExecCommand>bash ./init.sh</WaNoExecCommand>
     <WaNoInputFiles>

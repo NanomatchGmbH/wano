@@ -20,6 +20,7 @@ if __name__ == "__main__":
     wano_shells = wano["Tabs"]["Shells"]
     wano_core = wano_shells["Core Shell"]
     wano_general = wano["Tabs"]["General"]["General Settings"]
+    wano_postproc = wano["Tabs"]["Post processing"]
     qp_run = wano_general["QuantumPatch Type"]
     max_iter = wano_core["Screened Iterations"]
     # Indirection arrays to translate settings from WaNo expression to input
@@ -36,6 +37,11 @@ if __name__ == "__main__":
     cfg["QuantumPatch"]["charge_damping"] = wano_general["Charge Damping"]
     cfg["Analysis"]["HigherOrder"] = {}
     cfg["Analysis"]["HigherOrder"]["ExtraJs"] = int(wano_general["Higher Order Js"])
+    cfg["Analysis"]["homo_lumo_generator"] = {}
+    cfg["Analysis"]["homo_lumo_generator"]["enabled"] = wano_postproc["Predict site energy distribution"]
+    cfg["Analysis"]["homo_lumo_generator"]["periodic_copies"] = [int(wano_postproc["Site energy prediction settings"]["Periodic copies"]["x"]), int(wano_postproc["Site energy prediction settings"]["Periodic copies"]["y"]), int(wano_postproc["Site energy prediction settings"]["Periodic copies"]["z"])]
+    cfg["Analysis"]["homo_lumo_generator"]["coulomb_cutoff"] = wano_postproc["Site energy prediction settings"]["Coulomb cutoff"]
+    cfg["Analysis"]["homo_lumo_generator"]["non_PBC_morphology"] = wano_postproc["Site energy prediction settings"]["non PBC Structure"]
     # settings_ng "DFTEngine" Category
     cfg["DFTEngine"]["user"] = dict()
     for engine in wano["Tabs"]["Engines"]["DFT Engines"]:
