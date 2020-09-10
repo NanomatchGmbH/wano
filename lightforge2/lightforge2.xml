@@ -432,15 +432,16 @@
       </WaNoGroup>
 
       <WaNoGroup name="analysis">
-      	<WaNoBool name="exciton_lifecycle">False</WaNoBool>
-      	<WaNoFloat name="autorun_start">0.5</WaNoFloat>
-        <WaNoInt name="coulomb_autorun_iter">10</WaNoInt>
-        <WaNoDictBox name="DOS">
+        <WaNoBool visibility_condition="%s == False" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="Read docu first at docs(dot)nanomatch(dot)com">False</WaNoBool>
+      	<WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="exciton_lifecycle">False</WaNoBool>
+      	<WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="autorun_start">0.5</WaNoFloat>
+        <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="coulomb_autorun_iter">10</WaNoInt>
+        <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="DOS">
           <WaNoBool name="analyse_dos">False</WaNoBool>
           <WaNoBool name="get_hole_transport_level">False</WaNoBool>
         </WaNoDictBox>
-        <WaNoBool name="analyse_ion_dop">False</WaNoBool>
-        <WaNoDictBox name="current_analysis">
+        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="analyse_ion_dop">False</WaNoBool>
+        <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="current_analysis">
           <WaNoDictBox name="y_axis">
             <WaNoBool name="mobility">False</WaNoBool>
             <WaNoBool name="current_density">False</WaNoBool>
