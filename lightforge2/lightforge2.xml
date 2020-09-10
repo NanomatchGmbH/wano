@@ -360,6 +360,7 @@
           <Entry id="0" chosen="True">Marcus</Entry>
           <Entry id="1">Miller</Entry>
           <Entry id="2">mixed-marcus</Entry>
+          <Entry id="3">automatic</Entry>
         </WaNoDropDown>
 
         <WaNoFloat name="epsilon_material">4.0</WaNoFloat>
