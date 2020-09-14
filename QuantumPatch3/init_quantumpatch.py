@@ -86,6 +86,9 @@ if __name__ == "__main__":
     if wano_core["Inner Part Method"] == "Number of Molecules":
         cfg["System"]["Core"]["type"] = "number"
         cfg["System"]["Core"]["number"] = wano_core["Number of Molecules"]
+    elif wano_core["Inner Part Method"] == "Number of Molecules of each Type":
+        cfg["System"]["Core"]["type"] = "number_by_type"
+        cfg["System"]["Core"]["number"] = wano_core["Number of Molecules"]
     elif wano_core["Inner Part Method"] == "Inner Box Cutoff":
         cfg["System"]["Core"]["type"] = "distance"
         cfg["System"]["Core"]["distance"] = {
