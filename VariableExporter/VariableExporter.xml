@@ -1,0 +1,23 @@
+<WaNoTemplate>
+    <WaNoRoot name="VariableExporter">
+        <WaNoScript name="Script" logical_filename="input.script">input.script</WaNoScript>
+        <WaNoChoice name="Interpreter">
+           <Entry id="0">Bash</Entry>
+           <Entry id="1" chosen="true" >Python</Entry>    
+           <Entry id="2">Perl</Entry>    
+        </WaNoChoice>
+    </WaNoRoot>
+    <WaNoExecCommand>      
+        {% if wano["Interpreter"] == "Bash" %}bash {{ wano["Script"] }}{% endif %}
+        {% if wano["Interpreter"] == "Python" %}python {{ wano["Script"] }}{% endif %}
+        {% if wano["Interpreter"] == "Perl" %}perl {{ wano["Script"] }}{% endif %}
+    </WaNoExecCommand>
+    <WaNoInputFiles>
+    </WaNoInputFiles>   
+    <WaNoOutputFiles>
+      <WaNoOutputFile>output_dict.yml</WaNoOutputFile>
+    </WaNoOutputFiles>
+</WaNoTemplate>
+
+
+

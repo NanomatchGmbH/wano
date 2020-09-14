@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+
+outdict = {}
+outdict["iter"] = []
+for i in range(0,20):
+    outdict["iter"].append(i)
+
+import yaml
+
+with open("output_dict.yml",'w') as out:
+    yaml.safe_dump(outdict, out)
+
+ 
+
