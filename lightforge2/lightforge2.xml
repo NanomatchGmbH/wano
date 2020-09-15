@@ -60,6 +60,7 @@
               <Entry id="3">QP: eaip,sig PAR: l</Entry>
               <Entry id="4">QP: l PAR: eaip,sig</Entry>
               <Entry id="5">PAR: eaip,sig,l</Entry>
+              <Entry id="6">PAR: eaip,sig,l QP: morph</Entry>
             </WaNoDropDown>
 
             <WaNoSwitch switch_path="TABS.materials.materials.{{ path[3] }}.input_mode_transport" name="TP">
@@ -121,6 +122,14 @@
                 <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.materials.manual dopant selection" name="is_dopant">False</WaNoBool>
               </WaNoDictBox>
 
+              <WaNoDictBox switch_name="PAR: eaip,sig,l QP: morph" name="molecule_parameters">
+                <WaNoFile logical_filename="molecule_{{ path[3] }}.pdb" name="molecule_pdb">Put file here</WaNoFile>
+                <WaNoDynamicDropDown visibility_condition="'%s' == 'use QP abinitio input'" visibility_var_path="TABS.materials.excitonics" name="QP_output_excitonics" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+                <WaNoMatrixFloat rows="3" cols="2" row_header="mean;sigma;lambda" col_header="IP;EA" name="energies"></WaNoMatrixFloat>
+                <WaNoDynamicDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="exciton preset" collection_path="TABS.materials.exciton_presets" subpath="name" chosen="0" />
+                <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.materials.manual dopant selection" name="is_dopant">False</WaNoBool>
+              </WaNoDictBox>
+
             </WaNoSwitch>
           </Element>
         </WaNoMultipleOf>
@@ -145,7 +154,7 @@
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
               <WaNoString name="s1s1_reorganization_energy">0.3</WaNoString>
               <WaNoString name="binding_energy">1.0</WaNoString>
-              <WaNoFloat name="energy_disorder">0.1</WaNoFloat>
+              <WaNoFloat name="energy_disorder">0.05</WaNoFloat>
               <WaNoFloat name="singlet_triplet_gap">0.4</WaNoFloat>
             </WaNoDictBox>  
           </Element>
@@ -168,7 +177,7 @@
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
               <WaNoString name="s1s1_reorganization_energy">0.3</WaNoString>
               <WaNoString name="binding_energy">1.0</WaNoString>
-              <WaNoFloat name="energy_disorder">0.1</WaNoFloat>
+              <WaNoFloat name="energy_disorder">0.05</WaNoFloat>
               <WaNoFloat name="singlet_triplet_gap">0.4</WaNoFloat>
             </WaNoDictBox>  
           </Element>   
