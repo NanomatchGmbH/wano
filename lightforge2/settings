@@ -24,7 +24,7 @@ superexchange: {{wano["TABS"]["physics"]["superexchange"]}}
 recursive_neighbours: 18
 expansion_scheme: {{wano["TABS"]["device"]["morphology expansion scheme"]}}
 scaling: [None]
-excitonics: {{wano["TABS"]["materials"]["excitonics"]}}
+FRET: {{wano["TABS"]["topology"]["FRET"]}}
 morphology_width: {{wano["TABS"]["device"]["morphology width [nm]"]}}
 
 {%if  wano["TABS"]["IO"]["use QP output"] == True  %}QP_output_files: {{wano["TABS"]["IO"]["QP output file"]}} {%  endif  %}

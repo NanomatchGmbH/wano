@@ -1,5 +1,5 @@
 <WaNoTemplate>
-    <WaNoRoot name="Parametrizer">
+    <WaNoRoot name="Parametrizer3">
         <WaNoDictBox name="Molecule Settings">
             <WaNoFile logical_filename="input_molecule.mol2" name="Molecule (Mol2)">Mol2 input file</WaNoFile>
             <WaNoThreeRandomLetters name="Molecule Identifier"></WaNoThreeRandomLetters>
