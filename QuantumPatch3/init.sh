@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NANOVER="V3"
+export NANOVER="V4"
 source $NANOMATCH/$NANOVER/configs/quantumpatch.config
 source $NANOMATCH/$NANOVER/configs/dftb.config
 
@@ -57,6 +57,7 @@ environmentvariables=("CGPATH"   \
     "NM_LICENSE_SERVER"   \
     "OMP_NUM_THREADS"   \
     "OPENMMPATH"   \
+    "OPENMPIPATH"    \
     "PATH"   \
     "PARNODES" \
     "PYTHONPATH"   \
@@ -109,8 +110,8 @@ then
 fi
 if [ "$QP_RUN" == "True" ]
 then
-    echo "Running $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi.stderr"
-    $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
+    echo "Running $OPENMPI_PATH/bin/mpirun --bind-to none $ENVCOMMAND --hostfile $HOSTFILE --mca vader,tcp python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr"
+    $OPENMPI_PATH/bin/mpirun --bind-to none $ENVCOMMAND --hostfile $HOSTFILE --mca vader,tcp python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
 fi
 
 mkdir -p Analysis/GSP
