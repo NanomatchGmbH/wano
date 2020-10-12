@@ -895,6 +895,7 @@
             <WaNoGroup name="Post processing">
                     <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Predict site energy distribution">False</WaNoBool>
                     <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Site energy prediction settings">
+                    <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="z Rotation">True</WaNoBool>
                     <WaNoFile visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" logical_filename="structure.cml" name="non PBC Structure">Put .cml file here</WaNoFile>
                     <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Periodic copies">
                         <WaNoInt name="x">2</WaNoInt>

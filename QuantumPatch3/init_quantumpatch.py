@@ -40,8 +40,9 @@ if __name__ == "__main__":
     cfg["Analysis"]["homo_lumo_generator"] = {}
     cfg["Analysis"]["homo_lumo_generator"]["enabled"] = wano_postproc["Predict site energy distribution"]
     cfg["Analysis"]["homo_lumo_generator"]["periodic_copies"] = [int(wano_postproc["Site energy prediction settings"]["Periodic copies"]["x"]), int(wano_postproc["Site energy prediction settings"]["Periodic copies"]["y"]), int(wano_postproc["Site energy prediction settings"]["Periodic copies"]["z"])]
-    cfg["Analysis"]["homo_lumo_generator"]["coulomb_cutoff"] = wano_postproc["Site energy prediction settings"]["Coulomb cutoff"]
     cfg["Analysis"]["homo_lumo_generator"]["non_PBC_morphology"] = wano_postproc["Site energy prediction settings"]["non PBC Structure"]
+    cfg["Analysis"]["homo_lumo_generator"]["coulomb_cutoff"] = wano_postproc["Site energy prediction settings"]["Coulomb cutoff"]
+    cfg["Analysis"]["homo_lumo_generator"]["swap_x_z_axis"] = wano_postproc["Site energy prediction settings"]["z Rotation"]
     # settings_ng "DFTEngine" Category
     cfg["DFTEngine"]["user"] = dict()
     for engine in wano["Tabs"]["Engines"]["DFT Engines"]:

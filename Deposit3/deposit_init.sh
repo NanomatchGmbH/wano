@@ -65,4 +65,6 @@ then
 fi
 fi
 
-
+source $NANOMATCH/$NANOVER/configs/quantumpatch.config
+QuantumPatchAnalysis.py > DensityAnalysisInit.out
+QuantumPatchAnalysis.py Analysis.Density.enabled=True > DensityAnalysis.out
