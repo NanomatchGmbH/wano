@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NANOVER="V3"
+export NANOVER="V4"
 
 source $NANOMATCH/$NANOVER/configs/DihedralParametrizer2.config
 
@@ -32,11 +32,71 @@ fi
 
 export OMP_NUM_THREADS=1
 
+# Here we check, whether variables are set and add them to the mpirun exports. This is not required for mpirun with PBS/Torque, but required with everything else.
+# We could also specify only the required ones, but we do not know that a priori (i.e. whether Turbomole or Gaussian is to be used.
+# To avoid warnings, we therefore check first whether something is set and only then add it to the command.
+function varisset {
+        if [ -z ${!1+x} ]
+        then
+                echo "false"
+        else
+                echo "true"
+        fi
+}
+environmentvariables=("CGPATH"   \
+    "DALTONPATH"   \
+    "DEPOSITPATH"   \
+    "DEPTOOLS"   \
+    "DFTBPARAMETERS"   \
+    "DFTBPATH"   \
+    "DIHEDRAL_PARAMETRIZER_PATH"   \
+    "HOSTFILE"   \
+    "IBIPATH"   \
+    "KMCDEPOSITPATH"   \
+    "LD_LIBRARY_PATH"   \
+    "LFPATH"   \
+    "LOCAL"   \
+    "LOCALCONDA"   \
+    "MPI_PATH"   \
+    "NANOMATCH"   \
+    "NANOVER"   \
+    "NM_LICENSE_SERVER"   \
+    "OMP_NUM_THREADS"   \
+    "OPENMMPATH"   \
+    "OPENMPIPATH"    \
+    "PATH"   \
+    "PARNODES" \
+    "PYTHONPATH"   \
+    "SCRATCH"   \
+    "SHREDDERPATH"   \
+    "SIMONAPATH"   \
+    "SLURM_CPU_BIND"   \
+    "THREADFARMPATH"   \
+    "TURBODIR"   \
+    "UC_MEMORY_PER_NODE"   \
+    "UC_NODES"   \
+    "UC_PROCESSORS_PER_NODE"   \
+    "UC_TOTAL_PROCESSORS"   \
+    "UC_TOTAL_PROCESSORS"   \
+    "TURBODIR"   \
+    "TURBOMOLE_SYSNAME" \
+    "XTBPATH"   )
+
+
+ENVCOMMAND=""
+for var in "${environmentvariables[@]}"
+do
+  if [ "$(varisset ${var})" == "true" ]
+  then
+        ENVCOMMAND="$ENVCOMMAND -x $var"
+  fi
+done
+
 
 if [ "$UC_TOTAL_PROCESSORS" -gt 1 ]
 then
     dihedral_parametrizer2.py -joblist -pdb molecule.pdb -spf molecule.spf -n "{{ wano["Number of Steps"] | int }}" -engine "{{ wano["evaluation engine"] }}" -relax_engine "FF" -func "{{ wano["DFT Parameters"]["Functional"] }}" -basis "{{ wano["DFT Parameters"]["Basis"] }}" -mc_scale "{{ wano["algorithm settings"]["MC step multiplier"] }}"  -scf_iter "{{ wano["algorithm settings"]["scf iterations"] }}" {% if wano["intra forcefield settings"]["optimize forcefield"] == True %} -pp -cb -do -st {% if wano["intra forcefield settings"]["Trainingsset"] == "Set of Vac Mols" %} -eval_iter "{{ wano["intra forcefield settings"]["Trainingsset settings"]["evaluation points"] }}" -tcat "{{ wano["intra forcefield settings"]["Trainingsset settings"]["train set acc temp"] }}" {% endif %} {% if wano["intra forcefield settings"]["Trainingsset"] == "From Files" %} -led -eaf evaluation_angles.dat -eef evaluation_energies.dat {% endif %} {% endif %} > $DATA_DIR/dhparm_preprocessing.stdout 2> $DATA_DIR/dhparm_preprocessing.stderr
-    $MPI_PATH/bin/mpirun -genvall -machinefile $HOSTFILE python -m mpi4py $DIHEDRAL_PARAMETRIZER_PATH/threadfarm/bin/thread_mpi_exe.py joblist  > $DATA_DIR/dhparm_run.stdout 2> $DATA_DIR/dhparm_run.stderr
+    $OPENMPI_PATH/bin/mpirun --bind-to none $ENVCOMMAND --hostfile $HOSTFILE --mca vader,tcp python -m mpi4py $DIHEDRAL_PARAMETRIZER_PATH/threadfarm/bin/thread_mpi_exe.py joblist  > $DATA_DIR/dhparm_run.stdout 2> $DATA_DIR/dhparm_run.stderr
 else
     dihedral_parametrizer2.py -pdb molecule.pdb -spf molecule.spf -n "{{ wano["Number of Steps"] | int }}" -engine "{{ wano["evaluation engine"] }}" -relax_engine "FF" -func "{{ wano["DFT Parameters"]["Functional"] }}" -basis "{{ wano["DFT Parameters"]["Basis"] }}" -mc_scale "{{ wano["algorithm settings"]["MC step multiplier"] }}"  -scf_iter "{{ wano["algorithm settings"]["scf iterations"] }}" {% if wano["intra forcefield settings"]["optimize forcefield"] == True %} -pp -cb -do -st {% if wano["intra forcefield settings"]["Trainingsset"] == "Set of Vac Mols" %} -eval_iter "{{ wano["intra forcefield settings"]["Trainingsset settings"]["evaluation points"] }}" -tcat "{{ wano["intra forcefield settings"]["Trainingsset settings"]["train set acc temp"] }}" {% endif %} {% if wano["intra forcefield settings"]["Trainingsset"] == "From Files" %} -led -eaf evaluation_angles.dat -eef evaluation_energies.dat {% endif %} {% endif %}
 fi 
