@@ -24,6 +24,11 @@ fi
 
 # End of SANITY CHECKS
 
+export OMP_NUM_THREADS=1
+
+# Here we check, whether variables are set and add them to the mpirun exports. This is not required for mpirun with PBS/Torque, but required with everything else.
+# We could also specify only the required ones, but we do not know that a priori (i.e. whether Turbomole or Gaussian is to be used.
+# To avoid warnings, we therefore check first whether something is set and only then add it to the command.
 function varisset {
         if [ -z ${!1+x} ]
         then
@@ -32,13 +37,44 @@ function varisset {
                 echo "true"
         fi
 }
+environmentvariables=("CGPATH"   \
+    "DALTONPATH"   \
+    "DEPOSITPATH"   \
+    "DEPTOOLS"   \
+    "DFTBPARAMETERS"   \
+    "DFTBPATH"   \
+    "DIHEDRAL_PARAMETRIZER_PATH"   \
+    "HOSTFILE"   \
+    "IBIPATH"   \
+    "KMCDEPOSITPATH"   \
+    "LD_LIBRARY_PATH"   \
+    "LFPATH"   \
+    "LOCAL"   \
+    "LOCALCONDA"   \
+    "MPI_PATH"   \
+    "NANOMATCH"   \
+    "NANOVER"   \
+    "NM_LICENSE_SERVER"   \
+    "OMP_NUM_THREADS"   \
+    "OPENMMPATH"   \
+    "PATH"   \
+    "PARNODES" \
+    "PYTHONPATH"   \
+    "SCRATCH"   \
+    "SHREDDERPATH"   \
+    "SIMONAPATH"   \
+    "SLURM_CPU_BIND"   \
+    "THREADFARMPATH"   \
+    "TURBODIR"   \
+    "UC_MEMORY_PER_NODE"   \
+    "UC_NODES"   \
+    "UC_PROCESSORS_PER_NODE"   \
+    "UC_TOTAL_PROCESSORS"   \
+    "UC_TOTAL_PROCESSORS"   \
+    "TURBODIR"   \
+    "TURBOMOLE_SYSNAME" \
+    "XTBPATH"   )
 
-export OMP_NUM_THREADS=1
-
-# Here we check, whether variables are set and add them to the mpirun exports. This is not required for mpirun with PBS/Torque, but required with everything else.
-# We could also specify only the required ones, but we do not know that a priori (i.e. whether Turbomole or Gaussian is to be used.
-# To avoid warnings, we therefore check first whether something is set and only then add it to the command.
-environmentvariables=( "OMP_NUM_THREADS" "PATH" "HOSTFILE" "PYTHONPATH" "SCRATCH" "SHREDDERPATH" "SHREDDERPYTHON" "TURBODIR" "TURBOMOLE_SYSNAME" "TURBOTMPDIR" "GAUSS_SCRDIR" "g09root" "G09BASIS" "GAUSS_ARCHDIR" "GAUSS_BSDDIR" "GAUSS_EXEDIR" "GAUSS_LEXEDIR" "GV_DIR" "PGI_TERM" "_DSM_BARRIER" "NM_LICENSE_SERVER" "LD_LIBRARY_PATH" "DFTBPATH" "DFTBSLKO" )
 
 ENVCOMMAND=""
 for var in "${environmentvariables[@]}"
