@@ -15,5 +15,14 @@ wano["Molecule Settings"]["Parameter File"] = 'default'
 wano["DFT Engine"]["Threads"] = environ["UC_TOTAL_PROCESSORS"]
 wano["DFT Engine"]["Memory (MB)"] = float(environ["UC_MEMORY_PER_NODE"]) * 0.85
 
+
+if wano["DFT Engine"]["Turbomole Settings"]["Analysis options"] == "Generate orbital plots":
+    wano["DFT Engine"]["Turbomole Settings"]["plot_orb"] = {"homo" :True,"lumo":True}
+elif wano["DFT Engine"]["Turbomole Settings"]["Analysis options"] == "Estimate electrostatic disorder":
+    wano["DFT Engine"]["Turbomole Settings"]["ESP_surface"] = {'enabled':True, 'mode': "by element", 'vdw_scale': [1.0,2.0,3.5],'points': 30}
+
+del wano["DFT Engine"]["Turbomole Settings"]["Analysis options"]
+
+
 with open("parametrizer_settings.yml", "w") as ymlout:
     yaml.safe_dump(wano, ymlout)
