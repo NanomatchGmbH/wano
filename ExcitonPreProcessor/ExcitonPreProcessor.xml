@@ -8,7 +8,7 @@
                  <WaNoDictBox name="Fluorescence">
                     <WaNoBool name="enabled">False</WaNoBool>
                     <WaNoDynamicDropDown name="Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
-                    <WaNoBool name="TADF">True</WaNoBool>
+                    <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Fluorescence.enabled" name="TADF">False</WaNoBool>
                 </WaNoDictBox>
                  <WaNoDictBox name="Phosphorescence">
                     <WaNoBool name="enabled">False</WaNoBool>
