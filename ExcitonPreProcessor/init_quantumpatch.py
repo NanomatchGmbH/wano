@@ -86,6 +86,7 @@ if __name__ == "__main__":
     if general["Fluorescence"]["enabled"]:
         cfg["Analysis"]["Excitonic"]["Fluorescence"]["enabled"] = True
         cfg["Analysis"]["Excitonic"]["Fluorescence"]["DFTEngine"] = general["Fluorescence"]["Engine"]
+        cfg["Analysis"]["Excitonic"]["Fluorescence"]["TADF"] = True
     if general["Phosphorescence"]["enabled"]:
         cfg["Analysis"]["Excitonic"]["Phosphorescence"]["enabled"] = True
         cfg["Analysis"]["Excitonic"]["Phosphorescence"]["DFTEngine"] = general["Phosphorescence"]["Dalton Engine"]
