@@ -4,7 +4,7 @@
 Script that uses WaNo input to write QuantumPatch input.
 """
 
-import yaml, sys
+import yaml, copy
 
 
 class QuantumPatchWaNoError(Exception):
@@ -165,7 +165,7 @@ if __name__ == "__main__":
         # assert that Turbomole is used in the core shell for exciton disorder
         assert dft_engine == "Turbomole", "Exciton disorder only works with Turbomole core engine. Disable exciton disorder in the post processing tab or chose a Turbomole core engine"
         # copy core engine
-        new_engine_dict = core_engine_dict
+        new_engine_dict = copy.deepcopy(core_engine_dict)
         # add new options
         new_engine_dict["excited_state_of_interest"] = 1
         new_engine_dict["gs_partial_charges_for_excitation"] = True
