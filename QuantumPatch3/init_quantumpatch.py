@@ -4,7 +4,7 @@
 Script that uses WaNo input to write QuantumPatch input.
 """
 
-import yaml
+import yaml, sys
 
 
 class QuantumPatchWaNoError(Exception):
@@ -154,6 +154,33 @@ if __name__ == "__main__":
             cfg["Analysis"]["MatrixEAIP"]["do_lambda"] = True
         else:
             cfg["Analysis"]["MatrixEAIP"]["do_lambda"] = False
+
+
+    # copy core shell to last iter shell in case of exciton disorder
+    do_exciton_disorder = wano_postproc["Compute excion disorder in last iteration"]
+    if do_exciton_disorder == True:
+        core_engine_name = cfg["System"]["Core"]["engine"]
+        core_engine_dict = cfg["DFTEngine"]["user"][core_engine_name]
+        dft_engine = core_engine_dict["engine"]
+        # assert that Turbomole is used in the core shell for exciton disorder
+        assert dft_engine == "Turbomole", "Exciton disorder only works with Turbomole core engine. Disable exciton disorder in the post processing tab or chose a Turbomole core engine"
+        # copy core engine
+        new_engine_dict = core_engine_dict
+        # add new options
+        new_engine_dict["excited_state_of_interest"] = 1
+        new_engine_dict["gs_partial_charges_for_excitation"] = True
+        # add new engine to engines dict
+        cfg["DFTEngine"]["user"][core_engine_name + " LI"] = new_engine_dict
+        # get engine by iter dict of core shell
+        core_ebi_dict = cfg["System"]["Core"]["engine_by_iter"]
+        if "LastUncharged" in core_ebi_dict.keys():
+            print("Last iter is already defined for core engine. Exciton disorder will most likely fail")
+        else:
+             cfg["System"]["Core"]["engine_by_iter"]["LastUncharged"] = core_engine_name + " LI"
+
+
     # Write modified settings file to disk.
     with open("settings_ng.yml", "w") as qpngout:
         yaml.dump(cfg, qpngout, default_flow_style=False)
+
+

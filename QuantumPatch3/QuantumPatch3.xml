@@ -893,6 +893,7 @@
                 </WaNoDictBox>
             </WaNoGroup>
             <WaNoGroup name="Post processing">
+                <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Compute excion disorder in last iteration">False</WaNoBool>
                 <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Predict site energy distribution">False</WaNoBool>
                 <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Site energy prediction settings">
                     <WaNoFile visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" logical_filename="structure.cml" name="non PBC Structure">Put .cml file here</WaNoFile>
