@@ -1,5 +1,5 @@
 #!/bin/bash
-export NANOVER=V3
+export NANOVER=V4
 source $NANOMATCH/$NANOVER/configs/lightforge.config
 unzip lightforge_data_subset.zip
 awk '$1!="analysis_autorun:" {print $0}' settings > autorun_settings
