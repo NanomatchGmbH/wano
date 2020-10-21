@@ -401,10 +401,11 @@
 
         <WaNoBool name="show_advanced">False</WaNoBool>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="distance_epsilon">False</WaNoBool>
+        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="fit material epsilon to Vc">False</WaNoBool>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="screening_length">1.3</WaNoFloat>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping">False</WaNoBool>
         <WaNoInt visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="doping_regeneration_steps">30</WaNoInt>
-        <WaNoBool name="coulomb_correction">False</WaNoBool>
+        <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="coulomb_correction">False</WaNoBool>
         <WaNoDropDown visibility_condition="%s == True" visibility_var_path="TABS.physics.coulomb_correction" name="coulomb_correction_mode">
           <Entry id="0" chosen="True">cutoff</Entry>
           <Entry id="1">QP</Entry>
