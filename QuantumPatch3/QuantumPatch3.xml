@@ -893,16 +893,22 @@
                 </WaNoDictBox>
             </WaNoGroup>
             <WaNoGroup name="Post processing">
-                    <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Predict site energy distribution">False</WaNoBool>
-                    <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Site energy prediction settings">
-                    <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="z Rotation">True</WaNoBool>
+                <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Compute excion disorder in last iteration">False</WaNoBool>
+                <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Predict site energy distribution">False</WaNoBool>
+                <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Site energy prediction settings">
                     <WaNoFile visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" logical_filename="structure.cml" name="non PBC Structure">Put .cml file here</WaNoFile>
                     <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Periodic copies">
                         <WaNoInt name="x">2</WaNoInt>
                         <WaNoInt name="y">2</WaNoInt>
                         <WaNoInt name="z">2</WaNoInt>
                     </WaNoDictBox>
-                    <WaNoInt visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Coulomb cutoff">25</WaNoInt>
+                    <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="z Rotation">True</WaNoBool>
+                    <WaNoDictBox visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="ESP average options">
+                        <WaNoInt visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Coulomb cutoff">25</WaNoInt>
+                        <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Include copies for evironment in z-direction">True</WaNoBool>
+                        <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Predict site energy distribution" name="Distance binning">True</WaNoBool>
+                        <WaNoFloat visibility_condition="%s == True" visibility_var_path="Tabs.Post processing.Site energy prediction settings.ESP average options.Distance binning" name="Bins per nanometer">1.7</WaNoFloat>
+                    </WaNoDictBox>
                 </WaNoDictBox>
             </WaNoGroup>
             </WaNoTabs>

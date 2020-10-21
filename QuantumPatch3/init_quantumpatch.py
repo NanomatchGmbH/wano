@@ -4,7 +4,7 @@
 Script that uses WaNo input to write QuantumPatch input.
 """
 
-import yaml
+import yaml, copy
 
 
 class QuantumPatchWaNoError(Exception):
@@ -41,8 +41,16 @@ if __name__ == "__main__":
     cfg["Analysis"]["homo_lumo_generator"]["enabled"] = wano_postproc["Predict site energy distribution"]
     cfg["Analysis"]["homo_lumo_generator"]["periodic_copies"] = [int(wano_postproc["Site energy prediction settings"]["Periodic copies"]["x"]), int(wano_postproc["Site energy prediction settings"]["Periodic copies"]["y"]), int(wano_postproc["Site energy prediction settings"]["Periodic copies"]["z"])]
     cfg["Analysis"]["homo_lumo_generator"]["non_PBC_morphology"] = wano_postproc["Site energy prediction settings"]["non PBC Structure"]
-    cfg["Analysis"]["homo_lumo_generator"]["coulomb_cutoff"] = wano_postproc["Site energy prediction settings"]["Coulomb cutoff"]
     cfg["Analysis"]["homo_lumo_generator"]["swap_x_z_axis"] = wano_postproc["Site energy prediction settings"]["z Rotation"]
+    cfg["Analysis"]["homo_lumo_generator"]["coulomb_cutoff"] = wano_postproc["Site energy prediction settings"]["ESP average options"]["Coulomb cutoff"]
+    cfg["Analysis"]["homo_lumo_generator"]["esp_avrg_options"] = {}
+    cfg["Analysis"]["homo_lumo_generator"]["esp_avrg_options"]["z-extend"] =  wano_postproc["Site energy prediction settings"]["ESP average options"]["Include copies for evironment in z-direction"]
+    if wano_postproc["Site energy prediction settings"]["ESP average options"]["Distance binning"] == True:
+        this_mode = "by_distance"
+    else:
+        this_mode = "no_binning_by_distance"
+    cfg["Analysis"]["homo_lumo_generator"]["esp_avrg_options"]["mode"] = this_mode
+    cfg["Analysis"]["homo_lumo_generator"]["esp_avrg_options"]["bins_per_nm"] = float(wano_postproc["Site energy prediction settings"]["ESP average options"]["Bins per nanometer"])
     # settings_ng "DFTEngine" Category
     cfg["DFTEngine"]["user"] = dict()
     for engine in wano["Tabs"]["Engines"]["DFT Engines"]:
@@ -146,6 +154,33 @@ if __name__ == "__main__":
             cfg["Analysis"]["MatrixEAIP"]["do_lambda"] = True
         else:
             cfg["Analysis"]["MatrixEAIP"]["do_lambda"] = False
+
+
+    # copy core shell to last iter shell in case of exciton disorder
+    do_exciton_disorder = wano_postproc["Compute excion disorder in last iteration"]
+    if do_exciton_disorder == True:
+        core_engine_name = cfg["System"]["Core"]["engine"]
+        core_engine_dict = cfg["DFTEngine"]["user"][core_engine_name]
+        dft_engine = core_engine_dict["engine"]
+        # assert that Turbomole is used in the core shell for exciton disorder
+        assert dft_engine == "Turbomole", "Exciton disorder only works with Turbomole core engine. Disable exciton disorder in the post processing tab or chose a Turbomole core engine"
+        # copy core engine
+        new_engine_dict = copy.deepcopy(core_engine_dict)
+        # add new options
+        new_engine_dict["excited_state_of_interest"] = 1
+        new_engine_dict["gs_partial_charges_for_excitation"] = True
+        # add new engine to engines dict
+        cfg["DFTEngine"]["user"][core_engine_name + " LI"] = new_engine_dict
+        # get engine by iter dict of core shell
+        core_ebi_dict = cfg["System"]["Core"]["engine_by_iter"]
+        if "LastUncharged" in core_ebi_dict.keys():
+            print("Last iter is already defined for core engine. Exciton disorder will most likely fail")
+        else:
+             cfg["System"]["Core"]["engine_by_iter"]["LastUncharged"] = core_engine_name + " LI"
+
+
     # Write modified settings file to disk.
     with open("settings_ng.yml", "w") as qpngout:
         yaml.dump(cfg, qpngout, default_flow_style=False)
+
+

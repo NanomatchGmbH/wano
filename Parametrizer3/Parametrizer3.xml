@@ -29,11 +29,11 @@
                     <Entry id="2">PWLDA</Entry>
                     <Entry id="3">BLYP</Entry>
                     <Entry id="4">BVWN</Entry>
-                    <Entry id="5" chosen="true">BP86</Entry>
+                    <Entry id="5">BP86</Entry>
                     <Entry id="6">PBE</Entry>
                     <Entry id="7">TPSS</Entry>
                     <Entry id="8">BHLYP</Entry>
-                    <Entry id="9">B3LYP</Entry>
+                    <Entry id="9" chosen="true">B3LYP</Entry>
                     <Entry id="10">B3LYP_Gaussian</Entry>
                     <Entry id="11">PBE0</Entry>
                     <Entry id="12">TPSSH</Entry>
@@ -45,6 +45,19 @@
                     <Entry id="18">wB97</Entry>
                     <Entry id="19">wB97X</Entry>
                     <Entry id="20">CAM-B3LYP</Entry>
+                    <Entry id="21">M11</Entry>
+                    <Entry id="22">LH14T-CALPBE</Entry>
+                    <Entry id="23">REVM11</Entry>
+                    <Entry id="24">REVTPSS</Entry>
+                    <Entry id="25">pno-CCSD</Entry>
+                    <Entry id="26">pno-CCSD(T0)</Entry>
+                    <Entry id="27">pno-CCSD(T)</Entry>
+                    <Entry id="28">wB97X-D</Entry>
+                    <Entry id="29">wB97X-V</Entry>
+                    <Entry id="30">wB97M-V</Entry>
+                    <Entry id="31">MN12-SX</Entry>
+                    <Entry id="32">MN15</Entry>
+                    <Entry id="33">MN15-l</Entry>             
                 </WaNoDropDown>
                 <WaNoDropDown name="Basis">
                     <Entry id="0">STO-3G</Entry>
@@ -72,12 +85,12 @@
                     <Entry id="22">SVP</Entry>
                     <Entry id="23">SV(P)</Entry>
                     <Entry id="24">def-SVP</Entry>
-                    <Entry id="25" chosen="true">def-SV(P)</Entry>
+                    <Entry id="25">def-SV(P)</Entry>
                     <Entry id="26">def-TZVP</Entry>
                     <Entry id="27">def-TZVPP</Entry>
                     <Entry id="28">def-QZVP</Entry>
                     <Entry id="29">def-QZVPP</Entry>
-                    <Entry id="30">def2-SVP</Entry>
+                    <Entry id="30" chosen="true">def2-SVP</Entry>
                     <Entry id="31">def2-SV(P)</Entry>
                     <Entry id="32">def2-TZVP</Entry>
                     <Entry id="33">def2-TZVPP</Entry>
@@ -121,6 +134,12 @@
                     <Entry id="1">tight</Entry>
                     <Entry id="2">extreme</Entry>
                 </WaNoDropDown>
+                <WaNoDropDown name= "Analysis options">
+                    <Entry id="0" chosen="true">Estimate electrostatic disorder</Entry>
+                    <Entry id="1">Generate orbital plots</Entry>
+                    <Entry id="2">None</Entry>
+                </WaNoDropDown>
+                </WaNoDictBox>
             </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="DFT Engine.Engine" name="Psi4 Settings">
                 <WaNoDropDown name="Partial Charge Method">
@@ -201,8 +220,6 @@
                     <Entry id="1">XTB</Entry>
                     <Entry id="2">None</Entry>
                 </WaNoDropDown>            
-
-                </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="DFT Engine.Engine" name="DFTB+ Settings">
                 <WaNoDropDown name="Partial Charge Method">
                     <Entry id="0" chosen="true" >CM3</Entry>
