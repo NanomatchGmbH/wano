@@ -204,7 +204,7 @@
             <WaNoInt name="Atom 3">3</WaNoInt>
         </WaNoDictBox>
  </WaNoRoot>
-<WaNoExecCommand>export NANOVER="V3"; source $NANOMATCH/$NANOVER/configs/quantumpatch.config; python3 $SHREDDERPATH/MolecularTools/WanoHelpers/emission_run.py</WaNoExecCommand>
+<WaNoExecCommand>export NANOVER="V4"; source $NANOMATCH/$NANOVER/configs/quantumpatch.config; python3 $SHREDDERPATH/MolecularTools/WanoHelpers/emission_run.py</WaNoExecCommand>
 <WaNoInputFiles>
 </WaNoInputFiles>
 <WaNoOutputFiles>
