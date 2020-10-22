@@ -79,7 +79,7 @@ fi
 
 if [ "$UC_TOTAL_PROCESSORS" -gt 1 ]
 then
-    $OPENMPI_PATH/bin/mpirun --bind-to none $ENVCOMMAND --hostfile $HOSTFILE --mca btl vader,tcp python -m mpi4py $LFPATH/lightforge.py -s settings
+    $OPENMPI_PATH/bin/mpirun --bind-to none $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $LFPATH/lightforge.py -s settings
 else
     lightforge.py -s settings
 fi 
