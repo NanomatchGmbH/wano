@@ -15,14 +15,14 @@ coulomb_binding_energy: {{wano["TABS"]["physics"]["coulomb_binding_energy"]}}
 coulomb_binding_shift: {{wano["TABS"]["physics"]["coulomb_binding_shift"]}}
 ct_rate_memory_multiplier: {{wano["TABS"]["physics"]["ct_rate_memory_multiplier"]}}
 
-epsilon_material: {%if  wano["TABS"]["physics"]["coulomb_correction_mode"] == "QP"  %}{%if wano["TABS"]["physics"]["dielectric properties CT"] == "fixed permittivity" %}{{wano["TABS"]["physics"]["dielecpropertiesCT"]["epsilon material"]}} {% else %}{%if wano["TABS"]["physics"]["dielectric properties CT"] == "fixed distance dependent permittivity" %}{{wano["TABS"]["physics"]["dielecpropertiesCT"]["epsilon material "]}} {% else %}4.0{ %endif %}{ %endif %} {% else %}{{wano["TABS"]["physics"]["dielecproperties"]["epsilon material"]}}{%  endif  %}
+epsilon_material: {%if  wano["TABS"]["physics"]["coulomb_correction_mode"] == "QP"  %}{%if  wano["TABS"]["physics"]["dielectric properties / CT"] == "fixed permittivity"  %}{{wano["TABS"]["physics"]["dielecpropertiesCT"]["epsilon material"]}} {%  else  %}{%if  wano["TABS"]["physics"]["dielectric properties / CT"] == "fixed distance dependent permittivity"  %}{{wano["TABS"]["physics"]["dielecpropertiesCT"]["epsilon material "]}} {%  else  %}4.0{%  endif  %}{%  endif  %} {%  else  %}{{wano["TABS"]["physics"]["dielecproperties"]["epsilon material"]}}{%  endif  %}
 
 
-fit_material_epsilon: {%if wano["TABS"]["physics"]["dielectric properties CT"] == "permittivity fitted to QP" %}True {% else %}{%if wano["TABS"]["physics"]["dielectric properties CT"] == "distance dependent permittivity fitted to QP" %}True {% else %}False{%  endif  %}{%  endif  %}
-fit_epsilon_screening_length: {%if wano["TABS"]["physics"]["dielectric properties CT"] == "distance dependent permittivity fitted to QP" %}True {% else %}False{%  endif  %}
-distance_epsilon: {%if  wano["TABS"]["physics"]["coulomb_correction_mode"] == "QP"  %}{%if wano["TABS"]["physics"]["dielectric properties CT"] == "fixed distance dependent permittivity" %}True{% else %}{%if wano["TABS"]["physics"]["dielectric properties CT"] == "distance dependent permittivity fitted to QP" %}True {% else %}False{%  endif  %}{%  endif  %} {% else %}{%if wano["TABS"]["physics"]["dielectric properties"] == "fixed distance dependent permittivity" %}True {% else %}False{%  endif  %}{%  endif  %}
+fit_material_epsilon: {%if  wano["TABS"]["physics"]["dielectric properties / CT"] == "permittivity fitted to QP"  %}True {%  else  %}{%if  wano["TABS"]["physics"]["dielectric properties / CT"] == "distance dependent permittivity fitted to QP"  %}True {%  else  %}False{%  endif  %}{%  endif  %}
+fit_epsilon_screening_length: {%if  wano["TABS"]["physics"]["dielectric properties / CT"] == "distance dependent permittivity fitted to QP"  %}True {%  else  %}False{%  endif  %}
+distance_epsilon: {%if  wano["TABS"]["physics"]["coulomb_correction_mode"] == "QP"  %}{%if  wano["TABS"]["physics"]["dielectric properties / CT"] == "fixed distance dependent permittivity"  %}True{%  else  %}{%if  wano["TABS"]["physics"]["dielectric properties / CT"] == "distance dependent permittivity fitted to QP"  %}True {%  else  %}False{%  endif  %}{%  endif  %} {%  else  %}{%if  wano["TABS"]["physics"]["dielectric properties"] == "fixed distance dependent permittivity"  %}True {%  else  %}False{%  endif  %}{%  endif  %}
 
-screening_length: {%if  wano["TABS"]["physics"]["coulomb_correction_mode"] == "QP"  %}{{wano["TABS"]["physics"]["dielecpropertiesCT"]["screening length"]}} {% else %}{{wano["TABS"]["physics"]["dielecproperties"]["screening length"]}}{%  endif  %}
+screening_length: {%if  wano["TABS"]["physics"]["coulomb_correction_mode"] == "QP"  %}{{wano["TABS"]["physics"]["dielecpropertiesCT"]["screening length"]}} {%  else  %}{{wano["TABS"]["physics"]["dielecproperties"]["screening length"]}}{%  endif  %}
 
 doping: {{wano["TABS"]["physics"]["doping"]}}
 doping_regeneration_steps: {{wano["TABS"]["physics"]["doping_regeneration_steps"]}}
