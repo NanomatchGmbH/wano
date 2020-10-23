@@ -103,7 +103,7 @@
  <WaNoExecCommand>#!/bin/bash
      
 # We load our configuration for QP:
-export NANOVER=V3
+export NANOVER=V4
 source $NANOMATCH/$NANOVER/configs/quantumpatch.config
 
 # We quickly hack threads and resources into our config:

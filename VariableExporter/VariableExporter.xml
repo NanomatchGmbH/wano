@@ -9,7 +9,7 @@
     </WaNoRoot>
     <WaNoExecCommand>      
         {% if wano["Interpreter"] == "Bash" %}bash {{ wano["Script"] }}{% endif %}
-        {% if wano["Interpreter"] == "Python" %}$NANOMATCH/V3/local_anaconda/envs/nanomatch_server/bin/python {{ wano["Script"] }}{% endif %}
+        {% if wano["Interpreter"] == "Python" %}$NANOMATCH/V4/local_anaconda/envs/nanomatch_server/bin/python {{ wano["Script"] }}{% endif %}
         {% if wano["Interpreter"] == "Perl" %}perl {{ wano["Script"] }}{% endif %}
     </WaNoExecCommand>
     <WaNoInputFiles>
