@@ -135,9 +135,10 @@
                     <Entry id="2">extreme</Entry>
                 </WaNoDropDown>
                 <WaNoDropDown name= "Analysis options">
-                    <Entry id="0" chosen="true">Estimate electrostatic disorder</Entry>
-                    <Entry id="1">Generate orbital plots</Entry>
-                    <Entry id="2">None</Entry>
+                    <Entry id="0">Estimate electrostatic disorder</Entry>
+                    <Entry id="1">Generate ESP surface plot</Entry>
+                    <Entry id="2">Generate orbital plots</Entry>
+                    <Entry id="3"  chosen="true">None</Entry>
                 </WaNoDropDown>
             </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="DFT Engine.Engine" name="Psi4 Settings">
