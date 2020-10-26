@@ -139,7 +139,6 @@
                     <Entry id="1">Generate orbital plots</Entry>
                     <Entry id="2">None</Entry>
                 </WaNoDropDown>
-                </WaNoDictBox>
             </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="DFT Engine.Engine" name="Psi4 Settings">
                 <WaNoDropDown name="Partial Charge Method">
@@ -220,6 +219,7 @@
                     <Entry id="1">XTB</Entry>
                     <Entry id="2">None</Entry>
                 </WaNoDropDown>            
+            </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="DFT Engine.Engine" name="DFTB+ Settings">
                 <WaNoDropDown name="Partial Charge Method">
                     <Entry id="0" chosen="true" >CM3</Entry>
@@ -248,7 +248,6 @@
                     </WaNoDropDown>
             </WaNoDictBox>
         </WaNoDictBox>
-
     </WaNoRoot>
  <WaNoExecCommand>
 #!/bin/bash
