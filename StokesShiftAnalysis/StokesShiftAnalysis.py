@@ -1,6 +1,7 @@
 #!/bin/python
 
 import yaml, sys
+from yaml import CLoader
 
 
 s0 = sys.argv[1]
@@ -11,10 +12,10 @@ def converter_eV_to_nm(entry):
     return entry
 
 with open (s0, 'r') as inf:
-    data_0 = yaml.load(inf)
+    data_0 = yaml.load(inf, Loader=CLoader)
 
 with open (s1, 'r') as inf2:
-    data_1 = yaml.load(inf2)
+    data_1 = yaml.load(inf2, Loader=CLoader)
 
 s0_entry = data_0['Excitation energy 0']
 s1_entry = data_1['Excitation energy 0']

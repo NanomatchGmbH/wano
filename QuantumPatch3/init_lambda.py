@@ -5,10 +5,11 @@ Script that uses a rendered WaNo for input to calculate Lambda, EA, and IP.
 """
 
 import yaml
+from yaml import CLoader
 
 if __name__ == "__main__":
     with open("rendered_wano.yml", "r") as wanoin:
-        wano = yaml.load(wanoin)
+        wano = yaml.load(wanoin, Loader=CLoader)
     engines = []
     for engine in wano["Tabs"]["Engines"]["DFT Engines"]:
         # Reformats engine output from NewQP rendered WaNo

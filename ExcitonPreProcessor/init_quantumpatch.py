@@ -5,6 +5,7 @@ Script that uses WaNo input to write QuantumPatch input.
 """
 
 import yaml
+from yaml import CLoader
 
 
 class QuantumPatchWaNoError(Exception):
@@ -13,9 +14,9 @@ class QuantumPatchWaNoError(Exception):
 
 if __name__ == "__main__":
     with open("rendered_wano.yml", "r") as wanoin:
-        wano = yaml.load(wanoin)
+        wano = yaml.load(wanoin, Loader=CLoader)
     with open("qp_settings_template.yml", "r") as qpngin:
-        cfg = yaml.load(qpngin)  # Script will modify this and re-write it
+        cfg = yaml.load(qpngin, Loader=CLoader)  # Script will modify this and re-write it
     # Shorthands
     wano_general = wano["Tabs"]["General"]["General Settings"]
     wano_shells = wano["Tabs"]["Shells"]

@@ -3,6 +3,7 @@ from __future__ import print_function
 import os,sys
 
 import yaml
+from yaml import CLoader
 
 
 def merge(user, default):
@@ -14,12 +15,12 @@ def merge(user, default):
                 user[k] = merge(user[k],v)
     return user
 
-fileone = yaml.load(open(sys.argv[1],'r'))
+fileone = yaml.load(open(sys.argv[1],'r'), Loader=CLoader)
 for resname in fileone["residues"]:
     break
 otherfile =  sys.argv[2]
 with open(otherfile,'r') as infile:
-   otherfileyaml = yaml.load(infile)
+   otherfileyaml = yaml.load(infile, Loader=CLoader)
    for resname2 in otherfileyaml["residues"]:
        break
    if resname2 != resname:
