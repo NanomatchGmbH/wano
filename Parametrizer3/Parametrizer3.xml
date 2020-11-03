@@ -118,7 +118,7 @@
                     <Entry id="55">cc-pwVQZ</Entry>
                     <Entry id="56">aug-cc-pwVQ</Entry>
                 </WaNoDropDown>
-                <WaNoDropDown name="Preoptimization">
+                <WaNoDropDown visibility_condition="%s == True" visibility_var_path="Molecule Settings.Optimize Molecule" name="Preoptimization">
                     <Entry id="0" chosen="true">DFTB</Entry>
                     <Entry id="1">XTB</Entry>
                     <Entry id="2">None</Entry>
