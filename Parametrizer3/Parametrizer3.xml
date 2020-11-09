@@ -5,7 +5,11 @@
             <WaNoThreeRandomLetters name="Molecule Identifier"></WaNoThreeRandomLetters>
             <WaNoBool name="Optimize Molecule">True</WaNoBool>
             <WaNoInt name="Charge">0</WaNoInt>
-            <WaNoInt name="Multiplicity">1</WaNoInt>
+            <WaNoDropDown name="Multiplicity">
+                <Entry id="0"  chosen="true">1</Entry>
+                <Entry id="1" > 2</Entry>
+                <Entry id="2" > 3</Entry>
+            </WaNoDropDown>
             <WaNoInt name="Excited State of Interest" >0</WaNoInt>
         </WaNoDictBox>
         <WaNoDictBox name="DFT Engine">
