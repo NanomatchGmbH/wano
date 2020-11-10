@@ -5,7 +5,11 @@
             <WaNoThreeRandomLetters name="Molecule Identifier"></WaNoThreeRandomLetters>
             <WaNoBool name="Optimize Molecule">True</WaNoBool>
             <WaNoInt name="Charge">0</WaNoInt>
-            <WaNoInt name="Multiplicity">1</WaNoInt>
+            <WaNoDropDown name="Multiplicity">
+                <Entry id="0"  chosen="true">1</Entry>
+                <Entry id="1" > 2</Entry>
+                <Entry id="2" > 3</Entry>
+            </WaNoDropDown>
             <WaNoInt name="Excited State of Interest" >0</WaNoInt>
         </WaNoDictBox>
         <WaNoDictBox name="DFT Engine">
@@ -118,7 +122,7 @@
                     <Entry id="55">cc-pwVQZ</Entry>
                     <Entry id="56">aug-cc-pwVQ</Entry>
                 </WaNoDropDown>
-                <WaNoDropDown name="Preoptimization">
+                <WaNoDropDown visibility_condition="%s == True" visibility_var_path="Molecule Settings.Optimize Molecule" name="Preoptimization">
                     <Entry id="0" chosen="true">DFTB</Entry>
                     <Entry id="1">XTB</Entry>
                     <Entry id="2">None</Entry>

@@ -20,6 +20,9 @@ if wano["DFT Engine"]["Turbomole Settings"]["Analysis options"] == "Generate orb
     wano["DFT Engine"]["Turbomole Settings"]["plot_orb"] = {"homo" :True,"lumo":True}
 elif wano["DFT Engine"]["Turbomole Settings"]["Analysis options"] == "Estimate electrostatic disorder":
     wano["DFT Engine"]["Turbomole Settings"]["ESP_surface"] = {'enabled':True, 'mode': "by element", 'vdw_scale': [1.0,2.0,3.5],'points': 30}
+elif  wano["DFT Engine"]["Turbomole Settings"]["Analysis options"]  == "Generate ESP surface plot":
+    wano["DFT Engine"]["Turbomole Settings"]["ESP_surface"] = {'enabled':True, 'mode': "by element", 'vdw_scale': 1.0,'points': 50,'plot_grid': True}
+
 
 del wano["DFT Engine"]["Turbomole Settings"]["Analysis options"]
 
