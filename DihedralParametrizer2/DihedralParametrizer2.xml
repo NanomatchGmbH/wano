@@ -129,7 +129,7 @@
         <WaNoFile visibility_condition="'%s' == 'From Files'" visibility_var_path="intra forcefield settings.Trainingsset" logical_filename="evaluation_energies.dat" name="Evaluation Energies">evaluation energies file</WaNoFile>
     </WaNoDictBox>
   </WaNoDictBox>
-  
+  <WaNoBool visibility_condition="%s == True" visibility_var_path="show advanced" name="estimate configurational disorder">False</WaNoBool>
   
   
   
