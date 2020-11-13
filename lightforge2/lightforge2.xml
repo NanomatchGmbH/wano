@@ -461,6 +461,7 @@
         <WaNoDropDown name="measurement">
           <Entry id="0">DC</Entry>
           <Entry id="1">photoluminescence</Entry>
+          <Entry id="2">exciton_diffusion_length</Entry>
         </WaNoDropDown>
 
         <WaNoFloat visibility_condition="'%s' == 'photoluminescence'" visibility_var_path="TABS.operation.measurement" name="irradiance [W/m2]">0.0</WaNoFloat>
