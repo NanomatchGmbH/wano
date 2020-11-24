@@ -23,7 +23,7 @@
                 <WaNoDropDown name="Partial Charge Method">
                     <Entry id="0" chosen="true">ESP</Entry>
                     <Entry id="1">Mulliken</Entry>
-                    <Entry id="2 ">No Charges</Entry>
+                    <Entry id="2">No Charges</Entry>
                 </WaNoDropDown>
                 <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                 <WaNoBool name="static_polarizability">False</WaNoBool>

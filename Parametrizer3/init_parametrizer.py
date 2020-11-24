@@ -16,6 +16,10 @@ wano["DFT Engine"]["Threads"] = environ["UC_TOTAL_PROCESSORS"]
 wano["DFT Engine"]["Memory (MB)"] = float(environ["UC_MEMORY_PER_NODE"]) * 0.85
 
 
+if wano["DFT Engine"]["Turbomole Settings"]["Partial Charge Method"] == "No Charges":
+    wano["DFT Engine"]["Turbomole Settings"]["Partial Charge Method"] = "ESP"
+    wano["DFT Engine"]["Turbomole Settings"]["partial_charges"] =  False
+
 if wano["DFT Engine"]["Turbomole Settings"]["Analysis options"] == "Generate orbital plots":
     wano["DFT Engine"]["Turbomole Settings"]["plot_orb"] = {"homo" :True,"lumo":True}
 elif wano["DFT Engine"]["Turbomole Settings"]["Analysis options"] == "Estimate electrostatic disorder":
