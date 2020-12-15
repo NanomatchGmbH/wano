@@ -204,7 +204,7 @@
             <WaNoInt name="Atom 3">3</WaNoInt>
         </WaNoDictBox>
  </WaNoRoot>
-<WaNoExecCommand>export NANOVER="V4"; source $NANOMATCH/$NANOVER/configs/quantumpatch.config; python3 $SHREDDERPATH/MolecularTools/WanoHelpers/emission_run.py</WaNoExecCommand>
+<WaNoExecCommand>export NANOVER="V4"; source $NANOMATCH/$NANOVER/configs/quantumpatch.config; $MPI_PATH/bin/mpirun -n 1 --oversubscribe -x OMP_NUM_THREADS --bind-to none --mca btl self,vader python3 -m mpi4py python3 $SHREDDERPATH/MolecularTools/WanoHelpers/emission_run.py</WaNoExecCommand>
 <WaNoInputFiles>
 </WaNoInputFiles>
 <WaNoOutputFiles>
