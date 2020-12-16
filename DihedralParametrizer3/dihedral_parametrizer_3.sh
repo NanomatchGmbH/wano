@@ -68,8 +68,8 @@ do
   fi
 done
 
-export DepositOpt="{{ wano["optimize forcefield with deposit input"] }}"
-if [ "$DepositOpt" == "True" ]
+export DepositOpt="{{ wano["optimize forcefield"]["train_set_generation"] }}"
+if [ "$DepositOpt" == "from_deposit" ]
 then
     mkdir deposit_input
     cd deposit_input
