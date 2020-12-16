@@ -1,0 +1,21 @@
+<WaNoTemplate>
+ <WaNoRoot name="DihedralParametrizer2">
+  <WaNoFile logical_filename="molecule.pdb" name="Molecule pdb">pdb file here</WaNoFile>
+  <WaNoFile logical_filename="molecule.spf" name="Molecule spf">spf file here</WaNoFile>
+
+  <WaNoBool name="optimize forcefield with deposit input">False</WaNoBool>
+  <WaNoFile visibility_condition="'%s' == 'True'" visibility_var_path="optimize forcefield with deposit input" logical_filename="restartfile.zip" name="deposit restartfile">Put file here</WaNoFile>
+  <WaNoFile logical_filename="settings.yml" name="settings yml file">Put file here</WaNoFile>
+ 
+  
+  
+ </WaNoRoot>
+ <WaNoExecCommand>bash ./dihedral_parametrizer_3.sh</WaNoExecCommand>
+ <WaNoInputFiles>
+   <WaNoInputFile logical_filename="dihedral_parametrizer_3.sh">dihedral_parametrizer_3.sh</WaNoInputFile>
+ </WaNoInputFiles>
+ <WaNoOutputFiles>
+    <WaNoOutputFile>molecule.pdb</WaNoOutputFile>
+    <WaNoOutputFile>dihedral_forcefield.spf</WaNoOutputFile>
+ </WaNoOutputFiles>
+</WaNoTemplate>
