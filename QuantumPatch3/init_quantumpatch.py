@@ -28,7 +28,8 @@ if __name__ == "__main__":
     qp_type = {"Polarized": "uncharged_equilibration",
                "Polaron/Exciton": "charged_equilibration",
                "Matrix EAIP": "matrix_eaip",
-               "Excitonic Preprocessing": "excitonic_preprocessing"}
+               "Excitonic Preprocessing": "excitonic_preprocessing",
+               "Absorption": "absorption"  }
     shelltype = {"dynamic": "scf",
                  "static": "static"}
     # settings_ng "QuantumPatch" Category
