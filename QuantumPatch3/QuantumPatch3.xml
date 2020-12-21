@@ -9,6 +9,7 @@
                         <Entry id="0" chosen="True">Polarized</Entry>
                         <Entry id="1">Polaron/Exciton</Entry>
                         <Entry id="2">Matrix EAIP</Entry>
+                        <Entry id="3">absorption</Entry>
                     </WaNoDropDown>
                     <WaNoBool visibility_condition="'%s' == 'Matrix EAIP'" visibility_var_path="Tabs.General.General Settings.QuantumPatch Type" name="Include in-matrix Lambda Calculation">True</WaNoBool>
                     <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.General Settings.Run QuantumPatch" name="Calculate Js">True</WaNoBool>
