@@ -94,6 +94,7 @@
     </WaNoDictBox>
     <WaNoInt name="DH_scan_steps">18</WaNoInt>
     <WaNoInt name="scf_iter">3</WaNoInt>
+    <WaNoBool name="iterative_DH_scan">3</WaNoBool>
   <WaNoBool name="show DHP scan relaxation options">False</WaNoBool>
   <WaNoDictBox  visibility_condition="%s == True" visibility_var_path="show DHP scan relaxation options" name="DH_scan_relax_options">
     <WaNoInt name="T_acc">300</WaNoInt>
@@ -104,16 +105,16 @@
     <WaNoBool name="do_6_10">True</WaNoBool>
     <WaNoBool name="do_coulomb">True</WaNoBool>
     </WaNoDictBox>
-    <WaNoDictBox name="forcefield_optimization_parameter">
+    <WaNoDictBox name="forcefield_optimization">
     <WaNoBool name="optimize">True</WaNoBool>
     <WaNoDropDown name="train_set_generation">
         <Entry id="0">vacuum</Entry>
         <Entry id="1">from_deposit</Entry>
     </WaNoDropDown>
-  <WaNoFile visibility_condition="'%s' == 'from_deposit'" visibility_var_path="forcefield_optimization_parameter.train_set_generation" logical_filename="restartfile.zip" name="deposit restartfile">Put file here</WaNoFile>
-    <WaNoInt visibility_condition="'%s' == 'vacuum'" visibility_var_path="forcefield_optimization_parameter.train_set_generation" name="no_samples">15</WaNoInt>
+  <WaNoFile visibility_condition="'%s' == 'from_deposit'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="restartfile.zip" name="deposit restartfile">Put file here</WaNoFile>
+    <WaNoInt visibility_condition="'%s' == 'vacuum'" visibility_var_path="forcefield_optimization.train_set_generation" name="no_samples">15</WaNoInt>
     <WaNoBool name="show sampling options">False</WaNoBool>
-  <WaNoDictBox  visibility_condition="%s == True" visibility_var_path="forcefield_optimization_parameter.show sampling options" name="sampling">
+  <WaNoDictBox  visibility_condition="%s == True" visibility_var_path="forcefield_optimization.show sampling options" name="sampling">
     <WaNoFloat name="T_acc">1000.0</WaNoFloat>
     <WaNoFloat name="dphi">0.2</WaNoFloat>
     <WaNoInt name="mc_steps_per_dihedral">500</WaNoInt>
