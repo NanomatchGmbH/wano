@@ -3,7 +3,7 @@
   <WaNoFile logical_filename="molecule.pdb" name="Molecule_pdb">pdb file here</WaNoFile>
   <WaNoFile logical_filename="molecule.spf" name="Molecule_spf">spf file here</WaNoFile>  
   <WaNoDictBox name="DFT_options">
-   <WaNoDropDown name="engine">
+   <WaNoDropDown name="Engine">
     <Entry id="0">DFTBplus</Entry>
     <Entry id="1">XTBEngine</Entry>
     <Entry id="2">Turbomole</Entry>

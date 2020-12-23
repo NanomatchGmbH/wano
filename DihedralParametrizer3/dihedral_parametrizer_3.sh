@@ -1,8 +1,7 @@
 #!/bin/bash
 
 export NANOVER="V4"
-source $NANOMATCH/$NANOVER/configs/quantumpatch.config
-source $NANOMATCH/$NANOVER/configs/dftb.config
+source $NANOMATCH/$NANOVER/configs/DihedralParametrizer3.config
 
 export DIHEDRAL_PARAMETRIZER_PATH=$NANOMATCH/$NANOVER/dihedral_parametrizer
 
@@ -68,7 +67,7 @@ do
   fi
 done
 
-export DepositOpt="{{ wano["forcefield_options"]["train_set_generation"] }}"
+export DepositOpt="{{ wano["forcefield_optimization"]["train_set_generation"] }}"
 if [ "$DepositOpt" == "from_deposit" ]
 then
     mkdir deposit_input
