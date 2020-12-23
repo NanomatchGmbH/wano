@@ -79,7 +79,7 @@ fi
 
 $OPENMPI_PATH/bin/mpirun --bind-to none $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $DIHEDRAL_PARAMETRIZER_PATH/DihedralParametrizerExe.py rendered_wano.yml >> mainout.txt 2> dhp_mpi_stderr
 
-if [ "$DepositOpt" == "True" ]
+if [ "$DepositOpt" == "from_deposit" ]
 then
     rm -rf deposit_input
 fi
