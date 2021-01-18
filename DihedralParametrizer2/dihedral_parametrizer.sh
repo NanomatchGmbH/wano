@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NANOVER="V4"
+export NANOVER="V3"
 
 source $NANOMATCH/$NANOVER/configs/DihedralParametrizer2.config
 

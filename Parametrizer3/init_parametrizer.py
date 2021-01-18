@@ -31,5 +31,18 @@ elif  wano["DFT Engine"]["Turbomole Settings"]["Analysis options"]  == "Generate
 del wano["DFT Engine"]["Turbomole Settings"]["Analysis options"]
 
 
+report_dict = {}
+engine = wano["DFT Engine"]["Engine"] + " Settings"
+#method = engine + " Settings"
+report_dict["DFT Method"] = wano["DFT Engine"]["Engine"]
+#report_dict["Simulation settings"] = wano["DFT Engine"][method]
+report_dict["Simulation settings"] = wano["DFT Engine"][engine]
+report_dict["Molecule Info"] = wano["Molecule Settings"]
+
+#print(wano["DFT Engine"][wano["DFT Engine"]["Engine"]" Settings"])
 with open("parametrizer_settings.yml", "w") as ymlout:
     yaml.safe_dump(wano, ymlout)
+
+with open("output_dict.yml", "w") as reportout:
+    yaml.safe_dump(report_dict,  reportout)
+
