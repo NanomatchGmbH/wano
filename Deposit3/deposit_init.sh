@@ -67,4 +67,8 @@ fi
 
 source $NANOMATCH/$NANOVER/configs/quantumpatch.config
 QuantumPatchAnalysis.py > DensityAnalysisInit.out
-QuantumPatchAnalysis.py Analysis.Density.enabled=True > DensityAnalysis.out
+QuantumPatchAnalysis.py Analysis.Density.enabled=True Analysis.RDF.enabled=True #> DensityAnalysis.out
+
+cat deposit_settings.yml >> output_dict.yml
+
+
