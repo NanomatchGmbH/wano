@@ -6,7 +6,7 @@
    <WaNoDropDown name="Engine">
     <Entry id="0">DFTBplus</Entry>
     <Entry id="1">XTBEngine</Entry>
-    <Entry id="2">Turbomole</Entry>
+    <Entry id="2" chosen="true">Turbomole</Entry>
    </WaNoDropDown>
     <WaNoDropDown visibility_condition="'%s' == 'Turbomole'" visibility_var_path="DFT_options.engine" name="Functional">
         <Entry id="0">SVWN</Entry>
@@ -57,12 +57,12 @@
         <Entry id="22">SVP</Entry>
         <Entry id="23">SV(P)</Entry>
         <Entry id="24">def-SVP</Entry>
-        <Entry id="25" chosen="true">def-SV(P)</Entry>
+        <Entry id="25">def-SV(P)</Entry>
         <Entry id="26">def-TZVP</Entry>
         <Entry id="27">def-TZVPP</Entry>
         <Entry id="28">def-QZVP</Entry>
         <Entry id="29">def-QZVPP</Entry>
-        <Entry id="30">def2-SVP</Entry>
+        <Entry id="30" chosen="true">def2-SVP</Entry>
         <Entry id="31">def2-SV(P)</Entry>
         <Entry id="32">def2-TZVP</Entry>
         <Entry id="33">def2-TZVPP</Entry>
@@ -92,14 +92,14 @@
         <Entry id="57">nm-SVPP</Entry>
     </WaNoDropDown>
     </WaNoDictBox>
-    <WaNoInt name="DH_scan_steps">18</WaNoInt>
-    <WaNoInt name="parallel_DH_scans">1</WaNoInt>
+    <WaNoInt name="DH_scan_steps">20</WaNoInt>
+    <WaNoInt name="parallel_DH_scans">4</WaNoInt>
     <WaNoInt name="scf_iter">3</WaNoInt>
     <WaNoBool name="iterative_DH_scan">False</WaNoBool>
   <WaNoBool name="show DHP scan relaxation options">False</WaNoBool>
   <WaNoDictBox  visibility_condition="%s == True" visibility_var_path="show DHP scan relaxation options" name="DH_scan_relax_options">
      <WaNoInt name="T_init">1000</WaNoInt>
-     <WaNoInt name="T_acc">100</WaNoInt>
+     <WaNoInt name="T_acc">5</WaNoInt>
     <WaNoFloat name="dphi">0.2</WaNoFloat>
     <WaNoInt name="mc_steps">500</WaNoInt>
   </WaNoDictBox>
@@ -115,8 +115,8 @@
     </WaNoDropDown>
     <WaNoFile visibility_condition="'%s' == 'from_deposit'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="restartfile.zip" name="deposit restartfile">Put file here</WaNoFile>
     <WaNoInt visibility_condition="'%s' == 'vacuum'" visibility_var_path="forcefield_optimization.train_set_generation" name="no_samples">250</WaNoInt>
-    <WaNoBool name="opt_dh_prefactor">False</WaNoBool>
-    <WaNoFloat name="dh_prefac_lower_bound">0.1</WaNoFloat>
+    <WaNoBool name="opt_dh_prefactor">True</WaNoBool>
+    <WaNoFloat name="dh_prefac_lower_bound">-5.0</WaNoFloat>
     <WaNoBool name="show sampling options">False</WaNoBool>
     <WaNoDictBox  visibility_condition="%s == True" visibility_var_path="forcefield_optimization.show sampling options" name="sampling">
       <WaNoFloat name="T_acc">1000.0</WaNoFloat>
