@@ -19,7 +19,7 @@ Excited state - S {{output_dict["Molecule Info"]["Excited State of Interest"] }}
 
 molecular properties:
 <ul>
-<li>{{output_dict["homo-id"]}} occupaid orbitals </li>
+<li>{{output_dict["homo-id"]}} occupeid orbitals </li>
 <li>HOMO energy is {{output_dict["homo energy"]}} eV</li>
 <li>LUMO energy is {{output_dict["lumo energy"]}} eV</li>
 <li>total energy is {{output_dict["total_energy"]}} eV</li>
