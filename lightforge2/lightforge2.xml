@@ -131,7 +131,7 @@
             <WaNoString name="name">fluorescent</WaNoString>
             <WaNoDictBox name="properties">
               <WaNoString name="singlet_decay_rate">1e8</WaNoString>
-              <WaNoString name="triplet_decay_rate">1e3</WaNoString>
+              <WaNoString name="triplet_decay_rate">1e1</WaNoString>
               <WaNoString name="singlet_thermal_decay_rate">1e5</WaNoString>
               <WaNoString name="triplet_thermal_decay_rate">1e5</WaNoString>
               <WaNoString name="max_TTA">1e6</WaNoString>
@@ -140,8 +140,8 @@
               <WaNoString name="max_SSA">1e11</WaNoString>
               <WaNoString name="max_STA">1e11</WaNoString>
               <WaNoString name="max_SPQ">1e11</WaNoString>
-              <WaNoString name="isc_rate">1e5</WaNoString>
-              <WaNoString name="risc_rate">1e3</WaNoString>
+              <WaNoString name="isc_rate">1e3</WaNoString>
+              <WaNoString name="risc_rate">1e1</WaNoString>
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
               <WaNoString name="s1s1_reorganization_energy">0.3</WaNoString>
               <WaNoString name="binding_energy">1.0</WaNoString>
