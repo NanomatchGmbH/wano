@@ -1,0 +1,31 @@
+<h1> ExcitonPreProcessor </h1>
+
+The following calculations were enabled in the WaNO: <br>
+<ul>
+    {% for setting in output_dict["WaNo Settings"] %}
+        <li> {{setting}} </li>
+    {% endfor %}
+</ul>
+
+The following results are listed in this report, if they were enabled in the WaNo (further results are stored in Analysis.zip): <br>
+<ul>
+    {% for entry in output_dict["data_info"] %}
+        <li> {{ entry }} </li>
+    {% endfor %}
+</ul>
+
+The following molecular properties are calculated in this EPP run and the results are labeled with respect to the molecular hash, identified in the 2D structures below:<br>
+(the calculation contains the first 5 liftimes/excitation energies, just the 1. and 2. are listed here)
+<ul>
+    {% for entry in output_dict["Results_summary"] %}
+        
+        <li> {{ entry }} </li>
+        <ul>
+        <li> {{ output_dict["Results_summary"][entry] }} </li>
+        </ul>
+    {% endfor %}
+</ul>
+
+
+The calculations contains the following molecul{% if output_dict["Mols in cml"]|length > 1 %}s{% endif %}: {{ output_dict["Mols in cml"] }} <br>
+
