@@ -820,6 +820,8 @@
         <WaNoInputFile logical_filename="init.sh">init.sh</WaNoInputFile>
         <WaNoInputFile logical_filename="init_quantumpatch.py">init_quantumpatch.py</WaNoInputFile>
         <WaNoInputFile logical_filename="qp_settings_template.yml">qp_settings_template.yml</WaNoInputFile>
+        <WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
+        <WaNoInputFile logical_filename="output_config.ini">sample_config.ini</WaNoInputFile>
     </WaNoInputFiles>
     <WaNoOutputFiles>
         <WaNoOutputFile>Analysis.zip</WaNoOutputFile>

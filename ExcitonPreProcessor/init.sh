@@ -98,4 +98,12 @@ fi
 echo "Running $OPENMPI_PATH/bin/mpirun --oversubscribe --bind-to none $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr"
 $OPENMPI_PATH/bin/mpirun --oversubscribe --bind-to none $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
 
+
 zip -r Analysis.zip Analysis
+
+
+find . > directory.content
+
+python $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/WanoHelpers/Parser-epp-dict.py rendered_wano.yml morphology.cml
+
+
