@@ -27,8 +27,10 @@ then
     WORKING_DIR=$SCRATCH/`whoami`/`uuidgen`
     mkdir -p $WORKING_DIR
     rsync -a $DATA_DIR/* $WORKING_DIR/ --exclude "*.stderr" --exclude "*.stdout"
+    echo "Moving to scratch $WORKING_DIR"
     cd $WORKING_DIR
 fi
+
 
 export OMP_NUM_THREADS=1
 
