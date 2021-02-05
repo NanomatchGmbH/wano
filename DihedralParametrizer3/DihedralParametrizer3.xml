@@ -115,7 +115,7 @@
         <Entry id="2">from_deposit</Entry>
     </WaNoDropDown>
     <WaNoFile visibility_condition="'%s' == 'from_deposit'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="restartfile.zip" name="deposit restartfile">Put file here</WaNoFile>
-    <WaNoInt visibility_condition="'%s' == 'vacuum'" visibility_var_path="forcefield_optimization.train_set_generation" name="no_samples">250</WaNoInt>
+    <WaNoInt name="no_samples">250</WaNoInt>
     <WaNoBool name="opt_dh_prefactor">True</WaNoBool>
     <WaNoBool name="opt_spline_data">False</WaNoBool>
     <WaNoBool visibility_condition="%s == True" visibility_var_path="forcefield_optimization.opt_spline_data" name="opt_spline_data_zero_grad">False</WaNoBool>
