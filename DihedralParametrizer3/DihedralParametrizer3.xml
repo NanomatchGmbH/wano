@@ -111,11 +111,14 @@
     <WaNoBool name="optimize">True</WaNoBool>
     <WaNoDropDown name="train_set_generation">
         <Entry id="0">vacuum</Entry>
-        <Entry id="1">from_deposit</Entry>
+        <Entry id="1">vacuum_wide</Entry>
+        <Entry id="2">from_deposit</Entry>
     </WaNoDropDown>
     <WaNoFile visibility_condition="'%s' == 'from_deposit'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="restartfile.zip" name="deposit restartfile">Put file here</WaNoFile>
     <WaNoInt visibility_condition="'%s' == 'vacuum'" visibility_var_path="forcefield_optimization.train_set_generation" name="no_samples">250</WaNoInt>
     <WaNoBool name="opt_dh_prefactor">True</WaNoBool>
+    <WaNoBool name="opt_spline_data">False</WaNoBool>
+    <WaNoBool visibility_condition="%s == True" visibility_var_path="forcefield_optimization.opt_spline_data" name="opt_spline_data_zero_grad">False</WaNoBool>
     <WaNoFloat name="dh_prefac_lower_bound">-5.0</WaNoFloat>
     <WaNoBool name="show sampling options">False</WaNoBool>
     <WaNoDictBox  visibility_condition="%s == True" visibility_var_path="forcefield_optimization.show sampling options" name="sampling">
