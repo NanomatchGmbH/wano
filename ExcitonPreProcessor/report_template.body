@@ -7,15 +7,8 @@ The following calculations were enabled in the WaNO: <br>
     {% endfor %}
 </ul>
 
-The following results are listed in this report, if they were enabled in the WaNo (further results are stored in Analysis.zip): <br>
-<ul>
-    {% for entry in output_dict["data_info"] %}
-        <li> {{ entry }} </li>
-    {% endfor %}
-</ul>
-
-The following molecular properties are calculated in this EPP run and the results are labeled with respect to the molecular hash, identified in the 2D structures below:<br>
-(the calculation contains the first 5 liftimes/excitation energies, just the 1. and 2. are listed here)
+The following molecular properties were calculated in this EPP run and labeled with respect to their molecular hash, identified by the 2D structures.<br>
+The 1. and 2. liftimes or excitation energies are listed (Analyis.zip contains also the 3.-5. liftimes and excitation energies).
 <ul>
     {% for entry in output_dict["Results_summary"] %}
         
@@ -25,7 +18,18 @@ The following molecular properties are calculated in this EPP run and the result
         </ul>
     {% endfor %}
 </ul>
+The following results are also stored in Analyis.zip: <br>
+<ul>
+    {% for entry in output_dict["result_keys_hidden"] %}   
+         <li> {{ entry }} </li>
+     {% endfor %}
+</ul>
 
 
-The calculations contains the following molecul{% if output_dict["Mols in cml"]|length > 1 %}s{% endif %}: {{ output_dict["Mols in cml"] }} <br>
+The calculations contains the following molecul{% if output_dict["Mols in cml"]|length > 1 %}s{% endif %}:<br>
+ <ul>
+     {% for mol in output_dict["Mols in cml"] %}
+         <li> {{mol}} </li>
+     {% endfor %}
+ </ul>
 
