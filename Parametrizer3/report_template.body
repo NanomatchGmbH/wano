@@ -8,6 +8,8 @@ The molecule - named {{output_dict["Molecule Info"]["Molecule Identifier"] }}-  
  not optimized and just a single point energy calculation was performed. <br>
 {% endif %}
 
+ <img src="output_molecule.svg"/>
+
 <h2>Setting details: </h2>
 <b>{{output_dict["Simulation settings"]["Functional"] }}/ {{output_dict["Simulation settings"]["Basis"] }} </b><br>
 
