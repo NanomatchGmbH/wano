@@ -113,8 +113,11 @@
         <Entry id="0">vacuum</Entry>
         <Entry id="1">vacuum_wide</Entry>
         <Entry id="2">from_deposit</Entry>
+        <Entry id="3">from_file</Entry>
     </WaNoDropDown>
     <WaNoFile visibility_condition="'%s' == 'from_deposit'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="restartfile.zip" name="deposit restartfile">Put file here</WaNoFile>
+    <WaNoFile visibility_condition="'%s' == 'from_file'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="train_coords.npy" name="coords_file">Put file here</WaNoFile>
+    <WaNoFile visibility_condition="'%s' == 'from_file'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="train_energies.dat" name="energies_file">Put file here</WaNoFile>
     <WaNoInt name="no_samples">250</WaNoInt>
     <WaNoBool name="opt_dh_prefactor">True</WaNoBool>
     <WaNoBool name="opt_spline_data">False</WaNoBool>
