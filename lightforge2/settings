@@ -97,3 +97,4 @@ ti_prune: {{wano["TABS"]["topology"]["prune transfer integrals"]}}
 ti_prune_cutoff: {{wano["TABS"]["topology"]["transfer integral cutoff"]}}
 rate_scaling: {{wano["TABS"]["physics"]["rate_scaling"]}}
 mesh_scale: {{wano["TABS"]["physics"]["mesh_scale"]}}
+foerster_calculation: {{wano["TABS"]["physics"]["foerster_calculation"]}}
