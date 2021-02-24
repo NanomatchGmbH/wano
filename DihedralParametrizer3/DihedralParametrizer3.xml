@@ -126,9 +126,18 @@
     <WaNoBool name="show sampling options">False</WaNoBool>
     <WaNoDictBox  visibility_condition="%s == True" visibility_var_path="forcefield_optimization.show sampling options" name="sampling">
       <WaNoFloat name="T_acc">1000.0</WaNoFloat>
-      <WaNoFloat name="T_init">1000.0</WaNoFloat>
-    <WaNoFloat name="dphi">0.2</WaNoFloat>
-    <WaNoInt name="mc_steps_per_dihedral">500</WaNoInt>
+      <WaNoFloat name="T_init">1000.0</WaNoFloat>      
+      <WaNoFloat name="dphi">0.2</WaNoFloat>
+      <WaNoInt name="mc_steps_per_dihedral">500</WaNoInt>
+    </WaNoDictBox>
+    <WaNoDropDown name="optimizer">
+        <Entry id="0">minimize</Entry>
+        <Entry id="1">basinhopping</Entry>
+    </WaNoDropDown>
+    <WaNoDictBox name="optimizer_settings">
+        <WaNoInt name="steps">5000</WaNoInt>
+        <WaNoInt name="cycles">1</WaNoInt>
+        <WaNoFloat name="temperature">0.1</WaNoFloat>
     </WaNoDictBox>
   </WaNoDictBox>
  </WaNoRoot>
