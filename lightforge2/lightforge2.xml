@@ -530,8 +530,11 @@
    <WaNoInputFile logical_filename="start_LF.sh">start_LF.sh</WaNoInputFile>
    <WaNoInputFile logical_filename="merge_settings.py">merge_settings.py</WaNoInputFile>
    <WaNoInputFile logical_filename="reformat_settings.py">reformat_settings.py</WaNoInputFile>
+   <WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
+   <WaNoInputFile logical_filename="sample_config.ini">sample_config.ini</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <WaNoOutputFile>DriftDiffusion-in.yml</WaNoOutputFile>
+    <WaNoOutputFile>output_dict.yml</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
