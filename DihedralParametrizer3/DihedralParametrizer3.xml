@@ -138,6 +138,8 @@
         <WaNoInt name="steps">5000</WaNoInt>
         <WaNoInt name="cycles">1</WaNoInt>
         <WaNoFloat name="temperature">0.1</WaNoFloat>
+        <WaNoBool name="random_init">False</WaNoBool>
+        <WaNoFloat name="random_step">0.1</WaNoFloat>
     </WaNoDictBox>
   </WaNoDictBox>
  </WaNoRoot>
