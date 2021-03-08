@@ -207,11 +207,18 @@
     <WaNoInt visibility_condition="'Number' in '%s'" visibility_var_path="Inner Part Method" name="Number of Molecules">2</WaNoInt>
   </WaNoRoot>
   <WaNoExecCommand>#!/bin/bash
+if [ "$UC_TOTAL_PROCESSORS" == "1" ]
+then
+ echo "QuantumPatch needs at least 2 processors to run, because the first processor only handles communication, exiting"
+ exit 9012
+fi
+
 export NANOVER=V4
 source $NANOMATCH/$NANOVER/configs/quantumpatch.config
 #We generate empty base settings
 $SHREDDERPATH/QuantumPatchNG.py > /dev/null 2> /dev/null
 python ./merge_rendered_wano_into_settings.py
+$SHREDDERPATH/QuantumPatchNG.py > progress.txt 2> shredder_mpi_stderr.txt
   </WaNoExecCommand>
   <WaNoInputFiles>
     <WaNoInputFile logical_filename="merge_rendered_wano_into_settings.py">merge_rendered_wano_into_settings.py</WaNoInputFile>
