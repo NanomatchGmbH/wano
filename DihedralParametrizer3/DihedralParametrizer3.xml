@@ -125,8 +125,8 @@
     <WaNoFloat name="dh_prefac_lower_bound">-5.0</WaNoFloat>
     <WaNoBool name="show sampling options">False</WaNoBool>
     <WaNoDictBox  visibility_condition="%s == True" visibility_var_path="forcefield_optimization.show sampling options" name="sampling">
-      <WaNoFloat name="T_acc">1000.0</WaNoFloat>
-      <WaNoFloat name="T_init">1000.0</WaNoFloat>      
+      <WaNoFloat name="T_acc">500.0</WaNoFloat>
+      <WaNoFloat name="T_init">500.0</WaNoFloat>      
       <WaNoFloat name="dphi">0.2</WaNoFloat>
       <WaNoInt name="mc_steps_per_dihedral">500</WaNoInt>
     </WaNoDictBox>
@@ -135,11 +135,13 @@
         <Entry id="1">basinhopping</Entry>
     </WaNoDropDown>
     <WaNoDictBox name="optimizer_settings">
-        <WaNoInt name="steps">5000</WaNoInt>
-        <WaNoInt name="cycles">1</WaNoInt>
+        <WaNoInt name="steps">100</WaNoInt>
+        <WaNoInt visibility_condition="'%s' == 'basinhopping'" visibility_var_path="forcefield_optimization.optimizer" name="cycles">1</WaNoInt>
         <WaNoFloat name="temperature">0.1</WaNoFloat>
         <WaNoBool name="random_init">False</WaNoBool>
         <WaNoFloat name="random_step">0.1</WaNoFloat>
+        <WaNoBool name="explicit_first_cycle">False</WaNoBool>
+        <WaNoInt visibility_condition="%s == True" visibility_var_path="forcefield_optimization.optimizer_settings.explicit_first_cycle" name="first_cycle_steps">500</WaNoInt>
     </WaNoDictBox>
   </WaNoDictBox>
  </WaNoRoot>
