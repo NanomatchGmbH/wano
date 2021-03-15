@@ -1,0 +1,13 @@
+molecule_pdb: inputs/molecule.pdb
+molecule_spf: inputs/molecule.spf
+DFT_options: {basis: SVP, engine: DFTBplus, func: BP86, scc: true, threads: 1}
+DH_scan_relax_options: {T_acc: 300.0, dphi: 0.2, mc_steps: 500}
+DH_scan_steps: 18
+FF_options: {do_6_10: true, do_coulomb: true, include_dh: false}
+param_optimization:
+  optimize: true
+  train_set_generation: from_deposit
+  # do not expose
+  deposit_directory: "./deposit_input"
+  sampling: {T_acc: 1000.0, dphi: 0.2, include_dh: true, mc_steps_per_dihedral: 500}
+scf_iter: 3

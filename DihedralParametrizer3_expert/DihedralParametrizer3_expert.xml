@@ -8,7 +8,7 @@
     <Entry id="1">XTBEngine</Entry>
     <Entry id="2" chosen="true">Turbomole</Entry>
    </WaNoDropDown>
-    <WaNoDropDown visibility_condition="'%s' == 'Turbomole'" visibility_var_path="DFT_options.Engine" name="Functional">
+    <WaNoDropDown visibility_condition="'%s' == 'Turbomole'" visibility_var_path="DFT_options.engine" name="Functional">
         <Entry id="0">SVWN</Entry>
         <Entry id="1">SVWN_Gaussian</Entry>
         <Entry id="2">PWLDA</Entry>
@@ -31,7 +31,7 @@
         <Entry id="19">wB97X</Entry>
         <Entry id="20">CAM-B3LYP</Entry>
     </WaNoDropDown>
-    <WaNoDropDown visibility_condition="'%s' == 'Turbomole'" visibility_var_path="DFT_options.Engine" name="Basis">
+    <WaNoDropDown visibility_condition="'%s' == 'Turbomole'" visibility_var_path="DFT_options.engine" name="Basis">
         <Entry id="0">STO-3G</Entry>
         <Entry id="1">4-31g hondo</Entry>
         <Entry id="2">6-31g hondo</Entry>
@@ -95,6 +95,7 @@
     <WaNoInt name="DH_scan_steps">20</WaNoInt>
     <WaNoInt name="parallel_DH_scans">4</WaNoInt>
     <WaNoInt name="scf_iter">3</WaNoInt>
+    <WaNoBool name="iterative_DH_scan">False</WaNoBool>
   <WaNoBool name="show DHP scan relaxation options">False</WaNoBool>
   <WaNoDictBox  visibility_condition="%s == True" visibility_var_path="show DHP scan relaxation options" name="DH_scan_relax_options">
      <WaNoInt name="T_init">1000</WaNoInt>
@@ -102,19 +103,45 @@
     <WaNoFloat name="dphi">0.2</WaNoFloat>
     <WaNoInt name="mc_steps">500</WaNoInt>
   </WaNoDictBox>
+  <WaNoDictBox name="forcefield_options">
+    <WaNoBool name="do_6_10">True</WaNoBool>
+    <WaNoBool name="do_coulomb">True</WaNoBool>
+    </WaNoDictBox>
     <WaNoDictBox name="forcefield_optimization">
     <WaNoBool name="optimize">True</WaNoBool>
     <WaNoDropDown name="train_set_generation">
-        <Entry id="0">vacuum_wide</Entry>
-        <Entry id="1">from_deposit</Entry>
-        <Entry id="2">from_file</Entry>
+        <Entry id="0">vacuum</Entry>
+        <Entry id="1">vacuum_wide</Entry>
+        <Entry id="2">from_deposit</Entry>
+        <Entry id="3">from_file</Entry>
     </WaNoDropDown>
     <WaNoFile visibility_condition="'%s' == 'from_deposit'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="restartfile.zip" name="deposit restartfile">Put file here</WaNoFile>
     <WaNoFile visibility_condition="'%s' == 'from_file'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="input_train_coords.npy" name="coords_file">Put file here</WaNoFile>
     <WaNoFile visibility_condition="'%s' == 'from_file'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="input_train_energies.dat" name="energies_file">Put file here</WaNoFile>
-    <WaNoInt visibility_condition="'%s' == 'vacuum_wide'" visibility_var_path="forcefield_optimization.train_set_generation" name="no_samples">1000</WaNoInt>
-    <WaNoDictBox visibility_condition="'%s' == 'vacuum_wide'" visibility_var_path="forcefield_optimization.train_set_generation" name="sampling">
+    <WaNoInt name="no_samples">250</WaNoInt>
+    <WaNoBool name="opt_dh_prefactor">True</WaNoBool>
+    <WaNoBool name="opt_spline_data">False</WaNoBool>
+    <WaNoBool visibility_condition="%s == True" visibility_var_path="forcefield_optimization.opt_spline_data" name="opt_spline_data_zero_grad">False</WaNoBool>
+    <WaNoFloat name="dh_prefac_lower_bound">-5.0</WaNoFloat>
+    <WaNoBool name="show sampling options">False</WaNoBool>
+    <WaNoDictBox  visibility_condition="%s == True" visibility_var_path="forcefield_optimization.show sampling options" name="sampling">
       <WaNoFloat name="T_acc">500.0</WaNoFloat>
+      <WaNoFloat name="T_init">500.0</WaNoFloat>      
+      <WaNoFloat name="dphi">0.2</WaNoFloat>
+      <WaNoInt name="mc_steps_per_dihedral">500</WaNoInt>
+    </WaNoDictBox>
+    <WaNoDropDown name="optimizer">
+        <Entry id="0">minimize</Entry>
+        <Entry id="1">basinhopping</Entry>
+    </WaNoDropDown>
+    <WaNoDictBox name="optimizer_settings">
+        <WaNoInt name="steps">100</WaNoInt>
+        <WaNoInt visibility_condition="'%s' == 'basinhopping'" visibility_var_path="forcefield_optimization.optimizer" name="cycles">1</WaNoInt>
+        <WaNoFloat name="temperature">0.1</WaNoFloat>
+        <WaNoBool name="random_init">False</WaNoBool>
+        <WaNoFloat name="random_step">0.1</WaNoFloat>
+        <WaNoBool name="explicit_first_cycle">False</WaNoBool>
+        <WaNoInt visibility_condition="%s == True" visibility_var_path="forcefield_optimization.optimizer_settings.explicit_first_cycle" name="first_cycle_steps">500</WaNoInt>
     </WaNoDictBox>
   </WaNoDictBox>
  </WaNoRoot>
