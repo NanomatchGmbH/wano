@@ -5,7 +5,7 @@
   <WaNoDictBox name="Simulation Box">
     <WaNoFloat name="Lx">40.0</WaNoFloat>
     <WaNoFloat name="Ly">40.0</WaNoFloat>
-    <WaNoFloat name="Lz">40.0</WaNoFloat>
+    <WaNoFloat name="Lz">120.0</WaNoFloat>
     <WaNoDictBox name="PBC">
        <WaNoBool name="enabled">True</WaNoBool>
        <WaNoFloat name="Cutoff">20.0</WaNoFloat>
