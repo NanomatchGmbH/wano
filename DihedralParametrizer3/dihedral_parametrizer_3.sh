@@ -3,8 +3,6 @@
 export NANOVER="V4"
 source $NANOMATCH/$NANOVER/configs/DihedralParametrizer3.config
 
-export DIHEDRAL_PARAMETRIZER_PATH=$NANOMATCH/$NANOVER/dihedral_parametrizer
-
 export OMP_NUM_THREADS=1
 
 # Here we check, whether variables are set and add them to the mpirun exports. This is not required for mpirun with PBS/Torque, but required with everything else.
@@ -24,7 +22,6 @@ environmentvariables=("CGPATH"   \
     "DEPTOOLS"   \
     "DFTBPARAMETERS"   \
     "DFTBPATH"   \
-    "DIHEDRAL_PARAMETRIZER_PATH"   \
     "HOSTFILE"   \
     "IBIPATH"   \
     "KMCDEPOSITPATH"   \
@@ -77,7 +74,7 @@ then
     cd ..
 fi
 
-$OPENMPI_PATH/bin/mpirun --bind-to none $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $DIHEDRAL_PARAMETRIZER_PATH/DihedralParametrizerExe.py rendered_wano.yml >> mainout.txt 2> dhp_mpi_stderr
+$OPENMPI_PATH/bin/mpirun --bind-to none $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $DHPARMPATH/DihedralParametrizerExe.py rendered_wano.yml >> mainout.txt 2> dhp_mpi_stderr
 
 if [ "$DepositOpt" == "from_deposit" ]
 then
