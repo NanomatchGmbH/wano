@@ -451,7 +451,7 @@
           <WaNoFloat name="ptq">1.0</WaNoFloat>
           <WaNoFloat name="dexter_spinflip">1.0</WaNoFloat>
         </WaNoDictBox>  
-        <WaNoMatrixFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" rows="1" cols="3" row_header="nm" col_header="x;y;z" name="mesh_scale">1.0</WaNoMatrixFloat>
+        <WaNoMatrixFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" rows="1" cols="3" row_header="nm" col_header="x;y;z" name="mesh_scale">[[1.0,1.0,1.0]] </WaNoMatrixFloat>
 
       </WaNoGroup>
 
