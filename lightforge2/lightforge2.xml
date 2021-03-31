@@ -468,9 +468,9 @@
           <Entry id="3">pv_transient</Entry>
         </WaNoDropDown>
 
-        <WaNoFloat visibility_condition="'%s' == 'photoluminescence'" visibility_var_path="TABS.operation.measurement" name="irradiance [W/m2]">0.0</WaNoFloat>
-        <WaNoString visibility_condition="'%s' == 'photoluminescence'" visibility_var_path="TABS.operation.measurement" name="light_on_time [s]">1.0e-8</WaNoString>
-        <WaNoString visibility_condition="'%s' == 'photoluminescence'" visibility_var_path="TABS.operation.measurement" name="light_off_time [s]">1.0e-2</WaNoString>
+        <WaNoFloat visibility_condition="'%s' != 'exciton_diffusion_length'" visibility_var_path="TABS.operation.measurement" name="irradiance [W/m2]">0.0</WaNoFloat>
+        <WaNoString visibility_condition="'%s' != 'exciton_diffusion_length'" visibility_var_path="TABS.operation.measurement" name="light_on_time [s]">1.0e-8</WaNoString>
+        <WaNoString visibility_condition="'%s' != 'exciton_diffusion_length'" visibility_var_path="TABS.operation.measurement" name="light_off_time [s]">1.0e-2</WaNoString>
 
 
         <WaNoString name="temperature [K]">300</WaNoString>
