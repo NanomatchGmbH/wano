@@ -279,7 +279,6 @@ obabel -imol2 output_molecule.mol2 -osvg > output_molecule.svg
    <WaNoInputFile logical_filename="init_parametrizer.py">init_parametrizer.py</WaNoInputFile>
    <WaNoInputFile logical_filename="merge_dh.py">merge_dh.py</WaNoInputFile>
    <WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
-   <WaNoInputFile logical_filename="sample_config.ini">sample_config.ini</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <WaNoOutputFile>report.zip</WaNoOutputFile>
