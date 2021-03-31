@@ -110,8 +110,7 @@
         <Entry id="2">from_file</Entry>
     </WaNoDropDown>
     <WaNoFile visibility_condition="'%s' == 'from_deposit'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="restartfile.zip" name="deposit restartfile">Put file here</WaNoFile>
-    <WaNoFile visibility_condition="'%s' == 'from_file'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="input_train_coords.npy" name="coords_file">Put file here</WaNoFile>
-    <WaNoFile visibility_condition="'%s' == 'from_file'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="input_train_energies.dat" name="energies_file">Put file here</WaNoFile>
+    <WaNoFile visibility_condition="'%s' == 'from_file'" visibility_var_path="forcefield_optimization.train_set_generation" logical_filename="input_train_data.npz" name="train_data_file">Put file here</WaNoFile>
     <WaNoInt visibility_condition="'%s' == 'vacuum_wide'" visibility_var_path="forcefield_optimization.train_set_generation" name="no_samples">1000</WaNoInt>
     <WaNoDictBox visibility_condition="'%s' == 'vacuum_wide'" visibility_var_path="forcefield_optimization.train_set_generation" name="sampling">
       <WaNoFloat name="T_acc">500.0</WaNoFloat>
