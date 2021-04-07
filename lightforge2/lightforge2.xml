@@ -357,7 +357,7 @@
               </WaNoDictBox>
               <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="Dexter_transfer_integrals">
                 <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="wf_decay_length">0.1</WaNoFloat>
-                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="maximum_ti">0.003</WaNoFloat>
+                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="maximum_ti">0.0001</WaNoFloat>
                 <WaNoFile visibility_condition="'%s' == 'QM_expansion'" visibility_var_path="TABS.topology.transfer_integral_source" logical_filename="Dexter1_{{ path[3] }}.dat" name="ti_input_file">Put file here</WaNoFile>
               </WaNoDictBox>
             </WaNoDictBox>
