@@ -9,6 +9,7 @@
                     <WaNoBool name="enabled">False</WaNoBool>
                     <WaNoDynamicDropDown name="Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
                     <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.Fluorescence.enabled" name="TADF">False</WaNoBool>
+                    <WaNoBool visibility_condition="%s == True" visibility_var_path="Tabs.General.Fluorescence.enabled" name="Calculate UV/VIS spectrum">False</WaNoBool>
                 </WaNoDictBox>
                  <WaNoDictBox name="Phosphorescence">
                     <WaNoBool name="enabled">False</WaNoBool>
