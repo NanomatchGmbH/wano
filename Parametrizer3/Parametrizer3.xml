@@ -25,6 +25,8 @@
                     <Entry id="1">Mulliken</Entry>
                     <Entry id="2">No Charges</Entry>
                 </WaNoDropDown>
+                <WaNoBool name="cosmo">False</WaNoBool>                
+                <WaNoFloat visibility_condition="%s == True" visibility_var_path="DFT Engine.Turbomole Settings.cosmo" name="Epsilon">4.0</WaNoFloat>
                 <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                 <WaNoBool name="static_polarizability">False</WaNoBool>
                 <WaNoDropDown name="Functional">
@@ -144,6 +146,7 @@
                     <Entry id="2">Generate orbital plots</Entry>
                     <Entry id="3"  chosen="true">None</Entry>
                 </WaNoDropDown>
+                <WaNoBool visibility_condition="%s >=1 " visibility_var_path="Molecule Settings.Excited State of Interest" name="Calculate UV/VIS spectrum">"false"</WaNoBool>
             </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="DFT Engine.Engine" name="Psi4 Settings">
                 <WaNoDropDown name="Partial Charge Method">

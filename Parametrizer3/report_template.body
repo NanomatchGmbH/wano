@@ -28,3 +28,9 @@ molecular properties:
 
 </ul>
 
+{% if output_dict["Simulation settings"]["Calculate UV/VIS spectrum"] == true %}
+
+<img src="UV_VIS_{{output_dict["Molecule Info"]["Molecule Identifier"] }}_spectrum.png"/>
+
+{% endif %}
+
