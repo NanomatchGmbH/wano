@@ -20,6 +20,13 @@ if wano["DFT Engine"]["Turbomole Settings"]["Partial Charge Method"] == "No Char
     wano["DFT Engine"]["Turbomole Settings"]["Partial Charge Method"] = "ESP"
     wano["DFT Engine"]["Turbomole Settings"]["partial_charges"] =  False
 
+if wano["DFT Engine"]["Turbomole Settings"]["cosmo"] == True:
+    wano["DFT Engine"]["Turbomole Settings"]["cosmo"] = wano["DFT Engine"]["Turbomole Settings"]["Epsilon"]
+    del wano["DFT Engine"]["Turbomole Settings"]["Epsilon"]
+else:
+    del wano["DFT Engine"]["Turbomole Settings"]["Epsilon"]
+    del wano["DFT Engine"]["Turbomole Settings"]["cosmo"]
+
 if wano["DFT Engine"]["Turbomole Settings"]["Analysis options"] == "Generate orbital plots":
     wano["DFT Engine"]["Turbomole Settings"]["plot_orb"] = {"homo" :True,"lumo":True}
 elif wano["DFT Engine"]["Turbomole Settings"]["Analysis options"] == "Estimate electrostatic disorder":
