@@ -34,10 +34,27 @@ elif wano["DFT Engine"]["Turbomole Settings"]["Analysis options"] == "Estimate e
 elif  wano["DFT Engine"]["Turbomole Settings"]["Analysis options"]  == "Generate ESP surface plot":
     wano["DFT Engine"]["Turbomole Settings"]["ESP_surface"] = {'enabled':True, 'mode': "by element", 'vdw_scale': 1.0,'points': 50,'plot_grid': True}
 
-
 del wano["DFT Engine"]["Turbomole Settings"]["Analysis options"]
 
+if  wano["DFT Engine"]["Turbomole Settings"]['use default range sep values'] == True:
+    del wano["DFT Engine"]["Turbomole Settings"]['use default range sep values']
+    del wano["DFT Engine"]["Turbomole Settings"]['rangesep']
+else:
+    del wano["DFT Engine"]["Turbomole Settings"]['use default range sep values']
 
+
+
+if wano["DFT Engine"]["Turbomole Settings"]["Functional"] not in ['wPBE_own','wPBEH_own','CAM-B3LYP_own']:
+    del  wano["DFT Engine"]["Turbomole Settings"]['w_fit']
+
+else:
+    if wano['DFT Engine']['w_fit']['fit_to'] == 'use manual w':
+        del wano['DFT Engine']['w_fit']
+
+    else:
+        wano['DFT Engine']['w_fit']['do_w_fit']= True
+        wano['DFT Engine']['w_fit']['guesss_w']='full'
+    
 report_dict = {}
 engine = wano["DFT Engine"]["Engine"] + " Settings"
 #method = engine + " Settings"
