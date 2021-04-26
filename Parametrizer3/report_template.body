@@ -19,6 +19,11 @@ Groundstate - S0 was selected <br>
 Excited state - S {{output_dict["Molecule Info"]["Excited State of Interest"] }} was selected <br>
  {% endif %} 
 
+{% if output_dict["Simulation settings"]["w-tuning"] == True %}
+
+w-tuning of range sep. functional activated: Fit of w-vales is listed in molecule.spf <br>
+{% endif %}
+
 molecular properties:
 <ul>
 <li>{{output_dict["homo-id"]}} occupeid orbitals </li>
@@ -28,7 +33,7 @@ molecular properties:
 
 </ul>
 
-{% if output_dict["Simulation settings"]["Calculate UV/VIS spectrum"] == true %}
+{% if output_dict["Molecule Info"]["Calculate UV/VIS spectrum"] == true %}
 
 <img src="UV_VIS_{{output_dict["Molecule Info"]["Molecule Identifier"] }}_spectrum.png"/>
 

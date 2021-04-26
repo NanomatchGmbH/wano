@@ -11,6 +11,7 @@
                 <Entry id="2" > 3</Entry>
             </WaNoDropDown>
             <WaNoInt name="Excited State of Interest" >0</WaNoInt>
+             <WaNoBool visibility_condition="%s >=1 " visibility_var_path="Molecule Settings.Excited State of Interest" name="Calculate UV/VIS spectrum">False</WaNoBool>
         </WaNoDictBox>
         <WaNoDictBox name="DFT Engine">
             <WaNoDropDown name="Engine">
@@ -153,18 +154,17 @@
                 <WaNoDictBox visibility_condition="%s == False" visibility_var_path="DFT Engine.Turbomole Settings.use default range sep values"  name="rangesep">
                     <WaNoFloat  name="alpha">0.0 </WaNoFloat>
                     <WaNoFloat  name="beta">1.0 </WaNoFloat>
-                    <WaNoFloat  name="w">0.10 </WaNoFloat>
+                    <WaNoFloat  visibility_condition="%s == False" visibility_var_path="DFT Engine.Turbomole Settings.w_fit.do_w_fit" name="w">0.10 </WaNoFloat>
                 </WaNoDictBox>
-                <WaNoBool visibility_condition="%s >=1 " visibility_var_path="Molecule Settings.Excited State of Interest" name="Calculate UV/VIS spectrum">False</WaNoBool>
-            </WaNoDictBox>
-            <WaNoDictBox visibility_condition="'%s' in ['wPBE_own','wPBEH_own','CAM-B3LYP_own']" visibility_var_path="DFT Engine.Turbomole Settings.Functional" name="w_fit">
-                <WaNoDropDown name= "fit_to">
+            <WaNoDictBox visibility_condition="%s == False" visibility_var_path="DFT Engine.Turbomole Settings.use default range sep values" name="w_fit">
+                <WaNoBool name="do_w_fit" >False</WaNoBool>
+                <WaNoDropDown visibility_condition="%s == True" visibility_var_path="DFT Engine.Turbomole Settings.w_fit.do_w_fit" name= "fit_to">
                     <Entry id="0">EA</Entry>
                     <Entry id="1">IP</Entry>
                     <Entry id="2">T1</Entry>
-                    <Entry id="3">use manual w</Entry>
                 </WaNoDropDown>
             </WaNoDictBox>
+                </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="DFT Engine.Engine" name="Psi4 Settings">
                 <WaNoDropDown name="Partial Charge Method">
                     <Entry id="0" chosen="true" >ESP</Entry>
