@@ -61,6 +61,13 @@ if __name__ == "__main__":
             entry["scf_convergence"] = settings["SCF Convergence"]
             entry["tda"] = settings["TD-DFT with Tamm-Dancoff Approx."]
             entry["rangesep"]=  settings["rangesep"]
+            if settings['cosmo']:
+                entry['cosmo'] = settings['epsilon']
+                del settings['epsilon']
+            else:
+                del settings['epsilon']
+                del settings['cosmo']
+
         if engine["Fallback"]:
             entry["fallback"] = engine["Fallback Engine"]
         cfg["DFTEngine"]["user"][name] = entry
