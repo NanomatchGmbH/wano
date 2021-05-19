@@ -163,6 +163,7 @@
                     <Entry id="1">IP</Entry>
                     <Entry id="2">T1</Entry>
                 </WaNoDropDown>
+                <WaNoBool name="no_cosmo" >False</WaNoBool>
             </WaNoDictBox>
                 </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="DFT Engine.Engine" name="Psi4 Settings">

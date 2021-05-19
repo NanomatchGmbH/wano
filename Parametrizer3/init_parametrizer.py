@@ -59,13 +59,14 @@ report_dict["DFT Method"] = wano["DFT Engine"]["Engine"]
 report_dict["Simulation settings"] = wano["DFT Engine"][engine]
 report_dict["Molecule Info"] = wano["Molecule Settings"]
 
-if wano['DFT Engine']['w_fit']["do_w_fit"]:
-    report_dict["Simulation settings"]["w-tuning"]= True
 
 
 #print(wano["DFT Engine"][wano["DFT Engine"]["Engine"]" Settings"])
 with open("parametrizer_settings.yml", "w") as ymlout:
     yaml.safe_dump(wano, ymlout)
+
+#if wano['DFT Engine']['w_fit']["do_w_fit"]:
+ #   report_dict["Simulation settings"]["w-tuning"]= True
 
 with open("output_dict.yml", "w") as reportout:
     yaml.safe_dump(report_dict,  reportout)
