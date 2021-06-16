@@ -307,5 +307,6 @@ obabel -imol2 output_molecule.mol2 -osvg > output_molecule.svg
     <WaNoOutputFile>molecule.pdb</WaNoOutputFile>
     <WaNoOutputFile>output_molecule.mol2</WaNoOutputFile>
     <WaNoOutputFile>mol_data.yml</WaNoOutputFile>
+    <WaNoOutputFile>output_dict.yml</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
