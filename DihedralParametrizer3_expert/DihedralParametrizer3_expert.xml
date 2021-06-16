@@ -8,7 +8,7 @@
     <Entry id="1">XTBEngine</Entry>
     <Entry id="2" chosen="true">Turbomole</Entry>
    </WaNoDropDown>
-    <WaNoDropDown visibility_condition="'%s' == 'Turbomole'" visibility_var_path="DFT_options.engine" name="Functional">
+    <WaNoDropDown visibility_condition="'%s' == 'Turbomole'" visibility_var_path="DFT_options.Engine" name="Functional">
         <Entry id="0">SVWN</Entry>
         <Entry id="1">SVWN_Gaussian</Entry>
         <Entry id="2">PWLDA</Entry>
@@ -31,7 +31,7 @@
         <Entry id="19">wB97X</Entry>
         <Entry id="20">CAM-B3LYP</Entry>
     </WaNoDropDown>
-    <WaNoDropDown visibility_condition="'%s' == 'Turbomole'" visibility_var_path="DFT_options.engine" name="Basis">
+    <WaNoDropDown visibility_condition="'%s' == 'Turbomole'" visibility_var_path="DFT_options.Engine" name="Basis">
         <Entry id="0">STO-3G</Entry>
         <Entry id="1">4-31g hondo</Entry>
         <Entry id="2">6-31g hondo</Entry>
