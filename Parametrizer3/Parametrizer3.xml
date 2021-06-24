@@ -68,6 +68,7 @@
                     <Entry id="34">wPBEH_own</Entry> 
                     <Entry id="35">wPBE_own</Entry> 
                     <Entry id="36">CAM-B3LYP_own</Entry> 
+                    <Entry id="37">high level</Entry> 
                 </WaNoDropDown>
                 <WaNoDropDown name="Basis">
                     <Entry id="0">STO-3G</Entry>
