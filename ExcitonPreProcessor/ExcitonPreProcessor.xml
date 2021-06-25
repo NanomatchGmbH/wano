@@ -268,6 +268,9 @@
                                 <Entry id="18">wB97</Entry>
                                 <Entry id="19">wB97X</Entry>
                                 <Entry id="20">CAM-B3LYP</Entry>
+                                <Entry id="21">wPBEH_own</Entry> 
+                                <Entry id="22">wPBE_own</Entry> 
+                                <Entry id="23">CAM-B3LYP_own</Entry> 
                             </WaNoDropDown>
                             <WaNoDropDown name="Basis">
                                 <Entry id="0">STO-3G</Entry>
@@ -335,6 +338,11 @@
                                 <Entry id="2">extreme</Entry>
                                 <Entry id="3">superextreme</Entry>
                             </WaNoDropDown>
+                            <WaNoDictBox visibility_condition="'%s' in ['wPBE_own','wPBEH_own','CAM-B3LYP_own']" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Turbomole Settings.Functional" name="rangesep">
+                                <WaNoFloat  name="alpha">0.0 </WaNoFloat>
+                                <WaNoFloat  name="beta">1.0 </WaNoFloat>
+                                <WaNoFloat  name="w">0.10 </WaNoFloat>
+                            </WaNoDictBox>
                             <WaNoBool name="TD-DFT with Tamm-Dancoff Approx.">False</WaNoBool>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
