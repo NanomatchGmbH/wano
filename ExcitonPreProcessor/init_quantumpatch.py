@@ -60,6 +60,14 @@ if __name__ == "__main__":
         if engine_name == "Turbomole":
             entry["scf_convergence"] = settings["SCF Convergence"]
             entry["tda"] = settings["TD-DFT with Tamm-Dancoff Approx."]
+            entry["rangesep"]=  settings["rangesep"]
+            if settings['cosmo']:
+                entry['cosmo'] = settings['epsilon']
+                del settings['epsilon']
+            else:
+                del settings['epsilon']
+                del settings['cosmo']
+
         if engine["Fallback"]:
             entry["fallback"] = engine["Fallback Engine"]
         cfg["DFTEngine"]["user"][name] = entry
@@ -88,6 +96,7 @@ if __name__ == "__main__":
         cfg["Analysis"]["Excitonic"]["Fluorescence"]["enabled"] = True
         cfg["Analysis"]["Excitonic"]["Fluorescence"]["DFTEngine"] = general["Fluorescence"]["Engine"]
         cfg["Analysis"]["Excitonic"]["Fluorescence"]["TADF"] = general["Fluorescence"]["TADF"]
+        cfg["Analysis"]["Excitonic"]["Fluorescence"]["Calculate UV/VIS spectrum"] = general["Fluorescence"]["Calculate UV/VIS spectrum"]
     if general["Phosphorescence"]["enabled"]:
         cfg["Analysis"]["Excitonic"]["Phosphorescence"]["enabled"] = True
         cfg["Analysis"]["Excitonic"]["Phosphorescence"]["DFTEngine"] = general["Phosphorescence"]["Dalton Engine"]

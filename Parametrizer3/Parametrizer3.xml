@@ -11,6 +11,7 @@
                 <Entry id="2" > 3</Entry>
             </WaNoDropDown>
             <WaNoInt name="Excited State of Interest" >0</WaNoInt>
+             <WaNoBool visibility_condition="%s >=1 " visibility_var_path="Molecule Settings.Excited State of Interest" name="Calculate UV/VIS spectrum">False</WaNoBool>
         </WaNoDictBox>
         <WaNoDictBox name="DFT Engine">
             <WaNoDropDown name="Engine">
@@ -25,7 +26,10 @@
                     <Entry id="1">Mulliken</Entry>
                     <Entry id="2">No Charges</Entry>
                 </WaNoDropDown>
+                <WaNoBool name="cosmo">False</WaNoBool>                
+                <WaNoFloat visibility_condition="%s == True" visibility_var_path="DFT Engine.Turbomole Settings.cosmo" name="Epsilon">4.0</WaNoFloat>
                 <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
+                <WaNoBool name="TD-DFT with TAMM-Dancoff Approx.">False</WaNoBool>
                 <WaNoBool name="static_polarizability">False</WaNoBool>
                 <WaNoDropDown name="Functional">
                     <Entry id="0">SVWN</Entry>
@@ -62,6 +66,10 @@
                     <Entry id="31">MN12-SX</Entry>
                     <Entry id="32">MN15</Entry>
                     <Entry id="33">MN15-l</Entry>             
+                    <Entry id="34">wPBEH_own</Entry> 
+                    <Entry id="35">wPBE_own</Entry> 
+                    <Entry id="36">CAM-B3LYP_own</Entry> 
+                    <Entry id="37">high level</Entry> 
                 </WaNoDropDown>
                 <WaNoDropDown name="Basis">
                     <Entry id="0">STO-3G</Entry>
@@ -144,7 +152,22 @@
                     <Entry id="2">Generate orbital plots</Entry>
                     <Entry id="3"  chosen="true">None</Entry>
                 </WaNoDropDown>
+                <WaNoBool visibility_condition="'%s' in ['wPBE_own','wPBEH_own','CAM-B3LYP_own']" visibility_var_path="DFT Engine.Turbomole Settings.Functional" name="use default range sep values">True</WaNoBool>
+                <WaNoDictBox visibility_condition="%s == False" visibility_var_path="DFT Engine.Turbomole Settings.use default range sep values"  name="rangesep">
+                    <WaNoFloat  name="alpha">0.0 </WaNoFloat>
+                    <WaNoFloat  name="beta">1.0 </WaNoFloat>
+                    <WaNoFloat  visibility_condition="%s == False" visibility_var_path="DFT Engine.Turbomole Settings.w_fit.do_w_fit" name="w">0.10 </WaNoFloat>
+                </WaNoDictBox>
+            <WaNoDictBox visibility_condition="%s == False" visibility_var_path="DFT Engine.Turbomole Settings.use default range sep values" name="w_fit">
+                <WaNoBool name="do_w_fit" >False</WaNoBool>
+                <WaNoDropDown visibility_condition="%s == True" visibility_var_path="DFT Engine.Turbomole Settings.w_fit.do_w_fit" name= "fit_to">
+                    <Entry id="0">EA</Entry>
+                    <Entry id="1">IP</Entry>
+                    <Entry id="2">T1</Entry>
+                </WaNoDropDown>
+                <WaNoBool name="no_cosmo" >False</WaNoBool>
             </WaNoDictBox>
+                </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="DFT Engine.Engine" name="Psi4 Settings">
                 <WaNoDropDown name="Partial Charge Method">
                     <Entry id="0" chosen="true" >ESP</Entry>
@@ -279,7 +302,6 @@ obabel -imol2 output_molecule.mol2 -osvg > output_molecule.svg
    <WaNoInputFile logical_filename="init_parametrizer.py">init_parametrizer.py</WaNoInputFile>
    <WaNoInputFile logical_filename="merge_dh.py">merge_dh.py</WaNoInputFile>
    <WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
-   <WaNoInputFile logical_filename="sample_config.ini">sample_config.ini</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <WaNoOutputFile>report.zip</WaNoOutputFile>
@@ -287,5 +309,6 @@ obabel -imol2 output_molecule.mol2 -osvg > output_molecule.svg
     <WaNoOutputFile>molecule.pdb</WaNoOutputFile>
     <WaNoOutputFile>output_molecule.mol2</WaNoOutputFile>
     <WaNoOutputFile>mol_data.yml</WaNoOutputFile>
+    <WaNoOutputFile>output_dict.yml</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>

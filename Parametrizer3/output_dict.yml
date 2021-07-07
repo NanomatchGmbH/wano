@@ -1,0 +1,21 @@
+Excitation energy 0: 8.171257543314308
+Excitation energy 1: 8.459448528783962
+Excitation energy 2: 9.031554713255465
+Excitation energy 3: 9.487886275756756
+Excitation energy 4: 9.592549150593001
+Flourescene lifetime 0: 8.461272302313732e-10
+Flourescene lifetime 1: 146.00489096308436
+Flourescene lifetime 2: 5.1670062031683266e-08
+Flourescene lifetime 3: 756.7768406923703
+Flourescene lifetime 4: 2418.884
+dipole:
+- 0.0
+- 0.0
+- 0.0
+homo energy: -10.628439717585954
+homo-id: 7
+lumo energy: 2.8257953780844187
+lumo_id: 8
+total_energy: -2132.905494
+w-fit: 0.38348669733946794
+walltime: 25.010499954223633
