@@ -1,19 +1,8 @@
 <h1> Lightforge </h1>
 
 write in all the relevant details <b> in bold </b> or normal. <br>
-Take the relevant results from output_dict using this style -  {{output_dict["Info"] }}-   
- 
-include images from result folders like this: <br>
-<img src="output_molecule.svg"/>
 
 <h2>Setting details: </h2>
 
 list of properties:
-<ul>
-<li>{{output_dict["homo-id"]}} occupeid orbitals </li>
-<li>HOMO energy is {{output_dict["homo energy"] | round(4,'ceil') }} eV</li>
-<li>LUMO energy is {{output_dict["lumo energy"] | round(4,'ceil') }} eV</li>
-<li>total energy is {{output_dict["total_energy"]  | round(4,'ceil')}} eV</li>
-
-</ul>
 

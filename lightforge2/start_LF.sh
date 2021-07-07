@@ -86,6 +86,8 @@ fi
 zip -r results.zip  results
 zip -r lightforge_data.zip lightforge_data
 
+cat settings > output_dict.yml
+
 for i in 0;do
     zip -r lightforge_data_subset.zip lightforge_data/material_data/*_"$i".* 
     zip -r lightforge_data_subset.zip lightforge_data/runtime_data/*_"$i".*
