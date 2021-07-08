@@ -164,6 +164,7 @@
                     <Entry id="0">EA</Entry>
                     <Entry id="1">IP</Entry>
                     <Entry id="2">T1</Entry>
+                    <Entry id="3">high_level</Entry>
                 </WaNoDropDown>
                 <WaNoBool name="no_cosmo" >False</WaNoBool>
             </WaNoDictBox>
