@@ -3,7 +3,7 @@
 DFT Engine  <b> {{ output_dict["DFT Method"]  }} </b> was used. <br>
 The molecule - named {{output_dict["Molecule Info"]["Molecule Identifier"] }}-  was 
 {% if output_dict["Molecule Info"]["Optimize Molecule"] == true %}
- optimized using <b> {{output_dict["Simulation settings"]["Geometry Convergence"] }} <b> as geometry convergence criteria. <br>
+ optimized using <b> {{output_dict["Simulation settings"]["Geometry Convergence"] }} </b> as geometry convergence criteria. <br>
 {% else %}
  not optimized and just a single point energy calculation was performed. <br>
 {% endif %}
@@ -19,7 +19,7 @@ Groundstate - S0 was selected <br>
 Excited state - S {{output_dict["Molecule Info"]["Excited State of Interest"] }} was selected <br>
  {% endif %} 
 
-{% if output_dict["Simulation settings"]["w-fit"] != 0 %}
+{% if output_dict["w-fit"] != 0.0 %}
 
 w-tuning of range sep. functional was activated:  <br>
 w-fit: {{output_dict["w-fit"]}}  <br>
