@@ -17,9 +17,15 @@ The molecule - named {{output_dict["Molecule Info"]["Molecule Identifier"] }}-  
 Groundstate - S0 was selected <br>
  {% else %}
 Excited state - S {{output_dict["Molecule Info"]["Excited State of Interest"] }} was selected <br>
+First excitation energy: {{output_dict["Excitation energy 0"]}}  <br>
+
+{% if output_dict["Simulation settings"]["Functional"] == "ADC(2)" %}
+First excitation energy in implicit solvent: {{output_dict["Excitation energy COSMO 0"]}} <br>
+
+ {% endif %} 
  {% endif %} 
 
-{% if output_dict["w-fit"] != 0.0 %}
+{% if "w-fit" in output_dict %}
 
 w-tuning of range sep. functional was activated:  <br>
 w-fit: {{output_dict["w-fit"]}}  <br>
