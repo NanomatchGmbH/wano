@@ -31,7 +31,7 @@ fi
 echo "DOING CPU binding benchmark" >> diagnostic_output.txt
 
 
-$OPENMPI_PATH/bin/mpirun --bind-to none --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py 2>&1 ./cpu_usage_test.py >> diagnostic_output.txt
+$OPENMPI_PATH/bin/mpirun --bind-to none $NMMPIARGS --hostfile $HOSTFILE --mca btl self,vader,tcp --mca btl_tcp_if_exclude lo,virbr0,docker0 python -m mpi4py 2>&1 ./cpu_usage_test.py >> diagnostic_output.txt
 echo "CPU binding benchmark done." >> diagnostic_output.txt
 
 echo "QP binary location: " >> diagnostic_output.txt
