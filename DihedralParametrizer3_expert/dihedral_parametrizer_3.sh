@@ -74,7 +74,7 @@ then
     cd ..
 fi
 
-$OPENMPI_PATH/bin/mpirun --bind-to none $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $DHPARMPATH/DihedralParametrizerExe.py rendered_wano.yml >> mainout.txt 2> dhp_mpi_stderr
+$OPENMPI_PATH/bin/mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $DHPARMPATH/DihedralParametrizerExe.py rendered_wano.yml >> mainout.txt 2> dhp_mpi_stderr
 
 if [ "$DepositOpt" == "from_deposit" ]
 then

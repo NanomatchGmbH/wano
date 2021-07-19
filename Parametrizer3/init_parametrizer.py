@@ -40,6 +40,8 @@ del wano["DFT Engine"]["Turbomole Settings"]["Analysis options"]
 if  wano["DFT Engine"]["Turbomole Settings"]['TD-DFT with TAMM-Dancoff Approx.'] == True:
     del wano["DFT Engine"]["Turbomole Settings"]['TD-DFT with TAMM-Dancoff Approx.']
     wano["DFT Engine"]["Turbomole Settings"]['tda'] = True
+else:
+    del wano["DFT Engine"]["Turbomole Settings"]['TD-DFT with TAMM-Dancoff Approx.']
 
 
 if  wano["DFT Engine"]["Turbomole Settings"]['use default range sep values'] == True:
