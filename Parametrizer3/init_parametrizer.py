@@ -41,11 +41,11 @@ elif  wano["DFT Engine"]["Turbomole Settings"]["Analysis options"]  == "Generate
 del wano["DFT Engine"]["Turbomole Settings"]["Analysis options"]
 
 
-if  wano["DFT Engine"]["Turbomole Settings"]['TD-DFT with TAMM-Dancoff Approx.'] == True:
-    del wano["DFT Engine"]["Turbomole Settings"]['TD-DFT with TAMM-Dancoff Approx.']
+if  wano["DFT Engine"]["Turbomole Settings"]['TD-DFT with TAMM-Dancoff Approximation'] == True:
+    del wano["DFT Engine"]["Turbomole Settings"]['TD-DFT with TAMM-Dancoff Approximation']
     wano["DFT Engine"]["Turbomole Settings"]['tda'] = True
 else:
-    del wano["DFT Engine"]["Turbomole Settings"]['TD-DFT with TAMM-Dancoff Approx.']
+    del wano["DFT Engine"]["Turbomole Settings"]['TD-DFT with TAMM-Dancoff Approximation']
 
 
 if  wano["DFT Engine"]["Turbomole Settings"]['use default range sep values'] == True:

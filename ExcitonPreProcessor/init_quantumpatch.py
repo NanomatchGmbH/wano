@@ -59,7 +59,7 @@ if __name__ == "__main__":
             raise QuantumPatchWaNoError("Unknown DFT engine %s" % engine_name)
         if engine_name == "Turbomole":
             entry["scf_convergence"] = settings["SCF Convergence"]
-            entry["tda"] = settings["TD-DFT with Tamm-Dancoff Approx."]
+            entry["tda"] = settings["TD-DFT with Tamm-Dancoff Approximation"]
             entry["rangesep"]=  settings["rangesep"]
             if settings['cosmo']:
                 entry['cosmo'] = settings['epsilon']
