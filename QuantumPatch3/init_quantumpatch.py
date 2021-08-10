@@ -186,4 +186,7 @@ if __name__ == "__main__":
     with open("settings_ng.yml", "w") as qpngout:
         yaml.dump(cfg, qpngout, default_flow_style=False)
 
+    with open("output_dict.yml", "w") as report:
+        yaml.dump(cfg,report, default_flow_style=False)
+
 

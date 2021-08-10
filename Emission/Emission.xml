@@ -1,3 +1,4 @@
+
 <WaNoTemplate>
     <WaNoRoot name="Emission">
         <WaNoFile logical_filename="molecule.xyz" name="Molecule">molecule.xyz,pdb,mol2,cml</WaNoFile>
@@ -81,6 +82,8 @@
                 <Entry id="15">M06-1</Entry>
                 <Entry id="16">M06-2x</Entry>
                 <Entry id="17">B2PLYP</Entry>
+                <Entry id="18">ADC(2)</Entry>
+                <Entry id="19">CAM-B3LYP_own</Entry>
             </WaNoDropDown>
         </WaNoDictBox>
         <WaNoDropDown name="Emission Type">
@@ -166,7 +169,14 @@
                 <Entry id="15">M06-1</Entry>
                 <Entry id="16">M06-2x</Entry>
                 <Entry id="17">B2PLYP</Entry>
+                <Entry id="18">ADC(2)</Entry>
+                <Entry id="19">CAM-B3LYP_own</Entry>
             </WaNoDropDown>
+            <WaNoDictBox visibility_condition="'%s' == 'CAM-B3LYP_own'" visibility_var_path="Fluorescence Calculation Options.Functional"  name="rangesep">
+                <WaNoFloat  name="alpha">0.100 </WaNoFloat>
+                <WaNoFloat  name="beta">0.900 </WaNoFloat>
+                <WaNoFloat  name="w">0.10 </WaNoFloat>
+            </WaNoDictBox>
             <WaNoDropDown name="Multiplicity">
                 <Entry id="0" chosen="True">Singlet</Entry>
                 <Entry id="1">Triplet</Entry>

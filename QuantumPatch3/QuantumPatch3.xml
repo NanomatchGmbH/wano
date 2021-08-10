@@ -952,10 +952,12 @@
         <WaNoInputFile logical_filename="init_lambda.py">init_lambda.py</WaNoInputFile>
         <WaNoInputFile logical_filename="init_quantumpatch.py">init_quantumpatch.py</WaNoInputFile>
         <WaNoInputFile logical_filename="qp_settings_template.yml">qp_settings_template.yml</WaNoInputFile>
+        <WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
     </WaNoInputFiles>
     <WaNoOutputFiles>
         <WaNoOutputFile>Analysis.zip</WaNoOutputFile>
         <WaNoOutputFile>Analysis/GSP/partial_charges.yml</WaNoOutputFile>
         <WaNoOutputFile>Analysis/GSP/core_shell.cml</WaNoOutputFile>
+        <WaNoOutputFile>output_dict.yml</WaNoOutputFile>
     </WaNoOutputFiles>
 </WaNoTemplate>
