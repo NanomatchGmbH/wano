@@ -74,6 +74,9 @@ then
     cd ..
 fi
 
+# create output_dict for report
+cp rendered_wano.yml output_dict.yml
+
 $OPENMPI_PATH/bin/mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $DHPARMPATH/DihedralParametrizerExe.py rendered_wano.yml >> mainout.txt 2> dhp_mpi_stderr
 
 if [ "$DepositOpt" == "from_deposit" ]

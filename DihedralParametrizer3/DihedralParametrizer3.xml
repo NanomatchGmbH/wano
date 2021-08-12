@@ -120,9 +120,11 @@
  <WaNoExecCommand>bash ./dihedral_parametrizer_3.sh</WaNoExecCommand>
  <WaNoInputFiles>
    <WaNoInputFile logical_filename="dihedral_parametrizer_3.sh">dihedral_parametrizer_3.sh</WaNoInputFile>
+   <WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
     <WaNoOutputFile>molecule.pdb</WaNoOutputFile>
     <WaNoOutputFile>dihedral_forcefield.spf</WaNoOutputFile>
+    <WaNoOutputFile>output_dict.yml</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
