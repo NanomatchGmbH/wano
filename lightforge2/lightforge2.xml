@@ -341,7 +341,7 @@
             <WaNoDynamicDropDown name="molecule 2" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
   
             <WaNoDynamicDropDown visibility_condition="'%s' == 'QP_output'" visibility_var_path="TABS.topology.transfer_integral_source" name="QP_output" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
-            <WaNoDynamicDropDown visibility_condition="'%s' == 'QP'" visibility_var_path="TABS.physics.coulomb_correction_mode" name="QP_output_coulomb" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+            <WaNoDynamicDropDown visibility_condition="'%s' in ['QP','QP_approx']" visibility_var_path="TABS.physics.coulomb_correction_mode" name="QP_output_coulomb" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
             <WaNoDynamicDropDown visibility_condition="'%s' == 'QP'" visibility_var_path="TABS.physics.coulomb_correction_mode" name="QP_output_coulomb_EAIP" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
 
             <WaNoDictBox visibility_condition="'%s' != 'QP_output'" visibility_var_path="TABS.topology.transfer_integral_source" name="transfer_integral_parameters">
@@ -423,7 +423,8 @@
         <WaNoDropDown visibility_condition="%s == True" visibility_var_path="TABS.physics.coulomb_correction" name="coulomb_correction_mode">
           <Entry id="0" chosen="True">cutoff</Entry>
           <Entry id="1">QP</Entry>
-          <Entry id="2">constant</Entry>
+          <Entry id="2">QP_approx</Entry>
+          <Entry id="3">constant</Entry>
         </WaNoDropDown>
         
         <WaNoBool visibility_condition="'%s' == 'QP'" visibility_var_path="TABS.physics.coulomb_correction_mode" name="polarization_correction">True</WaNoBool>
