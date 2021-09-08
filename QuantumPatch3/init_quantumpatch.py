@@ -51,6 +51,12 @@ if __name__ == "__main__":
         this_mode = "by_distance"
     else:
         this_mode = "no_binning_by_distance"
+    if wano_postproc["Predict coulomb binding energy distribution"]:
+        cfg["QuantumPatch"]["do_first_charged"] = True
+        CT_approx = wano_postproc["Coulomb binding energy settings"]
+        cfg["QuantumPatch"]["number_first_charged_mols"] = CT_approx["number of centers for charged run"]
+        cfg["QuantumPatch"]["epsilon_first_charged"] = CT_approx["permittivity"]
+
     cfg["Analysis"]["homo_lumo_generator"]["esp_avrg_options"]["mode"] = this_mode
     cfg["Analysis"]["homo_lumo_generator"]["esp_avrg_options"]["bins_per_nm"] = float(wano_postproc["Site energy prediction settings"]["ESP average options"]["Bins per nanometer"])
     # settings_ng "DFTEngine" Category
