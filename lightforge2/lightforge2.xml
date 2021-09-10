@@ -398,23 +398,23 @@
 
         <WaNoBool name="superexchange">True</WaNoBool>
         
-        <WaNoDropDown visibility_condition="'%s' == 'QP'" visibility_var_path="TABS.physics.coulomb_correction_mode" name="dielectric properties / CT">
+        <WaNoDropDown visibility_condition="'%s' in ['QP','QP_approx']" visibility_var_path="TABS.physics.coulomb_correction_mode" name="dielectric properties / CT">
           <Entry id="0">fixed permittivity</Entry>
           <Entry id="1">fixed distance dependent permittivity</Entry>
           <Entry id="2">permittivity fitted to QP</Entry>
           <Entry id="3">distance dependent permittivity fitted to QP</Entry>
         </WaNoDropDown>
-        <WaNoInviBox visibility_condition="'%s' == 'QP'" visibility_var_path="TABS.physics.coulomb_correction_mode" name="dielecpropertiesCT">
+        <WaNoInviBox visibility_condition="'%s' in ['QP','QP_approx']" visibility_var_path="TABS.physics.coulomb_correction_mode" name="dielecpropertiesCT">
             <WaNoFloat visibility_condition="'%s' == 'fixed permittivity'" visibility_var_path="TABS.physics.dielectric properties / CT" name="epsilon material">4.0</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'fixed distance dependent permittivity'" visibility_var_path="TABS.physics.dielectric properties / CT" name="epsilon material ">3.0</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'fixed distance dependent permittivity'" visibility_var_path="TABS.physics.dielectric properties / CT" name="screening length">1.3</WaNoFloat>
         </WaNoInviBox>
         
-        <WaNoDropDown visibility_condition="'%s' != 'QP'" visibility_var_path="TABS.physics.coulomb_correction_mode" name="dielectric properties">
+        <WaNoDropDown visibility_condition="'%s' in ['cutoff','constant']" visibility_var_path="TABS.physics.coulomb_correction_mode" name="dielectric properties">
           <Entry id="0">fixed permittivity</Entry>
           <Entry id="1">fixed distance dependent permittivity</Entry>
         </WaNoDropDown>
-        <WaNoInviBox visibility_condition="'%s' != 'QP'" visibility_var_path="TABS.physics.coulomb_correction_mode" name="dielecproperties">
+        <WaNoInviBox visibility_condition="'%s' in ['cutoff','constant']" visibility_var_path="TABS.physics.coulomb_correction_mode" name="dielecproperties">
             <WaNoFloat name="epsilon material">4.0</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'fixed distance dependent permittivity'" visibility_var_path="TABS.physics.dielectric properties" name="screening length">1.3</WaNoFloat>
         </WaNoInviBox>
