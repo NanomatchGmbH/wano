@@ -80,10 +80,11 @@
                 <Entry id="13">PW6B95</Entry>
                 <Entry id="14">M06</Entry>
                 <Entry id="15">M06-1</Entry>
-                <Entry id="16">M06-2x</Entry>
-                <Entry id="17">B2PLYP</Entry>
-                <Entry id="18">ADC(2)</Entry>
-                <Entry id="19">CAM-B3LYP_own</Entry>
+                <Entry id="16">M06-2X</Entry>
+                <Entry id="17">REVM11</Entry>
+                <Entry id="18">B2PLYP</Entry>
+                <Entry id="19">ADC(2)</Entry>
+                <Entry id="20">CAM-B3LYP_own</Entry>
             </WaNoDropDown>
         </WaNoDictBox>
         <WaNoDropDown name="Emission Type">
@@ -167,10 +168,11 @@
                 <Entry id="13">PW6B95</Entry>
                 <Entry id="14">M06</Entry>
                 <Entry id="15">M06-1</Entry>
-                <Entry id="16">M06-2x</Entry>
-                <Entry id="17">B2PLYP</Entry>
-                <Entry id="18">ADC(2)</Entry>
-                <Entry id="19">CAM-B3LYP_own</Entry>
+                <Entry id="16">M06-2X</Entry>
+                <Entry id="17">REVM11</Entry>
+                <Entry id="18">B2PLYP</Entry>
+                <Entry id="19">ADC(2)</Entry>
+                <Entry id="20">CAM-B3LYP_own</Entry>
             </WaNoDropDown>
             <WaNoDictBox visibility_condition="'%s' == 'CAM-B3LYP_own'" visibility_var_path="Fluorescence Calculation Options.Functional"  name="rangesep">
                 <WaNoFloat  name="alpha">0.100 </WaNoFloat>
