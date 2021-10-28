@@ -104,32 +104,34 @@
                     <Entry id="28">def-QZVP</Entry>
                     <Entry id="29">def-QZVPP</Entry>
                     <Entry id="30" chosen="true">def2-SVP</Entry>
-                    <Entry id="31">def2-SV(P)</Entry>
-                    <Entry id="32">def2-TZVP</Entry>
-                    <Entry id="33">def2-TZVPP</Entry>
-                    <Entry id="34">def2-SZVPD</Entry>
-                    <Entry id="35">def2-TZVPD</Entry>
-                    <Entry id="36">def2-TZVPPD</Entry>
-                    <Entry id="37">def2-QZVPD</Entry>
-                    <Entry id="38">def2-QZVPPD</Entry>
-                    <Entry id="39">dhf-SV(P)</Entry>
-                    <Entry id="40">dhf-SVP</Entry>
-                    <Entry id="41">dhf-TZVP</Entry>
-                    <Entry id="42">dhf-TZVPP</Entry>
-                    <Entry id="43">dhf-QZVP</Entry>
-                    <Entry id="44">dhf-QZVPP</Entry>
-                    <Entry id="45">cc-pVDZ</Entry>
-                    <Entry id="46">aug-cc-pVDZ</Entry>
-                    <Entry id="47">cc-pwVDZ</Entry>
-                    <Entry id="48">aug-cc-pwVDZ</Entry>
-                    <Entry id="49">cc-pVTZ</Entry>
-                    <Entry id="50">aug-cc-pVTZ</Entry>
-                    <Entry id="51">cc-pwVTZ</Entry>
-                    <Entry id="52">aug-cc-pwVTZ</Entry>
-                    <Entry id="53">cc-pVQZ</Entry>
-                    <Entry id="54">aug-cc-pVQZ</Entry>
-                    <Entry id="55">cc-pwVQZ</Entry>
-                    <Entry id="56">aug-cc-pwVQ</Entry>
+                    <Entry id="31">def2-SVPD</Entry>
+                    <Entry id="32">nm-SVPD</Entry>
+                    <Entry id="33">def2-SV(P)</Entry>
+                    <Entry id="34">def2-TZVP</Entry>
+                    <Entry id="35">def2-TZVPP</Entry>
+                    <Entry id="36">def2-SZVPD</Entry>
+                    <Entry id="37">def2-TZVPD</Entry>
+                    <Entry id="38">def2-TZVPPD</Entry>
+                    <Entry id="39">def2-QZVPD</Entry>
+                    <Entry id="40">def2-QZVPPD</Entry>
+                    <Entry id="41">dhf-SV(P)</Entry>
+                    <Entry id="42">dhf-SVP</Entry>
+                    <Entry id="43">dhf-TZVP</Entry>
+                    <Entry id="44">dhf-TZVPP</Entry>
+                    <Entry id="45">dhf-QZVP</Entry>
+                    <Entry id="46">dhf-QZVPP</Entry>
+                    <Entry id="47">cc-pVDZ</Entry>
+                    <Entry id="48">aug-cc-pVDZ</Entry>
+                    <Entry id="49">cc-pwVDZ</Entry>
+                    <Entry id="50">aug-cc-pwVDZ</Entry>
+                    <Entry id="51">cc-pVTZ</Entry>
+                    <Entry id="52">aug-cc-pVTZ</Entry>
+                    <Entry id="53">cc-pwVTZ</Entry>
+                    <Entry id="54">aug-cc-pwVTZ</Entry>
+                    <Entry id="55">cc-pVQZ</Entry>
+                    <Entry id="56">aug-cc-pVQZ</Entry>
+                    <Entry id="57">cc-pwVQZ</Entry>
+                    <Entry id="58">aug-cc-pwVQ</Entry>
                 </WaNoDropDown>
                 <WaNoDropDown visibility_condition="%s == True" visibility_var_path="Molecule Settings.Optimize Molecule" name="Preoptimization">
                     <Entry id="0" chosen="true">DFTB</Entry>
@@ -159,17 +161,19 @@
                     <WaNoFloat  name="beta">1.0 </WaNoFloat>
                     <WaNoFloat  visibility_condition="%s == False" visibility_var_path="DFT Engine.Turbomole Settings.w_fit.do_w_fit" name="w">0.10 </WaNoFloat>
                 </WaNoDictBox>
-            <WaNoDictBox visibility_condition="%s == False" visibility_var_path="DFT Engine.Turbomole Settings.use default range sep values" name="w_fit">
-                <WaNoBool name="do_w_fit" >False</WaNoBool>
-                <WaNoDropDown visibility_condition="%s == True" visibility_var_path="DFT Engine.Turbomole Settings.w_fit.do_w_fit" name= "fit_to">
-                    <Entry id="0">EA</Entry>
-                    <Entry id="1">IP</Entry>
-                    <Entry id="2">T1</Entry>
-                    <Entry id="3">ADC(2)</Entry>
-                </WaNoDropDown>
-                <WaNoBool name="no_cosmo" >False</WaNoBool>
-            </WaNoDictBox>
+                <WaNoDictBox visibility_condition="%s == False" visibility_var_path="DFT Engine.Turbomole Settings.use default range sep values" name="w_fit">
+                    <WaNoBool name="do_w_fit" >False</WaNoBool>
+                    <WaNoDropDown visibility_condition="%s == True" visibility_var_path="DFT Engine.Turbomole Settings.w_fit.do_w_fit" name= "fit_to">
+                        <Entry id="0">EA</Entry>
+                        <Entry id="1">IP</Entry>
+                        <Entry id="2">T1</Entry>
+                        <Entry id="3">ADC(2)</Entry>
+                        <Entry id="4">S1 value</Entry>
+                    </WaNoDropDown>
+                    <WaNoFloat visibility_condition="'%s' == 'S1 value'" visibility_var_path="DFT Engine.Turbomole Settings.w_fit.fit_to" name="target_value">0.0 </WaNoFloat>
+                    <WaNoBool name="no_cosmo" >False</WaNoBool>
                 </WaNoDictBox>
+            </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="DFT Engine.Engine" name="Psi4 Settings">
                 <WaNoDropDown name="Partial Charge Method">
                     <Entry id="0" chosen="true" >ESP</Entry>
