@@ -98,3 +98,6 @@ ti_prune_cutoff: {{wano["TABS"]["topology"]["transfer integral cutoff"]}}
 rate_scaling: {{wano["TABS"]["physics"]["rate_scaling"]}}
 mesh_scale: {{wano["TABS"]["physics"]["mesh_scale"]}}
 foerster_calculation: {{wano["TABS"]["physics"]["foerster_calculation"]}}
+keep_system_data_results: {{wano["TABS"]["analysis"]["store system information in results"]}}
+mem_save_mode: {{wano["TABS"]["analysis"]["memory save mode"]}}
+ziplightforge_data: {{wano["TABS"]["analysis"]["create lightforge_data.zip"]}}

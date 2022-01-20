@@ -84,7 +84,8 @@ else
     lightforge.py -s settings
 fi 
 zip -r results.zip  results
-zip -r lightforge_data.zip lightforge_data
+
+zip_lf_data=`awk 'BEGIN{z="False"} $1=="ziplightforge_data:"&&$2=="true" {z="True"} END{print z}' settings`
 
 cat settings > output_dict.yml
 
@@ -93,6 +94,13 @@ for i in 0;do
     zip -r lightforge_data_subset.zip lightforge_data/runtime_data/*_"$i".*
     zip -r lightforge_data_subset.zip lightforge_data/runtime_data/replay_"$i"
 done
+
+if [ $zip_lf_data == "True" ];then
+	zip -r lightforge_data.zip lightforge_data
+else
+	cp lightforge_data_subset.zip lightforge_data.zip
+fi
+
 zip lightforge_data_subset.zip *.pdb
 zip lightforge_data_subset.zip settings
 QP_inputs=`awk '$1=="QP_output.zip:"{print $2}' settings`

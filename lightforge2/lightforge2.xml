@@ -498,6 +498,13 @@
       </WaNoGroup>
 
       <WaNoGroup name="analysis">
+        <WaNoDropDown name="memory save mode">
+          <Entry id="0">0</Entry>
+          <Entry id="1">1</Entry>
+          <Entry id="2">2</Entry>
+        </WaNoDropDown>
+        <WaNoBool name="store system information in results">True</WaNoBool>
+        <WaNoBool name="create lightforge_data.zip">True</WaNoBool>
         <WaNoBool visibility_condition="%s == False" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="Read docu first at docs(dot)nanomatch(dot)com">False</WaNoBool>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="exciton_lifecycle">False</WaNoBool>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="autorun_start">0.5</WaNoFloat>
