@@ -505,6 +505,16 @@
         </WaNoDropDown>
         <WaNoBool name="store system information in results">True</WaNoBool>
         <WaNoBool name="create lightforge_data.zip">True</WaNoBool>
+        <WaNoDictBox name="live reporting">
+          <WaNoInt name="reporting_time_interval">3600</WaNoInt>
+          <WaNoBool name="IV">True</WaNoBool>
+          <WaNoBool name="density">False</WaNoBool>
+          <WaNoDropDown name="time_axis">
+            <Entry id="0">iter</Entry>
+            <Entry id="1">average</Entry>
+            <Entry id="2">log_average</Entry>
+          </WaNoDropDown>
+        </WaNoDictBox>
         <WaNoBool visibility_condition="%s == False" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="Read docu first at docs(dot)nanomatch(dot)com">False</WaNoBool>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="exciton_lifecycle">False</WaNoBool>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.analysis.Read docu first at docs(dot)nanomatch(dot)com" name="autorun_start">0.5</WaNoFloat>
