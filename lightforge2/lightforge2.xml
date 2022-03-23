@@ -34,7 +34,7 @@
         <WaNoMultipleOf visibility_condition="%s == True" visibility_var_path="TABS.IO.use QP output" name="QP output file">
           <Element id="0">
              <WaNoString name="name">mol: A,B</WaNoString>
-             <WaNoFile visibility_condition="%s == True" visibility_var_path="TABS.IO.use QP output" logical_filename="QP_output_{{ path[3] }}.zip" name="QP_output.zip">Put file here</WaNoFile>
+             <WaNoFile visibility_condition="%s == True" visibility_var_path="TABS.IO.use QP output" logical_filename="QP_output_{{ path[3] }}.zip" name="QP_output zip">Put file here</WaNoFile>
           </Element>
         </WaNoMultipleOf>
         <WaNoBool name="Override Settings" >False</WaNoBool>
@@ -504,7 +504,7 @@
           <Entry id="2">2</Entry>
         </WaNoDropDown>
         <WaNoBool name="store system information in results">True</WaNoBool>
-        <WaNoBool name="create lightforge_data.zip">True</WaNoBool>
+        <WaNoBool name="create lightforge_data zip">True</WaNoBool>
         <WaNoDictBox name="live reporting">
           <WaNoInt name="reporting_time_interval">3600</WaNoInt>
           <WaNoBool name="IV">True</WaNoBool>
