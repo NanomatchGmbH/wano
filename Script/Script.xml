@@ -1,6 +1,6 @@
 <WaNoTemplate>
     <WaNoRoot name="Script">
-        <WaNoScript name="Script" logical_filename="input.script">input.script</WaNoScript>
+        <WaNoScriptV2 name="Script">Type your script here</WaNoScriptV2>
         <WaNoChoice name="Interpreter">
            <Entry id="0">Bash</Entry>
            <Entry id="1">Python</Entry>    
@@ -8,11 +8,12 @@
         </WaNoChoice>
     </WaNoRoot>
     <WaNoExecCommand>      
-        {% if wano["Interpreter"] == "Bash" %}bash {{ wano["Script"] }}{% endif %}
-        {% if wano["Interpreter"] == "Python" %}python {{ wano["Script"] }}{% endif %}
-        {% if wano["Interpreter"] == "Perl" %}perl {{ wano["Script"] }}{% endif %}
+        {% if wano["Interpreter"] == "Bash" %}bash ./script{% endif %}
+        {% if wano["Interpreter"] == "Python" %}python ./script{% endif %}
+        {% if wano["Interpreter"] == "Perl" %}perl ./script{% endif %}
     </WaNoExecCommand>
     <WaNoInputFiles>
+       <WaNoInputFile logical_filename="script">script_template</WaNoInputFile>
     </WaNoInputFiles>   
     <WaNoOutputFiles>
     </WaNoOutputFiles>
