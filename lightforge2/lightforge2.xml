@@ -278,7 +278,7 @@
           <Element id="0">
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_norm_vector">1 0 0</WaNoString>
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_dimensions">10 10</WaNoString>
-            <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_center">-0.5 0 0</WaNoString>
+            <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_centers">-0.5 0 0</WaNoString>
             <WaNoFloat name="electrode_workfunction">-5.0</WaNoFloat>
             <WaNoDropDown name="coupling_model">
               <Entry id="0">QP_output</Entry>
@@ -294,7 +294,7 @@
           <Element id="1">
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_norm_vector">-1 0 0</WaNoString>
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_dimensions">10 10</WaNoString>
-            <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_center">10.5 0 0</WaNoString>
+            <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_centers">10.5 0 0</WaNoString>
             <WaNoFloat name="electrode_workfunction">-5.0</WaNoFloat>
             <WaNoDropDown name="coupling_model">
               <Entry id="0">QP_output</Entry>
