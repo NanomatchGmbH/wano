@@ -201,7 +201,7 @@
                                 <Entry id="18">6-311++G*</Entry>
                                 <Entry id="19">6-311++G**</Entry>
                                 <Entry id="20">def2-SV(P)</Entry>
-                                <Entry id="21">def2-SVP</Entry>
+                                <Entry id="21" chosen="true">def2-SVP</Entry>
                                 <Entry id="22">def2-TZVP</Entry>
                                 <Entry id="23">def2-TZVPP</Entry>
                                 <Entry id="24">def2-QZVP</Entry>
@@ -231,7 +231,7 @@
                         </WaNoDictBox>
                     </Entry>
                     <Entry id="1">
-                        <WaNoString name="Name">Psi4 1</WaNoString>
+                        <WaNoString name="Name">Psi4</WaNoString>
                         <WaNoDropDown name="Engine">
                             <Entry id="0">Turbomole</Entry>
                             <Entry id="1" chosen="true">Psi4</Entry>
@@ -263,14 +263,14 @@
                                 <Entry id="13">PW6B95</Entry>
                                 <Entry id="14">M06</Entry>
                                 <Entry id="15">M06-1</Entry>
-                                <Entry id="16">M06-2x</Entry>
+                                <Entry id="16">M06-2X</Entry>
                                 <Entry id="17">B2PLYP</Entry>
                                 <Entry id="18">wB97</Entry>
                                 <Entry id="19">wB97X</Entry>
                                 <Entry id="20">CAM-B3LYP</Entry>
-                                <Entry id="21">wPBEH_own</Entry> 
-                                <Entry id="22">wPBE_own</Entry> 
-                                <Entry id="23">CAM-B3LYP_own</Entry> 
+                                <Entry id="21">wPBEH_own</Entry>
+                                <Entry id="22">wPBE_own</Entry>
+                                <Entry id="23">CAM-B3LYP_own</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="Basis">
                                 <Entry id="0">STO-3G</Entry>
@@ -344,6 +344,8 @@
                                 <WaNoFloat  name="w">0.10 </WaNoFloat>
                             </WaNoDictBox>
                             <WaNoBool name="TD-DFT with Tamm-Dancoff Approximation">False</WaNoBool>
+                            <WaNoBool name="cosmo">False</WaNoBool>
+                            <WaNoFloat visibility_condition="%s == True" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3]}}.Turbomole Settings.cosmo" name="epsilon">4.0</WaNoFloat>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
@@ -397,8 +399,8 @@
                                 <Entry id="17">6-311++G</Entry>
                                 <Entry id="18">6-311++G*</Entry>
                                 <Entry id="19">6-311++G**</Entry>
-                                <Entry id="20" chosen="true">def2-SV(P)</Entry>
-                                <Entry id="21">def2-SVP</Entry>
+                                <Entry id="20">def2-SV(P)</Entry>
+                                <Entry id="21" chosen="true">def2-SVP</Entry>
                                 <Entry id="22">def2-TZVP</Entry>
                                 <Entry id="23">def2-TZVPP</Entry>
                                 <Entry id="24">def2-QZVP</Entry>
@@ -422,22 +424,13 @@
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
-                        <WaNoDictBox visibility_condition="'%s' == 'DFTB+'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="DFTB+ Settings">
-                            <WaNoDropDown name="Partial Charge Method">
-                                <Entry id="0" chosen="true" >CM3</Entry>
-                                <Entry id="1">Mulliken</Entry>
-                            </WaNoDropDown>
-                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
-                            <WaNoInt name="Threads">1</WaNoInt>
-                            <WaNoInt name="Memory (MB)">1500</WaNoInt>
-                        </WaNoDictBox>
                         <WaNoDictBox visibility_condition="'%s' == 'Dalton'" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Engine" name="Dalton Settings">
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
                     </Entry>
                     <Entry id="2">
-                        <WaNoString name="Name">DFTB+ 1</WaNoString>
+                        <WaNoString name="Name">DFTB+</WaNoString>
                         <WaNoDropDown name="Engine">
                             <Entry id="0">Turbomole</Entry>
                             <Entry id="1">Psi4</Entry>
@@ -469,11 +462,14 @@
                                 <Entry id="13">PW6B95</Entry>
                                 <Entry id="14">M06</Entry>
                                 <Entry id="15">M06-1</Entry>
-                                <Entry id="16">M06-2x</Entry>
+                                <Entry id="16">M06-2X</Entry>
                                 <Entry id="17">B2PLYP</Entry>
                                 <Entry id="18">wB97</Entry>
                                 <Entry id="19">wB97X</Entry>
                                 <Entry id="20">CAM-B3LYP</Entry>
+                                <Entry id="21">wPBEH_own</Entry>
+                                <Entry id="22">wPBE_own</Entry>
+                                <Entry id="23">CAM-B3LYP_own</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="Basis">
                                 <Entry id="0">STO-3G</Entry>
@@ -541,7 +537,14 @@
                                 <Entry id="2">extreme</Entry>
                                 <Entry id="3">superextreme</Entry>
                             </WaNoDropDown>
+                            <WaNoDictBox visibility_condition="'%s' in ['wPBE_own','wPBEH_own','CAM-B3LYP_own']" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Turbomole Settings.Functional" name="rangesep">
+                                <WaNoFloat  name="alpha">0.0 </WaNoFloat>
+                                <WaNoFloat  name="beta">1.0 </WaNoFloat>
+                                <WaNoFloat  name="w">0.10 </WaNoFloat>
+                            </WaNoDictBox>
                             <WaNoBool name="TD-DFT with Tamm-Dancoff Approximation">False</WaNoBool>
+                            <WaNoBool name="cosmo">False</WaNoBool>
+                            <WaNoFloat visibility_condition="%s == True" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3]}}.Turbomole Settings.cosmo" name="epsilon">4.0</WaNoFloat>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
@@ -596,7 +599,7 @@
                                 <Entry id="18">6-311++G*</Entry>
                                 <Entry id="19">6-311++G**</Entry>
                                 <Entry id="20">def2-SV(P)</Entry>
-                                <Entry id="21">def2-SVP</Entry>
+                                <Entry id="21" chosen="true">def2-SVP</Entry>
                                 <Entry id="22">def2-TZVP</Entry>
                                 <Entry id="23">def2-TZVPP</Entry>
                                 <Entry id="24">def2-QZVP</Entry>
@@ -625,8 +628,8 @@
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
                     </Entry>
-                    <Entry id="2">
-                        <WaNoString name="Name">Dalton 1</WaNoString>
+                    <Entry id="3">
+                        <WaNoString name="Name">Dalton</WaNoString>
                         <WaNoDropDown name="Engine">
                             <Entry id="0">Turbomole</Entry>
                             <Entry id="1">Psi4</Entry>
@@ -658,11 +661,14 @@
                                 <Entry id="13">PW6B95</Entry>
                                 <Entry id="14">M06</Entry>
                                 <Entry id="15">M06-1</Entry>
-                                <Entry id="16">M06-2x</Entry>
+                                <Entry id="16">M06-2X</Entry>
                                 <Entry id="17">B2PLYP</Entry>
                                 <Entry id="18">wB97</Entry>
                                 <Entry id="19">wB97X</Entry>
                                 <Entry id="20">CAM-B3LYP</Entry>
+                                <Entry id="21">wPBEH_own</Entry>
+                                <Entry id="22">wPBE_own</Entry>
+                                <Entry id="23">CAM-B3LYP_own</Entry>
                             </WaNoDropDown>
                             <WaNoDropDown name="Basis">
                                 <Entry id="0">STO-3G</Entry>
@@ -730,7 +736,14 @@
                                 <Entry id="2">extreme</Entry>
                                 <Entry id="3">superextreme</Entry>
                             </WaNoDropDown>
+                            <WaNoDictBox visibility_condition="'%s' in ['wPBE_own','wPBEH_own','CAM-B3LYP_own']" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3] }}.Turbomole Settings.Functional" name="rangesep">
+                                <WaNoFloat  name="alpha">0.0 </WaNoFloat>
+                                <WaNoFloat  name="beta">1.0 </WaNoFloat>
+                                <WaNoFloat  name="w">0.10 </WaNoFloat>
+                            </WaNoDictBox>
                             <WaNoBool name="TD-DFT with Tamm-Dancoff Approximation">False</WaNoBool>
+                            <WaNoBool name="cosmo">False</WaNoBool>
+                            <WaNoFloat visibility_condition="%s == True" visibility_var_path="Tabs.Engines.DFT Engines.{{ path[3]}}.Turbomole Settings.cosmo" name="epsilon">4.0</WaNoFloat>
                             <WaNoInt name="Threads">1</WaNoInt>
                             <WaNoInt name="Memory (MB)">1500</WaNoInt>
                         </WaNoDictBox>
@@ -785,7 +798,7 @@
                                 <Entry id="18">6-311++G*</Entry>
                                 <Entry id="19">6-311++G**</Entry>
                                 <Entry id="20">def2-SV(P)</Entry>
-                                <Entry id="21">def2-SVP</Entry>
+                                <Entry id="21" chosen="true">def2-SVP</Entry>
                                 <Entry id="22">def2-TZVP</Entry>
                                 <Entry id="23">def2-TZVPP</Entry>
                                 <Entry id="24">def2-QZVP</Entry>
