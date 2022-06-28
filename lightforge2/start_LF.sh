@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NANOVER="V4"
+export NANOVER="V6"
 source $NANOMATCH/$NANOVER/configs/lightforge.config
 
 if [ -f lf_output.zip ]; then

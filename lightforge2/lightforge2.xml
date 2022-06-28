@@ -355,18 +355,18 @@
 
             <WaNoDictBox visibility_condition="'%s' in ['Miller-Abrahams','QM_expansion']" visibility_var_path="TABS.topology.transfer_integral_source" name="transfer_integral_parameters">
               <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.holes" name="hole_transfer_integrals">
-                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="wf_decay_length">0.1</WaNoFloat>
-                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="maximum_ti">0.003</WaNoFloat>
+                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="wf_decay_length">1.0</WaNoFloat>
+                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="maximum_ti">0.025</WaNoFloat>
                 <WaNoFile visibility_condition="'%s' == 'QM_expansion'" visibility_var_path="TABS.topology.transfer_integral_source" logical_filename="J_holes_{{ path[3] }}.dat" name="ti_input_file">Put file here</WaNoFile>
               </WaNoDictBox>
               <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.electrons" name="electron_transfer_integrals">
-                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="wf_decay_length">0.1</WaNoFloat>
-                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="maximum_ti">0.003</WaNoFloat>
+                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="wf_decay_length">1.0</WaNoFloat>
+                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="maximum_ti">0.025</WaNoFloat>
                 <WaNoFile visibility_condition="'%s' == 'QM_expansion'" visibility_var_path="TABS.topology.transfer_integral_source" logical_filename="J_electrons_{{ path[3] }}.dat" name="ti_input_file">Put file here</WaNoFile>
               </WaNoDictBox>
               <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="Dexter_transfer_integrals">
-                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="wf_decay_length">0.1</WaNoFloat>
-                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="maximum_ti">0.0001</WaNoFloat>
+                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="wf_decay_length">1.0</WaNoFloat>
+                <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="maximum_ti">0.001</WaNoFloat>
                 <WaNoFile visibility_condition="'%s' == 'QM_expansion'" visibility_var_path="TABS.topology.transfer_integral_source" logical_filename="Dexter1_{{ path[3] }}.dat" name="ti_input_file">Put file here</WaNoFile>
               </WaNoDictBox>
             </WaNoDictBox>
@@ -451,7 +451,7 @@
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_stack_distance">0.8</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_J_scale">-0.2</WaNoFloat>
         <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="tta_rate">Miller</WaNoString>
-        <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="td_scaling">0.4</WaNoString>
+        <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="td_scaling">1.0</WaNoString>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="ct_rate_memory_multiplier">1.0</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="n_injection_layer">1.0</WaNoFloat>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="ML_energy_environment">False</WaNoBool>
