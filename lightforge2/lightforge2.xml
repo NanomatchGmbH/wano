@@ -245,11 +245,13 @@
               <Entry id="4">custom Files: morphology, eaip</Entry>
               <Entry id="5">custom Files: morphology, homolumo</Entry>
               <Entry id="6">QP_output: HL generator</Entry>
+              <Entry id="7">cubic_from_amorphous</Entry>
             </WaNoDropDown>
 
             <WaNoSwitch switch_path="TABS.device.layers.{{ path[3] }}.morphology_input_mode" name="TP">
               <WaNone switch_name="automatic" name="banane">"1"</WaNone>
               <WaNone switch_name="cubic" name="banane2">"2"</WaNone>
+              <WaNone switch_name="cubic_from_amorphous" name="banane3">"3"</WaNone>
               <WaNoInviBox switch_name="custom Files: morphology" name="box1">
                 <WaNoFile name="morphology file" logical_filename="COM{{ path[3] }}.dat">Put file here</WaNoFile>
               </WaNoInviBox>
@@ -326,6 +328,13 @@
           <Entry id="1">QM_expansion</Entry>
           <Entry id="2">Miller-Abrahams</Entry>
           <Entry id="3">file</Entry>
+          <Entry id="4">fitted_miller</Entry>
+        </WaNoDropDown>
+
+        <WaNoDropDown visibility_condition="'%s' == 'fitted_miller'" visibility_var_path="TABS.topology.transfer_integral_source" name="ti_fit_mode">
+          <Entry id="0" chosen="True">avrg</Entry>
+          <Entry id="1">max</Entry>
+          <Entry id="2">log_avrg</Entry>
         </WaNoDropDown>
 
         <WaNoDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="FRET">
@@ -340,11 +349,11 @@
             <WaNoDynamicDropDown name="molecule 1" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
             <WaNoDynamicDropDown name="molecule 2" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
   
-            <WaNoDynamicDropDown visibility_condition="'%s' == 'QP_output'" visibility_var_path="TABS.topology.transfer_integral_source" name="QP_output" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
+            <WaNoDynamicDropDown visibility_condition="'%s' in ['QP_output','fitted_miller']" visibility_var_path="TABS.topology.transfer_integral_source" name="QP_output" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
             <WaNoDynamicDropDown visibility_condition="'%s' in ['QP','QP_approx']" visibility_var_path="TABS.physics.coulomb_correction_mode" name="QP_output_coulomb" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
             <WaNoDynamicDropDown visibility_condition="'%s' == 'QP'" visibility_var_path="TABS.physics.coulomb_correction_mode" name="QP_output_coulomb_EAIP" collection_path="TABS.IO.QP output file" subpath="name" chosen="0" />
 
-            <WaNoDictBox visibility_condition="'%s' != 'QP_output'" visibility_var_path="TABS.topology.transfer_integral_source" name="transfer_integral_parameters">
+            <WaNoDictBox visibility_condition="'%s' in ['Miller-Abrahams','QM_expansion']" visibility_var_path="TABS.topology.transfer_integral_source" name="transfer_integral_parameters">
               <WaNoDictBox visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.holes" name="hole_transfer_integrals">
                 <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="wf_decay_length">0.1</WaNoFloat>
                 <WaNoFloat visibility_condition="'%s' == 'Miller-Abrahams'" visibility_var_path="TABS.topology.transfer_integral_source" name="maximum_ti">0.003</WaNoFloat>

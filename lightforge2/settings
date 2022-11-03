@@ -102,3 +102,4 @@ keep_system_data_results: {{wano["TABS"]["analysis"]["store system information i
 mem_save_mode: {{wano["TABS"]["analysis"]["memory save mode"]}}
 ziplightforge_data: {{wano["TABS"]["analysis"]["create lightforge_data zip"]}}
 live_reporting: {{wano["TABS"]["analysis"]["live reporting"]}}
+ti_fit_mode: {{wano["TABS"]["topology"]["ti_fit_mode"]}}
