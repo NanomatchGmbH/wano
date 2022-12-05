@@ -1,5 +1,5 @@
 <WaNoTemplate>
- <WaNoRoot name="DihedralParametrizer3">
+ <WaNoRoot name="DihedralParametrizer4">
   <WaNoFile logical_filename="molecule.pdb" name="Molecule_pdb">pdb file here</WaNoFile>
   <WaNoFile logical_filename="molecule.spf" name="Molecule_spf">spf file here</WaNoFile>  
   <WaNoDictBox name="DFT_options">
