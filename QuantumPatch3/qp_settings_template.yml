@@ -5,7 +5,6 @@ QuantumPatch:
   number_of_equilibration_steps: 7
   charge_damping: 0.15
   chargetype_multipoles: false
-  default_storage_location: scratch
 DFTEngine:
   defaults:
     Turbomole:
