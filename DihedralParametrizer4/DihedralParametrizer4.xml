@@ -105,7 +105,6 @@
   </WaNoDictBox>
   <WaNoBool name="Show advanced">False</WaNoBool>
     <WaNoInt  visibility_condition="%s == True" visibility_var_path="Show advanced" name="DH_scan_steps">180</WaNoInt>
-    <WaNoInt  visibility_condition="%s == True" visibility_var_path="Show advanced" name="parallel_DH_scans">1</WaNoInt>
     <WaNoInt  visibility_condition="%s == True" visibility_var_path="Show advanced" name="scf_iter">1</WaNoInt>
  </WaNoRoot>
  <WaNoExecCommand>bash ./dihedral_parametrizer_4.sh</WaNoExecCommand>
