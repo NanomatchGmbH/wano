@@ -74,8 +74,6 @@ then
     cd ..
 fi
 
-echo "version: v3" >> rendered_wano.yml
-
 # create output_dict for report
 cp rendered_wano.yml output_dict.yml
 
