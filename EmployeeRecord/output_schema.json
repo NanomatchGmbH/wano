@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/product.schema.json",
+  "title": "EmployeeRecord",
+  "description": "EmployeeRecord secure schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "Job": {
+      "enum": [
+        "Developer",
+        "Guy who brings the coffee",
+        "Karen"
+      ]
+    },
+    "JobCopy": {
+      "enum": [
+        "Developer",
+        "Guy who brings the coffffee",
+        "Karen"
+      ]
+    },
+    "Kids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "Simple Vector": {
+      "type": "string",
+      "pattern": "\\[\\s*\\[.+\\]\\s*\\]"
+    },
+    "Simple Vector Float": {
+      "type": "string",
+      "pattern": "\\[\\s*\\[.+\\]\\s*\\]"
+    }
+  },
+  "required": [
+    "name",
+    "Job",
+    "JobCopy",
+    "Kids",
+    "Simple Vector",
+    "Simple Vector Float"
+  ],
+  "additionalProperties": false
+}
