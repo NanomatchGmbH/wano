@@ -213,12 +213,14 @@ then
  exit 9012
 fi
 
-export NANOVER=V4
-source $NANOMATCH/$NANOVER/configs/quantumpatch.config
+simstack_server_mamba_source
+conda activate nmsci-2024.1
+
+
 #We generate empty base settings
-$SHREDDERPATH/QuantumPatchNG.py > /dev/null 2> /dev/null
+QuantumPatch > /dev/null 2> /dev/null
 python ./merge_rendered_wano_into_settings.py
-$SHREDDERPATH/QuantumPatchNG.py > progress.txt 2> shredder_mpi_stderr.txt
+QuantumPatch > progress.txt 2> shredder_mpi_stderr.txt
   </WaNoExecCommand>
   <WaNoInputFiles>
     <WaNoInputFile logical_filename="merge_rendered_wano_into_settings.py">merge_rendered_wano_into_settings.py</WaNoInputFile>

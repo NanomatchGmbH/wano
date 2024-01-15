@@ -6,8 +6,8 @@ Script that uses WaNo input to write QuantumPatch input.
 
 import yaml, copy
 from yaml import CLoader
-from treewalker.TreeWalker.TreeWalker import TreeWalker
-from treewalker.TreeWalker.flatten_dict import flatten_dict
+from TreeWalker.TreeWalker import TreeWalker
+from TreeWalker.flatten_dict import flatten_dict
 
 class WaNoSettingsReplacements:
     key_exchanges = {
