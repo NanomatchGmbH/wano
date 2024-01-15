@@ -23,10 +23,12 @@
          >10.0</WaNoFloat>
 
     </WaNoRoot>
-    <WaNoExecCommand>export NANOVER=V4
-    source $NANOMATCH/$NANOVER/configs/quantumpatch.config
-    python $SHREDDERPATH/QuantumPatchAnalysis.py
-    python $SHREDDERPATH/QuantumPatchAnalysis.py \
+    <WaNoExecCommand>
+    simstack_server_mamba_source
+    conda activate nmsci-2024.1
+
+    QuantumPatchAnalysis
+    QuantumPatchAnalysis \
           Morphology.structure=morphology.cml \
           Morphology.parameters={{ 'morphology.spf' if (wano["Partial Charges"] == "Vacuum (Force Field)") else 'None' }}\
           Analysis.Orientation.axis.enabled=False \
