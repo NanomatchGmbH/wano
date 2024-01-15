@@ -1,8 +1,5 @@
 #!/bin/bash
 
-export NANOVER="V4"
-source $NANOMATCH/$NANOVER/configs/lightforge.config
-
 if [ -f lf_output.zip ]; then
     unzip -d ./ lf_output.zip
     sleep 2
@@ -79,10 +76,10 @@ fi
 
 if [ "$UC_TOTAL_PROCESSORS" -gt 1 ]
 then
-    $OPENMPI_PATH/bin/mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $LFPATH/lightforge.py -s settings
+    mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py `which lightforge` -s settings
 else
-    lightforge.py -s settings
-fi 
+    lightforge -s settings
+fi
 zip -r results.zip  results
 
 zip_lf_data=`awk 'BEGIN{z="False"} $1=="ziplightforge_data:"&&$2=="true" {z="True"} END{print z}' settings`
