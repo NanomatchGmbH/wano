@@ -117,7 +117,11 @@
     </WaNoDictBox>
   </WaNoDictBox>
  </WaNoRoot>
- <WaNoExecCommand>bash ./dihedral_parametrizer_3.sh</WaNoExecCommand>
+ <WaNoExecCommand>
+   simstack_server_mamba_source
+   conda activate nmsci-2024.1
+   bash ./dihedral_parametrizer_3.sh
+</WaNoExecCommand>
  <WaNoInputFiles>
    <WaNoInputFile logical_filename="dihedral_parametrizer_3.sh">dihedral_parametrizer_3.sh</WaNoInputFile>
    <WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
