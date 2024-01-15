@@ -5,7 +5,7 @@ Script that uses WaNo input to write QuantumPatch input.
 """
 
 import yaml
-from QPAnalysis.AnalysisSettings import AnalysisSettings
+from QuantumPatch.QPAnalysis.AnalysisSettings import AnalysisSettings
 
 
 class QuantumPatchWaNoError(Exception):

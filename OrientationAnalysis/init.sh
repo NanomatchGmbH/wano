@@ -1,9 +1,5 @@
 #!/bin/bash
 
-export NANOVER="V4"
-
-source $NANOMATCH/$NANOVER/configs/quantumpatch.config
-
 
 if [ "AA$SCRATCH" == "AA" ]
 then
@@ -42,8 +38,8 @@ do
 done
 
 echo "Creating input files."
-/usr/bin/env python3 init_analysis.py
+python3 init_analysis.py
 echo "Running /usr/bin/env python3 $NANOMATCH/$NANOVER//QuantumPatch/QuantumPatchAnalysis.py"
-/usr/bin/env python3 $NANOMATCH/$NANOVER/QuantumPatch/QuantumPatchAnalysis.py
+QuantumPatchAnalysis
 
 zip -r report.zip *
