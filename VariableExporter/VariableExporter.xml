@@ -1,6 +1,6 @@
 <WaNoTemplate>
     <WaNoRoot name="VariableExporter">
-        <WaNoScript name="Script" logical_filename="input.script">input.script</WaNoScript>
+        <WaNoScriptV2 name="Script" logical_filename="input.script">input.script</WaNoScriptV2>
         <WaNoChoice name="Interpreter">
            <Entry id="0">Bash</Entry>
            <Entry id="1" chosen="true" >Python</Entry>    
