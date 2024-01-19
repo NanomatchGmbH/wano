@@ -41,7 +41,7 @@ obabel structure.cml -O structure.mol2
 
 if [ "{{ wano["TABS"]["Postprocessing"]["Extend morphology (x,y)"] }}" == "True" ]
 then
-    $DEPOSITPATH/Tools/add_periodic_copies.py {{ wano["TABS"]["Postprocessing"]["Cut first layer by (A)"] }}
+    $DEPTOOLS/add_periodic_copies.py {{ wano["TABS"]["Postprocessing"]["Cut first layer by (A)"] }}
     mv periodic_output/structurePBC.cml .
     rm -f periodic_output/*.cml
     zip -r periodic_output_single_molecules.zip periodic_output
