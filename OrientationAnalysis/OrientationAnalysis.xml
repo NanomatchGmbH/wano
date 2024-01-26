@@ -18,7 +18,7 @@
     </WaNoRoot>
     <WaNoExecCommand>
         simstack_server_mamba_source
-        conda activate nmsci-2024.1
+        $MAMBA_EXE activate nmsci-2024.1
         bash ./init.sh
     </WaNoExecCommand>
     <WaNoInputFiles>

@@ -10,7 +10,7 @@
 #!/bin/bash
 
 simstack_server_mamba_source
-conda activate nmsci-2024.1
+$MAMBA_EXE activate nmsci-2024.1
 
 QPAnalyzeStokesShift {{ wano["Molecule Settings"]["Parametrizer output file s0"] }} {{ wano["Molecule Settings"]["Parametrizer output file s1"] }}
 
