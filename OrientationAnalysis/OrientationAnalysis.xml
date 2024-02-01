@@ -16,7 +16,11 @@
             </Element>
         </WaNoMultipleOf>
     </WaNoRoot>
-    <WaNoExecCommand>bash ./init.sh</WaNoExecCommand>
+    <WaNoExecCommand>
+        simstack_server_mamba_source
+        $MAMBA_EXE activate nmsci-2024.1
+        bash ./init.sh
+    </WaNoExecCommand>
     <WaNoInputFiles>
         <WaNoInputFile logical_filename="init.sh">init.sh</WaNoInputFile>
         <WaNoInputFile logical_filename="init_analysis.py">init_analysis.py</WaNoInputFile>

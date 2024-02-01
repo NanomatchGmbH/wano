@@ -1,10 +1,5 @@
 #!/bin/bash
 
-export NANOVER="V4"
-source $NANOMATCH/$NANOVER/configs/quantumpatch.config
-source $NANOMATCH/$NANOVER/configs/dftb.config
-
-
 # SANITY CHECKS
 
 if [ "$UC_TOTAL_PROCESSORS" == "1" ]
@@ -94,24 +89,24 @@ then
     echo "Creating input files."
     if [ "$LAMBDA_RUN" == "True" ]
     then
-        /usr/bin/env python3 init_lambda.py
+        python3 init_lambda.py
     fi
 
     if [ "$QP_RUN" == "True" ]
     then
-        /usr/bin/env python3 init_quantumpatch.py
+        python3 init_quantumpatch.py
     fi
 fi
 
 if [ "$LAMBDA_RUN" == "True" ]
 then
     echo "Running $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/LambdaEAIP.py"
-    $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/LambdaEAIP.py
+    QPLambdaEAIP
 fi
 if [ "$QP_RUN" == "True" ]
 then
-    echo "Running $OPENMPI_PATH/bin/mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr"
-    $OPENMPI_PATH/bin/mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
+    echo "Running mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py `which QuantumPatch` >> progress.txt 2> shredder_mpi_stderr"
+    mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py `which QuantumPatch` >> progress.txt 2> shredder_mpi_stderr
 fi
 
 mkdir -p Analysis/GSP

@@ -550,7 +550,11 @@
  </WaNoRoot>
 
 
- <WaNoExecCommand>bash ./start_LF.sh</WaNoExecCommand>
+ <WaNoExecCommand>
+simstack_server_mamba_source
+$MAMBA_EXE activate nmsci-2024.1
+bash ./start_LF.sh
+</WaNoExecCommand>
 
  <WaNoInputFiles>
    <WaNoInputFile logical_filename="settings">settings</WaNoInputFile>

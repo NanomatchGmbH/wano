@@ -1,11 +1,5 @@
 #!/bin/bash
 
-export NANOVER="V4"
-
-source $NANOMATCH/$NANOVER/configs/quantumpatch.config
-source $NANOMATCH/$NANOVER/configs/dftb.config
-
-
 # SANITY CHECKS
 
 if [ "$UC_TOTAL_PROCESSORS" == "1" ]
@@ -91,12 +85,12 @@ echo "Creating input files."
 
 if [ ! -f settings_ng.yml ]
 then
-     /usr/bin/env python3 init_quantumpatch.py
+     python3 init_quantumpatch.py
 fi
 
 
-echo "Running $OPENMPI_PATH/bin/mpirun --oversubscribe --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr"
-$OPENMPI_PATH/bin/mpirun --oversubscribe --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py $SHREDDERPATH/QuantumPatchNG.py >> progress.txt 2> shredder_mpi_stderr
+echo "Running mpirun --oversubscribe --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py `which QuantumPatch` >> progress.txt 2> shredder_mpi_stderr"
+mpirun --oversubscribe --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py `which QuantumPatch` >> progress.txt 2> shredder_mpi_stderr
 
 
 zip -r Analysis.zip Analysis
@@ -104,6 +98,4 @@ zip -r Analysis.zip Analysis
 
 find . > directory.content
 
-python $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/WanoHelpers/Parser-epp-dict.py rendered_wano.yml morphology.cml
-
-
+QPParserEPPDict rendered_wano.yml morphology.cml

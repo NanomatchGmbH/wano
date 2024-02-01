@@ -102,9 +102,8 @@
     </WaNoRoot>
  <WaNoExecCommand>#!/bin/bash
      
-# We load our configuration for QP:
-export NANOVER=V4
-source $NANOMATCH/$NANOVER/configs/quantumpatch.config
+simstack_server_mamba_source
+$MAMBA_EXE activate nmsci-2024.1
 
 # We quickly hack threads and resources into our config:
 python -c $'import yaml
@@ -119,7 +118,7 @@ with open("vicosettings.yml","w") as outfile:
 '
 
 # We exec VICO
-$SHREDDERPATH/MolecularTools/VICOverlap.py
+QPVICOverlap
 
 # We zip the results.
 zip -r IntraMolecularAnalysis.zip Analysis/

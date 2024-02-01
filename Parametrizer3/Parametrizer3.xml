@@ -287,15 +287,14 @@
  <WaNoExecCommand>
 #!/bin/bash
 
-export NANOVER="V4"
-source $NANOMATCH/$NANOVER/configs/parametrizer.config
+simstack_server_mamba_source
+$MAMBA_EXE activate nmsci-2024.1
 
+python3 init_parametrizer.py
 
-/usr/bin/env python3 init_parametrizer.py
-
-echo "Running $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/Parametrizer.py"
-$NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/Parametrizer.py
-add_dihedral_angles.sh output_molecule.mol2 molecule.spf
+echo "Running QPParametrizer"
+QPParametrizer
+$DEPTOOLS/add_dihedral_angles.sh output_molecule.mol2 molecule.spf
 
 zip report.zip output_molecule.mol2 molecule.pdb molecule.spf
 # cp rendered_wano.yml output_dict.yml

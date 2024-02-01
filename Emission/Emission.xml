@@ -216,7 +216,10 @@
             <WaNoInt name="Atom 3">3</WaNoInt>
         </WaNoDictBox>
  </WaNoRoot>
-<WaNoExecCommand>export NANOVER="V4"; source $NANOMATCH/$NANOVER/configs/quantumpatch.config; $MPI_PATH/bin/mpirun -n 1 --oversubscribe -x OMP_NUM_THREADS --bind-to none $NMMPIARGS --mca btl self,vader,tcp python3 -m mpi4py $SHREDDERPATH/MolecularTools/WanoHelpers/emission_run.py</WaNoExecCommand>
+<WaNoExecCommand>
+    simstack_server_mamba_source
+    $MAMBA_EXE activate nmsci-2024.1
+    mpirun -n 1 --oversubscribe -x OMP_NUM_THREADS --bind-to none $NMMPIARGS --mca btl self,vader,tcp python3 -m mpi4py `which QPEmission` rendered_wano.yml</WaNoExecCommand>
 <WaNoInputFiles>
 </WaNoInputFiles>
 <WaNoOutputFiles>

@@ -107,7 +107,11 @@
     <WaNoInt  visibility_condition="%s == True" visibility_var_path="Show advanced" name="DH_scan_steps">180</WaNoInt>
     <WaNoInt  visibility_condition="%s == True" visibility_var_path="Show advanced" name="scf_iter">1</WaNoInt>
  </WaNoRoot>
- <WaNoExecCommand>bash ./dihedral_parametrizer_4.sh</WaNoExecCommand>
+ <WaNoExecCommand>
+   simstack_server_mamba_source
+   $MAMBA_EXE activate nmsci-2024.1
+   bash ./dihedral_parametrizer_4.sh
+</WaNoExecCommand>
  <WaNoInputFiles>
    <WaNoInputFile logical_filename="dihedral_parametrizer_4.sh">dihedral_parametrizer_4.sh</WaNoInputFile>
    <WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
