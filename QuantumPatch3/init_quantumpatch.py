@@ -76,6 +76,18 @@ if __name__ == "__main__":
                 "dispersion": settings["D3(BJ) Dispersion Correction"],
                 "charge_model": settings["Partial Charge Method"],
             }
+        elif engine_name == "PySCF":
+            entry = {
+                "engine": engine_name,
+                "basis": settings["Basis"],
+                "functional": settings["Functional"],
+                "threads": "auto",
+                "memory": 1500,
+                "mem_per_cpu": settings["Memory per CPU (MB)"],
+                "dispersion": settings["D3(BJ) Dispersion Correction"],
+                "charge_model": settings["Partial Charge Method"],
+                "gridsize": "fast",
+            }
         elif engine_name == "DFTB+":
             entry = {
                 "engine": "DFTBplus",
