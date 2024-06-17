@@ -119,7 +119,7 @@
  </WaNoRoot>
  <WaNoExecCommand>
    simstack_server_mamba_source
-   $MAMBA_EXE activate nmsci-2024.1
+   $MAMBA_EXE activate nmsci-2024.2
    bash ./dihedral_parametrizer_3.sh
 </WaNoExecCommand>
  <WaNoInputFiles>

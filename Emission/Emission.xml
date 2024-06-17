@@ -218,7 +218,7 @@
  </WaNoRoot>
 <WaNoExecCommand>
     simstack_server_mamba_source
-    $MAMBA_EXE activate nmsci-2024.1
+    $MAMBA_EXE activate nmsci-2024.2
     mpirun -n 1 --oversubscribe -x OMP_NUM_THREADS --bind-to none $NMMPIARGS --mca btl self,vader,tcp python3 -m mpi4py `which QPEmission` rendered_wano.yml</WaNoExecCommand>
 <WaNoInputFiles>
 </WaNoInputFiles>
