@@ -62,6 +62,8 @@
               <Entry id="1" chosen="True">preset only</Entry>
             </WaNoDropDown>
 
+            <WaNoBool name="EA from optical gap">False</WaNoBool>
+            
             <WaNoSwitch switch_path="TABS.materials.materials.{{ path[3] }}.input_mode_transport" name="TP">
               <WaNoDictBox switch_name="QP: eaip,sig,l" name="molecule_parameters">
                 <WaNoFile logical_filename="molecule_{{ path[3] }}.pdb" name="molecule_pdb">Put file here</WaNoFile>
@@ -281,13 +283,16 @@
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_norm_vector">1 0 0</WaNoString>
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_dimensions">10 10</WaNoString>
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_centers">-0.5 0 0</WaNoString>
-            <WaNoFloat name="electrode_workfunction">-5.0</WaNoFloat>
+            <WaNoFloat visibility_condition="'%s' in ['QP_output','QM_fit','parametrized']" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" name="electrode_workfunction">-5.0</WaNoFloat>
             <WaNoDropDown name="coupling_model">
               <Entry id="0">QP_output</Entry>
               <Entry id="1">QM_fit</Entry>
               <Entry id="2">parametrized</Entry>
+              <Entry id="3">doped EIL</Entry>
+              <Entry id="4">doped HIL</Entry>
             </WaNoDropDown>
 
+            <WaNoDynamicDropDown visibility_condition="'%s' in ['doped EIL','doped HIL']" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" name="DIL_host" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
             <WaNoFloat visibility_condition="'%s' == 'parametrized'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_wf_decay_length">0.3</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'parametrized'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling">0.001</WaNoFloat>
             <WaNoFile visibility_condition="'%s' == 'QM_fit'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling_file">Put file here</WaNoFile>
@@ -297,13 +302,16 @@
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_norm_vector">-1 0 0</WaNoString>
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_dimensions">10 10</WaNoString>
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_centers">10.5 0 0</WaNoString>
-            <WaNoFloat name="electrode_workfunction">-5.0</WaNoFloat>
+            <WaNoFloat visibility_condition="'%s' in ['QP_output','QM_fit','parametrized']" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" name="electrode_workfunction">-5.0</WaNoFloat>
             <WaNoDropDown name="coupling_model">
               <Entry id="0">QP_output</Entry>
               <Entry id="1">QM_fit</Entry>
               <Entry id="2">parametrized</Entry>
+              <Entry id="3">doped EIL</Entry>
+              <Entry id="4">doped HIL</Entry>
             </WaNoDropDown>
 
+            <WaNoDynamicDropDown visibility_condition="'%s' in ['doped EIL','doped HIL']" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" name="DIL_host" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
             <WaNoFloat visibility_condition="'%s' == 'parametrized'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_wf_decay_length">0.3</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'parametrized'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling">0.001</WaNoFloat>
             <WaNoFile visibility_condition="'%s' == 'QM_fit'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling_file">Put file here</WaNoFile>
@@ -329,6 +337,7 @@
           <Entry id="2">Miller-Abrahams</Entry>
           <Entry id="3">file</Entry>
           <Entry id="4">fitted_miller</Entry>
+          <Entry id="5">generic</Entry>
         </WaNoDropDown>
 
         <WaNoDropDown visibility_condition="'%s' == 'fitted_miller'" visibility_var_path="TABS.topology.transfer_integral_source" name="ti_fit_mode">
@@ -344,7 +353,7 @@
 
         <WaNoFile visibility_condition="'%s' == 'file'" visibility_var_path="TABS.topology.transfer_integral_source" logical_filename="transfer_integral_file.dat" name="transfer_integral_file">Put file here</WaNoFile>
 
-        <WaNoMultipleOf name="pair parameters">
+        <WaNoMultipleOf visibility_condition="'%s' != 'generic'" visibility_var_path="TABS.topology.transfer_integral_source" name="pair parameters">
           <Element id="0">
             <WaNoDynamicDropDown name="molecule 1" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
             <WaNoDynamicDropDown name="molecule 2" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
