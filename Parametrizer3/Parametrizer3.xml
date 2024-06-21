@@ -15,10 +15,11 @@
         </WaNoDictBox>
         <WaNoDictBox name="DFT Engine">
             <WaNoDropDown name="Engine">
-                <Entry id="0" chosen="true">Turbomole</Entry>
-                <Entry id="1">Psi4</Entry>
-                <Entry id="2">DFTB+</Entry>
-                <Entry id="3">XTB</Entry>
+                <Entry id="0" chosen="true">Psi4</Entry>
+                <Entry id="1">PySCF</Entry>
+                <Entry id="2">Turbomole</Entry>
+                <Entry id="3">DFTB+</Entry>
+                <Entry id="4">XTB</Entry>
             </WaNoDropDown>
             <WaNoDictBox visibility_condition="'%s' == 'Turbomole'" visibility_var_path="DFT Engine.Engine" name="Turbomole Settings">
                 <WaNoDropDown name="Partial Charge Method">
@@ -175,6 +176,42 @@
                     <WaNoBool name="no_cosmo" >False</WaNoBool>
                 </WaNoDictBox>
             </WaNoDictBox>
+            <WaNoDictBox visibility_condition="'%s' == 'PySCF'" visibility_var_path="DFT Engine.Engine" name="PySCF Settings">
+                <WaNoDropDown name="Partial Charge Method">
+                    <Entry id="0" chosen="true" >ESP</Entry>
+                    <Entry id="1">Mulliken</Entry>
+                </WaNoDropDown>
+                <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
+                <WaNoDropDown name="Functional">
+                    <Entry id="0">B3LYP</Entry>
+                    <Entry id="1" chosen="true">BP86</Entry>
+                    <Entry id="2">PBE0</Entry>
+                    <Entry id="3">PBE</Entry>
+                    <Entry id="4">PW6B95</Entry>
+                    <Entry id="5">REVM11</Entry>
+                    <Entry id="6">EOM-CCSD</Entry>
+                </WaNoDropDown>
+                <WaNoDropDown name="Basis">
+                    <Entry id="0">STO-3G</Entry>
+                    <Entry id="1">def2-SV(P)</Entry>
+                    <Entry id="2" chosen="true">def2-SVP</Entry>
+                    <Entry id="3">def2-TZVP</Entry>
+                    <Entry id="4">def2-TZVPP</Entry>
+                    <Entry id="5">def2-QZVP</Entry>
+                    <Entry id="6">def2-QZVPP</Entry>
+                    <Entry id="7">cc-pVDZ</Entry>
+                    <Entry id="8">cc-pVTZ</Entry>
+                    <Entry id="9">cc-pVQZ</Entry>
+                    <Entry id="10">aug-cc-pVDZ</Entry>
+                    <Entry id="11">aug-cc-pVTZ</Entry>
+                    <Entry id="12">aug-cc-pVQZ</Entry>
+                </WaNoDropDown>
+                <WaNoDropDown name="Preoptimization">
+                    <Entry id="0" chosen="true">DFTB</Entry>
+                    <Entry id="1">XTB</Entry>
+                    <Entry id="2">None</Entry>
+                </WaNoDropDown>
+            </WaNoDictBox>
             <WaNoDictBox visibility_condition="'%s' == 'Psi4'" visibility_var_path="DFT Engine.Engine" name="Psi4 Settings">
                 <WaNoDropDown name="Partial Charge Method">
                     <Entry id="0" chosen="true" >ESP</Entry>
@@ -226,7 +263,7 @@
                     <Entry id="18">6-311++G*</Entry>
                     <Entry id="19">6-311++G**</Entry>
                     <Entry id="20">def2-SV(P)</Entry>
-                    <Entry id="21">def2-SVP</Entry>
+                    <Entry id="21" chosen="true">def2-SVP</Entry>
                     <Entry id="22">def2-TZVP</Entry>
                     <Entry id="23">def2-TZVPP</Entry>
                     <Entry id="24">def2-QZVP</Entry>
