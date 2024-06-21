@@ -62,6 +62,8 @@
               <Entry id="1" chosen="True">preset only</Entry>
             </WaNoDropDown>
 
+            <WaNoBool name="EA_from_optical_gap">False</WaNoBool>
+            
             <WaNoSwitch switch_path="TABS.materials.materials.{{ path[3] }}.input_mode_transport" name="TP">
               <WaNoDictBox switch_name="QP: eaip,sig,l" name="molecule_parameters">
                 <WaNoFile logical_filename="molecule_{{ path[3] }}.pdb" name="molecule_pdb">Put file here</WaNoFile>
@@ -130,23 +132,24 @@
           <Element id="0">
             <WaNoString name="name">fluorescent</WaNoString>
             <WaNoDictBox name="properties">
-              <WaNoString name="singlet_decay_rate">1e8</WaNoString>
+              <WaNoString name="singlet_decay_rate">4e8</WaNoString>
               <WaNoString name="triplet_decay_rate">1e1</WaNoString>
               <WaNoString name="singlet_thermal_decay_rate">1e5</WaNoString>
               <WaNoString name="triplet_thermal_decay_rate">1e5</WaNoString>
               <WaNoString name="max_TTA">1e6</WaNoString>
               <WaNoString name="max_TSA">1e6</WaNoString>
               <WaNoString name="max_TPQ">1e6</WaNoString>
-              <WaNoString name="max_SSA">1e11</WaNoString>
-              <WaNoString name="max_STA">1e11</WaNoString>
-              <WaNoString name="max_SPQ">1e11</WaNoString>
+              <WaNoString name="max_SSA">1e13</WaNoString>
+              <WaNoString name="max_STA">1e12</WaNoString>
+              <WaNoString name="max_SPQ">1e12</WaNoString>
               <WaNoString name="isc_rate">1e3</WaNoString>
-              <WaNoString name="risc_rate">1e1</WaNoString>
+              <WaNoString name="risc_rate">1e2</WaNoString>
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
               <WaNoString name="s1s1_reorganization_energy">0.3</WaNoString>
-              <WaNoString name="binding_energy">1.0</WaNoString>
-              <WaNoFloat name="energy_disorder">0.05</WaNoFloat>
-              <WaNoFloat name="singlet_triplet_gap">0.4</WaNoFloat>
+              <WaNoString name="binding_energy">1.9</WaNoString>
+              <WaNoFloat name="energy_disorder">0.03</WaNoFloat>
+              <WaNoFloat name="singlet_triplet_gap">1.0</WaNoFloat>
+              <WaNoFloat name="t2_t1_gap">1.0</WaNoFloat>
               <WaNoBool name="thermodynamic_spin_mixing">False</WaNoBool>
             </WaNoDictBox>  
           </Element>
@@ -158,19 +161,20 @@
               <WaNoString name="triplet_decay_rate">1e6</WaNoString>
               <WaNoString name="singlet_thermal_decay_rate">1e5</WaNoString>
               <WaNoString name="triplet_thermal_decay_rate">1e5</WaNoString>
-              <WaNoString name="max_TTA">1e10</WaNoString>
-              <WaNoString name="max_TSA">1e10</WaNoString>
-              <WaNoString name="max_TPQ">1e10</WaNoString>
-              <WaNoString name="max_SSA">1e11</WaNoString>
-              <WaNoString name="max_STA">1e11</WaNoString>
-              <WaNoString name="max_SPQ">1e11</WaNoString>
+              <WaNoString name="max_TTA">1e11</WaNoString>
+              <WaNoString name="max_TSA">1e11</WaNoString>
+              <WaNoString name="max_TPQ">1e11</WaNoString>
+              <WaNoString name="max_SSA">1e13</WaNoString>
+              <WaNoString name="max_STA">1e12</WaNoString>
+              <WaNoString name="max_SPQ">1e12</WaNoString>
               <WaNoString name="isc_rate">1e14</WaNoString>
-              <WaNoString name="risc_rate">1e3</WaNoString>
+              <WaNoString name="risc_rate">1e4</WaNoString>
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
               <WaNoString name="s1s1_reorganization_energy">0.3</WaNoString>
-              <WaNoString name="binding_energy">1.0</WaNoString>
+              <WaNoString name="binding_energy">2.0</WaNoString>
               <WaNoFloat name="energy_disorder">0.05</WaNoFloat>
-              <WaNoFloat name="singlet_triplet_gap">0.4</WaNoFloat>
+              <WaNoFloat name="singlet_triplet_gap">0.3</WaNoFloat>
+              <WaNoFloat name="t2_t1_gap">0.3</WaNoFloat>
               <WaNoBool name="thermodynamic_spin_mixing">False</WaNoBool>
             </WaNoDictBox>  
           </Element>   
@@ -209,18 +213,94 @@
               <WaNoString name="max_TTA">1e6</WaNoString>
               <WaNoString name="max_TSA">1e6</WaNoString>
               <WaNoString name="max_TPQ">1e6</WaNoString>
-              <WaNoString name="max_SSA">1e11</WaNoString>
-              <WaNoString name="max_STA">1e11</WaNoString>
-              <WaNoString name="max_SPQ">1e11</WaNoString>
-              <WaNoString name="isc_rate">1e4</WaNoString>
-              <WaNoString name="risc_rate">1e3</WaNoString>
+              <WaNoString name="max_SSA">1e13</WaNoString>
+              <WaNoString name="max_STA">1e12</WaNoString>
+              <WaNoString name="max_SPQ">1e12</WaNoString>
+              <WaNoString name="isc_rate">1e3</WaNoString>
+              <WaNoString name="risc_rate">1e2</WaNoString>
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
               <WaNoString name="s1s1_reorganization_energy">0.3</WaNoString>
-              <WaNoString name="binding_energy">0.6</WaNoString>
+              <WaNoString name="binding_energy">1.9</WaNoString>
               <WaNoFloat name="energy_disorder">0.05</WaNoFloat>
               <WaNoFloat name="singlet_triplet_gap">0.05</WaNoFloat>
+              <WaNoFloat name="t2_t1_gap">0.3</WaNoFloat>
               <WaNoBool name="thermodynamic_spin_mixing">True</WaNoBool>
             </WaNoDictBox>  
+          </Element>
+
+          <Element id="4">
+            <WaNoString name="name">host</WaNoString>
+            <WaNoDictBox name="properties">
+              <WaNoString name="singlet_decay_rate">1e8</WaNoString>
+              <WaNoString name="triplet_decay_rate">1e1</WaNoString>
+              <WaNoString name="singlet_thermal_decay_rate">1e5</WaNoString>
+              <WaNoString name="triplet_thermal_decay_rate">1e5</WaNoString>
+              <WaNoString name="max_TTA">1e6</WaNoString>
+              <WaNoString name="max_TSA">1e6</WaNoString>
+              <WaNoString name="max_TPQ">1e6</WaNoString>
+              <WaNoString name="max_SSA">1e13</WaNoString>
+              <WaNoString name="max_STA">1e12</WaNoString>
+              <WaNoString name="max_SPQ">1e12</WaNoString>
+              <WaNoString name="isc_rate">1e3</WaNoString>
+              <WaNoString name="risc_rate">1e2</WaNoString>
+              <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
+              <WaNoString name="s1s1_reorganization_energy">0.3</WaNoString>
+              <WaNoString name="binding_energy">2.2</WaNoString>
+              <WaNoFloat name="energy_disorder">0.06</WaNoFloat>
+              <WaNoFloat name="singlet_triplet_gap">0.3</WaNoFloat>
+              <WaNoFloat name="t2_t1_gap">0.5</WaNoFloat>
+              <WaNoBool name="thermodynamic_spin_mixing">False</WaNoBool>
+            </WaNoDictBox>
+          </Element>
+
+          <Element id="5">
+            <WaNoString name="name">TTF_host</WaNoString>
+            <WaNoDictBox name="properties">
+              <WaNoString name="singlet_decay_rate">4e8</WaNoString>
+              <WaNoString name="triplet_decay_rate">1e1</WaNoString>
+              <WaNoString name="singlet_thermal_decay_rate">1e5</WaNoString>
+              <WaNoString name="triplet_thermal_decay_rate">1e5</WaNoString>
+              <WaNoString name="max_TTA">1e6</WaNoString>
+              <WaNoString name="max_TSA">1e6</WaNoString>
+              <WaNoString name="max_TPQ">1e6</WaNoString>
+              <WaNoString name="max_SSA">1e13</WaNoString>
+              <WaNoString name="max_STA">1e12</WaNoString>
+              <WaNoString name="max_SPQ">1e12</WaNoString>
+              <WaNoString name="isc_rate">1e3</WaNoString>
+              <WaNoString name="risc_rate">1e2</WaNoString>
+              <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
+              <WaNoString name="s1s1_reorganization_energy">0.3</WaNoString>
+              <WaNoString name="binding_energy">1.75</WaNoString>
+              <WaNoFloat name="energy_disorder">0.03</WaNoFloat>
+              <WaNoFloat name="singlet_triplet_gap">1.1</WaNoFloat>
+              <WaNoFloat name="t2_t1_gap">1.3</WaNoFloat>
+              <WaNoBool name="thermodynamic_spin_mixing">False</WaNoBool>
+            </WaNoDictBox>
+          </Element>
+
+          <Element id="6">
+            <WaNoString name="name">fluorescent_MR</WaNoString>
+            <WaNoDictBox name="properties">
+              <WaNoString name="singlet_decay_rate">1e8</WaNoString>
+              <WaNoString name="triplet_decay_rate">5e4</WaNoString>
+              <WaNoString name="singlet_thermal_decay_rate">1e5</WaNoString>
+              <WaNoString name="triplet_thermal_decay_rate">1e5</WaNoString>
+              <WaNoString name="max_TTA">1e6</WaNoString>
+              <WaNoString name="max_TSA">1e6</WaNoString>
+              <WaNoString name="max_TPQ">1e6</WaNoString>
+              <WaNoString name="max_SSA">1e13</WaNoString>
+              <WaNoString name="max_STA">1e12</WaNoString>
+              <WaNoString name="max_SPQ">1e12</WaNoString>
+              <WaNoString name="isc_rate">1e3</WaNoString>
+              <WaNoString name="risc_rate">1e2</WaNoString>
+              <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
+              <WaNoString name="s1s1_reorganization_energy">0.01</WaNoString>
+              <WaNoString name="binding_energy">2.05</WaNoString>
+              <WaNoFloat name="energy_disorder">0.03</WaNoFloat>
+              <WaNoFloat name="singlet_triplet_gap">0.2</WaNoFloat>
+              <WaNoFloat name="t2_t1_gap">0.5</WaNoFloat>
+              <WaNoBool name="thermodynamic_spin_mixing">False</WaNoBool>
+            </WaNoDictBox>
           </Element>
 
         </WaNoMultipleOf>
@@ -281,13 +361,16 @@
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_norm_vector">1 0 0</WaNoString>
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_dimensions">10 10</WaNoString>
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_centers">-0.5 0 0</WaNoString>
-            <WaNoFloat name="electrode_workfunction">-5.0</WaNoFloat>
+            <WaNoFloat visibility_condition="'%s' in ['QP_output','QM_fit','parametrized']" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" name="electrode_workfunction">-5.0</WaNoFloat>
             <WaNoDropDown name="coupling_model">
               <Entry id="0">QP_output</Entry>
               <Entry id="1">QM_fit</Entry>
               <Entry id="2">parametrized</Entry>
+              <Entry id="3">doped EIL</Entry>
+              <Entry id="4" chosen="True">doped HIL</Entry>
             </WaNoDropDown>
 
+            <WaNoDynamicDropDown visibility_condition="'%s' in ['doped EIL','doped HIL']" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" name="DIL_host" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
             <WaNoFloat visibility_condition="'%s' == 'parametrized'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_wf_decay_length">0.3</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'parametrized'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling">0.001</WaNoFloat>
             <WaNoFile visibility_condition="'%s' == 'QM_fit'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling_file">Put file here</WaNoFile>
@@ -297,13 +380,16 @@
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_norm_vector">-1 0 0</WaNoString>
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_dimensions">10 10</WaNoString>
             <WaNoString visibility_condition="'%s' == 'manual'" visibility_var_path="TABS.general.device_layout" name="electrode_centers">10.5 0 0</WaNoString>
-            <WaNoFloat name="electrode_workfunction">-5.0</WaNoFloat>
+            <WaNoFloat visibility_condition="'%s' in ['QP_output','QM_fit','parametrized']" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" name="electrode_workfunction">-5.0</WaNoFloat>
             <WaNoDropDown name="coupling_model">
               <Entry id="0">QP_output</Entry>
               <Entry id="1">QM_fit</Entry>
               <Entry id="2">parametrized</Entry>
+              <Entry id="3" chosen="True">doped EIL</Entry>
+              <Entry id="4">doped HIL</Entry>
             </WaNoDropDown>
 
+            <WaNoDynamicDropDown visibility_condition="'%s' in ['doped EIL','doped HIL']" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" name="DIL_host" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
             <WaNoFloat visibility_condition="'%s' == 'parametrized'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_wf_decay_length">0.3</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'parametrized'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling">0.001</WaNoFloat>
             <WaNoFile visibility_condition="'%s' == 'QM_fit'" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" logical_filename="J_electrode_{{ path[3] }}.dat" name="electrode_coupling_file">Put file here</WaNoFile>
@@ -321,14 +407,15 @@
 
 
       <WaNoGroup name="topology">
-        <WaNoInt name="max neighbours">45</WaNoInt>
+        <WaNoInt name="max neighbours">124</WaNoInt>
 
         <WaNoDropDown name="transfer_integral_source">
-          <Entry id="0">QP_output</Entry>
-          <Entry id="1">QM_expansion</Entry>
-          <Entry id="2">Miller-Abrahams</Entry>
-          <Entry id="3">file</Entry>
-          <Entry id="4">fitted_miller</Entry>
+          <Entry id="0">generic</Entry>
+          <Entry id="1">QP_output</Entry>
+          <Entry id="2">QM_expansion</Entry>
+          <Entry id="3">Miller-Abrahams</Entry>
+          <Entry id="4">file</Entry>
+          <Entry id="5">fitted_miller</Entry>
         </WaNoDropDown>
 
         <WaNoDropDown visibility_condition="'%s' == 'fitted_miller'" visibility_var_path="TABS.topology.transfer_integral_source" name="ti_fit_mode">
@@ -344,7 +431,7 @@
 
         <WaNoFile visibility_condition="'%s' == 'file'" visibility_var_path="TABS.topology.transfer_integral_source" logical_filename="transfer_integral_file.dat" name="transfer_integral_file">Put file here</WaNoFile>
 
-        <WaNoMultipleOf name="pair parameters">
+        <WaNoMultipleOf visibility_condition="'%s' != 'generic'" visibility_var_path="TABS.topology.transfer_integral_source" name="pair parameters">
           <Element id="0">
             <WaNoDynamicDropDown name="molecule 1" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
             <WaNoDynamicDropDown name="molecule 2" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
@@ -399,9 +486,9 @@
 
       <WaNoGroup name="physics">
         <WaNoDropDown name="rates">
-          <Entry id="0" chosen="True">Marcus</Entry>
+          <Entry id="0">Marcus</Entry>
           <Entry id="1">Miller</Entry>
-          <Entry id="2">mixed-marcus</Entry>
+          <Entry id="2" chosen="True">mixed-marcus</Entry>
           <Entry id="3">automatic</Entry>
         </WaNoDropDown>
 
@@ -414,7 +501,7 @@
           <Entry id="3">distance dependent permittivity fitted to QP</Entry>
         </WaNoDropDown>
         <WaNoInviBox visibility_condition="'%s' in ['QP','QP_approx']" visibility_var_path="TABS.physics.coulomb_correction_mode" name="dielecpropertiesCT">
-            <WaNoFloat visibility_condition="'%s' == 'fixed permittivity'" visibility_var_path="TABS.physics.dielectric properties / CT" name="epsilon material">4.0</WaNoFloat>
+            <WaNoFloat visibility_condition="'%s' == 'fixed permittivity'" visibility_var_path="TABS.physics.dielectric properties / CT" name="epsilon material">3.0</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'fixed distance dependent permittivity'" visibility_var_path="TABS.physics.dielectric properties / CT" name="epsilon material ">3.0</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'fixed distance dependent permittivity'" visibility_var_path="TABS.physics.dielectric properties / CT" name="screening length">1.3</WaNoFloat>
         </WaNoInviBox>
@@ -424,7 +511,7 @@
           <Entry id="1">fixed distance dependent permittivity</Entry>
         </WaNoDropDown>
         <WaNoInviBox visibility_condition="'%s' in ['cutoff','constant']" visibility_var_path="TABS.physics.coulomb_correction_mode" name="dielecproperties">
-            <WaNoFloat name="epsilon material">4.0</WaNoFloat>
+            <WaNoFloat name="epsilon material">3.0</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'fixed distance dependent permittivity'" visibility_var_path="TABS.physics.dielectric properties" name="screening length">1.3</WaNoFloat>
         </WaNoInviBox>
         
