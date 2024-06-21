@@ -367,7 +367,7 @@
               <Entry id="1">QM_fit</Entry>
               <Entry id="2">parametrized</Entry>
               <Entry id="3">doped EIL</Entry>
-              <Entry id="4">doped HIL</Entry>
+              <Entry id="4" chosen="True">doped HIL</Entry>
             </WaNoDropDown>
 
             <WaNoDynamicDropDown visibility_condition="'%s' in ['doped EIL','doped HIL']" visibility_var_path="TABS.device.electrodes.{{ path[3] }}.coupling_model" name="DIL_host" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
@@ -385,7 +385,7 @@
               <Entry id="0">QP_output</Entry>
               <Entry id="1">QM_fit</Entry>
               <Entry id="2">parametrized</Entry>
-              <Entry id="3">doped EIL</Entry>
+              <Entry id="3" chosen="True">doped EIL</Entry>
               <Entry id="4">doped HIL</Entry>
             </WaNoDropDown>
 
@@ -407,15 +407,15 @@
 
 
       <WaNoGroup name="topology">
-        <WaNoInt name="max neighbours">45</WaNoInt>
+        <WaNoInt name="max neighbours">124</WaNoInt>
 
         <WaNoDropDown name="transfer_integral_source">
-          <Entry id="0">QP_output</Entry>
-          <Entry id="1">QM_expansion</Entry>
-          <Entry id="2">Miller-Abrahams</Entry>
-          <Entry id="3">file</Entry>
-          <Entry id="4">fitted_miller</Entry>
-          <Entry id="5">generic</Entry>
+          <Entry id="0">generic</Entry>
+          <Entry id="1">QP_output</Entry>
+          <Entry id="2">QM_expansion</Entry>
+          <Entry id="3">Miller-Abrahams</Entry>
+          <Entry id="4">file</Entry>
+          <Entry id="5">fitted_miller</Entry>
         </WaNoDropDown>
 
         <WaNoDropDown visibility_condition="'%s' == 'fitted_miller'" visibility_var_path="TABS.topology.transfer_integral_source" name="ti_fit_mode">
