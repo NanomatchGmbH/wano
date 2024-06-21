@@ -84,7 +84,6 @@ if __name__ == "__main__":
                 "threads": "auto",
                 "memory": 1500,
                 "mem_per_cpu": settings["Memory per CPU (MB)"],
-                "dispersion": settings["D3(BJ) Dispersion Correction"],
                 "charge_model": settings["Partial Charge Method"],
                 "gridsize": "fast",
             }
