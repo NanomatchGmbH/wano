@@ -231,7 +231,6 @@
                                 <Entry id="0" chosen="true" >ESP</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
-                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoDropDown name="Functional">
                                 <Entry id="0" chosen="true">B3LYP</Entry>
                                 <Entry id="1">BP86</Entry>
@@ -468,7 +467,6 @@
                                 <Entry id="0" chosen="true" >ESP</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
-                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoDropDown name="Functional">
                                 <Entry id="0">B3LYP</Entry>
                                 <Entry id="1" chosen="true">BP86</Entry>
@@ -706,7 +704,6 @@
                                 <Entry id="0" chosen="true" >ESP</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
-                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoDropDown name="Functional">
                                 <Entry id="0" chosen="true">B3LYP</Entry>
                                 <Entry id="1">BP86</Entry>
@@ -944,7 +941,6 @@
                                 <Entry id="0" chosen="true" >ESP</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
-                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoDropDown name="Functional">
                                 <Entry id="0" chosen="true">B3LYP</Entry>
                                 <Entry id="1">BP86</Entry>
@@ -1182,7 +1178,6 @@
                                 <Entry id="0" chosen="true" >ESP</Entry>
                                 <Entry id="1">Mulliken</Entry>
                             </WaNoDropDown>
-                            <WaNoBool name="D3(BJ) Dispersion Correction">False</WaNoBool>
                             <WaNoDropDown name="Functional">
                                 <Entry id="0" chosen="true">B3LYP</Entry>
                                 <Entry id="1">BP86</Entry>
