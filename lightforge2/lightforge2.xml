@@ -486,9 +486,9 @@
 
       <WaNoGroup name="physics">
         <WaNoDropDown name="rates">
-          <Entry id="0" chosen="True">Marcus</Entry>
+          <Entry id="0">Marcus</Entry>
           <Entry id="1">Miller</Entry>
-          <Entry id="2">mixed-marcus</Entry>
+          <Entry id="2" chosen="True">mixed-marcus</Entry>
           <Entry id="3">automatic</Entry>
         </WaNoDropDown>
 
@@ -501,7 +501,7 @@
           <Entry id="3">distance dependent permittivity fitted to QP</Entry>
         </WaNoDropDown>
         <WaNoInviBox visibility_condition="'%s' in ['QP','QP_approx']" visibility_var_path="TABS.physics.coulomb_correction_mode" name="dielecpropertiesCT">
-            <WaNoFloat visibility_condition="'%s' == 'fixed permittivity'" visibility_var_path="TABS.physics.dielectric properties / CT" name="epsilon material">4.0</WaNoFloat>
+            <WaNoFloat visibility_condition="'%s' == 'fixed permittivity'" visibility_var_path="TABS.physics.dielectric properties / CT" name="epsilon material">3.0</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'fixed distance dependent permittivity'" visibility_var_path="TABS.physics.dielectric properties / CT" name="epsilon material ">3.0</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'fixed distance dependent permittivity'" visibility_var_path="TABS.physics.dielectric properties / CT" name="screening length">1.3</WaNoFloat>
         </WaNoInviBox>
@@ -511,7 +511,7 @@
           <Entry id="1">fixed distance dependent permittivity</Entry>
         </WaNoDropDown>
         <WaNoInviBox visibility_condition="'%s' in ['cutoff','constant']" visibility_var_path="TABS.physics.coulomb_correction_mode" name="dielecproperties">
-            <WaNoFloat name="epsilon material">4.0</WaNoFloat>
+            <WaNoFloat name="epsilon material">3.0</WaNoFloat>
             <WaNoFloat visibility_condition="'%s' == 'fixed distance dependent permittivity'" visibility_var_path="TABS.physics.dielectric properties" name="screening length">1.3</WaNoFloat>
         </WaNoInviBox>
         
