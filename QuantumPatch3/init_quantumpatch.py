@@ -37,6 +37,11 @@ if __name__ == "__main__":
     cfg["QuantumPatch"]["number_of_equilibration_steps"] = max_iter
     cfg["QuantumPatch"]["calculateJs"] = wano_general["Calculate Js"]
     cfg["QuantumPatch"]["charge_damping"] = wano_general["Charge Damping"]
+
+    storage_location = wano["Tabs"]["General"]["Storage"]["Storage Location"]
+    if storage_location == "Scratch":
+        cfg["QuantumPatch"]["default_storage_location"] = "scratch"
+
     cfg["Analysis"]["HigherOrder"] = {}
     cfg["Analysis"]["HigherOrder"]["ExtraJs"] = int(wano_general["Higher Order Js"])
     cfg["Analysis"]["homo_lumo_generator"] = {}

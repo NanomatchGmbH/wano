@@ -35,6 +35,12 @@
                         </WaNoDictBox>
                     </Entry>
                 </WaNoMultipleOf>
+                <WaNoDictBox name="Storage">
+                    <WaNoDropDown name="Storage Location">
+                        <Entry id="0" chosen="true">Workdir</Entry>
+                        <Entry id="1">Scratch</Entry>
+                    </WaNoDropDown>
+                </WaNoDictBox>
             </WaNoGroup>
             <WaNoGroup name="Engines">
                 <WaNoMultipleOf name="DFT Engines">
