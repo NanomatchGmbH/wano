@@ -432,6 +432,15 @@
         </WaNoDropDown>
 
         <WaNoFile visibility_condition="'%s' == 'file'" visibility_var_path="TABS.topology.transfer_integral_source" logical_filename="transfer_integral_file.dat" name="transfer_integral_file">Put file here</WaNoFile>
+        
+        <WaNoBool visibility_condition="'%s' == 'generic'" visibility_var_path="TABS.topology.transfer_integral_source" name="modify transfer integrals for pairs">False</WaNoBool>
+        <WaNoMultipleOf visibility_condition="%s == True" visibility_var_path="TABS.topology.modify transfer integrals for pairs" name="transport tuning parameters">
+          <Element id="0">
+            <WaNoDynamicDropDown name="material 1" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
+            <WaNoDynamicDropDown name="material 2" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
+            <WaNoFloat name="scale coupling">1.0</WaNoFloat>
+          </Element>
+        </WaNoMultipleOf>
 
         <WaNoMultipleOf visibility_condition="'%s' != 'generic'" visibility_var_path="TABS.topology.transfer_integral_source" name="pair parameters">
           <Element id="0">
