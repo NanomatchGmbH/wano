@@ -49,6 +49,7 @@ transfer_integral_source: {{wano["TABS"]["topology"]["transfer_integral_source"]
 std_scale: {{wano["TABS"]["physics"]["electrode_J_scale"]}}
 
 pair_input: {{wano["TABS"]["topology"]["pair parameters"]}}
+pair_scaling: {{wano["TABS"]["topology"]["transport tuning parameters"]}}
 
 transfer_integral_file: {{wano["TABS"]["topology"]["transfer_integral_file"]}}
 

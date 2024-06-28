@@ -419,9 +419,11 @@
         </WaNoDropDown>
 
         <WaNoDropDown visibility_condition="'%s' == 'fitted_miller'" visibility_var_path="TABS.topology.transfer_integral_source" name="ti_fit_mode">
-          <Entry id="0" chosen="True">avrg</Entry>
+          <Entry id="0">avrg</Entry>
           <Entry id="1">max</Entry>
           <Entry id="2">log_avrg</Entry>
+          <Entry id="3" chosen="True">max_avrg</Entry>
+          <Entry id="4">double_exp</Entry>
         </WaNoDropDown>
 
         <WaNoDropDown visibility_condition="%s == True" visibility_var_path="TABS.general.particle_types.excitons" name="FRET">
@@ -430,6 +432,15 @@
         </WaNoDropDown>
 
         <WaNoFile visibility_condition="'%s' == 'file'" visibility_var_path="TABS.topology.transfer_integral_source" logical_filename="transfer_integral_file.dat" name="transfer_integral_file">Put file here</WaNoFile>
+        
+        <WaNoBool visibility_condition="'%s' == 'generic'" visibility_var_path="TABS.topology.transfer_integral_source" name="modify transfer integrals for pairs">False</WaNoBool>
+        <WaNoMultipleOf visibility_condition="%s == True" visibility_var_path="TABS.topology.modify transfer integrals for pairs" name="transport tuning parameters">
+          <Element id="0">
+            <WaNoDynamicDropDown name="material 1" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
+            <WaNoDynamicDropDown name="material 2" collection_path="TABS.materials.materials" subpath="name" chosen="0" />
+            <WaNoFloat name="scale coupling">1.0</WaNoFloat>
+          </Element>
+        </WaNoMultipleOf>
 
         <WaNoMultipleOf visibility_condition="'%s' != 'generic'" visibility_var_path="TABS.topology.transfer_integral_source" name="pair parameters">
           <Element id="0">
