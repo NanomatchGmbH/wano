@@ -1,12 +1,12 @@
 <WaNoTemplate>
-    <WaNoRoot name="QuantumPatch3">
+    <WaNoRoot name="DOS Calculator">
         <WaNoTabs name="Tabs">
             <WaNoGroup name="General">
                 <WaNoDictBox name="General Settings">
                     <WaNoFile logical_filename="morphology.cml" name="Morphology">Put .cml file here</WaNoFile>
                     <WaNoBool name="Compute absolute levels of IP/EA">True</WaNoBool>
                     <WaNoBool name="Compute disorder">True</WaNoBool>
-                    <WaNoBool name="Compute Js">True</WaNoBool>
+                    <WaNoBool visibility_condition="'%s' == 'True'" visibility_var_path="Tabs.General.General Settings.Compute disorder" name="Compute couplings">True</WaNoBool>
                 </WaNoDictBox>
                <WaNoDictBox visibility_condition="'%s' == 'True'" visibility_var_path="Tabs.General.General Settings.Compute absolute levels of IP/EA" name="Core Shell">
                     <WaNoDropDown name="Shell size defined by">
@@ -20,18 +20,18 @@
                         <WaNoFloat name="Cutoff y direction">10.0</WaNoFloat>
                         <WaNoFloat name="Cutoff z direction">10.0</WaNoFloat>
                     </WaNoDictBox>
-                    <WaNoString visibility_condition="'%s' == 'List of Molecule IDs'" visibility_var_path="Tabs.General.Core Shell.Shell size defined by" name="List of Molecule IDs">43;57;79-100</WaNoString>
-                    <WaNoInt visibility_condition="'Number' in '%s'" visibility_var_path="Tabs.General.Core Shell.Shell size defined by" name="Number of Molecules">250</WaNoInt>
+                    <WaNoString visibility_condition="'%s' == 'List of Molecule IDs'" visibility_var_path="Tabs.General.Core Shell.Shell size defined by" name="List of molecule IDs">43;57;79-100</WaNoString>
+                    <WaNoInt visibility_condition="'Number' in '%s'" visibility_var_path="Tabs.General.Core Shell.Shell size defined by" name="Number of molecules">8</WaNoInt>
                     <WaNoDynamicDropDown name="Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="0" />
                 </WaNoDictBox>
-                <WaNoDictBox visibility_condition="'%s' == 'True'" visibility_var_path="Tabs.General.General Settings.Compute disorder" name="Disorder / Js Shell">
+                <WaNoDictBox visibility_condition="'%s' == 'True'" visibility_var_path="Tabs.General.General Settings.Compute disorder" name="Shell for Disorder and Couplings">
                     <WaNoDropDown name="Shell size defined by">
-                        <Entry id="0" chosen="True">Cutoff Radius</Entry>
-                        <Entry id="1">Minimal Number of Molecules</Entry>
+                        <Entry id="0">Cutoff Radius</Entry>
+                        <Entry id="1" chosen="True">Minimal Number of Molecules</Entry>
                         <Entry id="2">Minimal Number of Molecules of each Type</Entry>
                     </WaNoDropDown>
-                    <WaNoFloat visibility_condition="'%s' == 'Cutoff Radius'" visibility_var_path="Tabs.General.Disorder Shell.Shell size defined by" name="Cutoff Radius">15.0</WaNoFloat>
-                    <WaNoInt visibility_condition="'Minimal Number' in '%s'" visibility_var_path="Tabs.General.Disorder Shell.Shell size defined by" name="Number of molecules">200</WaNoInt>
+                    <WaNoFloat visibility_condition="'%s' == 'Cutoff Radius'" visibility_var_path="Tabs.General.Shell for Disorder and Couplings.Shell size defined by" name="Cutoff Radius">15.0</WaNoFloat>
+                    <WaNoInt visibility_condition="'Minimal Number' in '%s'" visibility_var_path="Tabs.General.Shell for Disorder and Couplings.Shell size defined by" name="Number of molecules">200</WaNoInt>
                     <WaNoDynamicDropDown name="Engine" collection_path="Tabs.Engines.DFT Engines" subpath="Name" chosen="1" />
                 </WaNoDictBox>
             </WaNoGroup>
