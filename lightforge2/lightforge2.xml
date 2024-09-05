@@ -139,9 +139,9 @@
               <WaNoString name="max_TTA">1e6</WaNoString>
               <WaNoString name="max_TSA">1e6</WaNoString>
               <WaNoString name="max_TPQ">1e6</WaNoString>
-              <WaNoString name="max_SSA">1e13</WaNoString>
-              <WaNoString name="max_STA">1e12</WaNoString>
-              <WaNoString name="max_SPQ">1e12</WaNoString>
+              <WaNoString name="max_SSA">1e10</WaNoString>
+              <WaNoString name="max_STA">1e10</WaNoString>
+              <WaNoString name="max_SPQ">1e10</WaNoString>
               <WaNoString name="isc_rate">1e3</WaNoString>
               <WaNoString name="risc_rate">1e2</WaNoString>
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
@@ -238,9 +238,9 @@
               <WaNoString name="max_TTA">1e6</WaNoString>
               <WaNoString name="max_TSA">1e6</WaNoString>
               <WaNoString name="max_TPQ">1e6</WaNoString>
-              <WaNoString name="max_SSA">1e13</WaNoString>
-              <WaNoString name="max_STA">1e12</WaNoString>
-              <WaNoString name="max_SPQ">1e12</WaNoString>
+              <WaNoString name="max_SSA">1e10</WaNoString>
+              <WaNoString name="max_STA">1e10</WaNoString>
+              <WaNoString name="max_SPQ">1e10</WaNoString>
               <WaNoString name="isc_rate">1e3</WaNoString>
               <WaNoString name="risc_rate">1e2</WaNoString>
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
@@ -263,9 +263,9 @@
               <WaNoString name="max_TTA">1e6</WaNoString>
               <WaNoString name="max_TSA">1e6</WaNoString>
               <WaNoString name="max_TPQ">1e6</WaNoString>
-              <WaNoString name="max_SSA">1e13</WaNoString>
-              <WaNoString name="max_STA">1e12</WaNoString>
-              <WaNoString name="max_SPQ">1e12</WaNoString>
+              <WaNoString name="max_SSA">1e10</WaNoString>
+              <WaNoString name="max_STA">1e10</WaNoString>
+              <WaNoString name="max_SPQ">1e10</WaNoString>
               <WaNoString name="isc_rate">1e3</WaNoString>
               <WaNoString name="risc_rate">1e2</WaNoString>
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
@@ -288,9 +288,9 @@
               <WaNoString name="max_TTA">1e6</WaNoString>
               <WaNoString name="max_TSA">1e6</WaNoString>
               <WaNoString name="max_TPQ">1e6</WaNoString>
-              <WaNoString name="max_SSA">1e13</WaNoString>
-              <WaNoString name="max_STA">1e12</WaNoString>
-              <WaNoString name="max_SPQ">1e12</WaNoString>
+              <WaNoString name="max_SSA">1e10</WaNoString>
+              <WaNoString name="max_STA">1e10</WaNoString>
+              <WaNoString name="max_SPQ">1e10</WaNoString>
               <WaNoString name="isc_rate">1e3</WaNoString>
               <WaNoString name="risc_rate">1e2</WaNoString>
               <WaNoString name="rel_light_absorbtion">1.0</WaNoString>
@@ -549,7 +549,7 @@
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_stack_distance">0.8</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="electrode_J_scale">-0.2</WaNoFloat>
         <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="tta_rate">Miller</WaNoString>
-        <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="td_scaling">1.0</WaNoString>
+        <WaNoString visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="td_scaling">0.5</WaNoString>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="ct_rate_memory_multiplier">1.0</WaNoFloat>
         <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="n_injection_layer">1.0</WaNoFloat>
         <WaNoBool visibility_condition="%s == True" visibility_var_path="TABS.physics.show_advanced" name="ML_energy_environment">False</WaNoBool>
