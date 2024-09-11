@@ -12,16 +12,11 @@
                     <WaNoDropDown name="Shell size defined by">
                         <Entry id="0" chosen="True">Number of Molecules</Entry>
                         <Entry id="1">Number of Molecules of each Type</Entry>
-                        <Entry id="2">Inner Box Cutoff</Entry>
-                        <Entry id="3">List of Molecule IDs</Entry>
+                        <Entry id="2">List of Molecule IDs</Entry>
                     </WaNoDropDown>
-                    <WaNoDictBox visibility_condition="'%s' == 'Inner Box Cutoff'" visibility_var_path="Tabs.General.Core Shell.Shell size defined by" name="Inner Box Cutoff">
-                        <WaNoFloat name="Cutoff x direction">10.0</WaNoFloat>
-                        <WaNoFloat name="Cutoff y direction">10.0</WaNoFloat>
-                        <WaNoFloat name="Cutoff z direction">10.0</WaNoFloat>
-                    </WaNoDictBox>
                     <WaNoString visibility_condition="'%s' == 'List of Molecule IDs'" visibility_var_path="Tabs.General.Core Shell.Shell size defined by" name="List of molecule IDs">43;57;79-100</WaNoString>
                     <WaNoInt visibility_condition="'Number' in '%s'" visibility_var_path="Tabs.General.Core Shell.Shell size defined by" name="Number of molecules">8</WaNoInt>
+                    <WaNoInt visibility_condition="'of each Type' in '%s'" visibility_var_path="Tabs.General.Core Shell.Shell size defined by" name="Number of types">1</WaNoInt>
                 </WaNoDictBox>
                 <WaNoDictBox visibility_condition="'%s' == 'True'" visibility_var_path="Tabs.General.General Settings.Compute disorder" name="Shell for Disorder and Couplings">
                     <WaNoDropDown name="Shell size defined by">
@@ -67,9 +62,9 @@ bash ./init.sh
     </WaNoExecCommand>
     <WaNoInputFiles>
         <WaNoInputFile logical_filename="init.sh">init.sh</WaNoInputFile>
-        <WaNoInputFile logical_filename="init_lambda.py">init_lambda.py</WaNoInputFile>
-        <WaNoInputFile logical_filename="init_quantumpatch.py">init_quantumpatch.py</WaNoInputFile>
-        <WaNoInputFile logical_filename="qp_settings_template.yml">qp_settings_template.yml</WaNoInputFile>
+        <WaNoInputFile logical_filename="init_dos.py">init_dos.py</WaNoInputFile>
+        <WaNoInputFile logical_filename="dos_settings_template.yml">dos_settings_template.yml</WaNoInputFile>
+        <WaNoInputFile logical_filename="disorder_settings_template.yml">disorder_settings_template.yml</WaNoInputFile>
         <WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
     </WaNoInputFiles>
     <WaNoOutputFiles>
