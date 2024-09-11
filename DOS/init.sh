@@ -1,4 +1,4 @@
-#!/bin/bash
+    #!/bin/bash
 
 # SANITY CHECKS
 
@@ -86,32 +86,11 @@ export LAMBDA_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Include in-va
 
 if [ ! -f "settings_ng.yml" ]
 then
-    echo "Creating input files."
-    if [ "$LAMBDA_RUN" == "True" ]
-    then
-        python3 init_lambda.py
-    fi
-
-    if [ "$QP_RUN" == "True" ]
-    then
-        python3 init_quantumpatch.py
-    fi
+        python3 init_dos.py $UC_TOTAL_PROCESSORS $UCNODES $UC_PROCESSORSS_PER_NODE
 fi
 
-if [ "$LAMBDA_RUN" == "True" ]
-then
-    echo "Running $NANOMATCH/$NANOVER/QuantumPatch/MolecularTools/LambdaEAIP.py"
-    QPLambdaEAIP
-fi
-if [ "$QP_RUN" == "True" ]
-then
-    echo "Running mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py `which QuantumPatch` >> progress.txt 2> shredder_mpi_stderr"
-    mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py `which QuantumPatch` >> progress.txt 2> shredder_mpi_stderr
-fi
-
-mkdir -p Analysis/GSP
-touch Analysis/GSP/partial_charges.yml
-touch Analysis/GSP/core_shell.cml
+echo "Running mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py `which QuantumPatch` >> progress.txt 2> shredder_mpi_stderr"
+mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py `which QuantumPatch` >> progress.txt 2> shredder_mpi_stderr
 
 
 zip -r Analysis.zip Analysis
