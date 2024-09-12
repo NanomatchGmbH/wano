@@ -105,16 +105,6 @@ DFTEngine:
       GW:
         doGW: true
         mode: g0w0
-  geo_opt:
-    ECP_env: true
-    optimize: true
-    ired: false
-    engine: Turbomole
-    basis: def2-SVP
-    functional: BP86
-    threads: 1
-    memory: 1500
-    charge_model: ESP
 System:
   Core:
     type: number
