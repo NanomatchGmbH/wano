@@ -81,12 +81,9 @@ do
   fi
 done
 
-export QP_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Run QuantumPatch"] }}"
-export LAMBDA_RUN="{{ wano["Tabs"]["General"]["General Settings"]["Include in-vacuo Lambda/EA/IP Calculation"] }}"
-
 if [ ! -f "settings_ng.yml" ]
 then
-        python3 init_dos.py $UC_TOTAL_PROCESSORS $UCNODES $UC_PROCESSORSS_PER_NODE
+        python3 init_dos.py $UC_TOTAL_PROCESSORS $UC_NODES $UC_PROCESSORS_PER_NODE
 fi
 
 echo "Running mpirun --bind-to none $NMMPIARGS $ENVCOMMAND --hostfile $HOSTFILE --mca btl self,vader,tcp python -m mpi4py `which QuantumPatch` >> progress.txt 2> shredder_mpi_stderr"
