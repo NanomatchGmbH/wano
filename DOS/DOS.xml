@@ -16,16 +16,9 @@
                     </WaNoDropDown>
                     <WaNoString visibility_condition="'%s' == 'List of Molecule IDs'" visibility_var_path="Tabs.General.Core Shell.Shell size defined by" name="List of molecule IDs">43;57;79-100</WaNoString>
                     <WaNoInt visibility_condition="'Number' in '%s'" visibility_var_path="Tabs.General.Core Shell.Shell size defined by" name="Number of molecules">8</WaNoInt>
-                    <WaNoInt visibility_condition="'of each Type' in '%s'" visibility_var_path="Tabs.General.Core Shell.Shell size defined by" name="Number of types">1</WaNoInt>
                 </WaNoDictBox>
                 <WaNoDictBox visibility_condition="'%s' == 'True'" visibility_var_path="Tabs.General.General Settings.Compute disorder" name="Shell for Disorder and Couplings">
-                    <WaNoDropDown name="Shell size defined by">
-                        <Entry id="0">Cutoff Radius</Entry>
-                        <Entry id="1" chosen="True">Minimal Number of Molecules</Entry>
-                        <Entry id="2">Minimal Number of Molecules of each Type</Entry>
-                    </WaNoDropDown>
-                    <WaNoFloat visibility_condition="'%s' == 'Cutoff Radius'" visibility_var_path="Tabs.General.Shell for Disorder and Couplings.Shell size defined by" name="Cutoff Radius">15.0</WaNoFloat>
-                    <WaNoInt visibility_condition="'Minimal Number' in '%s'" visibility_var_path="Tabs.General.Shell for Disorder and Couplings.Shell size defined by" name="Number of molecules">200</WaNoInt>
+                    <WaNoInt name="Number of molecules">200</WaNoInt>
                 </WaNoDictBox>
             </WaNoGroup>
             <WaNoGroup name="Engines">
