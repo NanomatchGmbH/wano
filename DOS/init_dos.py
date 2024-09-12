@@ -9,6 +9,9 @@ from yaml import CLoader
 import sys
 import math
 
+from QuantumPatch.Shredder.MoleculeSystem import MoleculeSystem
+from QuantumPatch.Shredder.Parsers.ParserCommon import parse_system
+
 class QuantumPatchWaNoError(Exception):
     pass
 
@@ -53,7 +56,12 @@ def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
         core_shell["type"] = "number_by_type"
         core_shell["number"] = wano_core["Number of molecules"]
         number_core_mols = wano_core["Number of molecules"]
-        number_core_mols *= wano_core["Number of types"]
+
+        system = parse_system("morphology.cml")
+        number_types = len(set(system.moltypes))
+        number_core_mols *= number_types
+
+
     elif core_mode == "List of Molecule IDs":
         core_shell["type"] = "list"
         core_shell["list"] = wano_core["List of molecule IDs"]
@@ -71,16 +79,8 @@ def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
     # Env shell
     if do_disorder:
         env_engine = cfg["System"]["Shells"]["1"]
-        env_mode = wano_env["Shell size defined by"]
-        if env_mode == "Minimal Number of Molecules":
-            env_engine["shellsize_by"] = "number_or_cutoff"
-            env_engine["number"] = wano_env["Number of molecules"]
-        elif env_mode == "Minimal Number of Molecules of each Type":
-            env_engine["shellsize_by"] = "number_or_cutoff" # ToDo: Adapt
-            env_engine["number"] = wano_env["Number of molecules"]
-        elif env_mode == "Cutoff Radius":
-            env_engine["shellsize_by"] = "cutoff"
-            env_engine["cutoff"] = max(25.0, float(wano_env["Cutoff Radius"]))
+        env_engine["shellsize_by"] = "number_or_cutoff"
+        env_engine["number"] = wano_env["Number of molecules"]
     # if no disorder, we do not set shellsize_by and number of molecules
 
     # Adapt engines
@@ -91,11 +91,12 @@ def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
     pyscf_1_engine["mem_per_cpu"] = mem_per_cpu
     pyscf_1_engine["polFF_env"] = True
     threads = int((cpu_per_node-1) // math.ceil(number_core_mols / tot_nodes))
-    thread_string = f'f"auto.min.{threads}"'
+    thread_string = f'auto.min.{threads}'
     pyscf_1_engine["threads"] = thread_string
     pyscf_2_engine = copy.deepcopy(pyscf_1_engine)
     pyscf_2_engine["polFF_env"] = False
     cfg["DFTEngine"]["user"]["PySCF 2"] = pyscf_2_engine
+
 
     ## Small adaptations in polFF and PySCF env
     cfg["DFTEngine"]["user"]["polFF"]["threads"] = thread_string
@@ -109,7 +110,7 @@ def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
     eval_engine["functional"] = GW_func
     eval_engine["threads"] = cpu_per_node - 1
     mem_scale = {"PySCF": 0.85, "Turbomole": 0.75}
-    eval_engine["memory"] = mem_per_cpu * cpu_per_node * mem_scale[GW_engine]
+    eval_engine["memory"] = mem_per_cpu * (cpu_per_node-1) * mem_scale[GW_engine]
     cfg["SpecialSteps"]["EvalStep"]["engine"] = f"{GW_engine} Evalstep"
 
     return cfg
