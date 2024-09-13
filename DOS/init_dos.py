@@ -60,8 +60,6 @@ def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
         system = parse_system("morphology.cml")
         number_types = len(set(system.moltypes))
         number_core_mols *= number_types
-
-
     elif core_mode == "List of Molecule IDs":
         core_shell["type"] = "list"
         core_shell["list"] = wano_core["List of molecule IDs"]
@@ -80,7 +78,7 @@ def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
     if do_disorder:
         env_engine = cfg["System"]["Shells"]["1"]
         env_engine["shellsize_by"] = "number_or_cutoff"
-        env_engine["number"] = wano_env["Number of molecules"]
+        env_engine["number"] = wano_env["Number of molecules"] - number_core_mols
     # if no disorder, we do not set shellsize_by and number of molecules
 
     # Adapt engines
