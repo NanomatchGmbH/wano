@@ -1,14 +1,14 @@
 QuantumPatch:
   morphology: morphology.cml
-  type: matrix_eaip
+  type: uncharged_equilibration
   dimer_cutoff: 7.0
   pc_cutoff_by_cog: true
-  number_of_equilibration_steps: 2
-  charge_damping: 0.3
+  number_of_equilibration_steps: 0
+  charge_damping: 0.0
   damping_by_iter: {}
   abs_damping_by_iter: {}
   partial_charge_cutoff: 55
-  calculateJs: false
+  calculateJs: true
   max_batch_size: 20
   chargetype_multipoles: false
   atomistic_polarizability_steps: [Vacuum]
@@ -42,7 +42,7 @@ DFTEngine:
   user:
     polFF:
       engine: polFF
-      threads: sameas:DFTEngine.user.PySCF 1.threads # XXXX same as PySCF 1
+      threads: 1
       field_screening: 0.3
       damp_radius: 0.75
       damp_type: avrg
@@ -52,121 +52,45 @@ DFTEngine:
         monopol: false
         monodipol: false
         quadrupol: false
-    PySCF 1:
-      engine: PySCF
-      basis: def2-SVPD
-      functional: PBE0
+    TM env:
+      engine: Turbomole
+      basis: def2-SVP
+      functional: BP86
       charge_model: ESP
-      gridsize: fast
-      mem_per_cpu: XXXX
-      threads: f"auto.min.{XXX}" wobei XXX Anzahl {available cores} / {number core molecules} wobei es für multinode commensurabel mit einzelnodes seien muss
-      polFF_env: true
-    PySCF 2:
-      engine: PySCF
-      basis: def2-SVPD
-      functional: PBE0
-      charge_model: ESP
-      gridsize: fast
-      mem_per_cpu: XXXX
-      threads: XXXX same as PySCF 1
+      mem_per_cpu: 3500
+      threads: 1
       polFF_env: false
     PySCF env:
       engine: PySCF
-      basis: def2-SVPD
+      basis: def2-SVP
       functional: BP86
       charge_model: ESP
       gridsize: fast
-      mem_per_cpu: 3000
+      mem_per_cpu: 3500
       threads: auto
-    PySCF Evalstep:
-      engine: PySCF
-      basis: aug-cc-pVDZ
-      functional: XXXX  PBE0, R2SCAN0
-      cbs_extra_basis: ["aug-cc-pVTZ"]
-      threads: XXXX available threads per node -1
-      memory: XXXX mem_per_cpu * threads * 0.85
-      charge_model: Mulliken
-      on_the_fly_jk: true
-      float_gw: true
-      gw_df_type: lpq
-      GW:
-        doGW: true
-        mode: g0w0
-    Turbomole Evalstep:
-      engine: Turbomole
-      basis: def2-SVP
-      method: ridft
-      functional: XXXX TMHF, R2SCAN0, PBE0
-      cbs_correction: ccsdt_from_gw
-      cbs_basis: ["aug-cc-pVDZ", "aug-cc-pVTZ"]
-      threads: XXXX available threads per node -1
-      memory: XXXX mem_per_cpu * threads * 0.75
-      charge_model: Mulliken
-      GW:
-        doGW: true
-        mode: g0w0
-  geo_opt:
-    ECP_env: true
-    optimize: true
-    ired: false
-    engine: Turbomole
-    basis: def2-SVP
-    functional: BP86
-    threads: 1
-    memory: 1500
-    charge_model: ESP
+  geo_opt: {}
 System:
   Core:
     type: number
-    engine: PySCF 1
-    engine_by_iter:
-      Vacuum: PySCF env
-      LastMolState_2: PySCF 2
-      LastMolState_0: PySCF 2
-      LastMolState_1: PySCF 2
+    engine: PySCF env
+    engine_by_iter: {}
     default_molstates: 2;0;1
-    list: 'molstate.2: 735;837;890;982;877;807;906;1078 | molstate.0: 735;837;890;982;877;807;906;1078
-      | molstate.1: 735;837;890;982;877;807;906;1078'
+    list: 'molstate.2: 74;94 | molstate.0: 74;94 | molstate.1: 74;94'
     GeometricalOptimizationSteps: []
     distance:
       cutoff_x: 10.0
       cutoff_y: 10.0
       cutoff_z: 10.0
-    number: 8
+    number: 100
   Shells:
     '0':
-      cutoff: 20.0
-      engine: polFF
+      cutoff: 8.0
+      engine: PySCF env
       type: static
-      type_by_iter:
-        LastMolState_2: scf
-        LastMolState_0: scf
-        LastMolState_1: scf
-      engine_by_iter:
-        Vacuum: PySCF env
-        LastMolState_2: PySCF env
-        LastMolState_0: PySCF env
-        LastMolState_1: PySCF env
-    '1':
-      cutoff: 25.0
-      engine: polFF
-      type: static
+      shellsize_by: number
+      number: 100
       skip_apo: true
-      type_by_iter:
-        LastMolState_2: scf
-        LastMolState_0: scf
-        LastMolState_1: scf
-      engine_by_iter:
-        Vacuum: PySCF env
-        LastMolState_2: PySCF env
-        LastMolState_0: PySCF env
-        LastMolState_1: PySCF env
-    '2':
-      cutoff: 55.0
-      engine: polFF
-      type: static
       type_by_iter: {}
-      skip_by_iter: [Vacuum]
       engine_by_iter: {}
   MolStates:
     '0':
@@ -189,13 +113,14 @@ Analysis:
     ExtraJs: 10
   MultipoleOutput: false
   MatrixEAIP:
-    radius: [50, 20]
+    radius: [8, 25]
     classical_eps: 3.5
     do_lambda: false
     DoEvalStep: false
     single_delta: true
-    exact_pot: true
-    exact_pot_cutoff: 25
+    calculate_vac: false
+    exact_pot: false
+    exact_pot_cutoff: 15
     sd_scaling:
       ind1_ind: 0.5
       ind2_ind: 0.5
@@ -203,21 +128,17 @@ Analysis:
       ind1_n: 0.5
       ind2_n: 0.5
     coulomb_analysis:
-      radii: [20, 55]
+      radii: [8, 25]
       pc_decomposition: [0, 100]
       exact_pot_decomposition: [0, 100]
       extrapolate:
-      - [20, 25]
+      - [8, 15]
       - [pc_decomposition, exact_pot_decomposition]
     ewald_mode: equilibrated
-    statistic_target: mean_homo_lumo
+    statistic_target: mean_lumo_homo
   MachineLearning:
     enable: false
     neighbour_radius: 20.0
     histogram_width: 6
     debug_output: false
-SpecialSteps:
-  EvalStep:
-    engine: XXXX "PySCF Evalstep" oder "Turbomole Evalstep"
-    mollist: core
-    environment_source: LastMolStates
+SpecialSteps: {}
