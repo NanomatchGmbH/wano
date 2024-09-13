@@ -25,7 +25,7 @@
                 <WaNoDictBox name="General engine settings">
                     <WaNoInt name="Memory per CPU (MB)">1500</WaNoInt>
                 </WaNoDictBox>
-                <WaNoDictBox name="GW settings">
+                <WaNoDictBox visibility_condition="'%s' == 'True'" visibility_var_path="Tabs.General.General Settings.Compute absolute levels of IP/EA" name="GW settings">
                     <WaNoDropDown name="GW Engine">
                         <Entry id="0" chosen="true">PySCF</Entry>
                         <Entry id="1">Turbomole</Entry>
