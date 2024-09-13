@@ -28,7 +28,15 @@ def get_disorder_settings(wano):
     with open("disorder_settings_template.yml", "r") as qpngin:
         cfg = yaml.load(qpngin, Loader=CLoader)  # Script will modify this and re-write it
 
+    # Shells
+    number_core_mols = min(100, wano_env["Number of molecules"])
+    cfg["System"]["Core"]["number"] = number_core_mols
+    env_shell = cfg["System"]["Shells"]["0"]
+    env_shell["number"] = max(1, wano_env["Number of molecules"] - number_core_mols)
 
+    # Adapt engines
+    mem_per_cpu = wano_engines["General engine settings"]["Memory per CPU (MB)"]
+    cfg["DFTEngine"]["user"]["PySCF env"]["mem_per_cpu"] = mem_per_cpu
     return cfg
 
 def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
@@ -76,9 +84,9 @@ def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
 
     # Env shell
     if do_disorder:
-        env_engine = cfg["System"]["Shells"]["1"]
-        env_engine["shellsize_by"] = "number_or_cutoff"
-        env_engine["number"] = wano_env["Number of molecules"] - number_core_mols
+        env_shell = cfg["System"]["Shells"]["1"]
+        env_shell["shellsize_by"] = "number_or_cutoff"
+        env_shell["number"] = wano_env["Number of molecules"] - number_core_mols
     # if no disorder, we do not set shellsize_by and number of molecules
 
     # Adapt engines
@@ -108,7 +116,7 @@ def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
     eval_engine["functional"] = GW_func
     eval_engine["threads"] = cpu_per_node - 1
     mem_scale = {"PySCF": 0.85, "Turbomole": 0.75}
-    eval_engine["memory"] = mem_per_cpu * (cpu_per_node-1) * mem_scale[GW_engine]
+    eval_engine["memory"] = int(mem_per_cpu * (cpu_per_node-1) * mem_scale[GW_engine])
     cfg["SpecialSteps"]["EvalStep"]["engine"] = f"{GW_engine} Evalstep"
 
     return cfg
