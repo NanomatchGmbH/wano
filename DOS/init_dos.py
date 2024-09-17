@@ -17,7 +17,7 @@ class QuantumPatchWaNoError(Exception):
 
 
 
-def get_disorder_settings(wano):
+def get_disorder_settings(wano, cpu_per_node=1):
     # Shorthands
     wano_general = wano["Tabs"]["General"]["General Settings"]
     wano_core = wano["Tabs"]["General"]["Core Shell"]
@@ -37,6 +37,8 @@ def get_disorder_settings(wano):
     # Adapt engines
     mem_per_cpu = wano_engines["General engine settings"]["Memory per CPU (MB)"]
     cfg["DFTEngine"]["user"]["PySCF env"]["mem_per_cpu"] = mem_per_cpu
+    cfg["DFTEngine"]["user"]["polFF"]["threads"] = cpu_per_node - 1
+
     return cfg
 
 def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
@@ -103,9 +105,8 @@ def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
     pyscf_2_engine["polFF_env"] = False
     cfg["DFTEngine"]["user"]["PySCF 2"] = pyscf_2_engine
 
-
     ## Small adaptations in polFF and PySCF env
-    cfg["DFTEngine"]["user"]["polFF"]["threads"] = thread_string
+    cfg["DFTEngine"]["user"]["polFF"]["threads"] = cpu_per_node - 1 #thread_string
     cfg["DFTEngine"]["user"]["PySCF env"]["mem_per_cpu"] = mem_per_cpu
 
     # Adapt SpecialSteps -> engine
@@ -141,7 +142,7 @@ if __name__ == "__main__":
     if wano_general["Compute absolute levels of IP/EA"]:
         cfg = get_IPEA_settings(wano, cpu_per_node=cpu_per_node, tot_nodes = tot_nodes)
     elif wano_general["Compute disorder"]:
-        cfg = get_disorder_settings(wano)
+        cfg = get_disorder_settings(wano, cpu_per_node=cpu_per_node)
     else:
         # if neither disorder nor absolute levels: crash
         raise QuantumPatchWaNoError("One of computation of absolute levels or disorder is required")
