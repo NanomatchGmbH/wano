@@ -61,6 +61,8 @@ DFTEngine:
       mem_per_cpu: 1500
       threads: f"auto.min.{4}"
       polFF_env: true
+      mf_opts_override:
+        max_cycle: 100
     PySCF 2:
       engine: PySCF
       basis: def2-SVPD
@@ -70,6 +72,8 @@ DFTEngine:
       mem_per_cpu: 1500
       threads: f"auto.min.{4}"
       polFF_env: false
+      mf_opts_override:
+        max_cycle: 200
     PySCF env:
       engine: PySCF
       basis: def2-SVPD
@@ -84,7 +88,7 @@ DFTEngine:
       functional: PBE0
       cbs_extra_basis: ["aug-cc-pVTZ"]
       threads: 31
-      memory: 20000
+      memory: 128000
       charge_model: Mulliken
       on_the_fly_jk: true
       float_gw: true
@@ -182,7 +186,7 @@ Analysis:
     radius: [50, 20]
     classical_eps: 3.5
     do_lambda: false
-    DoEvalStep: false
+    DoEvalStep: true
     single_delta: true
     exact_pot: true
     exact_pot_cutoff: 25
@@ -209,5 +213,5 @@ Analysis:
 SpecialSteps:
   EvalStep:
     engine: "PySCF Evalstep"
-    mollist: core
-    environment_source: LastMolStates
+    mollist: LowestGS
+    environment_source: None
