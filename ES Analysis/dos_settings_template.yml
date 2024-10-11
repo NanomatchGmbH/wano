@@ -184,6 +184,7 @@ Analysis:
   MultipoleOutput: false
   MatrixEAIP:
     radius: [50, 20]
+    hide_raw_data: true
     classical_eps: 3.5
     do_lambda: false
     DoEvalStep: true
