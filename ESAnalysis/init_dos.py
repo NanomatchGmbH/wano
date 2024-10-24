@@ -26,7 +26,7 @@ def get_disorder_settings(wano, cpu_per_node=1):
     wano_storage = wano["Tabs"]["Storage"]
 
     with open("disorder_settings_template.yml", "r") as qpngin:
-        cfg = yaml.load(qpngin, Loader=CLoader)  # Script will modify this and re-write it
+        cfg = yaml.safe_load(qpngin)  # Script will modify this and re-write it
 
     # Shells
     number_core_mols = min(100, wano_env["Number of molecules"])
