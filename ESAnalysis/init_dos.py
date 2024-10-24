@@ -5,7 +5,6 @@ Script that uses WaNo input to write QuantumPatch input.
 """
 
 import yaml, copy
-from yaml import CLoader
 import sys
 import math
 
