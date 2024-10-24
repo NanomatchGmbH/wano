@@ -1,3 +1,0 @@
-self.build_xyz_trajectory(self.particles, {{wano["startframe"]}}, {{wano["endframe"]}}, {{wano["timestep"]}}*0.000000001, "trajec.xyz")
-from lightforge.kmc_mpi import mpi_exit
-mpi_exit()
