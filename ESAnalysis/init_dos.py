@@ -130,7 +130,7 @@ if __name__ == "__main__":
     assert cpu_per_node * tot_nodes == tot_cpu, 'total cpu does not match total nodes times cpu per node'
 
     with open("rendered_wano.yml", "r") as wanoin:
-        wano = yaml.load(wanoin, Loader=CLoader)
+        wano = yaml.safe_load(wanoin)
 
     wano_general = wano["Tabs"]["General"]["General Settings"]
     wano_core = wano["Tabs"]["General"]["Core Shell"]
