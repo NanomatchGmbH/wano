@@ -1,5 +1,5 @@
 <WaNoTemplate>
-    <WaNoRoot name="DOS Calculator">
+    <WaNoRoot name="ESAnalysis">
         <WaNoTabs name="Tabs">
             <WaNoGroup name="General">
                 <WaNoDictBox name="General Settings">
