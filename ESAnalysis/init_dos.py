@@ -28,7 +28,7 @@ def get_disorder_settings(wano, cpu_per_node=1):
         cfg = yaml.safe_load(qpngin)  # Script will modify this and re-write it
 
     # Shells
-    number_core_mols = min(100, wano_env["Number of molecules"])
+    number_core_mols = min(100, int(wano_env["Number of molecules"]))
     cfg["System"]["Core"]["number"] = number_core_mols
     env_shell = cfg["System"]["Shells"]["0"]
     env_shell["number"] = max(2, wano_env["Number of molecules"] - number_core_mols)
