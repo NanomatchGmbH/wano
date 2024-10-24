@@ -52,7 +52,7 @@ def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
     do_disorder = wano_general["Compute disorder"]
 
     with open("dos_settings_template.yml", "r") as qpngin:
-        cfg = yaml.load(qpngin, Loader=CLoader)  # Script will modify this and re-write it
+        cfg = yaml.safe_load(qpngin)  # Script will modify this and re-write it
 
     # Shells
     ## Adapt and analyse core shell re numer of molecules
