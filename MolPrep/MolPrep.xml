@@ -10,6 +10,8 @@
  <WaNoExecCommand>
 #!/bin/bash
 
+set -euo pipefail
+
 simstack_server_mamba_source
 $MAMBA_EXE activate nmsci-2024.2
 
