@@ -1,7 +1,7 @@
 <WaNoTemplate>
     <WaNoRoot name="MolPrep">
 
-            <WaNoFile logical_filename="input_molecule.mol2" name="Molecule (Mol2)">Mol2 input file</WaNoFile>
+            <WaNoFile logical_filename="input_molecule" name="Input Molecule File">Mol/CML/PDB/Mol2/XYZ</WaNoFile>
             <WaNoThreeRandomLetters name="Molecule Identifier"></WaNoThreeRandomLetters>
             <WaNoBool name="Optimize Molecule">True</WaNoBool>
             <WaNoBool name="Compute Dihedral Forcefield">True</WaNoBool>
