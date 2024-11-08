@@ -16,7 +16,7 @@ $MAMBA_EXE activate nmsci-2024.2
 python3 init_molprep.py
 
 bash ./parametrizer.sh
-cp molecule.spf molecule_forcefield.spf
+
 
 DO_DHP="{{ wano["Compute Dihedral Forcefield"] }}"
 
@@ -26,6 +26,8 @@ if [ "aa$DO_DHP" == "aaTrue" ]; then
     bash ./dihedral_parametrizer_4.sh
     mv molecule.spf molecule_before_dhp.spf
     mv dihedral_forcefield.spf molecule_forcefield.spf
+else
+    cp molecule.spf molecule_forcefield.spf
 fi
 
 </WaNoExecCommand>
