@@ -34,7 +34,21 @@ then
     fi
 fi
 
-Deposit {% for element in wano["TABS"]["Molecules"]["Molecules"] %} molecule.{{ loop.index - 1 }}.pdb={{ element["Molecule"] }}  molecule.{{ loop.index - 1 }}.spf={{ element["Forcefield"] }} molecule.{{ loop.index - 1 }}.conc={{ element["Mixing Ratio"] }} {% endfor %}  simparams.Thi={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Initial Temperature [K]"] }}  simparams.Tlo={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Final Temperature [K]"] }} simparams.sa.Tacc={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["SA Acc Temp"] }} simparams.sa.cycles={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of SA cycles"] }} simparams.sa.steps={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of Steps"] }} simparams.Nmol={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of Molecules"] }} simparams.moves.dihedralmoves={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Dihedral Moves"] }}  Box.Lx={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["Lx"] }}  Box.Ly={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["Ly"] }}  Box.Lz={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["Lz"] }}  Box.pbc_cutoff={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["PBC"]["Cutoff"] }}  simparams.PBC={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["PBC"]["enabled"] }} machineparams.ncpu=${UC_PROCESSORS_PER_NODE} Box.grid_overhang=30 simparams.postrelaxation_steps={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Postrelaxation Steps"] }} 
+
+output=$(QPGetDepositDimensions.py --mode {{ wano["TABS"]["Simulation Parameters"]["Dimensions"][""] }} --N {{ wano["TABS"]["Simulation Parameters"]["Dimensions"][""] }}  --X {{ wano["TABS"]["Simulation Parameters"]["Dimensions"][""] }}  --Y {{ wano["TABS"]["Simulation Parameters"]["Dimensions"][""] }} --Z {{ wano["TABS"]["Simulation Parameters"]["Dimensions"][""] }} --cubic {{ wano["TABS"]["Simulation Parameters"]["Dimensions"][""] }} --pdb {% for element in wano["TABS"]["Molecules"]["Molecules"] %} {{ element["Molecule"] }} {% endfor %} --frac {% for element in wano["TABS"]["Molecules"]["Molecules"] %} {{ element["Mixing Ratio"] }}  {% endfor %})
+
+Lx=$(echo "$output" | grep "Lx:" | awk '{print $2}')
+Ly=$(echo "$output" | grep "Ly:" | awk '{print $2}')
+Lz=$(echo "$output" | grep "Lz:" | awk '{print $2}')
+Nmol=$(echo "$output" | grep "Nmol:" | awk '{print $2}')
+
+#override Lz from script, e.g. for multilayers
+if [ "{{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["Set total Lz for multilayer stacks"] }}" == "True" ]
+then
+    Lz="{{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["Total Lz"] }}"
+fi
+
+Deposit {% for element in wano["TABS"]["Molecules"]["Molecules"] %} molecule.{{ loop.index - 1 }}.pdb={{ element["Molecule"] }}  molecule.{{ loop.index - 1 }}.spf={{ element["Forcefield"] }} molecule.{{ loop.index - 1 }}.conc={{ element["Mixing Ratio"] }} {% endfor %}  simparams.Thi={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Initial Temperature [K]"] }}  simparams.Tlo={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Final Temperature [K]"] }} simparams.sa.Tacc={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["SA Acc Temp"] }} simparams.sa.cycles={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of SA cycles"] }} simparams.sa.steps={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of Steps"] }} simparams.Nmol=$Nmol simparams.moves.dihedralmoves={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Dihedral Moves"] }}  Box.Lx=$Lx  Box.Ly=$Ly  Box.Lz=$Lz  Box.pbc_cutoff={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["PBC"]["Cutoff"] }}  simparams.PBC={{ wano["TABS"]["Simulation Parameters"]["Simulation Box"]["PBC"]["enabled"] }} machineparams.ncpu=${UC_PROCESSORS_PER_NODE} Box.grid_overhang=30 simparams.postrelaxation_steps={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Postrelaxation Steps"] }} 
 
 
 obabel structure.cml -O structure.mol2
