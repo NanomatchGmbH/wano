@@ -43,11 +43,9 @@ fi
    <WaNoInputFile logical_filename="dhp_settings_template.yml">dhp_settings_template.yml</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
-    <WaNoOutputFile>report.zip</WaNoOutputFile>
     <WaNoOutputFile>molecule_forcefield.spf</WaNoOutputFile>
     <WaNoOutputFile>molecule.pdb</WaNoOutputFile>
     <WaNoOutputFile>output_molecule.mol2</WaNoOutputFile>
-    <WaNoOutputFile>mol_data.yml</WaNoOutputFile>
     <WaNoOutputFile>output_dict.yml</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>

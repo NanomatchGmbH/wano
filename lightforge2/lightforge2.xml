@@ -663,7 +663,5 @@ bash ./start_LF.sh
    <WaNoInputFile logical_filename="sample_config.ini">sample_config.ini</WaNoInputFile>
  </WaNoInputFiles>
  <WaNoOutputFiles>
-    <WaNoOutputFile>DriftDiffusion-in.yml</WaNoOutputFile>
-    <WaNoOutputFile>output_dict.yml</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
