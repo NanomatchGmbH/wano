@@ -53,7 +53,6 @@
  <WaNoOutputFiles>
     <WaNoOutputFile>structure.cml</WaNoOutputFile>
     <WaNoOutputFile>structurePBC.cml</WaNoOutputFile>
-    <WaNoOutputFile>merged.spf</WaNoOutputFile>
     <WaNoOutputFile>restartfile.zip</WaNoOutputFile>
  </WaNoOutputFiles>
 </WaNoTemplate>
