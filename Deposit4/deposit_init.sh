@@ -34,8 +34,16 @@ then
     fi
 fi
 
+box_mode="by_number"
+wano_box_mode="{{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["Morphology size defined by"] }}"
+if [ "$wano_box_mode" == "box size" ]
+then
+    mode="by_box_size"
+fi
 
-output=$(QPGetDepositDimensions.py --mode {{ wano["TABS"]["Simulation Parameters"]["Dimensions"][""] }} --N {{ wano["TABS"]["Simulation Parameters"]["Dimensions"][""] }}  --X {{ wano["TABS"]["Simulation Parameters"]["Dimensions"][""] }}  --Y {{ wano["TABS"]["Simulation Parameters"]["Dimensions"][""] }} --Z {{ wano["TABS"]["Simulation Parameters"]["Dimensions"][""] }} --cubic {{ wano["TABS"]["Simulation Parameters"]["Dimensions"][""] }} --pdb {% for element in wano["TABS"]["Molecules"]["Molecules"] %} {{ element["Molecule"] }} {% endfor %} --frac {% for element in wano["TABS"]["Molecules"]["Molecules"] %} {{ element["Mixing Ratio"] }}  {% endfor %})
+
+
+output=$(QPGetDepositDimensions --mode $mode --N {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["S"]["box"]["Number of Molecules"] }}  --X {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["S"]["box"]["X / A"] }}  --Y {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["S"]["box"]["Y / A"] }} --Z {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["S"]["box"]["Z / A"] }} {% if $mode=="by_number" %} --cubic {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["S"]["box"]["Cubic Box"] }} {% endif $} --pdb {% for element in wano["TABS"]["Molecules"]["Molecules"] %} {{ element["Molecule"] }} {% endfor %} --frac {% for element in wano["TABS"]["Molecules"]["Molecules"] %} {{ element["Mixing Ratio"] }}  {% endfor %})
 
 Lx=$(echo "$output" | grep "Lx:" | awk '{print $2}')
 Ly=$(echo "$output" | grep "Ly:" | awk '{print $2}')
