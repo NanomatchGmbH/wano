@@ -31,7 +31,7 @@ def get_disorder_settings(wano, cpu_per_node=1):
     number_core_mols = min(100, int(wano_env["Number of molecules"]))
     cfg["System"]["Core"]["number"] = number_core_mols
     env_shell = cfg["System"]["Shells"]["0"]
-    env_shell["number"] = max(2, wano_env["Number of molecules"] - number_core_mols)
+    env_shell["number"] = int(wano_env["Number of molecules"]) - number_core_mols
 
     # Adapt engines
     mem_per_cpu = wano_engines["General engine settings"]["Memory per CPU (MB)"]
