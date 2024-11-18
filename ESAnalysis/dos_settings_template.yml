@@ -93,6 +93,8 @@ DFTEngine:
       on_the_fly_jk: true
       float_gw: true
       gw_df_type: lpq
+      mf_opts_override:
+        max_cycle: 200
       GW:
         doGW: true
         mode: g0w0
