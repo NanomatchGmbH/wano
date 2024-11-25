@@ -49,9 +49,9 @@ Lz=$(echo "$output" | grep "Lz:" | awk '{print $2}')
 Nmol=$(echo "$output" | grep "Nmol:" | awk '{print $2}')
 
 #override Lz from script, e.g. for multilayers
-if [ "{{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["Set total Lz for multilayer stacks"] }}" == "True" ]
+if [ "{{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["Set total box height for multilayer"] }}" == "True" ]
 then
-    Lz="{{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["Total Lz"] }}"
+    Lz="{{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["Total Z / A"] }}"
 fi
 
 Deposit {% for element in wano["TABS"]["Molecules"]["Molecules"] %} molecule.{{ loop.index - 1 }}.pdb={{ element["Molecule"] }}  molecule.{{ loop.index - 1 }}.spf={{ element["Forcefield"] }} molecule.{{ loop.index - 1 }}.conc={{ element["Mixing Ratio"] }} {% endfor %} simparams.Thi={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Initial Temperature [K]"] }}  simparams.Tlo={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Final Temperature [K]"] }} simparams.sa.Tacc={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["SA Acc Temp"] }} simparams.sa.cycles={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of SA cycles"] }} simparams.sa.steps={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Number of Steps"] }} simparams.Nmol=$Nmol simparams.moves.dihedralmoves={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Dihedral Moves"] }}  Box.Lx=$Lx  Box.Ly=$Ly  Box.Lz=$Lz Box.pbc_cutoff={{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["PBC"]["Cutoff"] }} simparams.PBC={{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["PBC"]["enabled"] }} machineparams.ncpu=${UC_PROCESSORS_PER_NODE} Box.grid_overhang=30 simparams.postrelaxation_steps={{ wano["TABS"]["Simulation Parameters"]["Simulation Parameters"]["Postrelaxation Steps"] }}
