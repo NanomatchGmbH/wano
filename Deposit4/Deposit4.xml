@@ -61,7 +61,7 @@
  </WaNoRoot>
  <WaNoExecCommand>
    simstack_server_mamba_source
-   $MAMBA_EXE activate qpdev
+   $MAMBA_EXE activate nmsci-2024.3
    bash ./deposit_init.sh
 </WaNoExecCommand>
  <WaNoInputFiles>
