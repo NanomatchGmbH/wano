@@ -38,10 +38,10 @@ box_mode="by_number"
 wano_box_mode="{{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["Morphology size defined by"] }}"
 if [ "$wano_box_mode" == "box size" ]
 then
-    mode="by_box_size"
+    box_mode="by_box_size"
 fi
 
-output=$(QPGetDepositDimensions --mode $mode {% if wano["TABS"]["Simulation Parameters"]["Dimensions"]["Morphology size defined by"] != "box size" %}  --N {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["box"]["Number of Molecules"] }} {% endif %} --X {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["box"]["X / A"] }}  --Y {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["box"]["Y / A"] }} --Z {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["box"]["Z / A"] }} {% if wano["TABS"]["Simulation Parameters"]["Dimensions"]["Morphology size defined by"]  == "number of molecules" %} --cubic {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["box"]["Cubic Box"] }} {% endif %} --pdb {% for element in wano["TABS"]["Molecules"]["Molecules"] %} {{ element["Molecule"] }} {% endfor %} --frac {% for element in wano["TABS"]["Molecules"]["Molecules"] %} {{ element["Mixing Ratio"] }}  {% endfor %})
+output=$(QPGetDepositDimensions --mode $box_mode {% if wano["TABS"]["Simulation Parameters"]["Dimensions"]["Morphology size defined by"] != "box size" %}  --N {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["box"]["Number of Molecules"] }} {% endif %} --X {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["box"]["X / A"] }}  --Y {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["box"]["Y / A"] }} {% if wano["TABS"]["Simulation Parameters"]["Dimensions"]["Morphology size defined by"] == "box size" %} --Z {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["box"]["Z / A"] }} {% endif %} {% if wano["TABS"]["Simulation Parameters"]["Dimensions"]["Morphology size defined by"]  == "number of molecules" %} --cubic {{ wano["TABS"]["Simulation Parameters"]["Dimensions"]["box"]["Cubic Box"] }} {% endif %} --pdb {% for element in wano["TABS"]["Molecules"]["Molecules"] %} {{ element["Molecule"] }} {% endfor %} --frac {% for element in wano["TABS"]["Molecules"]["Molecules"] %} {{ element["Mixing Ratio"] }}  {% endfor %})
 
 Lx=$(echo "$output" | grep "Lx:" | awk '{print $2}')
 Ly=$(echo "$output" | grep "Ly:" | awk '{print $2}')
