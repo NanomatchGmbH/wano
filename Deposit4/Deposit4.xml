@@ -1,5 +1,5 @@
 <WaNoTemplate>
- <WaNoRoot name="Deposit3">
+ <WaNoRoot name="Deposit4">
  <WaNoTabs name="TABS">
  <WaNoGroup name="Simulation Parameters">
   <WaNoDictBox name="Dimensions">
@@ -12,17 +12,17 @@
       <WaNoInviBox switch_name="number of molecules" name="box">
         <WaNoInt name="Number of Molecules">10</WaNoInt>
         <WaNoBool name="Cubic Box">False</WaNoBool>
-        <WaNoFloat visibility_condition="%s == False" visibility_var_path="TABS.Simulation Parameters.Dimensions.ModeSwitch.0.Cubic Box" name="X / A">45.0</WaNoFloat>
-        <WaNoFloat visibility_condition="%s == False" visibility_var_path="TABS.Simulation Parameters.Dimensions.ModeSwitch.0.Cubic Box" name="Y / A">45.0</WaNoFloat>
+        <WaNoFloat visibility_condition="%s == False" visibility_var_path="TABS.Simulation Parameters.Dimensions.ModeSwitch.0.Cubic Box" name="X [A]">100.0</WaNoFloat>
+        <WaNoFloat visibility_condition="%s == False" visibility_var_path="TABS.Simulation Parameters.Dimensions.ModeSwitch.0.Cubic Box" name="Y [A]">100.0</WaNoFloat>
       </WaNoInviBox>
       <WaNoInviBox switch_name="box size" name="box">
-        <WaNoFloat name="X / A">45.0</WaNoFloat>
-        <WaNoFloat name="Y / A">45.0</WaNoFloat>
-        <WaNoFloat name="Z / A">140.0</WaNoFloat>
+        <WaNoFloat name="X [A]">100.0</WaNoFloat>
+        <WaNoFloat name="Y [A]">100.0</WaNoFloat>
+        <WaNoFloat name="Z [A]">200.0</WaNoFloat>
       </WaNoInviBox>
     </WaNoSwitch>
     <WaNoBool name="Set total box height for multilayer">False</WaNoBool>
-    <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.Simulation Parameters.Dimensions.Set total box height for multilayer" name="Total Z / A">180.0</WaNoFloat>
+    <WaNoFloat visibility_condition="%s == True" visibility_var_path="TABS.Simulation Parameters.Dimensions.Set total box height for multilayer" name="Total Z [A]">200.0</WaNoFloat>
     <WaNoDictBox visibility_condition="'%s' == '2'" visibility_var_path="TABS.Simulation Parameters.Dimensions.Morphology size defined by" name="PBC">
        <WaNoBool name="enabled">True</WaNoBool>
        <WaNoFloat name="Cutoff">20.0</WaNoFloat>
