@@ -42,7 +42,7 @@ DFTEngine:
   user:
     polFF:
       engine: polFF
-      threads: f"auto.min.{4}"
+      threads: 31
       field_screening: 0.3
       damp_radius: 0.75
       damp_type: avrg
