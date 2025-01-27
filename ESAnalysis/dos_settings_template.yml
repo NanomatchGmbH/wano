@@ -59,7 +59,7 @@ DFTEngine:
       charge_model: ESP
       gridsize: fast
       mem_per_cpu: 1500
-      threads: f"auto.min.{4}"
+      threads: f"1.25xauto.min.{4}"
       polFF_env: true
       mf_opts_override:
         max_cycle: 100
@@ -70,7 +70,7 @@ DFTEngine:
       charge_model: ESP
       gridsize: fast
       mem_per_cpu: 1500
-      threads: f"auto.min.{4}"
+      threads: f"1x25xauto.min.{4}"
       polFF_env: false
       mf_opts_override:
         max_cycle: 200
@@ -81,7 +81,7 @@ DFTEngine:
       charge_model: ESP
       gridsize: fast
       mem_per_cpu: 3000
-      threads: auto
+      threads: 1.25xauto
     PySCF Evalstep:
       engine: PySCF
       basis: aug-cc-pVDZ
