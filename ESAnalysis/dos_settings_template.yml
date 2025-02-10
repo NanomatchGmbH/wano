@@ -111,7 +111,7 @@ DFTEngine:
         mode: g0w0
 System:
   Core:
-    type: number
+    type: number_by_type
     engine: PySCF 1
     engine_by_iter:
       Vacuum: PySCF env
