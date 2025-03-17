@@ -114,9 +114,14 @@ def get_IPEA_settings(wano, cpu_per_node=1, tot_nodes = 1):
 
     eval_engine = cfg["DFTEngine"]["user"][f"{GW_engine} Evalstep"]
     eval_engine["functional"] = GW_func
-    eval_engine["threads"] = cpu_per_node - 1
     mem_scale = {"PySCF": 0.85, "Turbomole": 0.75}
-    eval_engine["memory"] = int(mem_per_cpu * (cpu_per_node-1) * mem_scale[GW_engine])
+    if core_mode == "Number of Molecules of each Type" and mem_per_cpu*cpu_per_node > 500000 and tot_nodes == 1: 
+        # below happens _only_ on relatively thick node. Should work up to molecule size of SpiroOMeTAD
+        # assumes two molecule types. Determining exact amount of moltype does not make sense: we does not know the min. memory required for GW of a given molecule.
+        eval_engine["threads"] = cpu_per_node//2 - 1
+    else:
+        eval_engine["threads"] = cpu_per_node - 1
+    eval_engine["memory"] = int(mem_per_cpu * eval_engine["threads"] * mem_scale[GW_engine])
     cfg["SpecialSteps"]["EvalStep"]["engine"] = f"{GW_engine} Evalstep"
 
     return cfg
